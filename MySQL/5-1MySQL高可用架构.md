@@ -124,7 +124,7 @@ grammar_cjkRuby: true
 
 
 
-### 基于集群提交通信协议的多主复制（一定场景使用）
+## 基于集群提交通信协议的多主复制（一定场景使用）
 
 ![enter description here][10]
 
