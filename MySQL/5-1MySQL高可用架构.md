@@ -115,12 +115,27 @@ grammar_cjkRuby: true
 当等待从库时，时间不可控。
 
 ![enter description here][8]
-情况一：从库出问题
+
+如，从库出问题
+
 ![enter description here][9]
+
+有个关键参数，可以在等待n秒后，可将后面所有请求降级为异步，不保证从库的提交方式等。
+
+
 
 ### 基于集群提交通信协议的多主复制（一定场景使用）
 
 ![enter description here][10]
+
+### 较完善的MySQL高可用方案
+
+半同步复制+高可用中间层+VIP管理方案
+
+如：
+- 半同步复制+MHA+Keepalive
+- 半同步复制+RDS
+
 
 
   [1]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung01.png "mysql_study_gaokeyung01"
