@@ -280,6 +280,14 @@ masterha_check_repl --conf=./mha_manager.cnf
 ```
 nohup /usr/bin/masterha_manager --conf=/root/mha_base/mha_manager.cnf --ignore_last_failover  < /dev/null > /root/mha_base/manager.log 2>&1 &
 ```
+
+查看运行后可查看配置的log----manager.log:
+```
+tail -f manager.log
+```
+日志没有明显错误，则说明配置完成。
+
+
 ### mha_manager.cnf配置文件
 ```
 [server default]
