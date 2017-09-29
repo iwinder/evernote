@@ -166,10 +166,266 @@ description: 网易DBA微专业笔记
 
 结构图：
 
-![enter description here][11]
+	![enter description here][11]
+
+### 配置
+1、确保hosts和hostname配置正确
+
+即确保三台机器上的ip、域名网络配置正确。
+```
+##
+ 
+root@debtest1:~/.ssh# cat /etc/hosts
+127.0.0.1    localhost
+192.168.0.113    debtest1.sam.test    debtest1
+192.168.0.114    debtest2.sam.test    debtest2
+192.168.0.115    debtest3.sam.test    debtest3
+ 
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+root@debtest1:~/.ssh# cat /etc/hostname 
+debtest1
+
+```
+2、使用ssh-keygen工具生成统一公私钥对,并同步到所有三台机器.测试公私钥验证访问
+
+ssh命令：
+```
+ssh-keygen -t rsa
+```
+可生成公私钥对，生成时不要输出密码，这样拿公钥直接访问即可。id_rsa为私钥，id_rsa.pub为公钥。
+
+命令：
+```
+cat id_rsa.pub > authorized_keys
+```
+将公钥写入authorized_keys文件（本地存储公钥，拿公钥对应的私钥访问时可直接通过）中
+
+``` 
+ssh-keygen -t rsa
+ 
+cd ~/.ssh
+cat id_rsa.pub authorized_keys
+ 
+ ### 将文件同步到其他两台主机上
+scp ./* root@debtest2:/root/.ssh/
+scp ./* root@debtest3:/root/.ssh/
+ 
+ ### 完成后，由于第一次访问需要输入yes，所以需要在每台服务器上都需要执行一遍如下操作：
+ 
+ssh debtest1
+ssh debtest2
+ssh debtest3
+```
+3、规划节点用户和ip配置
+```
+##
+ 
+ 
+192.168.0.113    debtest1 --> master
+192.168.0.114    debtest2 --> mysql1(master)
+192.168.0.115    debtest3 --> mysql2(slave)
+192.168.0.119    vip
+ 
+定好虚拟ip后别忘了在当前的主库上添加虚拟ip
+##
+ip addr add 192.168.0.119/32 dev eth1
+ 
+#删除虚拟ip的命令
+##ip addr del 192.168.0.119/32 dev eth1
+```
+4、在全部节点上安装mha node包和其依赖包
+```
+debtest1,debtest1,debtest1
+ 
+apt-get install libdbd-mysql-perl
+ 
+dpkg -i mha4mysql-node_0.53_all.deb
+```
+
+5、仅需要在manager节点上安装mha manager包及其依赖包
+```
+##
+ 
+debtest1
+ 
+apt-get install libdbd-mysql-perl
+apt-get install libconfig-tiny-perl
+apt-get install liblog-dispatch-perl
+apt-get install libparallel-forkmanager-perl
+ 
+dpkg -i mha4mysql-manager_0.53_all.deb
+```
+
+6、建立配置文件目录,编辑mha必要的三个文件,一个配置文件,2个虚拟ip管理脚本
+```
+##
+ 
+master_ip_online_change
+master_ip_failover
+mha_manager.cnf
+ 
+```
+7、可以尝试验证一下配置是否成功
+```
+##
+ 
+masterha_check_ssh --conf=./mha_manager.cnf
+masterha_check_repl --conf=./mha_manager.cnf
+```
+
+8.在manager节点启动mha服务,然后观察日志,并尝试关闭当前主库,注意观察日志,主要看失效发现,日志检测,ip漂移和角色切换过程
+```
+nohup /usr/bin/masterha_manager --conf=/root/mha_base/mha_manager.cnf --ignore_last_failover  < /dev/null > /root/mha_base/manager.log 2>&1 &
+```
+### mha_manager.cnf配置文件
+```
+[server default]
+manager_workdir=/root/mha_base
+manager_log=/root/mha_base/manager.log
+remote_workdir=/root/mha_base
+
+ssh_user=root
+ssh_port=22
+user=mha
+password=mha
+repl_user=repl
+repl_password=repl
+multi_tier_slave=1
+ping_interval=1
+ping_type=CONNECT
+master_ip_failover_script=/root/mha_base/master_ip_failover
+master_ip_online_change_script=/root/mha_base/master_ip_online_change
+secondary_check_script=/usr/bin/masterha_secondary_check -s 192.168.0.113 -s 192.168.0.115 --user=root --port=22 --master_host=debtest2 --master_ip=192.168.0.114 --master_port=3306
 
 
+[server1]
+candidate_master=0
+ignore_fail=1
+check_repl_delay = 1
+hostname=debtest2
+ip=192.168.0.114
+port=3306
+ssh_port=22
+master_binlog_dir=/var/log/mysql/
 
+[server2]
+candidate_master=0
+ignore_fail=1
+check_repl_delay = 1
+hostname=debtest3
+ip=192.168.0.115
+port=3306
+ssh_port=22
+master_binlog_dir=/var/log/mysql/
+```
+### master_ip_failover
+管理IP的脚本
+```
+#!/usr/bin/env perl
+
+## Note: This is a sample script and is not complete. Modify the script based on your environment.
+
+use strict;
+use warnings FATAL => 'all';
+
+use Getopt::Long;
+use MHA::DBHelper;
+
+
+my (
+  $command, $ssh_user, $orig_master_host,
+  $orig_master_ip, $orig_master_port, $new_master_host,
+  $new_master_ip, $new_master_port
+);
+
+my $vip = '192.168.0.119/24'; #virtual ip
+my $ssh_start_vip = "ip addr add $vip dev eth1";
+my $ssh_stop_vip = "ip addr del $vip dev eth1";
+
+
+GetOptions(
+  'command=s' => \$command,
+  'ssh_user=s' => \$ssh_user,
+  'orig_master_host=s' => \$orig_master_host,
+  'orig_master_ip=s' => \$orig_master_ip,
+  'orig_master_port=i' => \$orig_master_port,
+  'new_master_host=s' => \$new_master_host,
+  'new_master_ip=s' => \$new_master_ip,
+  'new_master_port=i' => \$new_master_port,
+  );
+exit &main();
+
+sub main {
+  if ( $command eq "stop" || $command eq "stopssh" ) {
+
+    # $orig_master_host, $orig_master_ip, $orig_master_port are passed.
+    # If you manage master ip address at global catalog database,
+    # invalidate orig_master_ip here.
+    my $exit_code = 1;
+    eval {
+      print "Disabling the VIP on old master: $orig_master_host \n";
+          &stop_vip();
+      $exit_code = 0;
+          # updating global catalog, etc
+
+    };
+    if ($@) {
+      warn "Got Error: $@\n";
+      exit $exit_code;
+    }
+    exit $exit_code;
+  }
+  elsif ( $command eq "start" ) {
+
+    # all arguments are passed.
+    # If you manage master ip address at global catalog database,
+    # activate new_master_ip here.
+    # You can also grant write access (create user, set read_only=0, etc) here.
+    my $exit_code = 10;
+    eval {
+      print "Enabling the VIP - $vip on old master: $new_master_host \n";
+          &start_vip();
+      $exit_code = 0;
+    };
+    if ($@) {
+      warn $@;
+
+      # If you want to continue failover, exit 10.
+      exit $exit_code;
+    }
+    exit $exit_code;
+  }
+  elsif ( $command eq "status" ) {
+
+    # do nothing
+    exit 0;
+  }
+  else {
+    &usage();
+    exit 1;
+  }
+}
+
+# Enable the VIP on the new_master
+sub start_vip() {
+    `ssh $ssh_user\@$new_master_host \" $ssh_start_vip \"`;
+}
+
+# Disable the VIP on the old_master
+
+sub stop_vip() {
+my $ssh_user = "root";
+    `ssh $ssh_user\@$orig_master_host \" $ssh_stop_vip \"`;
+}
+
+sub usage {
+  print
+"Usage: master_ip_failover --command=start|stop|stopssh|status --orig_master_host=host --orig_master_ip=ip --orig_master_port=port --new_master_host=host --new_master_ip=ip --new_master_port=port\n";
+}
+```
 
   [1]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung01.png "mysql_study_gaokeyung01"
   [2]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung02.png "mysql_study_gaokeyung02"
