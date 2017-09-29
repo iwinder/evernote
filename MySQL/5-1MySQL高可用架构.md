@@ -115,10 +115,12 @@ grammar_cjkRuby: true
 当等待从库时，时间不可控。
 
 ![enter description here][8]
+情况一：从库出问题
+![enter description here][9]
 
 ### 基于集群提交通信协议的多主复制（一定场景使用）
 
-![enter description here][9]
+![enter description here][10]
 
 
   [1]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung01.png "mysql_study_gaokeyung01"
@@ -129,4 +131,5 @@ grammar_cjkRuby: true
   [6]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung08.png "mysql_study_gaokeyung08"
   [7]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung09.png "mysql_study_gaokeyung09"
   [8]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung010.png "mysql_study_gaokeyung010"
-  [9]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung04.png "mysql_study_gaokeyung04"
+  [9]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung011.png "mysql_study_gaokeyung011"
+  [10]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung04.png "mysql_study_gaokeyung04"
