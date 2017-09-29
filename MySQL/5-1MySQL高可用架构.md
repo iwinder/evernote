@@ -91,19 +91,34 @@ grammar_cjkRuby: true
 ##### MHA
 - 自动选择复制延迟最小的从节点并试图补全日志（但大部分主机故障情况下行不通）
 - 通常要求两从以上，会进行主从关系切换
-- 不提供VIP管理方案
+- 不提供VIP管理方案。--需要自己通过
+
+线上项目推荐方案。
+
 ##### MMM
 - 提供了基本的VIP管理功能
 - 适合双主配置的一对主机，不会主动主从关系
 - 不支持主从数据延迟判断和补全
+#### MySQL主从复制延迟
+日志传输延迟
 
+数据库接收一个commit请求后，主库日志持久化到redo log中，redo log 一旦持久化成功返回commit，告知用户持久化成功，不需要写进数据库文件中，只需写进主库日志中即可。数据从写入主库日志然后到传输到从库，有时间间隔。从主库写到从库中再到从库持久化完成又一个时间间隔。
 
-### 基于集群提交通信协议的多主复制（一定场景使用）
+若主库日志持久化完成到传输到从库期间发生问题，可能由于主库出问题没来得及传到从库从而导致主从不一致。
 
 ![enter description here][7]
 
+#### MySQL半同步
 
+主库接收到commit提交，主库完成持久化外需保证传到从库并在从库完成持久化才对主库返回commit成功。
 
+当等待从库时，时间不可控。
+
+![enter description here][8]
+
+### 基于集群提交通信协议的多主复制（一定场景使用）
+
+![enter description here][9]
 
 
   [1]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung01.png "mysql_study_gaokeyung01"
@@ -112,4 +127,6 @@ grammar_cjkRuby: true
   [4]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung05.png "mysql_study_gaokeyung05"
   [5]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung06.png "mysql_study_gaokeyung06"
   [6]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung08.png "mysql_study_gaokeyung08"
-  [7]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung04.png "mysql_study_gaokeyung04"
+  [7]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung09.png "mysql_study_gaokeyung09"
+  [8]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung010.png "mysql_study_gaokeyung010"
+  [9]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung04.png "mysql_study_gaokeyung04"
