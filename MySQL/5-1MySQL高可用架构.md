@@ -66,23 +66,33 @@ grammar_cjkRuby: true
 
 
 
-![enter description here][5]
+![enter description here][4]
 
-![enter description here][6]
+![enter description here][5]
 
 
 **方案二：使用域名解析**。主库出问题，将域名解析到从库。
 
 - 为了减少人工接入处理的时间开销引入自动探活处理机制。
 
+![enter description here][6]
+
 ### 基于集群提交通信协议的多主复制（一定场景使用）
 
-![enter description here][4]
+![enter description here][7]
+
+高可用中间层与RDS
+- VIP解决应用切换问题
+- 监控和管理服务器解决自动判断故障切换和VIP漂移
+- VIP管理+探活+主从关系切换 = 高可用中间层
+- 云环境 + 高可用中间层 + 底层数据库 = 一种PaaS = 基本RDS
 
 
- [1]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung01.png "mysql_study_gaokeyung01"
- [2]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung02.png "mysql_study_gaokeyung02"
- [3]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung03.png "mysql_study_gaokeyung03"
- [4]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung04.png "mysql_study_gaokeyung04"
-[5]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung05.png "mysql_study_gaokeyung05"
-[6]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung06.png "mysql_study_gaokeyung06"
+
+  [1]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung01.png "mysql_study_gaokeyung01"
+  [2]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung02.png "mysql_study_gaokeyung02"
+  [3]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung03.png "mysql_study_gaokeyung03"
+  [4]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung05.png "mysql_study_gaokeyung05"
+  [5]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung06.png "mysql_study_gaokeyung06"
+  [6]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung08.png "mysql_study_gaokeyung08"
+  [7]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung04.png "mysql_study_gaokeyung04"
