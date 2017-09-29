@@ -1,5 +1,5 @@
 ---
-title: MySQL高可用架构
+title: 5.1MySQL高可用架构
 tags: MySQL
 grammar_cjkRuby: true
 ---
