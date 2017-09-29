@@ -2,6 +2,7 @@
 title: 5-1MySQL高可用架构
 tags: MySQL
 grammar_cjkRuby: true
+description: 网易DBA微专业笔记
 ---
 ## 高可用
 应用提供持续不间断（可用）的服务的能力
@@ -136,7 +137,8 @@ grammar_cjkRuby: true
 - 半同步复制+MHA+Keepalive
 - 半同步复制+RDS
 
-
+## MySQL高可用框架-MHA
+用一个管理节点监控后端数据库可用性
 
   [1]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung01.png "mysql_study_gaokeyung01"
   [2]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung02.png "mysql_study_gaokeyung02"
