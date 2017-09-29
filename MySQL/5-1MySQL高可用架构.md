@@ -142,6 +142,8 @@ description: 网易DBA微专业笔记
 - 提供VIP漂移接口，不提供具体办法
 - 提供补全从库日志的脚步
 
+
+
   [1]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung01.png "mysql_study_gaokeyung01"
   [2]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung02.png "mysql_study_gaokeyung02"
   [3]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung03.png "mysql_study_gaokeyung03"
