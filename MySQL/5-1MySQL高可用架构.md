@@ -138,7 +138,9 @@ description: 网易DBA微专业笔记
 - 半同步复制+RDS
 
 ## MySQL高可用框架-MHA
-用一个管理节点监控后端数据库可用性
+- 用一个管理节点监控后端数据库可用性
+- 提供VIP漂移接口，不提供具体办法
+- 提供补全从库日志的脚步
 
   [1]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung01.png "mysql_study_gaokeyung01"
   [2]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung02.png "mysql_study_gaokeyung02"
