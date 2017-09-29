@@ -34,6 +34,7 @@ grammar_cjkRuby: true
 任何故障都不会造成数据丢失→可以较快速恢复服务（高可用）
 
 ## MySQL-基于共享存储的单活方案（比较扯）
+
 ![enter description here][1]
 
 非常可行，非常有效、非常稳定
@@ -41,11 +42,13 @@ grammar_cjkRuby: true
 但费用比较昂贵，而且两台主机的成本只有一台在提供服务。
 从技术目标上非常稳健可靠。
 ## 基于存储复制的数据冗余单活（不常用）
+
 ![enter description here][2]
 
 两台机器仅一台提供服务，存在一定浪费，且DRBD也不能做到百分之百的保障。
 
 ## 基于MySQL主从复制（常用，普适）
+
 ![enter description here][3]
 
 主库读写，从库可用于部分只读，另一从库只做备份或一些离线计算。
