@@ -128,7 +128,7 @@ grammar_cjkRuby: true
 
 ![enter description here][10]
 
-### 较完善的MySQL高可用方案
+## 较完善的MySQL高可用方案
 
 半同步复制+高可用中间层+VIP管理方案
 
