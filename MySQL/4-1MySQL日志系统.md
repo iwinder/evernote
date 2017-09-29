@@ -1,3 +1,11 @@
+---
+title: 4-1MySQL日志系统
+tags: MySQL
+grammar_cjkRuby: true
+description: 网易DBA微专业笔记
+---
+
+
 ## 什么是日志
 日志（logo）是一种顺序记录时间流水的文件。
 记录计算机程序运行过程中发生了什么
