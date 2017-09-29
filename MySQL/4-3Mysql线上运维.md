@@ -2,6 +2,7 @@
 title: 4-3Mysql线上运维
 tags: MySQL
 grammar_cjkRuby: true
+description: 网易DBA微专业笔记
 ---
 
 ## Mysql线上部署
