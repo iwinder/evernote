@@ -322,7 +322,19 @@ ssh_port=22
 master_binlog_dir=/var/log/mysql/
 ```
 ### master_ip_failover
-管理IP的脚本
+
+管理IP的脚本,线上推荐带有自身检测或探活检测功能的程序管理vip
+
+核心为：
+
+```
+my $vip = '192.168.0.119/24'; #virtual ip  定义虚拟ip--VIP
+my $ssh_start_vip = "ip addr add $vip dev eth1";  ---添加VIP，到第一块网卡添加vip
+my $ssh_stop_vip = "ip addr del $vip dev eth1";-----删除vip
+```
+
+完整为：
+
 ```
 #!/usr/bin/env perl
 
