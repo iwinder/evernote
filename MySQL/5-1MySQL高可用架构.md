@@ -140,7 +140,34 @@ description: 网易DBA微专业笔记
 ## MySQL高可用框架-MHA
 - 用一个管理节点监控后端数据库可用性
 - 提供VIP漂移接口，不提供具体办法
-- 提供补全从库日志的脚步
+- 提供补全从库日志的脚步--不是特别实用。
+
+## MHA的安装步骤
+- 1、规划
+- 2、配置服务器间域名和ssh互信访问
+- 3、在manager节点暗中MHA node和manager组件及其依赖包。
+- 4、在数据库服务器安装MHA node组件及其依赖包
+- 5、配置VIP管理脚本master_ip_failover和master_iponlone_change
+- 6、配置MHA配置文件mha_manager.cnf
+- 7、数据库配置主从，添加mha连接用户...etc
+- 8、启动MHA开始监控数据库主从集群
+
+### 演示MHA部署--环境介绍
+
+即步骤1规划
+
+192.168.0.113      debtest1 -->MHA manager
+
+192.168.0.114      debtest2 -->mysql1(master)
+
+192.168,0.115       debtest3 -->mysql2(slave)
+
+192.168.0.119                      --> vip
+
+结构图：
+
+![enter description here][11]
+
 
 
 
@@ -154,3 +181,4 @@ description: 网易DBA微专业笔记
   [8]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung010.png "mysql_study_gaokeyung010"
   [9]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung011.png "mysql_study_gaokeyung011"
   [10]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung04.png "mysql_study_gaokeyung04"
+  [11]: https://assets.windcoder.com/xiaoshujiang/mysql_study_gaokeyung012.png "mysql_study_gaokeyung012"
