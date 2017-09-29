@@ -77,15 +77,18 @@ grammar_cjkRuby: true
 
 ![enter description here][6]
 
-### 基于集群提交通信协议的多主复制（一定场景使用）
+#### 高可用中间层与RDS
 
-![enter description here][7]
-
-高可用中间层与RDS
 - VIP解决应用切换问题
 - 监控和管理服务器解决自动判断故障切换和VIP漂移
 - VIP管理+探活+主从关系切换 = 高可用中间层
 - 云环境 + 高可用中间层 + 底层数据库 = 一种PaaS = 基本RDS
+
+### 基于集群提交通信协议的多主复制（一定场景使用）
+
+![enter description here][7]
+
+
 
 
 
