@@ -91,6 +91,7 @@ MySQL Router提供2个端口，读写与只读端口。
 - 1、sudo dpkg -i  Atlas-2.2-debian7.0-x86_64.deb
 - 2、编辑配置文件
 - 3、/usr/local/mysql-proxy/bin/mysql-proxyd instancename start
+- 
 注：看到新版中已经没有deb包，可前往官方[Atlas的安装](https://github.com/Qihoo360/Atlas/wiki/Atlas%E7%9A%84%E5%AE%89%E8%A3%85)查看新版方式。
 安装
 
