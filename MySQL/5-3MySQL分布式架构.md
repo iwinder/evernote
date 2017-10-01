@@ -213,12 +213,12 @@ Shared Nothing VS Shared Anyhing
 ```
 ### Mycat里的重要概念
 
-- 全局ID
+#### 全局ID
 
 MySQL:auto_increment
 Mycat：global sequnce number
 全局序列ID。
-#### 实现方式：
+##### 实现方式：
 conf/server.xml中
 ```
 <system><property name="sequnceHandlerType">0</property></system>
@@ -247,7 +247,14 @@ ID分配一般比较大
 
 ![enter description here][8]
 
-实际是server直接向DB发送请求。
+实际是server直接向DB发送请求进行申请，然后更新ID。
+
+#### DataHost
+#### DataBase Node(DBN)
+#### 分区规则
+#### 分区键
+需要根据拆分的字段，如想根据实际拆分，则分区间是时间。
+
 
   [1]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi01.png "mysql_study_fenbushi01"
   [2]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi02.png "mysql_study_fenbushi02"
