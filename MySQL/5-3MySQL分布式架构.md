@@ -154,9 +154,15 @@ Shared Nothing VS Shared Anyhing
 
 ![enter description here][6]
 
-管理层
-MySQL协议层
-SQL解析层
+- 管理层
+- MySQL协议层
+- SQL解析层
+### Mycat功能特点
+- 数据拆分，丰富的拆分策略，数据库水平扩容容易
+- 读写分离，支持用户友好的读写的分离策略
+- 兼容MySQL协议，用户可以以最小的代价接入Mycat
+
+
 
 
   [1]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi01.png "mysql_study_fenbushi01"
