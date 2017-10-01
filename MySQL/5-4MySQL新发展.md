@@ -60,7 +60,18 @@ sum_price decimal(10,2) GENERATED ALWAYS AS(qty * price) STORED
  autocommit 下的不加锁的select语句
  ```
  - MySQL5.7通过不再为只读事务分配事务ID,不分配回滚段开销，减少锁竞争等多种方式，优化了只读事务的开销。
- 
+## 性能-临时表
+- 临时表：
+不需要严格一致性，重启MySQL或断开连接生命周期结束；
+只在当前会话中可见。
+- 优化策略：
+元数据修改不持久化
+
+DML操作不写redo，关闭change buffer
+
+通过减少不必要的IO操作，提高临时表各种操作的性能
+
+
   
 
 
