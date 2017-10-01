@@ -274,6 +274,36 @@ router.xml可以不用特别关心，阿里cobar遗留下来的配置
 ![enter description here][9]
 
 
+### schema.xml
+```
+//vi 中语法高亮
+:syntax on
+```
+dataHost配置Mycat下的一个mysql节点
+writeTpe = 0
+name 名称，
+dbDriver="native" Mycat自己实现的，无需管理。
+writeHost--可写节点
+readHost--从节点，做一些读写分离操作。
+
+dataNode，即DataBase Node，可理解为mysql中的一个schema或DBN,一般很少与dataHost打交道，常用dataNode打交道。
+
+### server.xml
+相关的全局server的配置文件。更改后需重启使Mycat感知更改。
+两个端口
+serverPort:8066 ----面向用户的端口，普通用户-》开发人员，增删改查
+managerPort:9066---面向管理员的端口，面向管理员-》DBA,可做监控、表变更等更高级操作。
+
+<user>设置用户名密码
+
+![enter description here][10]
+
+readOlny 为true即为只读权限。
+
+### 使用
+![enter description here][11]
+
+
   [1]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi01.png "mysql_study_fenbushi01"
   [2]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi02.png "mysql_study_fenbushi02"
   [3]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi03.png "mysql_study_fenbushi03"
@@ -283,3 +313,5 @@ router.xml可以不用特别关心，阿里cobar遗留下来的配置
   [7]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi07.png "mysql_study_fenbushi07"
   [8]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi08.png "mysql_study_fenbushi08"
   [9]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi09.png "mysql_study_fenbushi09"
+  [10]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi010.png "mysql_study_fenbushi010"
+  [11]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi011.png "mysql_study_fenbushi011"
