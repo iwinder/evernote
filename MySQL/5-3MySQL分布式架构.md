@@ -301,11 +301,18 @@ managerPort:9066---面向管理员的端口，面向管理员-》DBA,可做监�
 readOlny 为true即为只读权限。
 
 ### 使用Mycat
+
 配置规则-配置表-建表-操作数据
 
 ![enter description here][11]
 
 ![enter description here][12]
+
+#### rule.xml
+
+配置一些拆分算法。
+
+![enter description here][13]
 
 
   [1]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi01.png "mysql_study_fenbushi01"
@@ -320,3 +327,4 @@ readOlny 为true即为只读权限。
   [10]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi010.png "mysql_study_fenbushi010"
   [11]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi012.png "mysql_study_fenbushi012"
   [12]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi011.png "mysql_study_fenbushi011"
+  [13]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi013.png "mysql_study_fenbushi013"
