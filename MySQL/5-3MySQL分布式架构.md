@@ -162,8 +162,10 @@ Shared Nothing VS Shared Anyhing
 - 读写分离，支持用户友好的读写的分离策略
 - 兼容MySQL协议，用户可以以最小的代价接入Mycat
 
-数据拆分（一）
-枚举算法
+#### 数据拆分（一）
+- 枚举算法
+
+如用户信息，想根据省份市级拆分，可设置一个枚举算法，设置某些值落在某些上面。
 ```
 <tableRule name="sharding-by-intfile">
 	<rule>
@@ -177,7 +179,67 @@ Shared Nothing VS Shared Anyhing
 	<property name="defaultName">0</property>
 </function>
 ```
+- Range 算法
 
+简单的如时间区间
+
+```
+<tableRule name="auto-sharding-long">
+	<rule>
+		<columns>user_id</columns>
+		<algorithm>rang-long</algorithm>
+	</rule>
+</tableRule>
+<function name="rang-long" class="org.opencloudb.route.function.AutoPartitionByLong">
+	<property name="nampFile">autopartition-long.txt</property>
+	<property name="defaultName">0</property>
+</function>
+```
+- Hash取模算法
+
+最主流也是用的最多的数据拆分算法。根据某个字段取模，并均散到各节点上。
+
+```
+<tableRule name="mod-long">
+	<rule>
+		<columns>user_id</columns>
+		<algorithm>mod-long</algorithm>
+	</rule>
+</tableRule>
+<function name="mod-long" class="org.opencloudb.route.function.PartitionByMod">
+	<! --how many data nodes-->
+	<property name="count">3</property>
+</function>
+```
+### Mycat里的重要概念
+
+- 全局ID
+
+MySQL:auto_increment
+Mycat：global sequnce number
+全局序列ID。
+#### 实现方式：
+conf/server.xml中
+```
+<system><property name="sequnceHandlerType">0</property></system>
+```
+
+- 基于文件
+ 实现简单、安全性较差
+ 
+ 趋势是递增，不保证是递增。
+ ```
+ cat sequence_conf.properties
+ #default gloabl swquence
+ GLOABL.HISIDS=    //基本没有，为空即可
+ GLOABL.MINID=10001 //最小分配的id是多少，如本处为10001
+ GLOABL.MAXID=20000 //最大ID是多少，如此处为20000，超出会报错
+ GLOABL.CURID = 10000 //每次分配时分配1w，批量分配。每次Mycat分配ID时都需要更新此文件，更新代来开销，分配速度可能受更新速度影响。
+ ```
+- 基于数据库
+
+- 基于本地时间戳
+![enter description here][7]
 
 
   [1]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi01.png "mysql_study_fenbushi01"
@@ -186,3 +248,4 @@ Shared Nothing VS Shared Anyhing
   [4]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi04.png "mysql_study_fenbushi04"
   [5]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi05.png "mysql_study_fenbushi05"
   [6]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi06.png "mysql_study_fenbushi06"
+  [7]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi07.png "mysql_study_fenbushi07"
