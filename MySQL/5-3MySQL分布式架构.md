@@ -29,11 +29,11 @@ Shared Nothing VS Shared Anyhing
 - MySQL分布式事务的局限与改进
 
 ### 分布式事务
-Distributed(XA) Transactions
+- Distributed(XA) Transactions
 
 也就是通常说的XA事务
 
-2pc(Two Phase Commit) Transactions
+- 2pc(Two Phase Commit) Transactions
 一般依据此协议。
 
 ![enter description here][4]
@@ -53,6 +53,59 @@ Distributed(XA) Transactions
 - Transaction Manager/Coordinator(TM or TC)
 
  TM或者TC是事务的协调者，对于分布式事务，在提交时，可能有部分节点会提交失败，这个时候，需要TC来决定那些事务需要重新提交，哪些事务需要回滚。
+ 
+ ![enter description here][5]
+ 
+ 图中蓝色线是TM，TM协调底层RM是否准备好是否可以提交，RM去向它汇报自己的状态，如果可以提交，TM在让其提交。
+ 在MySQL中一般MySQL充当RM角色，TM需要单独实现，另外去开发一套程序去实现。
+ 
+ ### XA In MySQL
+ Only a Resource Manager
+ MySQL中仅充当资源管理器的角色，事务管理器没有做到
+ InnoDB Only：innodb_support_xa
+ 目前一般只有InnoDB引擎支持才支持XA 
+ 
+ 执行xa事务实例：
+ ```
+ # 开启xa事务‘dba’
+ xa start 'dba';
+ # 执行语句
+ insert into dba_test values(100,100);
+ # 一般事务可执行commit或rollback，但xa事务非如此
+ commit /rollback
+ # xa事务需要end之前定义的xa事务‘dba’
+ xa end 'dba'
+ #
+ xa prepare 'dba';
+ # 提交记录
+ xa commit 'dba''
+ ```
+ 
+ 
+ 若回滚xa事务
+ ```
+ xa start '123';
+ insert into dba_test values(200,200);
+ xa end '123';
+ xa rollback '123';
+ ```
+ 
+ **xa prepare 'dba';**
+  
+ 在分布式事务协议中，所有处于 prepare 的事务都是可以提交的事务。
+ 
+ ### MySQL XA 事务的局限性
+ - 客户端退出，prepare状态的事务被回滚。
+ 根据分布式事务的原理，所有prepare成功的事务都应该被提交，有下面一个客户端操作:
+ ```
+ xa start '111'
+ insert into t values(1);
+ xa end '111';
+ xa prepare '111';
+ ```
+ 若此时客户端退出了，再连上去会发现这个事务会被MySQL回滚掉，按照标准协议本不应该被回滚掉，这是MySQL与协议的冲突。
+ 
+ - Server Crash后重启，提交prepare的事务会有一定风险。
 
 ## 常见的分布式数据库架构
 
@@ -61,3 +114,4 @@ Distributed(XA) Transactions
   [2]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi02.png "mysql_study_fenbushi02"
   [3]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi03.png "mysql_study_fenbushi03"
   [4]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi04.png "mysql_study_fenbushi04"
+  [5]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi05.png "mysql_study_fenbushi05"
