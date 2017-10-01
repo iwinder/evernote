@@ -236,11 +236,18 @@ conf/server.xml中
  GLOABL.MAXID=20000 //最大ID是多少，如此处为20000，超出会报错
  GLOABL.CURID = 10000 //每次分配时分配1w，批量分配。每次Mycat分配ID时都需要更新此文件，更新代来开销，分配速度可能受更新速度影响。
  ```
-- 基于数据库
-
 - 基于本地时间戳
+不依赖任何服务
+ID分配一般比较大
 ![enter description here][7]
 
+- 基于数据库
+比直接存文件要安全多
+但DB要支持高可用
+
+![enter description here][8]
+
+实际是server直接向DB发送请求。
 
   [1]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi01.png "mysql_study_fenbushi01"
   [2]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi02.png "mysql_study_fenbushi02"
@@ -249,3 +256,4 @@ conf/server.xml中
   [5]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi05.png "mysql_study_fenbushi05"
   [6]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi06.png "mysql_study_fenbushi06"
   [7]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi07.png "mysql_study_fenbushi07"
+  [8]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi08.png "mysql_study_fenbushi08"
