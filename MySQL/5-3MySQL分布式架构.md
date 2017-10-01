@@ -253,7 +253,25 @@ ID分配一般比较大
 #### DataBase Node(DBN)
 #### 分区规则
 #### 分区键
-需要根据拆分的字段，如想根据实际拆分，则分区间是时间。
+需要根据拆分的字段，如想根据实际拆分，则分区键是时间。
+
+### Mycat的部署与安装
+```
+# 查看
+ls - lh 
+```
+txt后缀
+一般代表用户可以编辑的拆分算法相关的配置。
+properties
+一般用处不会很大，一般不会去动,
+xml后缀
+一般代表Mycat的一些配置信息，部署安装时会用到。
+router.xml可以不用特别关心，阿里cobar遗留下来的配置
+主要是rule.xml和schema.xml这些。 
+
+### 启动Mycat
+
+![enter description here][9]
 
 
   [1]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi01.png "mysql_study_fenbushi01"
@@ -264,3 +282,4 @@ ID分配一般比较大
   [6]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi06.png "mysql_study_fenbushi06"
   [7]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi07.png "mysql_study_fenbushi07"
   [8]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi08.png "mysql_study_fenbushi08"
+  [9]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi09.png "mysql_study_fenbushi09"
