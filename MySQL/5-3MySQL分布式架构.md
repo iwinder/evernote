@@ -162,6 +162,21 @@ Shared Nothing VS Shared Anyhing
 - 读写分离，支持用户友好的读写的分离策略
 - 兼容MySQL协议，用户可以以最小的代价接入Mycat
 
+数据拆分（一）
+枚举算法
+```
+<tableRule name="sharding-by-intfile">
+	<rule>
+		<columns>user_id</columns>
+		<algorithm>hash-int</algorithm>
+	</rule>
+</tableRule>
+<function name="hash-int" class="org.opencloudb.route.function.PartitionByFileMap">
+	<property name="nampFile">partition-hash-int.txt</property>
+	<property name="type">0</property>
+	<property name="defaultName">0</property>
+</function>
+```
 
 
 
