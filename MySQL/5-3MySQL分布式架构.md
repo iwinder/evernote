@@ -105,9 +105,58 @@ Shared Nothing VS Shared Anyhing
  ```
  若此时客户端退出了，再连上去会发现这个事务会被MySQL回滚掉，按照标准协议本不应该被回滚掉，这是MySQL与协议的冲突。
  
- - Server Crash后重启，提交prepare的事务会有一定风险。
+ - Server Crash后重启，提交prepare的事务，造成主从数据不一致。
+ 
+ binlog中会被丢掉，与数据中的不一致。
+ 
+ 在
+ ```
+  xa prepare '123';
+ ```
+ 时，在另一终端执行：
+ ```
+ kill -9 3025
+ ```
+ MySQL将重启，执行：
+ ```
+ xa recover;
+ ```
+ 连到里面，可以看到重启之前的事务‘123’，
+ 此时执行
+ ```
+ xa commit '123';
+ ```
+ 提交后，主库没问题可以提交，但不会出现在binlog中，从而导致从库中数据丢失从而造成数据不一致。
+ 
+ #### 为何没人修复
+ - 看似简单，其实解决代价很大
+ - MySQL的XA事务用的真不多，官方觉得没必要
+ MySQL官方最终的修复
+ 
+ 之前没有记录到binlog中，修复是将其记录到binlog中。
+ 
+ 5.7之前是有风险的，5.7做的修复。
 
-## 常见的分布式数据库架构
+## 开源分布式软件Mycat
+
+### Mycat的由来
+- Java 语言编写
+- JDK版本要求>1.7版本
+- 基于阿里的cobar实现，完全额兼容MySQL协议
+- 有专业的维护团队，更新频繁，文档写的比较好
+- 功能较为完善
+- 分布式事务支持的不够好
+- 支持各种数据库：MySQL、Oracle、MongoDB
+- 目前不支持在线水平扩容
+- 要做MySQL界的Tomcat
+
+### Mycat架构
+
+![enter description here][6]
+
+管理层
+MySQL协议层
+SQL解析层
 
 
   [1]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi01.png "mysql_study_fenbushi01"
@@ -115,3 +164,4 @@ Shared Nothing VS Shared Anyhing
   [3]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi03.png "mysql_study_fenbushi03"
   [4]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi04.png "mysql_study_fenbushi04"
   [5]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi05.png "mysql_study_fenbushi05"
+  [6]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi06.png "mysql_study_fenbushi06"
