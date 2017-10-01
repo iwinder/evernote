@@ -328,6 +328,7 @@ dataNode指定分布节点，rule为拆分算法。
 
 ![enter description here][15]
 
+使用Mycat时，创建的表必须都在配置文件中配置，否则会报找不到错误。
 
   [1]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi01.png "mysql_study_fenbushi01"
   [2]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi02.png "mysql_study_fenbushi02"
