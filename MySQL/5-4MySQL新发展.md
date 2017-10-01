@@ -110,6 +110,12 @@ Innodb锁等待情况
 ```
 select * from innodb_lock_waits;
 ```
+## 运维-在线修改表结构
+- 在线修改表结构：
+是否拷贝表；是否允许DML;是否允许Select；
+- MySQL 5.7 版本新增ALTER TABLE RENAME INDEX 无需Copy Table
+- 支持较好的操作：新增索引、删除索引、重命名字段
+- 支持不好的操作：新增字段、删除字段、修改字段类型
 
   [1]: https://assets.windcoder.com/xiaoshujiang/mysql_study_xinbanbentexin01.png "mysql_study_xinbanbentexin01"
   [2]: https://assets.windcoder.com/xiaoshujiang/mysql_study_xinbanbentexin02.png "mysql_study_xinbanbentexin02"
