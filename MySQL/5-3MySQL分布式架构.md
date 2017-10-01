@@ -104,6 +104,7 @@ Shared Nothing VS Shared Anyhing
  xa prepare '111';
  ```
  若此时客户端退出了，再连上去会发现这个事务会被MySQL回滚掉，按照标准协议本不应该被回滚掉，这是MySQL与协议的冲突。
+ 
  - Server Crash后重启，提交prepare的事务会有一定风险。
 
 ## 常见的分布式数据库架构
