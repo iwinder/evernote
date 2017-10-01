@@ -312,7 +312,21 @@ readOlny 为true即为只读权限。
 
 配置一些拆分算法。
 
+详细拆分需要配置txt
+
 ![enter description here][13]
+
+#### schema.xml
+配置表的文件
+在<schema>中添加对应的<table>表
+dataNode指定分布节点，rule为拆分算法。
+
+插入时，使用Mycat需要把所有字段都补齐
+如：
+
+![enter description here][14]
+
+![enter description here][15]
 
 
   [1]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi01.png "mysql_study_fenbushi01"
@@ -328,3 +342,5 @@ readOlny 为true即为只读权限。
   [11]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi012.png "mysql_study_fenbushi012"
   [12]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi011.png "mysql_study_fenbushi011"
   [13]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi013.png "mysql_study_fenbushi013"
+  [14]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi014.png "mysql_study_fenbushi014"
+  [15]: https://assets.windcoder.com/xiaoshujiang/mysql_study_fenbushi015.png "mysql_study_fenbushi015"
