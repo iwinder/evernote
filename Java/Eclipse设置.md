@@ -14,11 +14,15 @@ location 里面填 ：C:\WINDOWS\explorer.exe
 
 Arguments 里面填: ${container_loc}
 
-http://blog.csdn.net/rogers65/article/details/52982436
-http://blog.csdn.net/duanyipeng/article/details/7065085
+[Eclipse直接打开类文件/文件夹所在的本地目录](http://blog.csdn.net/rogers65/article/details/52982436)
+
+[Eclipse中一键打开文件所在文件夹](http://blog.csdn.net/duanyipeng/article/details/7065085)
 
 ## 设置编码
 
 ### 整个工作空间
 
 Window ->Preference->Genera-->Content Types
+
+
+[Eclipse如何设置编码格式？（3种方式）](http://blog.csdn.net/rainy_black_dog/article/details/52403735)
