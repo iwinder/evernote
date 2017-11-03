@@ -2,7 +2,7 @@
 title: JPA简介 
 tags: Java,JPA
 grammar_cjkRuby: true
-reference_documentation: [JPA教程](http://www.yiibai.com/jpa/)
+
 ---
 
 ## JPA架构
