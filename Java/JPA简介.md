@@ -46,3 +46,7 @@ grammar_cjkRuby: true
 |@OneToOne	|定义了连接表之间有一个一对一的关系。|
 |@NamedQueries	|指定命名查询的列表。|
 |@NamedQuery	|指定使用静态名称的查询。|
+
+## 参考资料
+
+[JPA教程](http://www.yiibai.com/jpa/)
