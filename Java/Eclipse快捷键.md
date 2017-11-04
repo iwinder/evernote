@@ -44,3 +44,11 @@ Ctrl+H
 
 [Eclipse 的单步调试](http://www.cnblogs.com/mq0036/p/3780538.html)
 
+## 自动导入包
+
+* Ctrl+1 快速修复 
+* Ctrl+Shift+O 自动引导类包 
+* Ctrl+Shift+M(先把光标放在需导入包的类名上) 作用是加Import语句 
+
+[在Eclipse里自动导入相应包的类名的快捷键](http://blog.csdn.net/hevicky/article/details/7239977)
+
