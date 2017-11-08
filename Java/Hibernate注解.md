@@ -12,3 +12,9 @@ grammar_cjkRuby: true
 此时数据库的数据类型需要是NVACHAR2等字符串类型，例如在实际操作中 
 
 ## @Transient
+表示该属性并非一个到数据库表的字段的映射,ORM框架将忽略该属性.
+
+如果一个属性并非数据库表的字段映射，就务必将其标示为@Transient，否则ORM框架默认其注解为@Basic；
+
+[Hibernate JPA中@Transient、@JsonIgnoreProperties、@JsonIgnore、@JsonFormat、@JsonSerialize等注解解释](http://blog.csdn.net/kevinxxw/article/details/51381544)
+## @Formula
