@@ -26,3 +26,12 @@ Window ->Preference->Genera-->Content Types
 
 
 [Eclipse如何设置编码格式？（3种方式）](http://blog.csdn.net/rainy_black_dog/article/details/52403735)
+
+## 调整字体大小
+
+### 控制台 
+
+Window -> Preferences -> General -> Appearance -> Colors and Fonts -> Basic -> Text Font -> Edit 
+
+### 调节主窗口字体大小。
+ Window -> Preferences -> General -> Appearance -> Colors and Fonts -> Java -> Java Editor Text Font -> Edit
