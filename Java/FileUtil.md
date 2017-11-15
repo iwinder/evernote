@@ -12,3 +12,8 @@ grammar_cjkRuby: true
 ```
 
 ## 获取文件名称-不带扩展名
+```
+private String getFileNameNoExt(String filePath) {
+		return filePath.substring(0,filePath.lastIndexOf("."));
+	}
+```
