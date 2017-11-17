@@ -10,4 +10,6 @@ grammar_cjkRuby: true
 settings -> Editor -> File Encodings
 
 ## 设置黑背景
-settings -> Editor ->  Color Scheme -> Darcula
+
+- settings -> Editor ->  Color Scheme -> Darcula
+-  settings -> Appearance & Behavior -> Appearance -> Theme:Darcula
