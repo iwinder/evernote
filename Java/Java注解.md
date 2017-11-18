@@ -5,4 +5,14 @@ grammar_cjkRuby: true
 ---
 
 
-欢迎使用 **{小书匠}(xiaoshujiang)编辑器**，您可以通过==设置==里的修改模板来改变新建文章的内容。
+## @Document
+说明该注解将被包含在javadoc中
+
+##  @Retention 
+注解的保留位置
+### @Retention(RetentionPolicy.SOURCE)
+//注解仅存在于源码中，在class字节码文件中不包含
+### @Retention(RetentionPolicy.CLASS)  
+// 默认的保留策略，注解会在class字节码文件中存在，但运行时无法获得，
+### @Retention(RetentionPolicy.RUNTIME)
+// 注解会在class字节码文件中存在，在运行时可以通过反射获取到
