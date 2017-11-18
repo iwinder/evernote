@@ -85,3 +85,11 @@ ClassUtils.getUserClass(ABService.class)
 ```
 得到原始类型。
 [Spring4新特性——更好的Java泛型操作API](http://jinnianshilongnian.iteye.com/blog/1993608)
+
+### 动态查询
+
+CriteriaBuilder 安全查询创建工厂
+
+[java-jpa-criteriaBuilder使用入门](http://blog.csdn.net/id_kong/article/details/70225032)
+
+[JPA criteria 查询:类型安全与面向对象](https://my.oschina.net/zhaoqian/blog/133500)
