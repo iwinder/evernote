@@ -84,3 +84,4 @@ ResolvableType resolvableType1 = ResolvableType.forClass(ABService.class);
 ClassUtils.getUserClass(ABService.class)
 ```
 得到原始类型。
+[Spring4新特性——更好的Java泛型操作API](http://jinnianshilongnian.iteye.com/blog/1993608)
