@@ -47,6 +47,40 @@ grammar_cjkRuby: true
 |@NamedQueries	|指定命名查询的列表。|
 |@NamedQuery	|指定使用静态名称的查询。|
 
+#### @GeneratedValue
+
+用于标注主键的生成策略，通过 strategy 属性指定。默认情况下，JPA 自动选择一个最适合底层数据库的主键生成策略：SqlServer 对应 identity，MySQL 对应 auto increment。
+
+在 javax.persistence.GenerationType 中定义了以下几种可供选择的策略：
+
+ -  IDENTITY：采用数据库 ID自增长的方式来自增主键字段，Oracle 不支持这种方式；
+ -  AUTO： JPA自动选择合适的策略，是默认选项；
+ - SEQUENCE：通过序列产生主键，通过 @SequenceGenerator 注解指定序列名，MySql 不支持这种方式
+ - TABLE：通过表产生主键，框架借由表模拟序列产生主键，使用该策略可以使应用更易于数据库移植。
+
+
+
+## Spring Data JPA 
+站位
+[使用 Spring Data JPA 简化 JPA 开发](https://www.ibm.com/developerworks/cn/opensource/os-cn-spring-jpa/index.html)
+[了解 Spring Data JPA](http://www.cnblogs.com/WangJinYang/p/4257383.html)
+
+
 ## 参考资料
 
 [JPA教程](http://www.yiibai.com/jpa/)
+
+
+
+###  泛型
+
+得到类型的泛型信息
+```
+ResolvableType resolvableType1 = ResolvableType.forClass(ABService.class);
+```
+
+如果类型被Spring AOP进行了CGLIB代理,使用
+```
+ClassUtils.getUserClass(ABService.class)
+```
+得到原始类型。
