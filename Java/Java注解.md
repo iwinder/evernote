@@ -27,3 +27,5 @@ grammar_cjkRuby: true
 @Target(ElementType.LOCAL_VARIABLE)//局部变量
 @Target(ElementType.ANNOTATION_TYPE)//注解
 @Target(ElementType.PACKAGE) ///包   
+
+[java注解-ElementType详解](http://blog.csdn.net/sw5131899/article/details/54947192)
