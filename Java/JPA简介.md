@@ -93,3 +93,8 @@ CriteriaBuilder 安全查询创建工厂
 [java-jpa-criteriaBuilder使用入门](http://blog.csdn.net/id_kong/article/details/70225032)
 
 [JPA criteria 查询:类型安全与面向对象](https://my.oschina.net/zhaoqian/blog/133500)
+
+
+### @Modify的clearAutomatically=true的作用
+ 它说的是可以清除底层持久化上下文，就是entityManager这个类，我们知道jpa底层实现会有二级缓存，也就是在更新完数据库后，如果后面去用这个对象，你再去查这个对象，这个对象是在一级缓存，但是并没有跟数据库同步，这个时候用clearAutomatically=true,就会刷新hibernate的一级缓存了， 不然你在同一接口中，更新一个对象，接着查询这个对象，那么你查出来的这个对象还是之前的没有更新之前的状态。
+ [spring boot使用jpa的@Modify的clearAutomatically=true的作用](https://www.cnblogs.com/xjz1842/p/7217393.html)
