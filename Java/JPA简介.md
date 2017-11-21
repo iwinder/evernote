@@ -107,7 +107,7 @@ CriteriaBuilder 安全查询创建工厂
  @UniqueConstraint可以用来定义表的唯一约束
  
  ```
- @ManyToMany
+@ManyToMany
 @JoinTable(
     name="tbl_settings_objectproxy_for_something",
     joinColumns = @JoinColumn(name = "id", columnDefinition = "int primary key"),
@@ -116,3 +116,5 @@ CriteriaBuilder 安全查询创建工厂
     )
 private List<SomeObject> SomeObjectProxy;
  ```
+ 
+ [Hibernate declare composite primary key in JoinTable (List<>)](https://stackoverflow.com/questions/10832865/hibernate-declare-composite-primary-key-in-jointable-list)
