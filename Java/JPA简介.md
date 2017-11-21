@@ -118,5 +118,7 @@ private List<SomeObject> SomeObjectProxy;
  ```
  
  [Hibernate declare composite primary key in JoinTable (List<>)](https://stackoverflow.com/questions/10832865/hibernate-declare-composite-primary-key-in-jointable-list)
- 扩展
- [Hibernate注解映射联合主键的三种主要方式](https://www.cnblogs.com/lcngu/p/5854864.html)
+ 
+
+> 扩展 
+> [Hibernate注解映射联合主键的三种主要方式](https://www.cnblogs.com/lcngu/p/5854864.html)
