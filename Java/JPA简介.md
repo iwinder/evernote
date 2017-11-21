@@ -122,3 +122,4 @@ private List<SomeObject> SomeObjectProxy;
 
 > 扩展 
 > [Hibernate注解映射联合主键的三种主要方式](https://www.cnblogs.com/lcngu/p/5854864.html)
+> [hibernate 注解 联合主键映射](https://www.cnblogs.com/mingforyou/p/4480066.html)
