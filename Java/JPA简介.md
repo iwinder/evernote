@@ -102,3 +102,17 @@ CriteriaBuilder 安全查询创建工厂
  ### JPA_映射双向多对多的关联关系
  
  [JPA_映射双向多对多的关联关系](https://www.cnblogs.com/lj95801/p/5011537.html)
+ 
+ ### 表的唯一约束
+ @UniqueConstraint可以用来定义表的唯一约束
+ 
+ ```
+ @ManyToMany
+@JoinTable(
+    name="tbl_settings_objectproxy_for_something",
+    joinColumns = @JoinColumn(name = "id", columnDefinition = "int primary key"),
+    inverseJoinColumns = @JoinColumn( name = "objectproxy_id")
+    uniqueConstraints = {@UniqueConstraint(columnNames={"id", "objectproxy_id"})}
+    )
+private List<SomeObject> SomeObjectProxy;
+ ```
