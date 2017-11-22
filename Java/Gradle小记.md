@@ -13,6 +13,11 @@ repositories {
     mavenCentral()
 }
 ```
+|仓库|含义|
+|---|---|
+|mavenLocal()|本地仓库|
+|mavenCentral()|远程maven仓库|
+| maven {name 'Custom Maven Repository',url 'http://repository.forge.cloudbees.com/release/')}|自定义仓库|
 ## dependencies 
 定义依赖，依赖通过group标识，name和version来确定，比如下面这个：
 ```
