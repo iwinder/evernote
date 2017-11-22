@@ -38,3 +38,5 @@ dependencies {
 配置对所有项目生效
 ## subprojects
 配置对所有子项目生效
+## project(':web') 
+指定项目的行为通过project方法来定义
