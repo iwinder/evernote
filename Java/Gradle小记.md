@@ -40,3 +40,6 @@ dependencies {
 配置对所有子项目生效
 ## project(':web') 
 指定项目的行为通过project方法来定义---定义项目特有的行为
+
+
+[Gradle In Action(Gradle实战)中文版](https://www.gitbook.com/book/lippiouyang/gradle-in-action-cn/details)
