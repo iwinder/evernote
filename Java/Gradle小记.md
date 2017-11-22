@@ -34,4 +34,7 @@ dependencies {
 
 外部属性可以定义在一个属性文件中： 通过在/.gradle路径或者项目根目录下的gradle.properties文件来定义属性可以直接注入到你的项目中，他们可以通过project实例来访问，注意/.gradle目录下只能有一个Gradle属性文件即使你有多个项目
 
-
+## allprojects 
+配置对所有项目生效
+## subprojects
+配置对所有子项目生效
