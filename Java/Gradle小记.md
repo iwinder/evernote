@@ -39,4 +39,4 @@ dependencies {
 ## subprojects
 配置对所有子项目生效
 ## project(':web') 
-指定项目的行为通过project方法来定义
+指定项目的行为通过project方法来定义---定义项目特有的行为
