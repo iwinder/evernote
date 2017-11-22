@@ -44,3 +44,4 @@ dependencies {
 buildscript中的声明是gradle脚本自身需要使用的资源。可以声明的资源包括依赖项、第三方插件、maven仓库地址等。而在build.gradle文件中直接声明的依赖项、仓库地址等信息是项目自身需要的资源。
 
 [Gradle In Action(Gradle实战)中文版](https://www.gitbook.com/book/lippiouyang/gradle-in-action-cn/details)
+[Gradle中的buildScript代码块](http://www.cnblogs.com/huang0925/p/3940528.html)
