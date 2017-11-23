@@ -26,4 +26,4 @@ grammar_cjkRuby: true
 [springboot根据不同的条件创建bean，动态创建bean，@Conditional注解使用](http://blog.csdn.net/tianyaleixiaowu/article/details/78201587)
 
 ## @Configuration
-标明该类使用Spring基于Java的配置。
+标明该类使用Spring基于Java的配置。@Configuration注解该类，等价于XML中配置beans；用@Bean标注方法等价于XML中配置bean。
