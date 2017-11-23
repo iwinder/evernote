@@ -17,3 +17,7 @@ grammar_cjkRuby: true
 [spring @component的作用](http://tomfish88.iteye.com/blog/1497557)
 
 [@Component注解](http://uule.iteye.com/blog/2106427)
+
+## @ConditionalOnProperty
+
+[深入SpringBoot:自定义Conditional](http://www.jianshu.com/p/1d0fb7cd8a26)
