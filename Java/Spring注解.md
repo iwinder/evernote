@@ -23,3 +23,4 @@ grammar_cjkRuby: true
 
 [深入SpringBoot:自定义Conditional](http://www.jianshu.com/p/1d0fb7cd8a26)
 [spring-boot学习笔记之Conditional](http://www.jianshu.com/p/0740c07f6c1d)
+[springboot根据不同的条件创建bean，动态创建bean，@Conditional注解使用](http://blog.csdn.net/tianyaleixiaowu/article/details/78201587)
