@@ -27,3 +27,4 @@ grammar_cjkRuby: true
 
 ## @Configuration
 标明该类使用Spring基于Java的配置。@Configuration注解该类，等价于XML中配置beans；用@Bean标注方法等价于XML中配置bean。
+[Spring中基于Java的配置@Configuration和@Bean用法](http://blog.csdn.net/vvhesj/article/details/47661001)
