@@ -45,3 +45,10 @@ grammar_cjkRuby: true
 在 SpringBootApplication 上使用@ServletComponentScan 注解后，Servlet、Filter、Listener 可以直接通过 @WebServlet、@WebFilter、@WebListener 注解自动注册，无需其他代码。
 
 [ Spring Boot Servlet](http://blog.csdn.net/catoop/article/details/50501686)
+
+
+## @Async
+
+异步调用则是只是发送了调用的指令，调用者无需等待被调用的方法完全执行完毕；而是继续执行下面的流程。
+
+[Spring中@Async用法总结](https://www.cnblogs.com/lcngu/p/6185363.html)
