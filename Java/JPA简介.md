@@ -126,3 +126,5 @@ private List<SomeObject> SomeObjectProxy;
 
 ## JpaSpecificationExecutor
 spring data jpa为我们提供了JpaSpecificationExecutor接口，只要简单实现toPredicate方法就可以实现复杂的查询
+
+[spring data jpa 利用JpaSpecificationExecutor做复杂查询](http://blog.csdn.net/yingxiake/article/details/51014223)
