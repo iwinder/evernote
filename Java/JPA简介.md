@@ -125,3 +125,4 @@ private List<SomeObject> SomeObjectProxy;
 > [hibernate 注解 联合主键映射](https://www.cnblogs.com/mingforyou/p/4480066.html)
 
 ## JpaSpecificationExecutor
+spring data jpa为我们提供了JpaSpecificationExecutor接口，只要简单实现toPredicate方法就可以实现复杂的查询
