@@ -148,3 +148,4 @@ isAssignableFrom是用来判断一个类Class1和另一个类Class2是否相同�
   而   instanceof   是用来判断一个对象实例是否是一个类或接口的或其子类子接口的实例。   
     格式是：   oo   instanceof   TypeName     
     第一个参数是对象实例名，第二个参数是具体的类名或接口名 
+	[Class.isAssignableFrom与 instanceof 区别](http://lucky16.iteye.com/blog/1631253)
