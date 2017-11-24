@@ -31,6 +31,8 @@ grammar_cjkRuby: true
 [深入SpringBoot:自定义Conditional](http://www.jianshu.com/p/1d0fb7cd8a26)
 [spring-boot学习笔记之Conditional](http://www.jianshu.com/p/0740c07f6c1d)
 [springboot根据不同的条件创建bean，动态创建bean，@Conditional注解使用](http://blog.csdn.net/tianyaleixiaowu/article/details/78201587)
+[SpringBoot学习笔记(3) Spring Boot 运行原理,自动配置](http://blog.csdn.net/a67474506/article/details/52013634)
+[配置Spring Boot通过@ConditionalOnProperty来控制Configuration是否生效](http://blog.csdn.net/dalangzhonghangxing/article/details/78420057)
 
 ## @Configuration
 标明该类使用Spring基于Java的配置。@Configuration注解该类，等价于XML中配置beans；用@Bean标注方法等价于XML中配置bean。
