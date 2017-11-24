@@ -45,6 +45,7 @@ grammar_cjkRuby: true
 在 SpringBootApplication 上使用@ServletComponentScan 注解后，Servlet、Filter、Listener 可以直接通过 @WebServlet、@WebFilter、@WebListener 注解自动注册，无需其他代码。
 
 [ Spring Boot Servlet](http://blog.csdn.net/catoop/article/details/50501686)
+[Spring @EnableScheduling 注解解析](http://blog.csdn.net/tramp_zzy/article/details/77543269)
 
 ## @EnableAsync
 开启异步
