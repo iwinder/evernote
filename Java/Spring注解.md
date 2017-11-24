@@ -52,3 +52,7 @@ grammar_cjkRuby: true
 异步调用则是只是发送了调用的指令，调用者无需等待被调用的方法完全执行完毕；而是继续执行下面的流程。
 
 [Spring中@Async用法总结](https://www.cnblogs.com/lcngu/p/6185363.html)
+
+#@EnableScheduling 
+通过@EnableScheduling注解开启对计划任务的支持
+[【Spring】Spring高级话题-计划任务-@EnableScheduling](http://blog.csdn.net/qq_26525215/article/details/53543816)
