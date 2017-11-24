@@ -137,3 +137,10 @@ getActualTypeArguments()
 返回表示此类型实际类型参数的 Type 对象的数组。[0]就是这个数组中第一个了。简而言之就是获得超类的泛型参数的实际类型。
 
 [ParameterizedType获取java泛型参数类型](http://blog.csdn.net/qq_18242391/article/details/54251947)
+
+## isAssignableFrom
+
+isAssignableFrom是用来判断一个类Class1和另一个类Class2是否相同或是另一个类的超类或接口。   
+  通常调用格式是   
+        Class1.isAssignableFrom (Class2)   
+  调用者和参数都是   java.lang.Class   类型。   
