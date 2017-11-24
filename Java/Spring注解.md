@@ -60,3 +60,7 @@ grammar_cjkRuby: true
 [【Spring】Spring高级话题-计划任务-@EnableScheduling](http://blog.csdn.net/qq_26525215/article/details/53543816)
 
 [Spring @EnableScheduling 注解解析](http://tramp.cincout.cn/2017/08/18/spring-task-2017-08-18-spring-boot-enablescheduling-analysis/)
+
+
+##  @JmsListener(destination = "demo.consumer.queue") 
+JMS 监听 destination =命名空间
