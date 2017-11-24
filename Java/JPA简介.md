@@ -128,3 +128,12 @@ private List<SomeObject> SomeObjectProxy;
 spring data jpa为我们提供了JpaSpecificationExecutor接口，只要简单实现toPredicate方法就可以实现复杂的查询
 
 [spring data jpa 利用JpaSpecificationExecutor做复杂查询](http://blog.csdn.net/yingxiake/article/details/51014223)
+
+## ParameterizedType
+getClass().getGenericSuperclass() 
+返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的直接超类的 Type，然后将其转换ParameterizedType。
+
+getActualTypeArguments() 
+返回表示此类型实际类型参数的 Type 对象的数组。[0]就是这个数组中第一个了。简而言之就是获得超类的泛型参数的实际类型。
+
+[ParameterizedType获取java泛型参数类型](http://blog.csdn.net/qq_18242391/article/details/54251947)
