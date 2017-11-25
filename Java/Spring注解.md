@@ -67,5 +67,6 @@ JMS 监听 destination =命名空间
 
 
 ## spring.jpa.hibernate.ddl-auto
+是一个Hibernate特性，以更细粒度的方式控制行为
 
 [78. Database initialization](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-database-initialization.html)
