@@ -88,3 +88,6 @@ JMS 监听 destination =命名空间
 [Spring Data审计功能@CreatedDate、@CreatedBy、@LastModifiedDate、@LastModifiedBy的使用](http://blog.csdn.net/tracycater/article/details/74060721)
 [【tmos】字段create_time如何动态的生成](https://www.cnblogs.com/mrx520/p/7698463.html)
 [Hades——JPA的开源实现](http://www.infoq.com/cn/articles/hades_jpa_repositories_done_right)
+
+## HandlerMethodArgumentResolver
+自定参数解析器
