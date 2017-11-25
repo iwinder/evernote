@@ -78,3 +78,13 @@ JMS 监听 destination =命名空间
 设为true表示开启驼峰转换。
 
 [【spring boot+mybatis】注解使用方式（无xml配置）设置自动驼峰明明转换（mapUnderscoreToCamelCase），IDEA中xxDao报错could not autowire的解决方法](https://www.cnblogs.com/zhangdong92/p/6986653.html)
+
+
+## @EnableJpaAuditing
+审计相关
+
+[Spring Data JPA教程：审计（一）](http://blog.csdn.net/ro_wsy/article/details/50767207)
+[Spring Data JPA教程：审计（二）](http://blog.csdn.net/ro_wsy/article/details/50807579)
+[Spring Data审计功能@CreatedDate、@CreatedBy、@LastModifiedDate、@LastModifiedBy的使用](http://blog.csdn.net/tracycater/article/details/74060721)
+[【tmos】字段create_time如何动态的生成](https://www.cnblogs.com/mrx520/p/7698463.html)
+[Hades——JPA的开源实现](http://www.infoq.com/cn/articles/hades_jpa_repositories_done_right)
