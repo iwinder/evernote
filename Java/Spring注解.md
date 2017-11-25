@@ -71,6 +71,9 @@ JMS 监听 destination =命名空间
 
 [78. Database initialization](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-database-initialization.html)
 
+## mybatis.mapper-locations
+自动扫描路径
+
 ## mybatis.configuration.map-underscore-to-camel-case
 设为true表示开启驼峰转换。
 
