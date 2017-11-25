@@ -61,3 +61,9 @@ bootRepackage任务,它的作用是重新打包jar为可执行的jar
 
 [spring-boot填坑](http://blog.csdn.net/buyaore_wo/article/details/78062684)
 [Spring Boot Gradle插件](https://course.tianmaying.com/spring-boot-reference+lesson-59#8)
+
+
+## 多模块
+[Gradle实战系列（三）__多模块项目](https://www.cnblogs.com/linjl/p/6361970.html)
+
+[Gradle构建多模块项目](https://yq.aliyun.com/articles/25589)
