@@ -67,3 +67,5 @@ bootRepackage任务,它的作用是重新打包jar为可执行的jar
 [Gradle实战系列（三）__多模块项目](https://www.cnblogs.com/linjl/p/6361970.html)
 
 [Gradle构建多模块项目](https://yq.aliyun.com/articles/25589)
+
+[Java Gradle入门指南之内建与定制任务类（buildSrc、Groovy等）](https://www.cnblogs.com/gzdaijie/p/5285160.html)
