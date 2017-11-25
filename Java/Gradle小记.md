@@ -53,3 +53,11 @@ compile fileTree(dir: 'libs', include: '*.jar')
 ```
 将libs目录下所有jar文件进行编译并打包
 [compile、provided、compile files、compile project四者的区别](http://blog.csdn.net/xiaoxiaoniaoge/article/details/50519501)
+
+
+## bootRepackage.enabled
+
+bootRepackage任务,它的作用是重新打包jar为可执行的jar
+
+[spring-boot填坑](http://blog.csdn.net/buyaore_wo/article/details/78062684)
+[Spring Boot Gradle插件](https://course.tianmaying.com/spring-boot-reference+lesson-59#8)
