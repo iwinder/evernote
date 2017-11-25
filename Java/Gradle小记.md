@@ -45,3 +45,11 @@ buildscript中的声明是gradle脚本自身需要使用的资源。可以声明
 
 [Gradle In Action(Gradle实战)中文版](https://www.gitbook.com/book/lippiouyang/gradle-in-action-cn/details)
 [Gradle中的buildScript代码块](http://www.cnblogs.com/huang0925/p/3940528.html)
+
+## compile files
+
+```
+compile fileTree(dir: 'libs', include: '*.jar')
+```
+将libs目录下所有jar文件进行编译并打包
+[compile、provided、compile files、compile project四者的区别](http://blog.csdn.net/xiaoxiaoniaoge/article/details/50519501)
