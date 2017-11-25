@@ -64,3 +64,8 @@ grammar_cjkRuby: true
 
 ##  @JmsListener(destination = "demo.consumer.queue") 
 JMS 监听 destination =命名空间
+
+
+## spring.jpa.hibernate.ddl-auto
+
+[78. Database initialization](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-database-initialization.html)
