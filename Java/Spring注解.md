@@ -70,3 +70,8 @@ JMS 监听 destination =命名空间
 是一个Hibernate特性，以更细粒度的方式控制行为
 
 [78. Database initialization](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-database-initialization.html)
+
+## mybatis.configuration.map-underscore-to-camel-case
+设为true表示开启驼峰转换。
+
+[【spring boot+mybatis】注解使用方式（无xml配置）设置自动驼峰明明转换（mapUnderscoreToCamelCase），IDEA中xxDao报错could not autowire的解决方法](https://www.cnblogs.com/zhangdong92/p/6986653.html)
