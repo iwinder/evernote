@@ -60,7 +60,7 @@ Angular 提供了一组 JavaScript 模块。可以把它们看做库模块。
 
 我们通过组件的自带的模板来定义组件视图。模板以 HTML 形式存在，告诉 Angular 如何渲染组件。
 
-
+如：hero-list.component.html
 
 ### 元数据
 元数据告诉 Angular 如何处理一个类。
