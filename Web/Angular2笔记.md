@@ -69,3 +69,25 @@ Angular 提供了一组 JavaScript 模块。可以把它们看做库模块。
 
 在TypeScript中，我们用装饰器 (decorator) 来附加元数据。 
 
+如：
+```
+@Component({
+  selector:    'app-hero-list',
+  templateUrl: './hero-list.component.html',
+  providers:  [ HeroService ]
+})
+export class HeroListComponent implements OnInit {
+/* . . . */
+}
+```
+
+@Component装饰器，它把紧随其后的类标记成了组件类。
+
+@Component装饰器能接受一个配置对象， Angular 会基于这些信息创建和展示组件及其视图。
+
+@Component的配置项包括：
+
+- selector： CSS 选择器，它告诉 Angular 在父级 HTML 中查找<hero-list>标签，创建并插入该组件。 例如，如果应用的 HTML 包含<hero-list></hero-list>， Angular 就会把HeroListComponent的一个实例插入到这个标签中。
+- templateUrl：组件 HTML 模板的模块相对地址，如前所示。
+- providers - 组件所需服务的依赖注入提供商数组。 这是在告诉 Angular：该组件的构造函数需要一个HeroService服务，这样组件就可以从服务中获得英雄数据。
+
