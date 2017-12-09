@@ -91,3 +91,9 @@ export class HeroListComponent implements OnInit {
 - templateUrl：组件 HTML 模板的模块相对地址，如前所示。
 - providers - 组件所需服务的依赖注入提供商数组。 这是在告诉 Angular：该组件的构造函数需要一个HeroService服务，这样组件就可以从服务中获得英雄数据。
 
+@Component里面的元数据会告诉 Angular 从哪里获取你为组件指定的主要的构建块。
+
+模板、元数据和组件共同描绘出这个视图。
+
+其它元数据装饰器用类似的方式来指导 Angular 的行为。 例如@Injectable、@Input和@Output等是一些最常用的装饰器。
+
