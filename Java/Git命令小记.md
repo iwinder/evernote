@@ -10,3 +10,13 @@ grammar_cjkRuby: true
 git clone -b 分支名 仓库地址
 
 [使用git克隆指定分支的代码](https://www.cnblogs.com/nylcy/p/6569284.html)
+
+##  git 切换远程分支
+
+```
+//列出远程所有分支
+git branch -a
+
+//检出并切换分支
+git checkout -b training origin/feature/training
+```
