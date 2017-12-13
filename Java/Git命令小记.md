@@ -16,6 +16,8 @@ git clone -b 分支名 仓库地址
 ```
 //列出远程所有分支
 git branch -a
+//或 
+git branch -ｒ
 
 //检出并切换分支
 git checkout -b training origin/feature/training
@@ -39,3 +41,9 @@ http://blog.csdn.net/feng88724/article/details/11600375)
 git config [--global] --edit
 ```
 [Win10下修改git全部配置文件方法](http://blog.csdn.net/shrimpcolo/article/details/49302619)
+
+## 删除远程分支
+```
+git branch -r -d origin/branch-name  
+git push origin :branch-name  
+```
