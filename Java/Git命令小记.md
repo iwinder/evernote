@@ -24,3 +24,12 @@ git checkout -b training origin/feature/training
 ```
 git config -l
 ```
+## 设置全局参数
+```
+git config --global core.autocrlf input 
+git config --global core.diff auto
+git config --global core.syslinks false
+```
+
+[[git] warning: LF will be replaced by CRLF | fatal: CRLF would be replaced by LF](
+http://blog.csdn.net/feng88724/article/details/11600375)
