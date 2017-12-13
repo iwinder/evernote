@@ -20,3 +20,7 @@ git branch -a
 //检出并切换分支
 git checkout -b training origin/feature/training
 ```
+## 查看git配置
+```
+git config -l
+```
