@@ -10,8 +10,8 @@ grammar_cjkRuby: true
 HttpServletRequest request
 
 ```java
-			/* *
-			 * 获取所有请求参数，封装到Map中 
+		   /* *
+			* 获取所有请求参数，封装到Map中 
 			*/  
             Map<String,String[]> map = (Map<String,String[]>)request.getParameterMap();  
             for(String name:map.keySet()){  
