@@ -56,6 +56,8 @@ git push origin :old_local_branch_name
 step3：重新推送新命名的本地分支
 git push origin new_local_branch_name
 ```
+[git分支重命名 & 删除tag & 删除远程分支后本地依然存在的解决办法](http://blog.csdn.net/sunny05296/article/details/65449791)
+
 ### 克隆分支
 
 ```
