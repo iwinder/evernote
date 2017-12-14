@@ -9,7 +9,7 @@ grammar_cjkRuby: true
 
 HttpServletRequest request
 
-```
+```java
 		/* 
          * 获取所有请求参数，封装到Map中 
          */  
@@ -20,3 +20,4 @@ HttpServletRequest request
             } 
 ```
 [request请求获取参数(post和get两种方式)](http://blog.csdn.net/u012110719/article/details/44672111)
+
