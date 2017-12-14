@@ -1,6 +1,6 @@
 ---
 title: Git命令小记 
-tags: Git,代码管理工具,
+tags: Git,代码管理工具
 grammar_cjkRuby: true
 ---
 
