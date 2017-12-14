@@ -70,7 +70,7 @@ git clone -b 分支名 仓库地址
 
 ```
 //检出并切换分支
-git checkout -b training origin/feature/training
+git checkout -b feature/training origin/feature/training
 ```
 
 ## 删除远程分支
