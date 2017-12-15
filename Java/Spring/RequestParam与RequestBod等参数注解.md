@@ -151,6 +151,7 @@ public interface HttpMessageConverter<T> {
 }
 ```
 大致能看出Spring的处理思路。下面的流程图可以更好方便我们的理解：
+![enter description here][1]
 
 ## 不设定注解时
 通过分析AnnotationMethodHandlerAdapter和RequestMappingHandlerAdapter的源代码发现，方法的参数在不给定参数的情况下：
@@ -189,3 +190,6 @@ public interface HttpMessageConverter<T> {
 - [tomcat源码---->request的请求参数分析](http://www.cnblogs.com/huhx/p/baseusewebparameter1.html)
 
 - [解析Spring中的ResponseBody和RequestBody](https://www.cnkirito.moe/2017/08/30/%E8%A7%A3%E6%9E%90Spring%E4%B8%AD%E7%9A%84ResponseBody%E5%92%8CRequestBody/)
+
+
+  [1]: ./images/java_spring_requestBody_HttpMessageConverter01.png "java_spring_requestBody_HttpMessageConverter01"
