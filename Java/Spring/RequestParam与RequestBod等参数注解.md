@@ -162,7 +162,7 @@ public interface HttpMessageConverter<T> {
 ## 其余参数注解
 可参考
 [@RequestParam @RequestBody @PathVariable 等参数绑定注解详解](http://blog.csdn.net/walkerjong/article/details/7946109)
-这里就不一一写了。
+这里就不一一记录了。
 ##  扩展
 ### http请求响应媒体类型一览
 
