@@ -1,5 +1,5 @@
 --- 
-title:  RequestParam与RequestBod等参数注解
+title:  RequestParam与RequestBod等参数注解分析
 tags: Spring
 grammar_cjkRuby: true
 ---
@@ -22,8 +22,10 @@ grammar_cjkRuby: true
 ### 为空的@RequestParam
 非```application/x-www-form-urlencoded```和```multipart/form-data```等协议时@RequestParam获取不到值的原因要追溯到tomcat的request请求处理中。
 
+此处所用源码为apache-tomcat-9.0.2-src。
+
 上面说了@RequestParam实际调用的是Request.getParameter()取值，在tomcat中执行的是
-```
+```java
 	/**
      * @return the value of the specified request parameter, if any; otherwise,
      * return <code>null</code>.  If there is more than one value defined,
@@ -42,3 +44,49 @@ grammar_cjkRuby: true
 
     }
 ```
+parametersParsed是一个为false的全局变量，由于是线程的问题。parseParameters()针对这个请求应该只会执行一次。这里关键代码有两个，其一如下：
+```java
+			String contentType = getContentType();
+            if (contentType == null) {
+                contentType = "";
+            }
+            int semicolon = contentType.indexOf(';');
+            if (semicolon >= 0) {
+                contentType = contentType.substring(0, semicolon).trim();
+            } else {
+                contentType = contentType.trim();
+            }
+
+            if ("multipart/form-data".equals(contentType)) {
+                parseParts(false);
+                success = true;
+                return;
+            }
+
+            if (!("application/x-www-form-urlencoded".equals(contentType))) {
+                success = true;
+                return;
+            }
+```
+这段代码不难理解，首先会得到请求类型。从上述代码可以得出：
+
+- 当contenttype有多种时，只会取第一种。比如contenttype为```application/json;application/x-www-form-urlencoded```，最终是```application/json```。
+
+- 当contenttype不为```application/x-www-form-urlencoded```，直接return掉了。也就是说 ***关键代码二不执行*** 了。
+
+- 当contenttype为```multipart/form-data```时，parseParts()方法里使用的解析文件的框架是apache自带的fileupload。
+
+好了，以下贴出关键二的代码：
+```java
+ readPostBody(formData, len)
+ parameters.processParameters(formData, 0, len);
+ ```
+readChunkedPostBody方法，其实就是request.getInputStream().read()方法，将请求的数据通过流的方式读取出来。
+ 
+processParameters()是在Parameters类里面的方法，做的工作就是对请求的数据，做key与value的拆分，然后存放进一个名叫paramHashValues的Map中。后续的request.getParameter取的就是paramHashValues里面的数据。
+
+由于上述分析的contenttype不为form-data的和x-www-form-urlencoded的不会执行关键二的代码，所以对于请求类型为application/json通过request.getParameter得到的数据为空。
+
+## 参考资料
+[tomcat源码---->request的请求参数分析](http://www.cnblogs.com/huhx/p/baseusewebparameter1.html)
+[解析Spring中的ResponseBody和RequestBody](https://www.cnkirito.moe/2017/08/30/%E8%A7%A3%E6%9E%90Spring%E4%B8%AD%E7%9A%84ResponseBody%E5%92%8CRequestBody/)
