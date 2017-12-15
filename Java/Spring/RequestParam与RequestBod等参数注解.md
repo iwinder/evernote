@@ -87,7 +87,8 @@ processParameters()是在Parameters类里面的方法，做的工作就是对请
 
 由于上述分析的contenttype不为form-data的和x-www-form-urlencoded的不会执行关键二的代码，所以对于请求类型为application/json通过request.getParameter得到的数据为空。
 ### @RequestBody处理过程
-若有代码，基于spring-webMVC 4.3.10.RELEASE
+代码基于spring-webMVC 4.3.10.RELEASE。
+
 对于添加了@RequestBody和@ResponseBody注解的后端端点，都会经历由HttpMessageConverter进行的数据转换的过程。
 
 在AnnotationDrivenBeanDefinitionParser类中发现一个getMessageConverters方法，可以考虑参考。
@@ -111,7 +112,8 @@ processParameters()是在Parameters类里面的方法，做的工作就是对请
 
 而在JAVA中，提供了MediaType这样的抽象，来与http的媒体类型进行对应。‘/’之前的名词，如text，application被称为类型（type），‘/’之后被称为子类型(subType)。
 ### 留存资料
-[]
+[Spring MVC @RequestBody @ResponseBody Example](http://websystique.com/springmvc/spring-mvc-requestbody-responsebody-example/)
+[SpringMVC中使用@RequestBody,@ResponseBody注解实现Java对象和XML/JSON数据自动转换（下）](http://bijian1013.iteye.com/blog/2310240)
 ## 参考资料
 [tomcat源码---->request的请求参数分析](http://www.cnblogs.com/huhx/p/baseusewebparameter1.html)
 [解析Spring中的ResponseBody和RequestBody](https://www.cnkirito.moe/2017/08/30/%E8%A7%A3%E6%9E%90Spring%E4%B8%AD%E7%9A%84ResponseBody%E5%92%8CRequestBody/)
