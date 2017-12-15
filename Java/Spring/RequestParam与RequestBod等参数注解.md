@@ -152,6 +152,13 @@ public interface HttpMessageConverter<T> {
 ```
 大致能看出Spring的处理思路。下面的流程图可以更好方便我们的理解：
 
+## 不设定注解时
+通过分析AnnotationMethodHandlerAdapter和RequestMappingHandlerAdapter的源代码发现，方法的参数在不给定参数的情况下：
+
+- 若要绑定的对象时简单类型：  调用@RequestParam来处理的。  
+- 若要绑定的对象时复杂类型：  调用@ModelAttribute来处理的。
+
+这里的简单类型指java的原始类型(boolean, int 等)、原始类型对象（Boolean, Int等）、String、Date等ConversionService里可以直接String转换成目标对象的类型。
 
 ##  扩展
 ### http请求响应媒体类型一览
