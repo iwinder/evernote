@@ -18,3 +18,14 @@ grammar_cjkRuby: true
 
 [Hibernate JPA中@Transient、@JsonIgnoreProperties、@JsonIgnore、@JsonFormat、@JsonSerialize等注解解释](http://blog.csdn.net/kevinxxw/article/details/51381544)
 ## @Formula
+动态语句
+## @DynamicInsert
+设置为true,设置为true,表示insert对象的时候,生成动态的insert语句,如果这个字段的值是null就不会加入到insert语句当中.默认false。
+## @DynamicUpdate属性
+
+设置为true,设置为true,表示update对象的时候,生成动态的update语句,如果这个字段的值是null就不会被加入到update语句中,默认false。
+
+## @ColumnDefault
+默认值
+
+
