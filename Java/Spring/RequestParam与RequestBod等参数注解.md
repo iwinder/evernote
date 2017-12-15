@@ -1,5 +1,5 @@
 --- 
-title:  RequestParam与RequestBod等参数注解分析
+title:  RequestParam与RequestBod等参数注解简析
 tags: Spring
 grammar_cjkRuby: true
 ---
