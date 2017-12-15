@@ -112,8 +112,10 @@ processParameters()是在Parameters类里面的方法，做的工作就是对请
 
 而在JAVA中，提供了MediaType这样的抽象，来与http的媒体类型进行对应。‘/’之前的名词，如text，application被称为类型（type），‘/’之后被称为子类型(subType)。
 ### 留存资料
-[Spring MVC @RequestBody @ResponseBody Example](http://websystique.com/springmvc/spring-mvc-requestbody-responsebody-example/)
-[SpringMVC中使用@RequestBody,@ResponseBody注解实现Java对象和XML/JSON数据自动转换（下）](http://bijian1013.iteye.com/blog/2310240)
+- [Spring MVC @RequestBody @ResponseBody Example](http://websystique.com/springmvc/spring-mvc-requestbody-responsebody-example/)
+
+- [SpringMVC中使用@RequestBody,@ResponseBody注解实现Java对象和XML/JSON数据自动转换（下）](http://bijian1013.iteye.com/blog/2310240)
 ## 参考资料
-[tomcat源码---->request的请求参数分析](http://www.cnblogs.com/huhx/p/baseusewebparameter1.html)
-[解析Spring中的ResponseBody和RequestBody](https://www.cnkirito.moe/2017/08/30/%E8%A7%A3%E6%9E%90Spring%E4%B8%AD%E7%9A%84ResponseBody%E5%92%8CRequestBody/)
+- [tomcat源码---->request的请求参数分析](http://www.cnblogs.com/huhx/p/baseusewebparameter1.html)
+
+- [解析Spring中的ResponseBody和RequestBody](https://www.cnkirito.moe/2017/08/30/%E8%A7%A3%E6%9E%90Spring%E4%B8%AD%E7%9A%84ResponseBody%E5%92%8CRequestBody/)
