@@ -26,6 +26,8 @@ grammar_cjkRuby: true
 设置为true,设置为true,表示update对象的时候,生成动态的update语句,如果这个字段的值是null就不会被加入到update语句中,默认false。
 
 [Hibernate，JPA注解@DynamicInsert和@DynamicUpdate，Hibernate如何插入sysdate](http://jingpin.jikexueyuan.com/article/42507.html)
+
+[Hibernate利用@DynamicInsert和@DynamicUpdate生成动态SQL语句](https://www.cnblogs.com/quanyongan/p/3152290.html)
 ## @ColumnDefault
 默认值
 
