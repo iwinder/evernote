@@ -19,4 +19,26 @@ grammar_cjkRuby: true
 
 因为配置有FormHttpMessageConverter，所以也可以用来处理 ```application/x-www-form-urlencoded```的内容，处理完的结果放在一个MultiValueMap<String, String>里，这种情况在某些特殊需求下使用，详情查看FormHttpMessageConverter api;
 
+### 为空的@RequestParam
 非```application/x-www-form-urlencoded```和```multipart/form-data```等协议时@RequestParam获取不到值的原因要追溯到tomcat的request请求处理中。
+
+上面说了@RequestParam实际调用的是Request.getParameter()取值，在tomcat中执行的是
+```
+	/**
+     * @return the value of the specified request parameter, if any; otherwise,
+     * return <code>null</code>.  If there is more than one value defined,
+     * return only the first one.
+     *
+     * @param name Name of the desired request parameter
+     */
+    @Override
+    public String getParameter(String name) {
+
+        if (!parametersParsed) {
+            parseParameters();
+        }
+
+        return coyoteRequest.getParameters().getParameter(name);
+
+    }
+```
