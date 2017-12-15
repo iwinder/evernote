@@ -159,7 +159,10 @@ public interface HttpMessageConverter<T> {
 - 若要绑定的对象时复杂类型：  调用@ModelAttribute来处理的。
 
 这里的简单类型指java的原始类型(boolean, int 等)、原始类型对象（Boolean, Int等）、String、Date等ConversionService里可以直接String转换成目标对象的类型。
-
+## 其余参数注解
+可参考
+[@RequestParam @RequestBody @PathVariable 等参数绑定注解详解](http://blog.csdn.net/walkerjong/article/details/7946109)
+这里就不一一写了。
 ##  扩展
 ### http请求响应媒体类型一览
 
