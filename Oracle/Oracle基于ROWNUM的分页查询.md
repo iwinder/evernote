@@ -30,9 +30,11 @@ SELECT *
 原因找到了，解决方案就不远了，将其略微修改下就好：
 
 ```
-SELECT ROWNUM
+SELECT *(
+SELECT ur.* ROWNUM
 (SELECT *
   FROM users) ur
+  )
   WHERE ROWNUM > 1 AND ROWNUM < 11;
 ```
 
