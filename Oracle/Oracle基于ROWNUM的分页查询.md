@@ -21,7 +21,7 @@ SELECT *
 ```
 SELECT *
   FROM users
-  WHERE ROWNUM > 1 AND ROWNUM < 11;
+  WHERE ROWNUM > 10 AND ROWNUM < 21;
 ```
 
 
