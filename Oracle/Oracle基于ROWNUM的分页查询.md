@@ -104,7 +104,10 @@ SELECT *
 ```
 
 
+## 参考资料
+[3.9 ROWNUM Pseudocolumn](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/sqlrf/ROWNUM-Pseudocolumn.html#GUID-2E40EC12-3FCF-4A4F-B5F2-6BC669021726)
 
+[7.186 ROW_NUMBER]()https://docs.oracle.com/en/database/oracle/oracle-database/12.2/sqlrf/ROW_NUMBER.html#GUID-D5A157F8-0F53-45BD-BF8C-AE79B1DB8C41
 
 
 
