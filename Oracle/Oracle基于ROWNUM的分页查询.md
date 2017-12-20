@@ -103,7 +103,10 @@ SELECT *
   WHERE ROWNUM < 11;
 ```
 
+## 课外扩展
+[ORACLE优化器RBO与CBO介绍总结](https://www.cnblogs.com/kerrycode/p/3842215.html)
 
+[Oracle 分页方法研究](http://www.php361.com/index.php?c=index&a=view&id=5068)
 ## 参考资料
 [3.9 ROWNUM Pseudocolumn](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/sqlrf/ROWNUM-Pseudocolumn.html#GUID-2E40EC12-3FCF-4A4F-B5F2-6BC669021726)
 
