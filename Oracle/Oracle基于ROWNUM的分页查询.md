@@ -109,6 +109,9 @@ SELECT *
 
 [7.186 ROW_NUMBER]()https://docs.oracle.com/en/database/oracle/oracle-database/12.2/sqlrf/ROW_NUMBER.html#GUID-D5A157F8-0F53-45BD-BF8C-AE79B1DB8C41
 
+[oracle简单查询之分页查询](http://www.imooc.com/article/19758?block_id=tuijian_wz)
+[第3章 伪列：ROWNUM ](http://blog.itpub.net/24945919/viewspace-748017/)
+
 
 
 
