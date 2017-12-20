@@ -31,11 +31,11 @@ SELECT *
 
 ```
 SELECT *(
-SELECT ur.* ROWNUM
+SELECT ur.* ,ROWNUM RN
 (SELECT *
   FROM users) ur
   )
-  WHERE ROWNUM > 1 AND ROWNUM < 11;
+  WHERE RN > 1 AND RN < 11;
 ```
 
 
