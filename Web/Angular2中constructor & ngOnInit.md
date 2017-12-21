@@ -53,6 +53,9 @@ export class AppComponent {
 ### 应用场景
 在项目开发中我们要尽量保持构造函数简单明了，让它只执行简单的数据初始化操作，因此我们会把其他的初始化操作放在 ngOnInit 钩子中去执行。如在组件获取输入属性之后，需执行组件初始化操作等。
 
+## 总结
+在 Angular 2 中 constructor 一般用于依赖注入或执行简单的数据初始化操作，ngOnInit 钩子主要用于执行组件的其它初始化操作或获取组件输入的属性值。
+
 ## 参考资料
 [Angular 2 constructor & ngOnInit](https://segmentfault.com/a/1190000008685752)
 [Angular之constructor和ngOnInit差异及适用场景](http://blog.csdn.net/u010730126/article/details/64486997)
