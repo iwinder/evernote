@@ -13,6 +13,10 @@ new Promise( function(resolve, reject) {...} /* executor */  );
 ```
 new Promise( (resolve, reject)=>{...} )
 ```
+再变：
+```
+new Promise( (resolve, reject)=>{...} ).then(onFulfilled, onRejected).catch(onRejected)
+```
 ### 状态:
 - pending: 初始状态，不是成功或失败状态。
 - fulfilled: 意味着操作成功完成。
@@ -31,7 +35,7 @@ Promise 构造函数接受一个函数作为参数，该函数的两个参数分
 
 表示 Promise 构造器的原型.
 ### 方法
-#### Promise.all(iterable)
+#### 1.Promise.all(iterable)
 
 这个方法返回一个新的promise对象，该promise对象在iterable**参数对象里所有的promise对象都成功的时候才会触发成功**，一旦有任何一个iterable里面的promise对象失败则立即触发该promise对象的失败。
 
@@ -39,15 +43,15 @@ Promise 构造函数接受一个函数作为参数，该函数的两个参数分
 
 Promise.all方法**常被用于处理多个promise对象的状态集合**。（可以参考jQuery.when方法---译者注）
 
-#### Promise.race(iterable)
+#### 2.Promise.race(iterable)
 
 当iterable参数里的**任意一个**子promise被成功或失败后，父promise马上也会用子promise的成功返回值或失败详情作为参数调用父promise绑定的相应句柄，并返回该promise对象。
 
-#### Promise.reject(reason)
+#### 3.Promise.reject(reason)
 
 返回一个状态为失败的Promise对象，并将给定的失败信息传递给对应的处理方法
 
-#### Promise.resolve(value)
+#### 4.Promise.resolve(value)
 
 返回一个状态由给定value决定的Promise对象。
 
