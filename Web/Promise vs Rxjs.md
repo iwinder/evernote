@@ -58,3 +58,18 @@ Promise.all方法**常被用于处理多个promise对象的状态集合**。（�
 如果该值是一个Promise对象，则直接返回该对象；如果该值是thenable(即，带有then方法的对象)，返回的Promise对象的最终状态由then方法执行决定；否则的话(该value为空，基本类型或者不带then方法的对象),返回的Promise对象状态为fulfilled，并且将该value传递给对应的then方法。
 
 通常而言，如果你不知道一个值是否是Promise对象，使用Promise.resolve(value) 来返回一个Promise对象,这样就能将该value以Promise对象形式使用。
+### Promise原型
+#### 属性
+```
+Promise.prototype.constructor
+```
+返回被创建的实例函数.  默认为 Promise 函数.
+
+#### 方法
+```Promise.prototype.catch(onRejected)```
+
+添加一个拒绝(rejection) 回调到当前 promise, 返回一个新的promise。当这个回调被调用，新 promise 将以它的返回值来resolve，否则如果当前promise 进入fulfilled状态，则以当前promise的肯定结果作为新promise的肯定结果.
+
+```Promise.prototype.then(onFulfilled, onRejected)```
+
+添加解决和拒绝回调到当前 promise, 返回一个新的 promise, 将以回调的返回值来resolve.
