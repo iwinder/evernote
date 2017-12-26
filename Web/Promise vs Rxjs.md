@@ -32,6 +32,7 @@ Promise 构造函数接受一个函数作为参数，该函数的两个参数分
 表示 Promise 构造器的原型.
 ### 方法
 #### Promise.all(iterable)
+
 这个方法返回一个新的promise对象，该promise对象在iterable**参数对象里所有的promise对象都成功的时候才会触发成功**，一旦有任何一个iterable里面的promise对象失败则立即触发该promise对象的失败。
 
 这个新的promise对象在**触发成功状态**以后，会把一个包含iterable里所有promise返回值的数组作为成功回调的返回值，**顺序跟iterable的顺序保持一致**；如果这个新的promise对象**触发了失败状态**，它会把iterable里**第一个触发失败的promise对象的错误信息作为它的失败错误信息**。
