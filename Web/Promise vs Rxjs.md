@@ -40,3 +40,5 @@ Promise 构造函数接受一个函数作为参数，该函数的两个参数分
 Promise.all方法**常被用于处理多个promise对象的状态集合**。（可以参考jQuery.when方法---译者注）
 
 #### Promise.race(iterable)
+
+当iterable参数里的任意一个子promise被成功或失败后，父promise马上也会用子promise的成功返回值或失败详情作为参数调用父promise绑定的相应句柄，并返回该promise对象。
