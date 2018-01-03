@@ -40,7 +40,9 @@ ngOnInit() {
 ```
 为了找问题，在提交方法_submitForm（）中添加了几个打印
 ```
-console.log(getFormControl('one').dirty);
-console.log(getFormControl('one').hasError('required'));
-console.log(this.validateForm.value.scopes);
+console.log(getFormControl('one').dirty); // 1
+console.log(getFormControl('one').hasError('required')); // 2
+console.log(this.validateForm.value.scopes); // 3
 ```
+结果发现
+初始时：1、true，2、false、3、oneOption中的值
