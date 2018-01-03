@@ -42,5 +42,5 @@ ngOnInit() {
 ```
 console.log(getFormControl('one').dirty);
 console.log(getFormControl('one').hasError('required'));
-console.log(getFormControl('one').dirty);
+console.log(this.validateForm.value.scopes);
 ```
