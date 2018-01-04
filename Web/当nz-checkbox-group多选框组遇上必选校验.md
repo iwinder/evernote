@@ -82,8 +82,8 @@ if(this.validateForm.value.scopes.length == 0){
 到这曾一度想过放弃然后自己用原始方式写，再一想到原始方式还要自己考虑样式什么的，作为一个有着css恐惧症的Java程序猿我决然地选择了硬着头皮在啃会儿。
 
 在刷了n+1遍ng-zorro-antd的官方文档的表单部分后，在“自定义异步校验”中看到这样一句话 :
->当使用 响应式表单(Reactive Form) 时，<nz-form-control> 的 nzValidateStatus 会自动从 NgControl 中获取数据，也**可以手动指定特定**的 NgControl组件将表单校验函数的校验过程和异步返回的结果显示对应的error | validating(pending) | warning | success状态，具体使用方式建议参照本demo
-	----- [NG-ZORRO表单一节的文档](https://ng.ant.design/#/components/form)
+>当使用 响应式表单(Reactive Form) 时，\<nz-form-control> 的 nzValidateStatus 会自动>从 NgControl 中获取数据，也**可以手动指定特定**的 NgControl组件将表单校>验函数的校验过程和异步返回的结果显示对应的error | validating(pending) | warning | >success状态，具体使用方式建议参照本demo
+>	----- [NG-ZORRO表单一节的文档](https://ng.ant.design/#/components/form)
 
 本着死马当活马医的心点开里面的dome，仔细看了下，同时在实例上试了一下，发现这不正是梦寐以求的咩。于是有了如下的终极解决方案：
 
