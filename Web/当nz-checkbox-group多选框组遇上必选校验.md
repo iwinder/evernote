@@ -55,6 +55,9 @@ console.long(this.validateForm.invalid);// 4
 最开始尝试是将```this.validateForm.value.scopes```在提交时先赋值为[]，再检测checked状态，赋值。
 ```
 this.validateForm.value.scopes = [];
-for(const i in this.scopes){
+for(const i in this.oneOption){
+	if(this.oneOption[i].checked){
+		this.validateForm.value.scopes.push(this.oneOption[i].value);
+	}
 }
 ```
