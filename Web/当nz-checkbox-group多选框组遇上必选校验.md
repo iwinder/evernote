@@ -3,7 +3,8 @@ title: 当nz-checkbox-group多选框组遇上必选校验
 tags: Angular2,ng-zorro-antd,checkbox
 grammar_cjkRuby: true
 ---
-今天表单中用到ng-zorro-antd组件的多选框nz-checkbox-group，最开始用的是响应式表单的验证+响应式表单的验证，结果总是无法达到预期效果。代码如下：
+今天表单中用到ng-zorro-antd组件的多选框nz-checkbox-group，最开始用的是响应式表单的验证+响应式表单的验证，结果总是无法达到预期效果。
+## 初始代码及问题现象：
 问题.Html
 ```
 <div nz-form-item nz-row>
@@ -42,7 +43,18 @@ ngOnInit() {
 ```
 console.log(getFormControl('one').dirty); // 1
 console.log(getFormControl('one').hasError('required')); // 2
-console.log(this.validateForm.value.scopes); // 3
+console.log(this.validateForm.value.one); // 3
+console.long(this.validateForm.invalid);// 4
 ```
 结果发现
-初始时：1、true，2、false、3、oneOption中的值
+- 初始时：1、true，2、false，3、oneOption中的值，4、false
+- 选择一个选项后：1、false，2、false，3、oneOption中的值+选中的value，4、false
+
+从而始终无法触发显示 “通知范围必选”
+## 第一次尝试
+最开始尝试是将```this.validateForm.value.scopes```在提交时先赋值为[]，再检测checked状态，赋值。
+```
+this.validateForm.value.scopes = [];
+for(const i in this.scopes){
+}
+```
