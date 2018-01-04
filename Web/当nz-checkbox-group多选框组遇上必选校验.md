@@ -41,8 +41,8 @@ ngOnInit() {
 ```
 为了找问题，在提交方法_submitForm（）中添加了几个打印
 ```
-console.log(getFormControl('one').dirty); // 1
-console.log(getFormControl('one').hasError('required')); // 2
+console.log(this.getFormControl('one').dirty); // 1
+console.log(this.getFormControl('one').hasError('required')); // 2
 console.log(this.validateForm.value.one); // 3
 console.long(this.validateForm.invalid);// 4
 ```
@@ -59,5 +59,18 @@ for(const i in this.oneOption){
 	if(this.oneOption[i].checked){
 		this.validateForm.value.scopes.push(this.oneOption[i].value);
 	}
+}
+```
+这样写 ，```this.validateForm.value.one```是达到预期了，但提示效果依旧没出来。
+继续探索，看到```getFormControl('one').hasError('required')```，既然有has，有没有set一类的？打了一下发现还真有一个this.getFormControl('one').setErrors()的方法，于是在上面的基础上想到这样一个方式：
+```
+if(this.validateForm.value.scopes.length == 0){
+	this.getFormControl('one').setErrors(Validators.required);
+}
+```
+发现一点用没有，搜索后找到另一种变形：
+```
+if(this.validateForm.value.scopes.length == 0){
+	this.getFormControl('one').setErrors({'required':true});
 }
 ```
