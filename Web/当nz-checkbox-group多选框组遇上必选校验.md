@@ -50,8 +50,8 @@ console.log(this.validateForm.value.one); // 3
 console.long(this.validateForm.invalid);// 4
 ```
 结果发现
-- 初始时：1、true，2、false，3、oneOption中的值，4、false
-- 选择一个选项后：1、false，2、false，3、oneOption中的值+选中的value，4、false
+- 初始时：1、false，2、false，3、oneOption中的值，4、false
+- 选择一个选项后：1、true，2、false，3、oneOption中的值+选中的value，4、false
 
 从而始终无法触发显示 “通知范围必选”
 ## 第一次尝试
