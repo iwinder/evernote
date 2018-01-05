@@ -207,4 +207,5 @@ ng serve --port 4201
 |invalid|表单元素无效|
 |pristine|表单元素是纯净的，用户未操作过|
 |dirty|表单元素是已被用户操作过|
+
 [表单校验的值valid、invalid、pristine和dirty](http://blog.csdn.net/lvjianyu2007/article/details/48246155)
