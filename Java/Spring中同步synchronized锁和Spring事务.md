@@ -6,3 +6,5 @@ grammar_cjkRuby: true
 
 [记一次synchronized锁字符串引发的坑兼再谈Java字符串](http://www.importnew.com/24214.html)
 [spring事务和对象锁](http://blog.csdn.net/duanmucheng/article/details/70886534)
+
+[Java对象锁和类锁全面解析（多线程synchronized关键字）](http://www.importnew.com/20444.html)
