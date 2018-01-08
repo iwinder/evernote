@@ -32,3 +32,4 @@ ThreadLocal和Synchonized都用于解决多线程并发访问。但是ThreadLoca
 [深入研究java.lang.ThreadLocal类](http://blog.csdn.net/c289054531/article/details/9187081)
 ## 扩展资料
 [Spring单实例、多线程安全、事务解析](https://www.cnblogs.com/lyl2016/p/5797546.html)
+[Spring的@Transactional事务无法处理thread线程的解决方案](https://www.cnblogs.com/lay2017/p/7273382.html)
