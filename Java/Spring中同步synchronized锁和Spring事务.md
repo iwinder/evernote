@@ -12,3 +12,4 @@ grammar_cjkRuby: true
 [spring事务和对象锁](http://blog.csdn.net/duanmucheng/article/details/70886534)
 
 [Java对象锁和类锁全面解析（多线程synchronized关键字）](http://www.importnew.com/20444.html)
+[使用 JPA 实现乐观锁](http://www.importnew.com/26099.html)
