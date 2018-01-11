@@ -31,6 +31,14 @@ Java中的Field译为“字段”，也译为“域”，Field和成员变量（
 ## 参考资料
 
 主要是以下这两篇官方文档
+
 [Declaring Member Variables](https://docs.oracle.com/javase/tutorial/java/javaOO/variables.html)
 
 [Understanding Class Members](https://docs.oracle.com/javase/tutorial/java/javaOO/classvars.html)
+
+最开始搜到这篇
+
+[JAVA中的域，静态域，实例域](https://www.cnblogs.com/jerry007/archive/2013/01/18/java%E4%B8%AD%E5%9F%9F.html)
+排版有点乱看不下去，里面有个“域的初始化”可以看看。
+
+
