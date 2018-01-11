@@ -108,3 +108,6 @@ Did you intend to checkout 'origin/develop' which can not be resolved as commit?
 $ git fetch  
 $ git checkout -b develop origin/develop  
 ```
+[git签出远程分支问题解决](http://blog.csdn.net/wmzy1067111110/article/details/13512763)
+
+[Git远程操作详解](http://www.ruanyifeng.com/blog/2014/06/git_remote.html)
