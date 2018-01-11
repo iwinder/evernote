@@ -19,3 +19,9 @@ row_number() over(partition by a order by b)
 然后为每行记录返回一个rownumber用于标记顺序
 
 [参考1](https://www.2cto.com/database/201303/193063.html)
+
+## 部分字段
+```
+sysdate 当前日期
+hibernate_sequence.nextval  hibernate中的自增
+```
