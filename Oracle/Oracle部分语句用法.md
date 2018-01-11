@@ -23,5 +23,5 @@ row_number() over(partition by a order by b)
 ## 部分字段
 ```
 sysdate 当前日期
-hibernate_sequence.nextval  hibernate中的自增
+hibernate_sequence.nextval  hibernate中的自增id生成
 ```
