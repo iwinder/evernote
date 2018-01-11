@@ -209,3 +209,11 @@ ng serve --port 4201
 |dirty|表单元素是已被用户操作过|
 
 [表单校验的值valid、invalid、pristine和dirty](http://blog.csdn.net/lvjianyu2007/article/details/48246155)
+
+## 路由与导航
+
+```
+
+```
+
+[angular2系统学习 - 路由与导航(3)](http://blog.csdn.net/qq451354/article/details/53998280)
