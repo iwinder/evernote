@@ -213,7 +213,7 @@ ng serve --port 4201
 ## 路由与导航
 
 ```
-
+this.router.navigate(['../../'], { relativeTo: this.route });
 ```
 
 [angular2系统学习 - 路由与导航(3)](http://blog.csdn.net/qq451354/article/details/53998280)
