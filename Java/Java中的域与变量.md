@@ -43,7 +43,7 @@ Java中的Field译为“字段”，也译为“域”，Field和成员变量（
 
 然后看到这篇
 [Java中字段、域与成员变量关系](http://blog.csdn.net/u013632190/article/details/50662643)
-联想到其他变量，忽然又糊涂了。
+联想到其他变量，忽然又感觉哪里不对劲了。
 
 看到这篇
 [ java中的域是什么？](http://blog.csdn.net/iaiti/article/details/38794007)
