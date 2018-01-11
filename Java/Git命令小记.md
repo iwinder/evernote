@@ -88,3 +88,23 @@ git push origin :branch-name
 |git add .  |提交新文件(new)和被修改(modified)文件，不包括被删除(deleted)文件|
 
 [git add -A 和 git add . 的区别](https://www.cnblogs.com/skura23/p/5859243.html)
+
+
+## git签出远程分支问题解决
+使用命令
+
+```
+git checkout -b develop origin/develop  
+```
+签出远程分支，出现以下错误：
+
+```
+fatal: Cannot update paths and switch to branch 'develop' at the same time.  
+Did you intend to checkout 'origin/develop' which can not be resolved as commit?  
+```
+
+解决方法：
+```
+$ git fetch  
+$ git checkout -b develop origin/develop  
+```
