@@ -28,3 +28,9 @@ Java中的Field译为“字段”，也译为“域”，Field和成员变量（
 #### 实例变量
 当一个类实例化多个对象时，它们都有自己独立的实例变量副本。每个对象都有自己的这些变量的值，存储在不同的内存位置。
 
+## 参考资料
+
+主要是以下这两篇官方文档
+[Declaring Member Variables](https://docs.oracle.com/javase/tutorial/java/javaOO/variables.html)
+
+[Understanding Class Members](https://docs.oracle.com/javase/tutorial/java/javaOO/classvars.html)
