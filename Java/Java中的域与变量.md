@@ -41,4 +41,18 @@ Java中的Field译为“字段”，也译为“域”，Field和成员变量（
 [JAVA中的域，静态域，实例域](https://www.cnblogs.com/jerry007/archive/2013/01/18/java%E4%B8%AD%E5%9F%9F.html)
 排版有点乱看不下去，里面有个“域的初始化”可以看看。
 
+然后看到这篇
+[Java中字段、域与成员变量关系](http://blog.csdn.net/u013632190/article/details/50662643)
+然后联想到其他变量，忽然又糊涂了。
 
+看到这篇
+[ java中的域是什么？](http://blog.csdn.net/iaiti/article/details/38794007)
+里面翻译的例子可以参考看下，但最后括号中关于类变量和实例变量的理解可以无视，因为是错的。。
+
+同时看到
+[域与变量的区别是什么](http://bbs.csdn.net/topics/390488364)
+里面有一句“域是变量的一种”。
+
+然后同时看到
+[java中字段（也叫域）、成员变量和属性有什么区别，请前辈指教。我觉得起不一样的名字 肯定会有所区别的?](https://www.zhihu.com/question/23675337)
+从里面找到官方文档中的出处，最终解惑
