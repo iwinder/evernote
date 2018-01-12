@@ -22,7 +22,14 @@ Arguments 里面填: ${container_loc}
 
 ### 整个工作空间
 
-Window ->Preference->Genera-->Content Types
+Window ->Preference->Genera-->Workspace
+Text file encoding 设为 UTF-8，
+new text file line delimiter 设为 Unix
+
+### Properties 文件
+Window ->Preference->Genera-->Content Types-->Text -->Java Properties File
+
+设置Default encoding，把下面的ISO-8859-1改为UTF-8,然后update,确认保存退出。
 
 
 [Eclipse如何设置编码格式？（3种方式）](http://blog.csdn.net/rainy_black_dog/article/details/52403735)
