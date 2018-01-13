@@ -161,3 +161,5 @@ isAssignableFrom是用来判断一个类Class1和另一个类Class2是否相同�
 - entity class映射到一个或多个从表。从表根据主表的主键列（列名为referencedColumnName值的列），建立一个类型一样的主键列，列名由name属性定义。
 
 [关于主键关联@PrimaryKeyJoinColumn注解](http://blog.csdn.net/java_zc/article/details/47778403) 
+
+[主键关联@PrimaryKeyJoinColumn @OneToOne单向关联  ](http://a5423804.blog.163.com/blog/static/92625527200891844837691/)
