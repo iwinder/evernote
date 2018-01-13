@@ -80,6 +80,21 @@ git push origin :branch-name
 ```
 [git命令行删除远程分支](http://blog.csdn.net/furzoom/article/details/53002699)
 
+### 提交本地分支到远程分支 
+- 创建本地分支：$ git branch [name] ----注意新分支创建后不会自动切换为当前分支
+
+- 切换分支：$ git checkout [name]
+
+- 创建新分支并立即切换到新分支：$ git checkout -b [name]
+
+- 删除分支：$ git branch -d [name] ---- -d选项只能删除已经参与了合并的分支，对于未有合并的分支是无法删除的。如果想强制删除一个分支，可以使用-D选项
+
+- 合并分支：$ git merge [name] ----将名称为[name]的分支与当前分支合并
+
+- 创建远程分支(本地分支push到远程)：$ git push origin [name]
+
+[git提交本地分支到远程分支](https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html)
+
 ## git add小结
 |命令|作用|
 |---|---|
