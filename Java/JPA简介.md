@@ -149,3 +149,15 @@ isAssignableFrom是用来判断一个类Class1和另一个类Class2是否相同�
     格式是：   oo   instanceof   TypeName     
     第一个参数是对象实例名，第二个参数是具体的类名或接口名 
 	[Class.isAssignableFrom与 instanceof 区别](http://lucky16.iteye.com/blog/1631253)
+	
+## @PrimaryKeyJoinColumn
+
+在三种情况下会用到@PrimaryKeyJoinColumn
+
+- 继承。  
+
+- entity class映射到一个或多个从表。从表根据主表的主键列（列名为referencedColumnName值的列），建立一个类型一样的主键列，列名由name属性定义。  
+
+- entity class映射到一个或多个从表。从表根据主表的主键列（列名为referencedColumnName值的列），建立一个类型一样的主键列，列名由name属性定义。
+
+[关于主键关联@PrimaryKeyJoinColumn注解](http://blog.csdn.net/java_zc/article/details/47778403) 
