@@ -17,6 +17,8 @@ alt+shift+s +o
 ```
 alt+shift+s +r
 ```
+
+[eclipse常用快捷键Get；set；](http://blog.csdn.net/agonie201218/article/details/45439719)
 ## 查看/查找
 1.原生文件浏览
 ```
