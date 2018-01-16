@@ -3,6 +3,20 @@ title: Eclipse快捷键
 tags: Eclipse
 grammar_cjkRuby: true
 ---
+
+## 自动生成
+1.无参构造方法 
+```
+alt+shift+s +c
+```
+2.带参构造方法
+```
+alt+shift+s +o
+```
+3. get/set方法
+```
+alt+shift+s +r
+```
 ## 查看/查找
 1.原生文件浏览
 ```
@@ -52,3 +66,13 @@ Ctrl+H
 
 [在Eclipse里自动导入相应包的类名的快捷键](http://blog.csdn.net/hevicky/article/details/7239977)
 
+##  getters /setters 
+
+shift+alt+s 选择 generate getters and setters 
+
+## serialVersionUID
+
+一种就是1L，一种是生成一个很大的数。
+[Java中serialVersionUID的解释及两种生成方式的区别（转载）](http://www.cnblogs.com/mayi1/p/5760984.html)
+
+[Intellij IDEA仿Eclipse 自动生成 SerialVersionUID](http://blog.csdn.net/felix_ou/article/details/54024382)
