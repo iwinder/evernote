@@ -34,7 +34,7 @@ git config [--global] --edit
 //查看本地和远程所有分支
 git branch -a
 //查看远程所有分支
-git branch -ｒ
+git branch -r
 //查看本地分支
 git branch
 ```
