@@ -39,7 +39,10 @@ git branch -r
 git branch
 ```
 [git branch用法总结，查看、新建、删除、重命名](http://blog.csdn.net/afei__/article/details/51567155)
-
+### 更新本地的远程分支列表
+```
+git remote update origin --prune
+```
 ### 重命名分支
 #### 重命名本地分支
 ```
