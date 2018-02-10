@@ -40,9 +40,9 @@ public Page<Award> allAwards(Award award,String searchText,Pageable pageable){
 ```
 @PrePersist
 	public void preInsert() {
-		 if(this.messageBox == null) {
-			   MessageBox messageBox = new MessageBox();
-			   this.setMessageBox(messageBox);
+		 if(this.box == null) {
+			  Box box = new Box();
+			   this.setBox(box);
 		  }
 	}
 ```
