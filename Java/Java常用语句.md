@@ -13,6 +13,10 @@ StringUtils.isNotBlank(searchText)
 Jpa条件查询
 涉及翻页、动态查询、字符串小写化后模糊查询
 ```
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+
 public Page<Award> allAwards(Award award,String searchText,Pageable pageable){
 		return super.findAllWithDataRule((root,query,cb)->{
 			Predicate predicate = cb.equal(root.get("activity").get("id"), award.getActivity().getId());
