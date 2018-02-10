@@ -36,7 +36,7 @@ public Page<Award> allAwards(Award award,String searchText,Pageable pageable){
 @Formula("(select count(distinct ae.user_id )  from activity_enrollment ae where ae.activity_id = id and ae.is_deleted = 0)")
 	private Long enrollmentCount;
 ```
-### 持久化签自动赋值（@PrePersist）
+### 持久化前自动赋值（@PrePersist）
 ```
 @PrePersist
 	public void preInsert() {
