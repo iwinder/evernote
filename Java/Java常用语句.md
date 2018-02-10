@@ -40,6 +40,9 @@ import org.hibernate.annotations.Formula;
 ```
 ### 持久化前自动赋值（@PrePersist）
 ```
+import javax.persistence.PrePersist;
+
+
 @PrePersist
 	public void preInsert() {
 		 if(this.box == null) {
