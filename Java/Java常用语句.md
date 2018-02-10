@@ -9,6 +9,7 @@ grammar_cjkRuby: true
 StringUtils.isNotBlank(searchText)
 ```
 Jpa条件查询
+涉及翻页、动态查询、字符串小写化后模糊查询
 ```
 public Page<Award> allAwards(Award award,String searchText,Pageable pageable){
 		return super.findAllWithDataRule((root,query,cb)->{
