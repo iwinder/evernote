@@ -31,8 +31,18 @@ public Page<Award> allAwards(Award award,String searchText,Pageable pageable){
 		}, pageable);
 	}
 ```
-### Formula虚拟列
+### 虚拟列（@Formula）
 ```
 @Formula("(select count(distinct ae.user_id )  from activity_enrollment ae where ae.activity_id = id and ae.is_deleted = 0)")
 	private Long enrollmentCount;
+```
+### 持久化签自动赋值（@PrePersist）
+```
+@PrePersist
+	public void preInsert() {
+		 if(this.messageBox == null) {
+			   MessageBox messageBox = new MessageBox();
+			   this.setMessageBox(messageBox);
+		  }
+	}
 ```
