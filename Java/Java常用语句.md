@@ -33,6 +33,8 @@ public Page<Award> allAwards(Award award,String searchText,Pageable pageable){
 ```
 ### 虚拟列（@Formula）
 ```
+import org.hibernate.annotations.Formula;
+
 @Formula("(select count(distinct ae.user_id )  from activity_enrollment ae where ae.activity_id = id and ae.is_deleted = 0)")
 	private Long enrollmentCount;
 ```
