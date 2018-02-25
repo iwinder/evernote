@@ -17,6 +17,10 @@ MSBUILD : error MSB3428: 未能加载 Visual C++ 组件“VCBuild.exe”。要�
 ework 2.0 SDK；2) 安装 Microsoft Visual Studio 2005；或 3) 如果将该组件安装到了
 其他位置，请将其位置添加到系统
 路径中。
+......
+gyp ERR! build error
+gyp ERR! stack Error: `C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe
+` failed with exit code: 1
 ```
 但系统中vs2005是存在的，最后参考 https://github.com/nodejs/node-gyp#installation 文档使用 
 ```
