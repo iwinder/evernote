@@ -126,6 +126,10 @@ Did you intend to checkout 'origin/develop' which can not be resolved as commit?
 $ git fetch  
 $ git checkout -b develop origin/develop  
 ```
+注：
+```
+切分支前常 git fetch -ap
+```
 [git签出远程分支问题解决](http://blog.csdn.net/wmzy1067111110/article/details/13512763)
 
 
