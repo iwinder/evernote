@@ -25,3 +25,4 @@ row_number() over(partition by a order by b)
 sysdate 当前日期
 hibernate_sequence.nextval  hibernate中的自增id生成
 ```
+
