@@ -37,3 +37,4 @@ select userid from usercustom
 union
 select userid,loginname from usercustom
 ```
+[ora-01789:query block has incorrect number of result columns](http://blog.csdn.net/wyzxg/article/details/4261014)
