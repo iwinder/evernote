@@ -217,3 +217,10 @@ this.router.navigate(['../../'], { relativeTo: this.route });
 ```
 
 [angular2系统学习 - 路由与导航(3)](http://blog.csdn.net/qq451354/article/details/53998280)
+
+## 编译
+
+```
+ npm run build && npm run clean 
+```
+严格模式，可用于大型修改后的代码检测，一般合并之前和合并之后都用此试下工程编译是否能通过
