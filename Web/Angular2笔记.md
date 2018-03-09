@@ -223,4 +223,4 @@ this.router.navigate(['../../'], { relativeTo: this.route });
 ```
  npm run build && npm run clean 
 ```
-严格模式，可用于大型修改后的代码检测，一般合并之前和合并之后都用此试下工程编译是否能通过
+类似严格模式，可用于大型修改后的代码检测，一般合并之前和合并之后都用此试下工程编译是否能通过
