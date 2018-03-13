@@ -18,11 +18,13 @@ throw new BusinessException("needed-login");
 ### 数组转List
 ```
  Long[] ids
+ 
  Arrays.asList(ids)
 ```
 ### 判断List为空
 ```
 List<Rco> mineRcos = new ArrayList<Rco>();
+
 CollectionUtils.isEmpty(mineRcos)
 ```
 
