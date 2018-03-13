@@ -51,3 +51,10 @@ import javax.persistence.PrePersist;
 		  }
 	}
 ```
+
+### 抛出异常
+```
+throw new AuthenticatException("not-the-owner");
+throw new BusinessException("needed-login");
+```
+
