@@ -10,6 +10,23 @@ import org.apache.commons.lang3.StringUtils;
 
 StringUtils.isNotBlank(searchText)
 ```
+### 抛出异常
+```
+throw new AuthenticatException("not-the-owner");
+throw new BusinessException("needed-login");
+```
+### 数组转List
+```
+ Long[] ids
+ Arrays.asList(ids)
+```
+### 判断List为空
+```
+List<Rco> mineRcos = new ArrayList<Rco>();
+CollectionUtils.isEmpty(mineRcos)
+```
+
+
 ## JPA
 ### 条件查询
 涉及翻页、动态查询、字符串小写化后模糊查询
@@ -52,9 +69,5 @@ import javax.persistence.PrePersist;
 	}
 ```
 
-### 抛出异常
-```
-throw new AuthenticatException("not-the-owner");
-throw new BusinessException("needed-login");
-```
+
 
