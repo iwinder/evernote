@@ -224,3 +224,13 @@ this.router.navigate(['../../'], { relativeTo: this.route });
  npm run build && npm run clean 
 ```
 类似严格模式，可用于大型修改后的代码检测，一般合并之前和合并之后都用此试下工程编译是否能通过
+
+## 一行代码过长
+当出现
+```
+[tslint] Exceeds maximum line length of 140 (max-line-length)
+```
+时添加如下即可：
+```
+// tslint:disable-next-line:max-line-length
+```
