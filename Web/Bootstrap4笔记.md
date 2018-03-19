@@ -23,5 +23,9 @@ grammar_cjkRuby: true
 效果图：
 ![enter description here][1]
 
+## a标签 禁止跳转
+```
+<a href="javascript:;" >编辑</a>
+```
 
   [1]: ./images/20171128141852819.png "20171128141852819"
