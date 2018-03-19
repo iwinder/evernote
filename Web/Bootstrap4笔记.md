@@ -19,3 +19,9 @@ grammar_cjkRuby: true
 | text-dark |	深灰色文字|
 | text-light	|浅灰色文本（白色背景上看不清楚）|
 | text-white	|白色文本（白色背景上看不清楚）|
+
+效果图：
+![enter description here][1]
+
+
+  [1]: ./images/20171128141852819.png "20171128141852819"
