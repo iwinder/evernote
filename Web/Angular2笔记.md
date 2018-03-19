@@ -230,3 +230,12 @@ this.router.navigate(['../../'], { relativeTo: this.route });
 ### Expression has changed after it was checked.
 [ERROR : ExpressionChangedAfterItHasBeenCheckedError
 ](https://stackoverflow.com/questions/44816495/error-expressionchangedafterithasbeencheckederror)
+
+## ng-container
+```
+        <ng-container *ngIf="! currentUser || !isOperation(row)">
+          <a href="javascript:;" class="text-secondary">管理</a>
+          <span>|</span>
+          <a href="javascript:;" class="text-secondary">删除</a>
+        </ng-container>
+```
