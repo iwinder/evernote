@@ -13,3 +13,7 @@ npm config set prefix “D:\SoftWare\NodeJS_Redis\NodeJS\node_modules\node_globa
 /**设置全局cache路径**/
 npm config set cache “D:\SoftWare\NodeJS_Redis\NodeJS\node_modules\node_cache”
 ```
+## 版本升级
+```
+npm i -g npm to update
+```
