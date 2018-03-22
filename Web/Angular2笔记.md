@@ -210,6 +210,16 @@ ng serve --port 4201
 
 [表单校验的值valid、invalid、pristine和dirty](http://blog.csdn.net/lvjianyu2007/article/details/48246155)
 
+### 自定义校验
+```
+  sendTimeValidator = (control: FormControl): { [s: string]: boolean } => {
+
+    if (control.value != null && control.value < Date.now()) {
+      return { sendTimebefore: true, error: true };
+    }
+  };
+```
+
 ## 路由与导航
 
 ```
