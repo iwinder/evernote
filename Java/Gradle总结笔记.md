@@ -60,3 +60,18 @@ apply plugin: 'org.springframework.boot'
 [Object configure（Objectobject，ClosureconfigureClosure）](https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#org.gradle.api.Project:configure(java.lang.Object,%20groovy.lang.Closure))
 
 
+## bootRepackage
+SpringBoot构建插件（spring-boot-gradle-plugin），有一个bootRepackage任务,它的作用是重新打包jar为可执行的jar。
+所以他需要指定一个MainClass， 解决办法：
+关掉bootRepackage任务
+```
+bootRepackage.enabled = false
+```
+或配置mainclass
+```
+    springBoot {
+        mainClass = "com.windcoder.nigthbook.BookApplication";
+        buildInfo()
+    }
+```
+[spring-boot填坑](https://blog.csdn.net/buyaore_wo/article/details/78062684)
