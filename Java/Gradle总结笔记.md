@@ -83,7 +83,7 @@ dependencies {
 ```
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
-	}
+}
 ```
 
 [dependencies {}](https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#org.gradle.api.Project:repositories(groovy.lang.Closure))
