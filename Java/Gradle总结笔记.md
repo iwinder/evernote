@@ -85,6 +85,21 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
 }
 ```
+3、添加libs的所有jar包为依赖
+```
+    dependencies {
+        compile fileTree(dir: 'lib', exclude:'', include: '*.jar')
+    }
+```
+将libs目录下所有jar文件进行编译并打包。
+
+4、引入另一个模块
+```
+    dependencies {
+        compile project(":windcoder-com:test")
+    }
+```
+ 即是将另一个module（等同eclipse中的library)进行编译并打包
 
 [dependencies {}](https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#org.gradle.api.Project:repositories(groovy.lang.Closure))
 [用Gradle 构建你的android程序](https://www.cnblogs.com/youxilua/archive/2013/05/20/3087935.html)
