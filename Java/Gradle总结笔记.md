@@ -70,7 +70,7 @@ repositories {
 ### dependencies
 配置此项目的依赖关系。依赖包的定义。支持maven/ivy，远程，本地库，也支持单文件，如果前面定义了repositories{}maven 库，使用maven的依赖（我没接触过ivy。。）的时候只需要按照用类似于```com.android.tools.build:gradle:0.4```，gradle 就会自动的往远程库下载相应的依赖。
 
-写法：
+#### 写法：
 1、依赖通过group标识，name和version来确定，比如下面这个：
 ```
 dependencies {
