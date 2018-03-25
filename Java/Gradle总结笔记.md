@@ -13,7 +13,7 @@ grammar_cjkRuby: true
 > The given closure is executed against this project's ScriptHandler.
 > 
 > The [ScriptHandler](https://docs.gradle.org/current/javadoc/org/gradle/api/initialization/dsl/ScriptHandler.html) is passed to the closure as the closure's delegate.
-
+>
 >来源:[buildscript { }](https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#org.gradle.api.Project:buildscript(groovy.lang.Closure))
 
 配置此项目的构建脚本类路径。可声明用于编译和执行构建脚本的类路径。该类路径也用于加载构建脚本使用的插件。
@@ -41,3 +41,22 @@ buildscript {
 }
 apply plugin: 'org.springframework.boot'
 ```
+### ext
+额外的属性扩展允许将新属性添加到现有的域对象。即**用于配置额外的属性**。
+详情：[ExtraPropertiesExtension](https://docs.gradle.org/current/dsl/org.gradle.api.plugins.ExtraPropertiesExtension.html)
+### repositories
+配置该项目的存储库。支持java 依赖库管理（maven/ivy）,用于项目的依赖。
+### dependencies
+配置此项目的依赖关系。依赖包的定义。支持maven/ivy，远程，本地库，也支持单文件，如果前面定义了repositories{}maven 库，使用maven的依赖（我没接触过ivy。。）的时候只需要按照用类似于```com.android.tools.build:gradle:0.4```，gradle 就会自动的往远程库下载相应的依赖。
+[dependencies {}](https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#org.gradle.api.Project:repositories(groovy.lang.Closure))
+[用Gradle 构建你的android程序](https://www.cnblogs.com/youxilua/archive/2013/05/20/3087935.html)
+
+## allprojects{}
+配置此项目及其每个子项目。
+## subprojects{}
+配置该项目的子项目。
+## configure(rootProject){}
+配置一个对象，如此处配置根项目。
+[Object configure（Objectobject，ClosureconfigureClosure）](https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#org.gradle.api.Project:configure(java.lang.Object,%20groovy.lang.Closure))
+
+
