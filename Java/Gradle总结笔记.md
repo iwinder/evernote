@@ -46,6 +46,24 @@ apply plugin: 'org.springframework.boot'
 详情：[ExtraPropertiesExtension](https://docs.gradle.org/current/dsl/org.gradle.api.plugins.ExtraPropertiesExtension.html)
 ### repositories
 配置该项目的存储库。支持java 依赖库管理（maven/ivy）,用于项目的依赖。
+
+Gradle需要你指定至少一个仓库作为依赖下载的地方，比如mavenCentral
+```
+repositories {
+    mavenCentral()
+}
+```
+|仓库|含义|
+|---|---|
+|mavenLocal()|本地仓库|
+|mavenCentral()|远程maven仓库|
+| maven {name 'Custom Maven Repository',url 'http://repository.forge.cloudbees.com/release/')}|自定义仓库|
+
+#### 自定义仓库其他写法
+```
+ maven{url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+```
+
 ### dependencies
 配置此项目的依赖关系。依赖包的定义。支持maven/ivy，远程，本地库，也支持单文件，如果前面定义了repositories{}maven 库，使用maven的依赖（我没接触过ivy。。）的时候只需要按照用类似于```com.android.tools.build:gradle:0.4```，gradle 就会自动的往远程库下载相应的依赖。
 [dependencies {}](https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#org.gradle.api.Project:repositories(groovy.lang.Closure))
