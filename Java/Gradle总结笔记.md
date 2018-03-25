@@ -103,6 +103,7 @@ dependencies {
 
 [dependencies {}](https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#org.gradle.api.Project:repositories(groovy.lang.Closure))
 [用Gradle 构建你的android程序](https://www.cnblogs.com/youxilua/archive/2013/05/20/3087935.html)
+[compile、provided、compile files、compile project四者的区别](https://blog.csdn.net/xiaoxiaoniaoge/article/details/50519501)
 
 ## allprojects{}
 配置此项目及其每个子项目。
