@@ -101,6 +101,14 @@ dependencies {
 ```
  即是将另一个module（等同eclipse中的library)进行编译并打包
 
+5、buildscript代码块独有
+```
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+```
+buildscript代码块中你可以对dependencies使用classpath声明。该classpath声明说明了在执行其余的build脚本时，class loader可以使用这些你提供的依赖项。这也正是我们使用buildscript代码块的目的。
+
 [dependencies {}](https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#org.gradle.api.Project:repositories(groovy.lang.Closure))
 [用Gradle 构建你的android程序](https://www.cnblogs.com/youxilua/archive/2013/05/20/3087935.html)
 [compile、provided、compile files、compile project四者的区别](https://blog.csdn.net/xiaoxiaoniaoge/article/details/50519501)
