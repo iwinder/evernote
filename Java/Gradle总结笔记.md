@@ -41,9 +41,11 @@ buildscript {
 }
 apply plugin: 'org.springframework.boot'
 ```
+
 ### ext
 额外的属性扩展允许将新属性添加到现有的域对象。即**用于配置额外的属性**。
 详情：[ExtraPropertiesExtension](https://docs.gradle.org/current/dsl/org.gradle.api.plugins.ExtraPropertiesExtension.html)
+
 ### repositories
 配置该项目的存储库。支持java 依赖库管理（maven/ivy）,用于项目的依赖。
 
@@ -64,15 +66,35 @@ repositories {
  maven{url 'http://maven.aliyun.com/nexus/content/groups/public/'}
 ```
 
+
 ### dependencies
 配置此项目的依赖关系。依赖包的定义。支持maven/ivy，远程，本地库，也支持单文件，如果前面定义了repositories{}maven 库，使用maven的依赖（我没接触过ivy。。）的时候只需要按照用类似于```com.android.tools.build:gradle:0.4```，gradle 就会自动的往远程库下载相应的依赖。
+
+写法：
+1、依赖通过group标识，name和version来确定，比如下面这个：
+```
+dependencies {
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.1'
+}
+```
+
+2、简写
+
+```
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+	}
+```
+
 [dependencies {}](https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#org.gradle.api.Project:repositories(groovy.lang.Closure))
 [用Gradle 构建你的android程序](https://www.cnblogs.com/youxilua/archive/2013/05/20/3087935.html)
 
 ## allprojects{}
 配置此项目及其每个子项目。
+
 ## subprojects{}
 配置该项目的子项目。
+
 ## configure(rootProject){}
 配置一个对象，如此处配置根项目。
 [Object configure（Objectobject，ClosureconfigureClosure）](https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#org.gradle.api.Project:configure(java.lang.Object,%20groovy.lang.Closure))
