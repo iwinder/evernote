@@ -1,6 +1,6 @@
 ---
-title: Gradle笔记 
-tags: 新建,模板,小书匠
+title: Gradle总结笔记 
+tags:  Gradle, Gradle, Gradle
 grammar_cjkRuby: true
 ---
 
