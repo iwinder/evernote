@@ -198,6 +198,17 @@ default值就是默认的端口
 ```
 ng serve --port 4201
 ```
+### 方案三
+在.angular-cli.json文件中，加入serve，如下：
+```
+    "defaults": {
+        "styleExt": "scss",
+        "component": {},
+        "serve": {
+            "port": 4201
+        }
+    }
+```
 
 ## 表单
 ### 表单校验的值
