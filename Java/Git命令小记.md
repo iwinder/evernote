@@ -39,47 +39,10 @@ git branch -r
 git branch
 ```
 [git branch用法总结，查看、新建、删除、重命名](http://blog.csdn.net/afei__/article/details/51567155)
-
-### 更新分支
-#### 本地的远程分支列表
+### 更新本地的远程分支列表
 ```
 git remote update origin --prune
 ```
-#### 更新分支
-```
-git fetch
-```
-上面命令将某个远程主机的更新，全部取回本地。默认情况下，git fetch取回所有分支的更新。
-
-切分支前需常 
-```
-git fetch -ap
-```
-
-### 克隆分支
-
-```
-git clone -b 分支名 仓库地址
-```
-[使用git克隆指定分支的代码](https://www.cnblogs.com/nylcy/p/6569284.html)
-
-
-###  git 切换远程分支
-
-```
-//检出并切换分支
-git checkout -b feature/training origin/feature/training
-```
-### 合并分支
-#### 合并远程
-```
- git merge origin/release/v0.6.0.alpha
-```
-#### 合并本地
-同远程
-
-
-
 ### 重命名分支
 #### 重命名本地分支
 ```
@@ -98,7 +61,20 @@ git push origin new_local_branch_name
 ```
 [git分支重命名 & 删除tag & 删除远程分支后本地依然存在的解决办法](http://blog.csdn.net/sunny05296/article/details/65449791)
 
+### 克隆分支
 
+```
+git clone -b 分支名 仓库地址
+```
+[使用git克隆指定分支的代码](https://www.cnblogs.com/nylcy/p/6569284.html)
+
+
+###  git 切换远程分支
+
+```
+//检出并切换分支
+git checkout -b feature/training origin/feature/training
+```
 
 ## 删除远程分支
 ```
@@ -132,10 +108,9 @@ git push origin :branch-name
 [git add -A 和 git add . 的区别](https://www.cnblogs.com/skura23/p/5859243.html)
 
 
-## 问题及解决
-### git签出远程分支问题解决
-
+## git签出远程分支问题解决
 使用命令
+
 ```
 git checkout -b develop origin/develop  
 ```
@@ -150,6 +125,10 @@ Did you intend to checkout 'origin/develop' which can not be resolved as commit?
 ```
 $ git fetch  
 $ git checkout -b develop origin/develop  
+```
+注：
+```
+切分支前常 git fetch -ap
 ```
 [git签出远程分支问题解决](http://blog.csdn.net/wmzy1067111110/article/details/13512763)
 
