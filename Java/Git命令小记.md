@@ -131,6 +131,19 @@ git push origin :branch-name
 ```
 [git命令行删除远程分支](http://blog.csdn.net/furzoom/article/details/53002699)
 
+### 回退分支
+#### 还原某个特定的文件到之前的版本
+```
+//获得文件对应的commit历史记录
+ git log com/windcoder.md
+//获取需要回退版本的hash，checkout 对应版本，如hash为d1bd8c35ff58c19ecdc5238e076ed468fa323a9b，则执行:
+git checkout d1bd8c35ff58c19ecdc5238e076ed468fa323a9b com/windcoder.md
+// commit更改
+git commit -m "revert to previous version"
+//push 提交
+git push
+```
+
 ### 提交本地分支到远程分支 
 - 创建本地分支：$ git branch [name] ----注意新分支创建后不会自动切换为当前分支
 
