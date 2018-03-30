@@ -123,7 +123,7 @@ If you are sure you want to delete it, run 'git branch -D newTesting'.
 ```
 git branch -D branch-name
 ```
-
+[Git之（四）分支管理](https://blog.csdn.net/w372426096/article/details/78518259)
 #### 远程
 ```
 git branch -r -d origin/branch-name  
