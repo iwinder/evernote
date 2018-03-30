@@ -108,7 +108,8 @@ git push origin new_local_branch_name
 
 
 ### 删除分支
-#### 远程分支
+#### 本地
+#### 远程
 ```
 git branch -r -d origin/branch-name  
 git push origin :branch-name  
