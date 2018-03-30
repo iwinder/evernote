@@ -143,6 +143,18 @@ git commit -m "revert to previous version"
 //push 提交
 git push
 ```
+[git还原某个特定的文件到之前的版本](https://blog.csdn.net/l_yangliu/article/details/53197706)
+
+#### 回退到某个历史版本
+```
+//获取历史记录,获取hash,如d1bd8c35ff58c19ecdc5238e076ed468fa323a9b
+git log 
+//回退
+git reset --hard 139dcfaa558e3276b30b6b2e5cbbb9c00bbdca96
+//把修改推到远程服务器
+git push -f -u origin master  
+```
+[ git回退到某个历史版本](https://blog.csdn.net/newjueqi/article/details/49098123)
 
 ### 提交本地分支到远程分支 
 - 创建本地分支：$ git branch [name] ----注意新分支创建后不会自动切换为当前分支
