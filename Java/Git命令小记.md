@@ -109,6 +109,20 @@ git push origin new_local_branch_name
 
 ### 删除分支
 #### 本地
+```
+git branch -d branch-name
+```
+若提示：
+```
+error: The branch 'newTesting' is not fully merged.  
+If you are sure you want to delete it, run 'git branch -D newTesting'.  
+```
+由于这些分支中还包含着尚未合并进来的工作成果，所以简单地用 Git branch -d 删除该分支会提示错误，因为那样做会丢失数据。
+
+若确实想要删除该分支上的改动，可以用**大写的删除选项 -D 强制执行**，即：
+```
+git branch -D branch-name
+```
 
 #### 远程
 ```
