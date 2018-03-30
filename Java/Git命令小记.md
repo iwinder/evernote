@@ -64,7 +64,13 @@ git clone -b 分支名 仓库地址
 [使用git克隆指定分支的代码](https://www.cnblogs.com/nylcy/p/6569284.html)
 
 
-###  git 切换远程分支
+###  切换分支
+#### 本地
+```
+git checkout -b feature/training
+```
+
+#### 远程
 
 ```
 //检出并切换分支
@@ -77,8 +83,9 @@ git checkout -b feature/training origin/feature/training
 ```
 #### 合并本地
 同远程
-
-
+```
+ git merge release/v0.6.0.alpha
+```
 
 ### 重命名分支
 #### 重命名本地分支
@@ -100,7 +107,8 @@ git push origin new_local_branch_name
 
 
 
-## 删除远程分支
+### 删除分支
+#### 远程分支
 ```
 git branch -r -d origin/branch-name  
 git push origin :branch-name  
