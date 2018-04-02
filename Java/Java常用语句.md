@@ -94,4 +94,14 @@ import javax.persistence.PrePersist;
 当一段sql语句仅某些几个字段等不同时，为了重用sql语句，可用此方式解决。
 [Mapper XML 文件](http://www.mybatis.org/mybatis-3/zh/sqlmap-xml.html)
 
+### 模糊查询
+#### MySQL
+```
+ lower(name) like  concat('%',lower(#{course.name}),'%')
+```
+#### Oracle
+```
+name like  '%'||lower(#{course.name})||'%'
+```
+
 
