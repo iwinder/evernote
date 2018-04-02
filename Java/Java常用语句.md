@@ -101,7 +101,7 @@ import javax.persistence.PrePersist;
 ```
 #### Oracle
 ```
-name like  '%'||lower(#{course.name})||'%'
+lower(name) like  '%'||lower(#{course.name})||'%'
 ```
 
 
