@@ -4,7 +4,8 @@ tags: MySQL,Oracle
 grammar_cjkRuby: true
 ---
 ## where in 查询
-Oracle：当前所用版本中，限制in中的参数不能超过 1000个。
+Oracle：当前所用版本中，限制in中的参数不能超过 1000个。当超出时会被报错"ORA-01795异常(where in超过1000)的解决"。
+
 MySQL：有人说有限制，有人说没限制。但尽量也是不要太多为好，容易造成全表扫描。
 解决方案:
 - 使用 inner join 代替 in
