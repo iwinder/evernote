@@ -62,6 +62,5 @@ WHERE o2.OrderNo is null;
 - 最终出来的是，没有下订单的用户，即代替了 not in实现。
 
 [SQL INNER JOIN 关键字](http://www.w3school.com.cn/sql/sql_join_inner.asp)
-[SQL LEFT JOIN 关键字
-](http://www.w3school.com.cn/sql/sql_join_left.asp)
+[SQL LEFT JOIN 关键字](http://www.w3school.com.cn/sql/sql_join_left.asp)
 
