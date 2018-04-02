@@ -61,4 +61,7 @@ WHERE o2.OrderNo is null;
 - p2 LEFT JOIN o2 查询左表所有信息，加上条件 o2.OrderNo is null 将有订单的用户过滤掉
 - 最终出来的是，没有下订单的用户，即代替了 not in实现。
 
+[SQL INNER JOIN 关键字](http://www.w3school.com.cn/sql/sql_join_inner.asp)
+[SQL LEFT JOIN 关键字
+](http://www.w3school.com.cn/sql/sql_join_left.asp)
 
