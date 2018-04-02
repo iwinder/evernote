@@ -67,3 +67,30 @@ import javax.persistence.PrePersist;
 	}
 ```
 ## Mybatis
+### ${}-属性property 
+
+不同的属性值通过包含的实例变化. 
+
+属性值也可以**被用在 include 元素的 refid 属性里**或者 **include 内部语句中**，例如：
+```
+<sql id="sometable">
+  ${prefix}Table
+</sql>
+
+<sql id="someinclude">
+  from
+    <include refid="${include_target}"/>
+</sql>
+
+<select id="select" resultType="map">
+  select
+    field1, field2, field3
+  <include refid="someinclude">
+    <property name="prefix" value="Some"/>
+    <property name="include_target" value="sometable"/>
+  </include>
+</select>
+```
+
+
+
