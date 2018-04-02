@@ -91,6 +91,7 @@ import javax.persistence.PrePersist;
   </include>
 </select>
 ```
+当一段sql语句仅某些几个字段等不同时，为了重用sql语句，可用此方式解决。
 
 
 
