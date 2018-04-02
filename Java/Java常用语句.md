@@ -44,7 +44,7 @@ public Page<Award> allAwards(Award award,String searchText,Pageable pageable){
 	                    subquery.select(cateXrefRoot.get("childId"));
 	                    subquery.where(cb.equal(cateXrefRoot.get("parentId"), caseInfo.getCategory().getId()));
 	                    predicate = cb.and(predicate,cb.in(root.get("category").get("id")).value(subquery));
-	                }
+}
 ```
 ### 虚拟列（@Formula）
 ```
