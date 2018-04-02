@@ -12,6 +12,7 @@ StringUtils.isNotBlank(searchText)
 ```
 ### try-with-resources
 JDK1.7的新语法，这种try语句可以自动执行资源关闭过程，无需再在finally中显式关闭流。
+
 只有所有实现AutoCloseable接口的类的对象才可以由这种带资源的try语句进行管理。
 
 从JDK7开始，Closeable扩展了AutoCloseable。因此，在JDK7中，所有实现了Closeable接口的类也都实现了AutoCloseable接口。
