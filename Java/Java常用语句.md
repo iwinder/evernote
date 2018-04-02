@@ -36,7 +36,7 @@ public Page<Award> allAwards(Award award,String searchText,Pageable pageable){
 		}, pageable);
 }
 ```
-### 多表查询
+### 多表联查
 
 ```
   Subquery<Long> subquery = query.subquery(Long.class);
