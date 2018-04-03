@@ -27,7 +27,7 @@ git config [--global] --edit
 [Win10下修改git全部配置文件方法](http://blog.csdn.net/shrimpcolo/article/details/49302619)
 [git config命令使用](http://blog.csdn.net/zxncvb/article/details/22153019)
 ## 仓库初始化
-###  创建新的仓库并提交
+###  创建新的本地仓库并提交
 ```
 //create a new repository on the command line
 echo "# qy-console" >> README.md
@@ -37,7 +37,7 @@ git commit -m "first commit"
 git remote add origin https://github.com/iwinder/qy-console.git
 git push -u origin master
 ```
-### 将已存在的仓库提交
+### 将已存在的仓库向远程提交
 ```
 // push an existing repository from the command line
 git remote add origin https://github.com/iwinder/qy-console.git
