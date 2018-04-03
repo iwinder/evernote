@@ -37,7 +37,7 @@ git commit -m "first commit"
 git remote add origin https://github.com/iwinder/qy-console.git
 git push -u origin master
 ```
-### 将已存在的仓库中提交
+### 将已存在的仓库提交
 ```
 // push an existing repository from the command line
 git remote add origin https://github.com/iwinder/qy-console.git
