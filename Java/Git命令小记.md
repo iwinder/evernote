@@ -83,7 +83,7 @@ git clone -b 分支名 仓库地址
 ###  切换分支
 #### 本地
 ```
-git checkout -b feature/training
+git checkout feature/training
 ```
 
 #### 远程
