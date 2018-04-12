@@ -220,3 +220,13 @@ $ git checkout -b develop origin/develop
 
 
 [Git远程操作详解](http://www.ruanyifeng.com/blog/2014/06/git_remote.html)
+
+### push问题
+
+```
+fatal: The current branch develop has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+ git push --set-upstream origin develop
+
+```
