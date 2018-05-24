@@ -66,3 +66,40 @@ WHERE o2.OrderNo is null;
 [SQL INNER JOIN 关键字](http://www.w3school.com.cn/sql/sql_join_inner.asp)
 [SQL LEFT JOIN 关键字](http://www.w3school.com.cn/sql/sql_join_left.asp)
 [inner join 和where 区别](https://blog.csdn.net/qingtanlang/article/details/2133816)
+
+## 时间判断
+
+判断是否为今天是否存在记录
+
+```
+//Oracle
+(select count(*) from ugc_activity_vote_record uavr where uavr.vote_id = o.vote_id and uavr.option_id = uavo.id  and uavr.created_by = #{user.id} and trunc(uavr.created_date) = trunc(sysdate)  ) is_voted
+
+//MySQL
+(select count(*) from ugc_activity_vote_record uavr where uavr.vote_id = o.vote_id and uavr.option_id = uavo.id  and uavr.created_by = #{user.id} and to_days(uavr.created_date) = to_days(now())  ) is_voted,
+
+```
+## 空值补全
+
+```
+//Oracle
+nvl(uavo.votes,0)  as votes,(
+	SELECT
+		COUNT (*)
+	FROM
+		ugc_activity_vote_option vo1
+	WHERE
+		vo1.votes > nvl(uavo.votes,0)
+		and vo1.vote_id = o.vote_id
+) + 1 rank
+//MySQL
+IFNULL(uavo.votes,0) as votes,(
+	SELECT
+		COUNT (*)
+	FROM
+		ugc_activity_vote_option vo1
+	WHERE
+		vo1.votes > IFNULL(uavo.votes,0)
+		and vo1.vote_id = o.vote_id
+) + 1 rank
+```
