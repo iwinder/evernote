@@ -54,4 +54,5 @@ Window -> Preferences -> General -> Appearance -> Colors and Fonts -> Basic -> T
 	然后搜索 validation 
 	关闭对应的校验。
 	[关闭eclipse对js和xml，json的验证](https://blog.csdn.net/qq_25448409/article/details/52980995)
+	[eclipse如何去掉json文件校验](https://blog.csdn.net/ws_dj_love/article/details/78911430)
 2. 
