@@ -58,3 +58,5 @@ Window -> Preferences -> General -> Appearance -> Colors and Fonts -> Basic -> T
 2. 关闭拼写检查
 	在eclipse下的Window--Preference输入spell，然后把第一个复选框“Enable spell checking“给去掉就可以了。
 	亦既：Window--》 Preferrnces–》General–》Editors–》Text Editors–》spelling，取消Enable spell checking选项
+	[取消spell checking,提高eclipse运行速度](https://www.cnblogs.com/112ba/p/6220117.html)
+	[eclipse 如何忽略json错误](https://zhidao.baidu.com/question/748903465308311892.html)
