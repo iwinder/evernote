@@ -44,3 +44,14 @@ Window -> Preferences -> General -> Appearance -> Colors and Fonts -> Basic -> T
  Window -> Preferences -> General -> Appearance -> Colors and Fonts -> Java -> Java Editor Text Font -> Edit
  
  [调整Eclipse字体大小](http://blog.csdn.net/magi1201/article/details/45921907)
+ 
+ ### 移除JSON文件红叉
+ 	
+	以下为两种方案：
+
+1. 关闭校验
+	菜单Window - > Preferences
+	然后搜索 validation 
+	关闭对应的校验。
+	[关闭eclipse对js和xml，json的验证](https://blog.csdn.net/qq_25448409/article/details/52980995)
+2. 
