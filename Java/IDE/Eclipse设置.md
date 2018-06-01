@@ -57,4 +57,4 @@ Window -> Preferences -> General -> Appearance -> Colors and Fonts -> Basic -> T
 	[eclipse如何去掉json文件校验](https://blog.csdn.net/ws_dj_love/article/details/78911430)
 2. 关闭拼写检查
 	在eclipse下的Window--Preference输入spell，然后把第一个复选框“Enable spell checking“给去掉就可以了。
-	亦既：Preferrnces–》General–》Editors–》Text Editors–》spelling，取消Enable spell checking选项
+	亦既：Window--》 Preferrnces–》General–》Editors–》Text Editors–》spelling，取消Enable spell checking选项
