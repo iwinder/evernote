@@ -92,3 +92,9 @@ Math.ceil(125.9)=126.0
 Math.ceil(0.4873)=1.0
 Math.ceil(-0.65)=-0.0
 ```
+
+扩展：
+用于手动分页
+```
+int pages = (int) Math.ceil(Double.valueOf(countUser) / 1000);
+```
