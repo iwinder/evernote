@@ -66,7 +66,7 @@ java.lang.Math.ceil(double a) 返回最小的(最接近负无穷大)double值，
 
 ### 实例
 ```
-package com.yiibai;
+package com.windcoder;
 
 import java.lang.*;
 
