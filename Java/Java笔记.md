@@ -49,3 +49,6 @@ public int indexOf(Object o) {
     return -1;
 }
 ```
+
+## String 重载“+”
+内部会自动优化，创建一个StringBuilder对象，通过其append()方法连接，最后调用toStrong()方法返回。适用于简单拼接，不适用于for循环中的拼接。
