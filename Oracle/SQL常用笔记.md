@@ -70,7 +70,7 @@ WHERE o2.OrderNo is null;
 ## 时间判断
 
 ### 判断是否为今天是否存在记录
-
+对于当天的判等简单点说就是：mysql 用to_days(now())，Oracle 用trunc(sysdate)
 ```
 //Oracle
 (select count(*) from ugc_activity_vote_record uavr where uavr.vote_id = o.vote_id and uavr.option_id = uavo.id  and uavr.created_by = #{user.id} and trunc(uavr.created_date) = trunc(sysdate)  ) is_voted
@@ -79,6 +79,12 @@ WHERE o2.OrderNo is null;
 (select count(*) from ugc_activity_vote_record uavr where uavr.vote_id = o.vote_id and uavr.option_id = uavo.id  and uavr.created_by = #{user.id} and to_days(uavr.created_date) = to_days(now())  ) is_voted,
 
 ```
+1. [mysql 查询当天、本周，本月，上一个月的数据](https://www.cnblogs.com/benefitworld/p/5832897.html)
+
+2. [oracle sql日期比较](https://www.cnblogs.com/lanblogs/p/3257551.html)
+
+3. [Oracle 查询时间在当天的数据](https://www.cnblogs.com/simeone/p/4189264.html)
+
 ### 时间转换
 
 #### Oracle
