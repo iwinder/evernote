@@ -52,3 +52,43 @@ public int indexOf(Object o) {
 
 ## String 重载“+”
 内部会自动优化，创建一个StringBuilder对象，通过其append()方法连接，最后调用toStrong()方法返回。适用于简单拼接，不适用于for循环中的拼接。
+
+## java.lang.Math.ceil(double a)
+java.lang.Math.ceil(double a) 返回最小的(最接近负无穷大)double值，该值大于或等于参数，并等于某个整数。特殊情况：
+
+如果参数值已经等于某个整数，那么结果是一样的说法。
+
+如果参数为NaN或无穷大，正零或负零，那么结果是一样的说法。
+
+如果参数值是大于零，但大于-1.0，则结果为负零。
+
+需要注意的是Math.ceil(x)的值是完全-Math.floor(-x)的值一样。
+
+实例：
+```
+package com.yiibai;
+
+import java.lang.*;
+
+public class MathDemo {
+
+   public static void main(String[] args) {
+
+      // get two double numbers
+      double x = 125.9;
+      double y = 0.4873;
+
+      // call ceal for these these numbers
+      System.out.println("Math.ceil(" + x + ")=" + Math.ceil(x));
+      System.out.println("Math.ceil(" + y + ")=" + Math.ceil(y));
+      System.out.println("Math.ceil(-0.65)=" + Math.ceil(-0.65));
+
+   }
+}
+```
+结果：
+```
+Math.ceil(125.9)=126.0
+Math.ceil(0.4873)=1.0
+Math.ceil(-0.65)=-0.0
+```
