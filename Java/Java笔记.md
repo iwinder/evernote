@@ -92,7 +92,7 @@ Math.ceil(125.9)=126.0
 Math.ceil(0.4873)=1.0
 Math.ceil(-0.65)=-0.0
 ```
-
+[java.lang.Math.ceil(double a)方法实例](https://www.yiibai.com/java/lang/math_ceil.html)
 #### 扩展
 用于手动分页
 ```
