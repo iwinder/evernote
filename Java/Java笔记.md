@@ -30,7 +30,7 @@ a.equals(b.longValue()); //无需这样
 ```
 
 ## list.contains(o)源码
-此处以ArrayList的contains为例
+此处以ArrayList的contains为例，可见当为Long时，该方法调用是equals作对比，而equals已自动拆箱，故无需再手动拆箱。
 ```
  public boolean contains(Object o) {
     return indexOf(o) >= 0;
