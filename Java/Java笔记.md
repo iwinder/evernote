@@ -64,7 +64,7 @@ java.lang.Math.ceil(double a) 返回最小的(最接近负无穷大)double值，
 
 需要注意的是Math.ceil(x)的值是完全-Math.floor(-x)的值一样。
 
-实例：
+### 实例
 ```
 package com.yiibai;
 
@@ -86,14 +86,14 @@ public class MathDemo {
    }
 }
 ```
-结果：
+#### 结果
 ```
 Math.ceil(125.9)=126.0
 Math.ceil(0.4873)=1.0
 Math.ceil(-0.65)=-0.0
 ```
 
-扩展：
+#### 扩展
 用于手动分页
 ```
 //countUser为总条数，pages为页数
