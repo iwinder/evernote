@@ -96,5 +96,6 @@ Math.ceil(-0.65)=-0.0
 扩展：
 用于手动分页
 ```
+//countUser为总条数，pages为页数
 int pages = (int) Math.ceil(Double.valueOf(countUser) / 1000);
 ```
