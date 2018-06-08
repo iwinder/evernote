@@ -69,7 +69,7 @@ WHERE o2.OrderNo is null;
 
 ## 时间判断
 
-判断是否为今天是否存在记录
+### 判断是否为今天是否存在记录
 
 ```
 //Oracle
@@ -79,6 +79,14 @@ WHERE o2.OrderNo is null;
 (select count(*) from ugc_activity_vote_record uavr where uavr.vote_id = o.vote_id and uavr.option_id = uavo.id  and uavr.created_by = #{user.id} and to_days(uavr.created_date) = to_days(now())  ) is_voted,
 
 ```
+### 时间转换
+
+#### Oracle
+to_char(sysdate,'yyyy-mm-dd') 做日期格式化;
+trunc(sysdate) 做截取；
+#### MySQL
+to_days()
+
 ## 空值补全
 
 ```
