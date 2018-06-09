@@ -230,3 +230,10 @@ To push the current branch and set the remote as upstream, use
  git push --set-upstream origin develop
 
 ```
+
+### 修改git提交的注释(commit message)的方法
+提交并且没有push到远程分支，可用以下命令直接修改：
+```
+git commit --amend -m "your new message"
+```
+[修改git提交的注释(commit message)的方法](https://www.cnblogs.com/zhangjiali/p/7150523.html)
