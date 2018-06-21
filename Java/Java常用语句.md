@@ -22,6 +22,14 @@ try (FileInputStream fis = new FileInputStream("windcoer_com.txt")) {
 	.....
 }
 ```
+
+### 抛出异常
+
+```
+throw new AuthenticatException("not-the-owner");
+throw new BusinessException("needed-login");
+```
+
 ## JPA
 ### @PageableDefault
 #### 默认排序
