@@ -244,3 +244,19 @@ To push the current branch and set the remote as upstream, use
 git commit --amend -m "your new message"
 ```
 [修改git提交的注释(commit message)的方法](https://www.cnblogs.com/zhangjiali/p/7150523.html)
+
+
+### pull失败，解决fatal: refusing to merge unrelated histories
+
+```
+git pull origin master --allow-unrelated-histories
+```
+
+原因：
+先pull，因为两个仓库不同，发现refusing to merge unrelated histories，无法pull
+
+因为他们是两个不同的项目，要把两个不同的项目合并，git需要添加一句代码，在git pull，
+
+这句代码是在git 2.9.2版本发生的，最新的版本需要添加--allow-unrelated-histories
+
+[如何去解决fatal: refusing to merge unrelated histories](https://blog.csdn.net/m0_37402140/article/details/72801372)
