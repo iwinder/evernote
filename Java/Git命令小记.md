@@ -247,12 +247,25 @@ git commit --amend -m "your new message"
 
 
 ### pull失败，解决fatal: refusing to merge unrelated histories
+#### 问题：
+```
+Everything up-to-date
+To https://github.com/iwinder/nightbook-java.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/iwinder/nightbook-java.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
+```
+#### 解决方案
 ```
 git pull origin master --allow-unrelated-histories
 ```
 
-原因：
+#### 原因：
 先pull，因为两个仓库不同，发现refusing to merge unrelated histories，无法pull
 
 因为他们是两个不同的项目，要把两个不同的项目合并，git需要添加一句代码，在git pull，
