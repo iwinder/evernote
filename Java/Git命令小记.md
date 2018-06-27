@@ -273,3 +273,11 @@ git pull origin master --allow-unrelated-histories
 这句代码是在git 2.9.2版本发生的，最新的版本需要添加--allow-unrelated-histories
 
 [如何去解决fatal: refusing to merge unrelated histories](https://blog.csdn.net/m0_37402140/article/details/72801372)
+
+## 篡改 name and email
+```
+git filter-branch -f --env-filter "GIT_AUTHOR_NAME='Newname'; GIT_AUTHOR_EMAIL='newemail'; GIT_COMMITTER_NAME='Newname'; GIT_COMMITTER_EMAIL='newemail';" HEAD
+```
+
+[Git 今天终于用了一下 git filter-branch ，爽死了](https://ruby-china.org/topics/7820)
+[Git 修改 commit 的作者信息](https://segmentfault.com/a/1190000008828569)
