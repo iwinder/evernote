@@ -26,6 +26,13 @@ git config [--global] --edit
 ```
 [Win10下修改git全部配置文件方法](http://blog.csdn.net/shrimpcolo/article/details/49302619)
 [git config命令使用](http://blog.csdn.net/zxncvb/article/details/22153019)
+
+### 追其他新的远程仓库地址
+```
+ git remote set-url --add origin GiteeProfileUrl
+```
+[Git配置同时推送到GitHub和码云](https://blog.csdn.net/qq_28975017/article/details/78976827)
+
 ## 仓库初始化
 ###  创建新的本地仓库并提交
 ```
