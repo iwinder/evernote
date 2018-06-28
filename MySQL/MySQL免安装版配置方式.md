@@ -31,3 +31,12 @@ character-set-server=utf8
 default-storage-engine=INNODB
 ```
 ## 配置环境变量
+
+依次操作：计算机–右键–属性–高级系统设置–环境变量
+
+![enter description here](./images/1530154576757.png)
+
+选中Path编辑，,在其后面添加: 你的mysql 安装文件下面的bin文件夹 
+(如: F:\Java\mysql-5.7.22-winx64\bin )
+
+![enter description here](./images/1530154608807.png)
