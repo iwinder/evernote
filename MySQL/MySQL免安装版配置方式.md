@@ -40,3 +40,21 @@ default-storage-engine=INNODB
 (如: F:\Java\mysql-5.7.22-winx64\bin )
 
 ![enter description here](./images/1530154608807.png)
+
+## 安装
+
+以管理员cmd或shell控制台，输入
+```
+mysqld -install
+```
+(有人会使用```mysqld install```或者```mysqld --install```，成功就行)
+
+安装成功会出现:
+![enter description here](./images/1530155220833.png)
+
+## 初始化
+以下命令初始化数据文件，执行后自动创建一个登陆用户，用户名默认是root，密码默认为空
+```
+mysqld  --initialize-insecure --user=mysql
+```
+
