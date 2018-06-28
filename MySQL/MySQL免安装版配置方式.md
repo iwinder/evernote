@@ -30,3 +30,4 @@ character-set-server=utf8
 # 创建新表时将使用的默认存储引擎  
 default-storage-engine=INNODB
 ```
+## 配置环境变量
