@@ -52,6 +52,7 @@ mysqld -install
 (有人会使用```mysqld install```或者```mysqld --install```，成功就行)
 
 安装成功会出现:
+
 ![enter description here](./images/1530155220833.png)
 
 ## 初始化
