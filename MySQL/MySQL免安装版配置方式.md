@@ -63,6 +63,6 @@ mysqld  --initialize-insecure --user=mysql
 ![enter description here](./images/1530155458631.png)
 
 
-参考资料：
+## 参考资料：
 [MySql 5.7.20版本免安装版配置过程](https://www.cnblogs.com/wxw7blog/p/7853182.html)
 [MySQL5.7免安装版配置图文教程](https://www.jb51.net/article/123004.htm)
