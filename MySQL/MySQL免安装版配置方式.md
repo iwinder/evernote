@@ -57,4 +57,7 @@ mysqld -install
 ```
 mysqld  --initialize-insecure --user=mysql
 ```
+## 启动服务
+输入 ```net start mysql``` 启动mysql服务
 
+![enter description here](./images/1530155458631.png)
