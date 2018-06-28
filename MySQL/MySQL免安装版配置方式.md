@@ -4,7 +4,7 @@ tags: MySQL
 grammar_cjkRuby: true
 ---
 ## 前言
-本文演示基于mysql-5.7.22-winx64.zip，windows10。
+本文演示基于mysql-5.7.22-winx64.zip，windows10。之前应该记录过，忘了在哪了，现在单独摘出以作备份。
 
 ## 下载压缩包
 
