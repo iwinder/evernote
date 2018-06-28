@@ -3,6 +3,8 @@ title: MySQL免安装版配置方式
 tags: MySQL
 grammar_cjkRuby: true
 ---
+## 前言
+本文演示基于mysql-5.7.22-winx64，windows10。
 
 ## 下载压缩包
 
