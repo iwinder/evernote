@@ -88,7 +88,7 @@ dependencies {
     testCompile 'junit:junit:4.11'
 }
 ```
-
+如上面中，一个compile即是一个Configuration，一个providedCompile也即是一个Configuration。
 
 
 ###  War 插件
