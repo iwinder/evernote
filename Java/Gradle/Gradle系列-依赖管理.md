@@ -20,3 +20,8 @@ grammar_cjkRuby: true
 
 通常, 一个项目本身会具有依赖性. 举个例子, 运行 Hibernate 的核心需要其他几个类库在 classpath 中. 因此, Gradle 在为你的项目运行测试的时候, 它**会找到这些依赖关系, 并使其可用** 。 我们称之为**transitive dependencies(依赖传递)** 。
 
+### 发布
+
+
+
+## 
