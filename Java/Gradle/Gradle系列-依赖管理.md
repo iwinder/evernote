@@ -38,4 +38,20 @@ grammar_cjkRuby: true
 
 这些传出的文件构成了项目的发布。Gradle 当然会为你负责这个重要的工作。你声明项目的发布，Gradle 会构建并发布在某处。究竟什么是"发布"取决于你想做什么。可能你希望将文件复制到本地目录， 或者将它们上传到一个远程 Maven 或者 Ivy 库.或者你可以使用这些文件在多项目构建中应用在其它的项目中。我们称这个过程为 publication(发布)。
 
-## 
+## 声明依赖
+
+简单的依赖声明：
+```
+//应用插件,这里引入了Gradle的Java插件,此插件提供了Java构建和测试所需的一切。
+apply plugin: 'java'
+
+//仓库
+repositories {
+    mavenCentral()
+}
+//定义依赖
+dependencies {
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '3.6.7.Final'
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+```
