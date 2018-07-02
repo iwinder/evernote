@@ -60,7 +60,7 @@ dependencies {
 
 在 Gradle 里, 依赖可以组合成configurations(配置).。一个Configuration（配置）简单地说就是一系列的依赖。我们称它们为(dependency configuration)依赖配置。 你可以使用它们声明项目的外部依赖。正如我们将在后面看到，它们也被用来声明项目的发布。
 
-Java插件定义了一些标准配置，形成了插件本身的类路径库。下面列一下，你可以自己去这看：Table 23.5, “Java plugin - dependency configurations”.
+Java插件定义了一些标准配置，形成了插件本身的类路径库。下面列一下，你可以自己去这看：[Table 23.5, “Java plugin - dependency configurations”.](http://www.gradle.org/docs/current/userguide/java_plugin.html#tab:configurations)
 
 |configuration|含义|
 |---|---|
