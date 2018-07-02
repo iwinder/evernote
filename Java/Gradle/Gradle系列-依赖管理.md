@@ -12,6 +12,13 @@ grammar_cjkRuby: true
 
 ### 依赖
 
+#### 简言：
+
+1. 根据配置获取依赖关系的过程为 **dependency resolution(依赖解析)** 。
+2. 项目运行时寻找到其依赖关系并使其可用的过程为**dependency resolution(依赖解析)** 。
+
+#### 细说：
+
 **大多数项目都不是完全独立的 ，它们需要其它项目进行编译或测试等等** 。举个例子, 为了在项目中使用 Hibernate, 在编译的时候需要在 classpath 中添加一些 Hibernate 的 jar 路径. 要运行测试的时候, 需要在 test classpath 中包含一些额外的 jar, 比如特定的 JDBC 驱动或者 Ehcache jars.
 
 这些传入的文件构成上述项目的依赖。 Gradle 允许你告诉它项目的依赖关系, 以便找到这些依赖关系, 并在你的构建中维护它们。 
