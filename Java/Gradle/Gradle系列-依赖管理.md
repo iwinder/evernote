@@ -60,6 +60,7 @@ dependencies {
 
 在 Gradle 里, 依赖可以组合成configurations(配置).。一个Configuration（配置）简单地说就是一系列的依赖。我们称它们为(dependency configuration)依赖配置。 你可以使用它们声明项目的外部依赖。正如我们将在后面看到，它们也被用来声明项目的发布。
 
+### Java插件
 Java插件定义了一些标准配置，形成了插件本身的类路径库。下面列一下，你可以自己去这看：[Table 23.5, “Java plugin - dependency configurations”.](http://www.gradle.org/docs/current/userguide/java_plugin.html#tab:configurations)
 
 |configuration|含义|
@@ -88,6 +89,7 @@ dependencies {
 }
 ```
 
+### 排除依赖
 
 **传递依赖特性可以轻松地通过transitive参数进行开启或关闭**，上面的示例中如果要忽略spring-web的传递性依赖可以采用指定 transitive = false 的方式来关闭依赖传递特性，**也可以采用添加@jar的方式忽略该依赖的所有传递性依赖**。
 ```
@@ -96,3 +98,14 @@ compile("org.springframework:spring-web:4.3.4.RELEASE") {
 }
 ```
 
+### 
+
+做web开发时需要servlet的依赖，但是只是编译阶段，运行时servlet依赖由servlet容器来提供。
+
+所以Gradle的War插件也提供了两个configuration，分别是providedCompile和providedRuntime，它们对依赖的使用范围定义和compile以及runtime一致，只不过依赖的Jar包不会被加到War包里面。
+
+如上面示例中的
+```
+  providedCompile "javax.servlet:servlet-api:2.5"
+   providedRuntime ":providedRuntime:1.0@jar"
+```
