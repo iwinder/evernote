@@ -45,13 +45,46 @@ grammar_cjkRuby: true
 //应用插件,这里引入了Gradle的Java插件,此插件提供了Java构建和测试所需的一切。
 apply plugin: 'java'
 
-//仓库
+//仓库:指明要从哪个仓库下载jar包
 repositories {
     mavenCentral()
 }
-//定义依赖
+//定义依赖:声明项目中需要哪些依赖
 dependencies {
     compile group: 'org.hibernate', name: 'hibernate-core', version: '3.6.7.Final'
     testCompile group: 'junit', name: 'junit', version: '4.+'
 }
 ```
+
+## Dependency configurations
+
+在 Gradle 里, 依赖可以组合成configurations(配置).。一个Configuration（配置）简单地说就是一系列的依赖。我们称它们为(dependency configuration)依赖配置。 你可以使用它们声明项目的外部依赖。正如我们将在后面看到，它们也被用来声明项目的发布。
+
+Java插件定义了一些标准配置，形成了插件本身的类路径库。下面列一下，你可以自己去这看：Table 23.5, “Java plugin - dependency configurations”.
+
+|configuration|含义|
+|---|---|
+|compile|用来编译项目源代码的依赖.|
+| runtime | 在运行时被生成的类使用的依赖. 默认的, 也包含了编译时的依赖.|
+|testCompile|编译测试代码的依赖. 默认的, 包含生成的类运行所需的依赖和编译源代码的依赖.|
+|testRuntime|运行测试所需要的依赖. 默认的, 包含上面三个依赖.|
+
+简单实例：
+
+```
+dependencies {
+    compile module(":compile:1.0") {
+        dependency ":compile-transitive-1.0@jar"
+        dependency ":providedCompile-transitive:1.0@jar"
+    }
+    providedCompile "javax.servlet:servlet-api:2.5"
+    providedCompile module(":providedCompile:1.0") {
+        dependency ":providedCompile-transitive:1.0@jar"
+    }
+    runtime ":runtime:1.0"
+    providedRuntime ":providedRuntime:1.0@jar"
+    testCompile 'junit:junit:4.11'
+}
+```
+
+
