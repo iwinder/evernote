@@ -146,14 +146,14 @@ exclude可以接收group和module两个参数，这两个参数可以单独使�
 其中module可以理解为对应GAV中的artifactId，也就是compile group: 'org.gradle.test.classifiers', name: 'service', version: '1.0'中的中间name部分。
   
 ```
-//方法1. 直接在configuration中排除
+// 方法1. 直接在configuration中排除
 configurations {
     //编译期排除commons模块
     compile.exclude module: 'commons'
     //在整个构建过程中排除pkaq.tiger：share
     all*.exclude group: 'pkaq.tiger', module: 'share'
 }
-//方法2. 在具体的某个dependency中排除
+// 方法2. 在具体的某个dependency中排除
 dependencies {
     compile("pkaq.tiger:web:1.0") {
         exclude module: 'share'
