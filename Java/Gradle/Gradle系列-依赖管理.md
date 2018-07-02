@@ -18,4 +18,5 @@ grammar_cjkRuby: true
 
 依赖关系可能需要从远程的 Maven 或者 Ivy 仓库中下载, 也可能是在本地文件系统中, 或者是通过多项目构建另一个构建。我们称这个过程为**dependency resolution(依赖解析)** 。
 
-通常, 一个项目本身会具有依赖性. 举个例子, 运行 Hibernate 的核心需要其他几个类库在 classpath 中. 因此, Gradle **在为你的项目运行测试的时候, 它会找到这些依赖关系, 并使其可用** 。 我们称之为**transitive dependencies(依赖传递)** 。
+通常, 一个项目本身会具有依赖性. 举个例子, 运行 Hibernate 的核心需要其他几个类库在 classpath 中. 因此, Gradle 在为你的项目运行测试的时候, 它**会找到这些依赖关系, 并使其可用** 。 我们称之为**transitive dependencies(依赖传递)** 。
+
