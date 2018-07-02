@@ -88,3 +88,10 @@ dependencies {
 ```
 
 
+传递依赖特性可以轻松地通过transitive参数进行开启或关闭，上面的示例中如果要忽略spring-web的传递性依赖可以采用指定 transitive = false 的方式来关闭依赖传递特性，也可以采用添加@jar的方式忽略该依赖的所有传递性依赖（如上述例子中）。
+```
+compile("org.springframework:spring-web:4.3.4.RELEASE") {
+    transitive = false
+}
+```
+
