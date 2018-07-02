@@ -168,7 +168,7 @@ configurations {
 	providedRuntime
 }
 ```
-该配置应该就是对模块/项目做的全局配置，设置依赖为“providedRuntime”
+该配置应该就是对模块/项目做的全局配置，设置依赖为“providedRuntime”。
 
 
 ## 参考资料
