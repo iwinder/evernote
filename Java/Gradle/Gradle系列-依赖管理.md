@@ -98,7 +98,7 @@ compile("org.springframework:spring-web:4.3.4.RELEASE") {
 }
 ```
 
-### 
+###  War 插件
 
 做web开发时需要servlet的依赖，但是只是编译阶段，运行时servlet依赖由servlet容器来提供。
 
@@ -107,5 +107,5 @@ compile("org.springframework:spring-web:4.3.4.RELEASE") {
 如上面示例中的
 ```
   providedCompile "javax.servlet:servlet-api:2.5"
-   providedRuntime ":providedRuntime:1.0@jar"
+  providedRuntime ":providedRuntime:1.0@jar"
 ```
