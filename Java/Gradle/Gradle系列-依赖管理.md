@@ -208,3 +208,5 @@ dependencies {
 [gradle在打包时怎么排除另一个项目中所有引用的jar包](https://segmentfault.com/q/1010000009055107)
 
 [翻译：Gradle之依赖管理](http://somefuture.iteye.com/blog/2003535)
+
+[VIII. Spring Boot Maven插件](http://www.zhimengzhe.com/bianchengjiaocheng/qitabiancheng/191210.html)
