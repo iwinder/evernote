@@ -95,7 +95,7 @@ dependencies {
 
 做web开发时需要servlet的依赖，但是只是编译阶段，运行时servlet依赖由servlet容器来提供。
 
-所以Gradle的War插件也提供了两个configuration，分别是providedCompile和providedRuntime，它们对依赖的使用范围定义和compile以及runtime一致，只不过依赖的Jar包不会被加到War包里面。
+所以Gradle的War插件也提供了两个configuration，**分别是providedCompile和providedRuntime，它们对依赖的使用范围定义和compile以及runtime一致**，只不过依赖的Jar包不会被加到War包里面 。
 
 如上面示例中的
 ```
@@ -160,6 +160,15 @@ dependencies {
     }       
 }
 ```
+### configurations
+
+有时可能会看到项目中有如下的配置：
+```
+configurations {
+	providedRuntime
+}
+```
+该配置应该就是对模块/项目做的全局配置，设置依赖为“providedRuntime”
 
 
 ## 参考资料
@@ -170,5 +179,6 @@ dependencies {
 
 [Gradle深入与实战(转)](https://www.cnblogs.com/zdfjf/p/5262037.html)
 
-[翻译：Gradle之依赖管理](http://somefuture.iteye.com/blog/2003535)
+[gradle在打包时怎么排除另一个项目中所有引用的jar包](https://segmentfault.com/q/1010000009055107)
 
+[翻译：Gradle之依赖管理](http://somefuture.iteye.com/blog/2003535)
