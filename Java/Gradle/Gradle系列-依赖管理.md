@@ -170,6 +170,32 @@ configurations {
 ```
 该配置应该就是对模块/项目做的全局配置，设置依赖配置为“providedRuntime”。
 
+如，为了构建一个即能执行也可以部署到外部容器的war包，你需要将内嵌容器依赖标记为”providedRuntime”，此时需要添加该字段。
+```
+apply plugin: 'war'
+ 
+war {
+    baseName = 'myapp'
+    version =  '0.5.0'
+}
+ 
+repositories {
+    jcenter()
+    maven { url "http://repo.spring.io/libs-snapshot" }
+}
+ 
+configurations {
+    providedRuntime
+}
+ 
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+    ...
+}
+```
+
+
 
 ## 参考资料
 
