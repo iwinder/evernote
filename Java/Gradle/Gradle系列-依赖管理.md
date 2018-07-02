@@ -125,7 +125,7 @@ configurations.all {
 
 可能需要排除一些传递性依赖中的某个模块，这时需要exclude.
 
-如果说@jar彻底的解决了传递问题，那么exclude则是部分解决了传递问题。
+**如果说@jar彻底的解决了传递问题，那么exclude则是部分解决了传递问题**。
 
 此外，exclude还可用于但不限于以下几种情况：
 
@@ -141,19 +141,34 @@ configurations.all {
 
 可以通过configuration配置或者在依赖声明时添加exclude的方式来排除指定的引用。
 
-　　exclude可以接收group和module两个参数，这两个参数可以单独使用也可以搭配使用，其中module可以理解为对应GAV中的artifactId，也就是compile group: 'org.gradle.test.classifiers', name: 'service', version: '1.0'中的中间name部分。
+exclude可以接收group和module两个参数，这两个参数可以单独使用也可以搭配使用。
+
+其中module可以理解为对应GAV中的artifactId，也就是compile group: 'org.gradle.test.classifiers', name: 'service', version: '1.0'中的中间name部分。
   
 ```
+//方法 1.直接在configuration中排除
 configurations {
     //编译期排除commons模块
     compile.exclude module: 'commons'
     //在整个构建过程中排除pkaq.tiger：share
     all*.exclude group: 'pkaq.tiger', module: 'share'
 }
-
+//方法 2.在具体的某个dependency中排除
 dependencies {
     compile("pkaq.tiger:web:1.0") {
         exclude module: 'share'
     }       
 }
 ```
+
+
+## 参考资料
+
+[跟我学Gradle-3.2:快速入门,Gradle的脚本结构](https://www.jianshu.com/p/a36389eb81a2)
+
+[什么是依赖管理?](http://wiki.jikexueyuan.com/project/GradleUserGuide-Wiki/dependency_management_basics/what_is_dependency_management.html)
+
+[Gradle深入与实战(转)](https://www.cnblogs.com/zdfjf/p/5262037.html)
+
+[翻译：Gradle之依赖管理](http://somefuture.iteye.com/blog/2003535)
+
