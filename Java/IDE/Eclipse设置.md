@@ -13,13 +13,18 @@ grammar_cjkRuby: true
 ![enter description here](./images/1530856514719.png)
 ### 方案二
 
-1、直接打开类文件/文件夹所在的本地目录
+配置一个External Tool
+
+1、Run --》ExternalTools --》External Tools Configurations
+![enter description here](./images/1530856839059.png)
 2、双击Program，新建一个Program。
 3、设置新建的Program
 
 location 里面填 ：C:\WINDOWS\explorer.exe 
 
 Arguments 里面填: ${container_loc}
+
+![enter description here](./images/1530857019405.png)
 
 [Eclipse直接打开类文件/文件夹所在的本地目录](http://blog.csdn.net/rogers65/article/details/52982436)
 
