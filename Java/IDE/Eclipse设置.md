@@ -32,6 +32,7 @@ Window ->Preference->Genera-->Content Types-->Text -->Java Properties File
 设置Default encoding，把下面的ISO-8859-1改为UTF-8,然后update,确认保存退出。
 
 实际项目中，可能只配置Java Properties File，无法适用于Spring Properties File，此时需要单独配置一下其编码格式。
+
 ![enter description here](./images/1530847763660.png)
 
 [Eclipse如何设置编码格式？（3种方式）](http://blog.csdn.net/rainy_black_dog/article/details/52403735)
