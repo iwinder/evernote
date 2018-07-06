@@ -61,8 +61,6 @@ Window -> Preferences -> General -> Appearance -> Colors and Fonts -> Basic -> T
 ### 调节主窗口字体大小。
  Window -> Preferences -> General -> Appearance -> Colors and Fonts -> Java -> Java Editor Text Font -> Edit
  
- [调整Eclipse字体大小](http://blog.csdn.net/magi1201/article/details/45921907)
- 
  ## 取消校验（提升Eclipse响应）
  ![enter description here](./images/1530857216638.png)
  
