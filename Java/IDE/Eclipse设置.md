@@ -26,9 +26,9 @@ Arguments 里面填: ${container_loc}
 
 ![enter description here](./images/1530857019405.png)
 
-[Eclipse直接打开类文件/文件夹所在的本地目录](http://blog.csdn.net/rogers65/article/details/52982436)
+使用时点击以下图标即可
+![enter description here](./images/1530857094819.png)
 
-[Eclipse中一键打开文件所在文件夹](http://blog.csdn.net/duanyipeng/article/details/7065085)
 
 ## 设置编码
 
