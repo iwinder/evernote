@@ -73,7 +73,7 @@ Window -> Preferences -> General -> Appearance -> Colors and Fonts -> Basic -> T
  
  ### 移除JSON文件红叉(旧)
  	
-	以下为两种方案：
+以下为两种方案：
 
 1. 关闭校验
 	菜单Window - > Preferences
@@ -85,3 +85,6 @@ Window -> Preferences -> General -> Appearance -> Colors and Fonts -> Basic -> T
 	亦既：Window--》 Preferrnces–》General–》Editors–》Text Editors–》spelling，取消Enable spell checking选项
 	[取消spell checking,提高eclipse运行速度](https://www.cnblogs.com/112ba/p/6220117.html)
 	[eclipse 如何忽略json错误](https://zhidao.baidu.com/question/748903465308311892.html)
+	
+## xml 文件格式化（非必要）
+![enter description here](./images/1530857444590.png)
