@@ -30,7 +30,7 @@ new text file line delimiter 设为 Unix
 Window ->Preference->Genera-->Content Types-->Text -->Java Properties File
 
 设置Default encoding，把下面的ISO-8859-1改为UTF-8,然后update,确认保存退出。
-
+![enter description here](./images/1530847763660.png)
 
 [Eclipse如何设置编码格式？（3种方式）](http://blog.csdn.net/rainy_black_dog/article/details/52403735)
 
