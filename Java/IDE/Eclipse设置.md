@@ -21,11 +21,15 @@ Arguments 里面填: ${container_loc}
 ## 设置编码
 
 ### 整个工作空间
+修改Workspace encoding & 换行符
 
 Window ->Preference->Genera-->Workspace
+
 Text file encoding 设为 UTF-8，
+
 new text file line delimiter 设为 Unix
 
+![enter description here](./images/1530856166309.png)
 ### Properties 文件
 Window ->Preference->Genera-->Content Types-->Text -->Java Properties File
 
@@ -35,7 +39,7 @@ Window ->Preference->Genera-->Content Types-->Text -->Java Properties File
 
 ![enter description here](./images/1530847763660.png)
 
-[Eclipse如何设置编码格式？（3种方式）](http://blog.csdn.net/rainy_black_dog/article/details/52403735)
+
 
 ## 设置tab缩进
 上面的是4空格缩进，下面是编辑在编辑窗口显示打印边距（换行参考线），非必选。
