@@ -6,6 +6,11 @@ grammar_cjkRuby: true
 
 ## 直接打开类文件/文件夹所在的本地目录
 
+### 方案一
+项目上右键->show in ->System Explorer
+
+### 方案二
+
 1、直接打开类文件/文件夹所在的本地目录
 2、双击Program，新建一个Program。
 3、设置新建的Program
@@ -30,6 +35,7 @@ Text file encoding 设为 UTF-8，
 new text file line delimiter 设为 Unix
 
 ![enter description here](./images/1530856166309.png)
+	
 ### Properties 文件
 Window ->Preference->Genera-->Content Types-->Text -->Java Properties File
 
