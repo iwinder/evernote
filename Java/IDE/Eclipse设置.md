@@ -53,7 +53,6 @@ Window ->Preference->Genera-->Content Types-->Text -->Java Properties File
 ![enter description here](./images/1530847763660.png)
 
 
-
 ## 设置tab缩进
 上面的是4空格缩进，下面是编辑在编辑窗口显示打印边距（换行参考线），非必选。
 ![enter description here](./images/1530848219061.png)
@@ -69,7 +68,10 @@ Window -> Preferences -> General -> Appearance -> Colors and Fonts -> Basic -> T
  
  [调整Eclipse字体大小](http://blog.csdn.net/magi1201/article/details/45921907)
  
- ### 移除JSON文件红叉
+ ## 取消校验（提升Eclipse响应）
+ ![enter description here](./images/1530857216638.png)
+ 
+ ### 移除JSON文件红叉(旧)
  	
 	以下为两种方案：
 
@@ -77,8 +79,7 @@ Window -> Preferences -> General -> Appearance -> Colors and Fonts -> Basic -> T
 	菜单Window - > Preferences
 	然后搜索 validation 
 	关闭对应的校验。
-	[关闭eclipse对js和xml，json的验证](https://blog.csdn.net/qq_25448409/article/details/52980995)
-	[eclipse如何去掉json文件校验](https://blog.csdn.net/ws_dj_love/article/details/78911430)
+
 2. 关闭拼写检查
 	在eclipse下的Window--Preference输入spell，然后把第一个复选框“Enable spell checking“给去掉就可以了。
 	亦既：Window--》 Preferrnces–》General–》Editors–》Text Editors–》spelling，取消Enable spell checking选项
