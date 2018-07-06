@@ -37,6 +37,10 @@ Window ->Preference->Genera-->Content Types-->Text -->Java Properties File
 
 [Eclipse如何设置编码格式？（3种方式）](http://blog.csdn.net/rainy_black_dog/article/details/52403735)
 
+## 设置tab缩进
+上面的是4空格缩进，下面是编辑在编辑窗口显示打印边距（换行参考线）
+![enter description here](./images/1530848219061.png)
+
 ## 调整字体大小
 
 ### 控制台 
