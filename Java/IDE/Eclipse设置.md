@@ -9,6 +9,8 @@ grammar_cjkRuby: true
 ### 方案一
 项目上右键->show in ->System Explorer
 
+或者ALT+SHIFT +W ，在弹出的菜单中选择System Explorer
+![enter description here](./images/1530856514719.png)
 ### 方案二
 
 1、直接打开类文件/文件夹所在的本地目录
