@@ -52,11 +52,6 @@ Window ->Preference->Genera-->Content Types-->Text -->Java Properties File
 
 ![enter description here](./images/1530847763660.png)
 
-
-## 设置tab缩进
-上面的是4空格缩进，下面是编辑在编辑窗口显示打印边距（换行参考线），非必选。
-![enter description here](./images/1530848219061.png)
-
 ## 调整字体大小
 
 ### 控制台 
@@ -86,5 +81,8 @@ Window -> Preferences -> General -> Appearance -> Colors and Fonts -> Basic -> T
 	[取消spell checking,提高eclipse运行速度](https://www.cnblogs.com/112ba/p/6220117.html)
 	[eclipse 如何忽略json错误](https://zhidao.baidu.com/question/748903465308311892.html)
 	
+## 设置tab缩进
+上面的是4空格缩进，下面是编辑在编辑窗口显示打印边距（换行参考线），非必选。
+![enter description here](./images/1530848219061.png)
 ## xml 文件格式化（非必要）
 ![enter description here](./images/1530857444590.png)
