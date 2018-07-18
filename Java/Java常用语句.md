@@ -29,6 +29,14 @@ try (FileInputStream fis = new FileInputStream("windcoer_com.txt")) {
 throw new AuthenticatException("not-the-owner");
 throw new BusinessException("needed-login");
 ```
+### 判断时间
+```
+Date nowDate = DateTimeUtils.getCurrentDate();
+if( (activity.getEnrollStartDate()!=null && nowDate.compareTo(activity.getEnrollStartDate())<0 ) ||
+	(activity.getEnrollEndDate() !=null && nowDate.compareTo(activity.getEnrollEndDate())>0) ) {
+	throw new BusinessException("不在报名时间范围内");
+}
+```
 
 ## JPA
 ### @PageableDefault
