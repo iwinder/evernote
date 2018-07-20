@@ -132,4 +132,8 @@ import javax.persistence.PrePersist;
 lower(name) like  '%'||lower(#{course.name})||'%'
 ```
 
-
+## Dto转换
+```
+Type type = new TypeToken<List<PointsGoodsDto>>() {}.getType();
+return ModelMapperUtils.map(goods, type, pageable);
+```
