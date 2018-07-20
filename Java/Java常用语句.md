@@ -133,6 +133,7 @@ lower(name) like  '%'||lower(#{course.name})||'%'
 ```
 
 ## Dto转换
+### 分页
 ```
 Type type = new TypeToken<List<PointsGoodsDto>>() {}.getType();
 return ModelMapperUtils.map(goods, type, pageable);
