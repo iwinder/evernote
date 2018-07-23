@@ -9,3 +9,6 @@ grammar_cjkRuby: true
 找到#requirepass foobared一行， 去掉#，修改“ foobared”为想要设置的密码即可。
 
 ## 开启远程连接
+1. 放开redis端口，如6379。
+2. 修改redis.conf配置文件
+	本地访问控制：找到bind 127.0.0.1，把这行前面加个#注释掉
