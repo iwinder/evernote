@@ -14,3 +14,6 @@ grammar_cjkRuby: true
 redis服务器默认是处于保护模式并只能本地访问，打开redis.conf文件可以看到如下配置
 	本地访问控制：找到bind 127.0.0.1，把这行前面加个#注释掉
 	保护模式控制：查找protected-mode yes 把yes修改为no
+## 修改端口号
+
+查找 port 6379，将6379改为自己想要的端口号即可。
