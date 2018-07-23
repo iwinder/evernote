@@ -13,4 +13,4 @@ grammar_cjkRuby: true
 2. 修改redis.conf配置文件
 redis服务器默认是处于保护模式并只能本地访问，打开redis.conf文件可以看到如下配置
 	本地访问控制：找到bind 127.0.0.1，把这行前面加个#注释掉
-	保护模式控制：
+	保护模式控制：再查找protected-mode yes 把yes修改为no
