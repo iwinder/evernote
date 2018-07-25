@@ -99,3 +99,6 @@ Math.ceil(-0.65)=-0.0
 //countUser为总条数，pages为页数
 int pages = (int) Math.ceil(Double.valueOf(countUser) / 1000);
 ```
+
+
+# JavaWeb 笔记
