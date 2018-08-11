@@ -17,6 +17,8 @@ npm config set cache “D:\SoftWare\NodeJS_Redis\NodeJS\node_modules\node_cache�
 ```
 npm i -g npm to update
 ```
+查看配置
+npm config ls
 
 ## nrm管理npm源
 
