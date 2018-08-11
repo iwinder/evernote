@@ -5,7 +5,7 @@ grammar_cjkRuby: true
 ---
 
 
-### 无法将“xxxx”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。
+## 无法将“xxxx”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。
 当修改npm全局路径时，windows下npm安装的模块执行可能会报如上错误。
 
 解决方案： 将上面设置的prefix路径（如 F:\nodejs\node_global）添加到环境变量Path即可。
