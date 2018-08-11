@@ -20,11 +20,11 @@ npm i -g npm to update
 
 ## nrm管理npm源
 
-一：安装nrm
+### 一：安装nrm
 ```
 npm install -g nrm
 ```
-二：常用命令： 
+### 二：常用命令： 
 
 1.nrm ls 查看已有的源 
 
