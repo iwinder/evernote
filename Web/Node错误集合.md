@@ -1,5 +1,5 @@
 ---
-title: Node错误集合
+title: Node异常集合
 tags: NodeJs
 grammar_cjkRuby: true
 ---
