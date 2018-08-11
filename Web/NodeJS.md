@@ -17,3 +17,17 @@ npm config set cache “D:\SoftWare\NodeJS_Redis\NodeJS\node_modules\node_cache�
 ```
 npm i -g npm to update
 ```
+
+## nrm管理npm源
+
+一：安装nrm
+```
+npm install -g nrm
+```
+二：常用命令： 
+
+1.nrm ls 查看已有的源 
+
+2.nrm add <源名称> <源地址>  //新增源 
+
+3.nrm use <源名称>.  //切换源
