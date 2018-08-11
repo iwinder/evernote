@@ -8,3 +8,6 @@ grammar_cjkRuby: true
 ## Set
 
 ![enter description here](./images/1533956168923.png)
+
+### SortedSet
+![enter description here](./images/1533957852979.png)
