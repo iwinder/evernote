@@ -11,3 +11,7 @@ grammar_cjkRuby: true
 
 ### SortedSet
 ![enter description here](./images/1533957852979.png)
+
+SortedSet 是“按照对象的比较函数对元素排序”。
+
+LinkedHashSet可以“按照元素插入的次序”。
