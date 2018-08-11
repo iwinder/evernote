@@ -31,3 +31,6 @@ npm install -g nrm
 2.nrm add <源名称> <源地址>  //新增源 
 
 3.nrm use <源名称>.  //切换源
+
+
+
