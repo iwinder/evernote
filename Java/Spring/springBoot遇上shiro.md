@@ -1,6 +1,6 @@
 ---
 title: SpringBoot邂逅Shiro
-tags: springBoot,Shiro
+tags: SpringBoot,Shiro
 grammar_cjkRuby: true
 ---
 
