@@ -10,6 +10,7 @@ grammar_cjkRuby: true
 - springBoot: 1.5.8.RELEASE
 - shiro-spring-boot-web-starter: 1.4.0-RC2
 - shiro-redis: 3.1.0
+- 
 ## 参考资料
 [https://blog.csdn.net/u013615903/article/details/78781166/](https://blog.csdn.net/u013615903/article/details/78781166/)
 [跟我学Shiro目录贴](http://jinnianshilongnian.iteye.com/blog/2018398)
