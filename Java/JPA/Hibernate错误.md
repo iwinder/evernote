@@ -1,5 +1,5 @@
 ---
-title: Hibernate错误
+title: Hibernate错误笔记
 tags: Hibernate
 grammar_cjkRuby: true
 ---
