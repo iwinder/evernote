@@ -17,6 +17,7 @@ grammar_cjkRuby: true
 
 项目核心包为SpringBoot 1.5.8.RELEASE以及shiro-spring 1.4.0，预计集成redis，同时使用redis管理Session，所以追加了shiro-redis。关于数据库的jar包这里就不再赘述。
 
+## 重新Session获取方式
 
 
 
