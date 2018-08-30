@@ -12,7 +12,7 @@ grammar_cjkRuby: true
 - shiro-spring-boot-web-starter: 1.4.0-RC2
 - shiro-redis: 3.1.0
 - spring-boot-starter-data-redis
-项目核心包为SpringBoot 1.5.8.RELEASE以及shiro-spring 1.4.0，预计集成redis，同时使用redis管理Session，所以追加了shiro-redis。
+项目核心包为SpringBoot 1.5.8.RELEASE以及shiro-spring 1.4.0，预计集成redis，同时使用redis管理Session，所以追加了shiro-redis。关于数据库的jar包这里就不再赘述
 
 ## 参考资料
 [https://blog.csdn.net/u013615903/article/details/78781166/](https://blog.csdn.net/u013615903/article/details/78781166/)
