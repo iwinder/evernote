@@ -18,9 +18,9 @@ grammar_cjkRuby: true
 项目核心包为SpringBoot 1.5.8.RELEASE以及shiro-spring 1.4.0，预计集成redis，同时使用redis管理Session，所以追加了shiro-redis。关于数据库的jar包这里就不再赘述。
 
 ## 重新Session获取方式
-Shiro默认从cookie获取Session
+Shiro默认从cookie获取Session以达到维持会话的目的。现在处理
 
 
 ## 参考资料
-[https://blog.csdn.net/u013615903/article/details/78781166/](https://blog.csdn.net/u013615903/article/details/78781166/)
+[在前后端分离的SpringBoot项目中集成Shiro权限框架](https://blog.csdn.net/u013615903/article/details/78781166/)
 [跟我学Shiro目录贴](http://jinnianshilongnian.iteye.com/blog/2018398)
