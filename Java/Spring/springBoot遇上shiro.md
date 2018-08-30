@@ -11,3 +11,4 @@ springBoot 1.5.8.RELEASE
 
 ## 参考资料
 [https://blog.csdn.net/u013615903/article/details/78781166/](https://blog.csdn.net/u013615903/article/details/78781166/)
+[跟我学Shiro目录贴](http://jinnianshilongnian.iteye.com/blog/2018398)
