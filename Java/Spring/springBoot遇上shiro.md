@@ -5,7 +5,7 @@ grammar_cjkRuby: true
 ---
 ## 前言
 
-本篇以前后端分离为背景，仅是记录集成的基础过程，至于shiro框架的基础概念和使用细节，可以自行查阅相关资料，本文不做讨论。
+本篇仅是记录集成的基础过程，至于shiro框架的基础概念和使用细节，可以自行查阅相关资料，本文不做讨论。
 
 ###  集成环境
 
@@ -18,8 +18,7 @@ grammar_cjkRuby: true
 项目核心包为SpringBoot 1.5.8.RELEASE以及shiro-spring 1.4.0，预计集成redis，同时使用redis管理Session，所以追加了shiro-redis。关于数据库的jar包这里就不再赘述。
 
 ## 重新Session获取方式
-Shiro默认从cookie获取Session以达到维持会话的目的。现在前后端分离，我们选择在请求头中传递sessionId，因此需要重写Shiro获取SessionId的方式。
-
+Shiro默认从cookie获取SessionId以达到维持会话的目的。现在处理前后端分离，采用类似ajax请求的方式，通过在请求头中传递SessionId，因此需要重写Shiro获取SessionId的方式。
 
 
 ## 参考资料
