@@ -417,3 +417,10 @@ export class EditorConfig {
 ```
   <qy-editor-md formControlName="comment" (getHtmlValue)="getHtmlValue($event)" ></qy-editor-md>
 ```
+
+## 参考资料
+[Angular 4.x 自定义表单控件](https://segmentfault.com/a/1190000009070500)
+
+[【荐】深入Angular自定义表单控件](https://zhuanlan.zhihu.com/p/29509754)
+
+[Angular集成Editor.md的Markdown编辑器，支持NgModel双向绑定](https://blog.csdn.net/lxpume/article/details/78967345)
