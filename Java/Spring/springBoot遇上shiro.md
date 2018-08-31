@@ -316,6 +316,56 @@ spring.redis.port=6380
 spring.redis.database=8
 spring.redis.timeout=60000
 ```
+
+凭证匹配器部分使用了PasswordHelper类为自己方便添加用户时两者能够统一而写的工具类：
+```
+public class PasswordHelper {
+
+    public static final String ALGORITHM = "SHA-1";
+
+    public static final int HASHITERATIONS = 2;
+
+    private static final int SALT_SIZE = 22;
+
+
+    public static String generateSalt(){
+        byte[] salt = SecurityUtils.generateSalt(SALT_SIZE);
+        return SecurityUtils.encodeHex(salt);
+    }
+
+    public static String encryptPassword(User user) {
+        String newPassword = new SimpleHash(
+                ALGORITHM,
+                user.getPassword(),
+                ByteSource.Util.bytes(user.getCredentialsSalt()),
+                HASHITERATIONS).toHex();
+        return  newPassword;
+    }
+
+}
+```
+里面获取盐值的时SecurityUtils类涉及到的两个方法如下：
+```
+    private static SecureRandom random = new SecureRandom();
+
+    /**
+     * 生成指定为数的随机的Byte[]作为salt.
+     * @param numBytes
+     * @return
+     */
+    public static byte[] generateSalt(int numBytes) {
+        Validate.isTrue(numBytes > 0, "numBytes argument must be a positive integer (1 or larger)", numBytes);
+
+        byte[] bytes = new byte[numBytes];
+        random.nextBytes(bytes);
+        return bytes;
+    }
+
+
+    public static String encodeHex(byte[] input) {
+        return new String(Hex.encodeHex(input));
+    }
+```
 ## 登录api
 前后端分离中通过api返回登录状态，前端通过该状态决定是否成功，同时成功会返回token，后续授权均需通过该token鉴权：
 ```
