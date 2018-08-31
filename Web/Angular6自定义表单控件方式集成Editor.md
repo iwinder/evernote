@@ -212,3 +212,20 @@ updateValue(value: string) {
     });
  }
 ```
+### OnDestroy
+为了安全周期，实现了OnDestroy
+```
+  ngOnDestroy(): void {
+    this.destroy();
+  }
+  
+ destroy() {
+	  if (this.mdeditor) {
+		  this.mdeditor.removeListener('ready');
+		  this.mdeditor.removeListener('contentChange');
+		  this.mdeditor.editor.remove();
+		  this.mdeditor.destroy();
+		  this.mdeditor = null;
+	  }
+}
+```
