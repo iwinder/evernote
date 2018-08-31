@@ -113,4 +113,26 @@ function setUpModelChangePipeline(control: FormControl, dir: NgControl): void {
 
 ## 准备工作
 
-经过上面大致了解ControlValueAccessor，在
+经过上面大致了解ControlValueAccessor，在正式开始前还需要最后的准备工作：
+
+1.使用npm或者yarn安装jquery
+```
+npm install jquery
+或者
+yarn add jquery
+```
+2.[下载Editor.md](http://pandao.github.io/editor.md/)
+3.将需要的css、fonts、images、lib、plugins三个文件夹和editormd.min.js文件放入assets中（其他位置也可，记得配置第3步中对应的angular.json），效果如图：
+![enter description here](./images/1535700259221.png)
+4.配置angular.json
+```
+"styles": [
+              "src/assets/editorMd/css/editormd.min.css",
+              "node_modules/ng-zorro-antd/src/ng-zorro-antd.min.css",
+              "src/styles.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/editorMd/editormd.min.js"
+            ]
+```
