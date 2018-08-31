@@ -344,7 +344,7 @@ public class PasswordHelper {
 
 }
 ```
-里面获取盐值的时SecurityUtils类涉及到的两个方法如下：
+里面获取盐值的时SecurityUtils类涉及到的两个方法如下，本质是通过SecureRandom获取的随机数：
 ```
     private static SecureRandom random = new SecureRandom();
 
