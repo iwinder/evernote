@@ -185,16 +185,18 @@ yarn add jquery
 		  console.error('UEditor is missing');
 		  return;
 		}
+		// 检测配置，若无自定义，则用默认配置。
 		this.editormdConfig = this.editormdConfig != null ? this.editormdConfig : new EditorConfig();
+		// 监听编辑器加载完成事件处理，由于该编辑器的配置特性，只能提前写好传入。这里是用来处理存在默认值时。
 		this.editormdConfig.onload = () => {
 		  if (this.value) {
 			this.mdeditor.setMarkdown(this.value);
 		  }
 		};
+		// 变化监听处理
 		this.editormdConfig.onchange = () => {
 		  this.updateValue(this.mdeditor.getMarkdown());
 		};
-
 
 		this.mdeditor = editormd(this.host.nativeElement.id, this.editormdConfig); // 创建编辑器
 
