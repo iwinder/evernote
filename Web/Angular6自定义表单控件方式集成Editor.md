@@ -176,6 +176,7 @@ yarn add jquery
 ### AfterViewInit
 我们需要执行初始化编辑器的操作，故实现了AfterViewInit。
 ```
+ @ViewChild('host') host; // hmtl中添加 #host标识，用于选择组件模板内的节点
   ngAfterViewInit(): void {
     this.init();
   }
@@ -197,7 +198,7 @@ yarn add jquery
 		this.editormdConfig.onchange = () => {
 		  this.updateValue(this.mdeditor.getMarkdown());
 		};
-
+		// 编辑器必须使用<div id></div>的形式，所以只好添加默认id,后期可考虑传入自定义id
 		this.mdeditor = editormd(this.host.nativeElement.id, this.editormdConfig); // 创建编辑器
 
   }
