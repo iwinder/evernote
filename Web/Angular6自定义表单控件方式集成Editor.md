@@ -136,3 +136,79 @@ yarn add jquery
               "src/assets/editorMd/editormd.min.js"
             ]
 ```
+## 创建EditorMdComponent
+该组件肯定要继承ControlValueAccessor，首先是实现其上面的方法。
+### writeValue
+```
+  writeValue(value: string): void {
+    this.value = value;
+    if (this.mdeditor) {
+        this.mdeditor.setMarkdown(this.value);
+    }
+  }
+```
+### registerOnChange
+```
+  onChange: Function = () => { };
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+```
+### registerOnTouched
+本示例中实际未用的该方法，主要是registerOnChange。
+```
+  onTouched: Function = () => { };
+    registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+```
+### setDisabledState
+这个也未使用，即便设置也会报mdeditor未知的错误，禁用功能需要使用其他方式解决。
+```
+  setDisabledState?(isDisabled: boolean): void {
+    if (isDisabled) {
+      this.mdeditor.setDisabled();
+    } else {
+        this.mdeditor.setEnabled();
+    }
+  }
+```
+### AfterViewInit
+我们需要执行初始化编辑器的操作，故实现了AfterViewInit。
+```
+  ngAfterViewInit(): void {
+    this.init();
+  }
+  
+   init() {
+		if (typeof editormd === 'undefined') {
+		  console.error('UEditor is missing');
+		  return;
+		}
+		this.editormdConfig = this.editormdConfig != null ? this.editormdConfig : new EditorConfig();
+		this.editormdConfig.onload = () => {
+		  if (this.value) {
+			this.mdeditor.setMarkdown(this.value);
+		  }
+		};
+		this.editormdConfig.onchange = () => {
+		  this.updateValue(this.mdeditor.getMarkdown());
+		};
+
+
+		this.mdeditor = editormd(this.host.nativeElement.id, this.editormdConfig); // 创建编辑器
+
+  }
+  
+  
+updateValue(value: string) {
+    this.ngZone.run(() => {
+        this.value = value;
+        this.onChange(this.value); // 关键代码
+        this.onTouched();
+
+        this.onValueChange.emit(this.value);
+        this.getHtmlValue.emit({ originalEvent: event, value: this.getHtmlContent() });
+    });
+ }
+```
