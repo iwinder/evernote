@@ -232,3 +232,15 @@ updateValue(value: string) {
 	  }
 }
 ```
+## 添加自定义验证功能
+## 注册自定义验证器
+
+其中useExisting用来设置验证函数，可自定义：
+
+```
+const UEDITOR_VALUE_ACCESSOR = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => EditorMdComponent),
+  multi: true
+};
+```
