@@ -1,5 +1,5 @@
 ---
-title: Angular6自定义表单控件方式集成Editor.md
+title: Angular6自定义表单控件方式集成Editormd
 tags: Angular
 grammar_cjkRuby: true
 ---
