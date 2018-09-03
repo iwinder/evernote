@@ -12,7 +12,8 @@ wget https://artifacts.elastic.co/downloads/logstash/logstash-6.4.0.tar.gz
 wget https://artifacts.elastic.co/downloads/kibana/kibana-6.4.0-linux-x86_64.tar.gz
 wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.4.0-linux-x86_64.tar.gz
 ```
-
+ 5.0级以上版本至少需要JDK1.8.
+ 2.4的版本可在1.7
 
 
 
@@ -23,5 +24,6 @@ yum -y install sudo
 [linux下elasticsearch 安装、配置及示例](https://blog.csdn.net/sinat_28224453/article/details/51134978)
 
 [Elasticsearch unable to start - Permission issue](https://stackoverflow.com/questions/41057917/elasticsearch-unable-to-start-permission-issue)
----  No factory method found for class org.apache.logging.log4j.core.appender.RollingFileAppender 
+---  No factory method found for class org.apache.logging.log4j.core.appender.RollingFileAppender ----
 [elasticsearch](https://blog.csdn.net/qq_26712449/article/details/73346474)
+
