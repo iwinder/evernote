@@ -23,3 +23,5 @@ yum -y install sudo
 [linux下elasticsearch 安装、配置及示例](https://blog.csdn.net/sinat_28224453/article/details/51134978)
 
 [Elasticsearch unable to start - Permission issue](https://stackoverflow.com/questions/41057917/elasticsearch-unable-to-start-permission-issue)
+---  No factory method found for class org.apache.logging.log4j.core.appender.RollingFileAppender 
+[elasticsearch](https://blog.csdn.net/qq_26712449/article/details/73346474)
