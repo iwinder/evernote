@@ -21,3 +21,5 @@ wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.4.0-linux-
 yum -y install sudo
 
 [linux下elasticsearch 安装、配置及示例](https://blog.csdn.net/sinat_28224453/article/details/51134978)
+
+[Elasticsearch unable to start - Permission issue](https://stackoverflow.com/questions/41057917/elasticsearch-unable-to-start-permission-issue)
