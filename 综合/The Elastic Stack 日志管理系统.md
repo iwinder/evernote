@@ -32,6 +32,83 @@ https://download.elastic.co/beats/filebeat/filebeat-1.3.1-x86_64.tar.gz
 ```
 
 
+## 安装elasticsearch
+### 解压
+```
+tar -zxvf elasticsearch-6.4.0.tar.gz
+```
+### 指定JDK(可选)
+修改elasticsearch启动脚本 
+```
+export JAVA_HOME=~/spark/apps/jdk1.8.0_144/     （此处配置的为刚下的1.8的配置目录）
+export PATH=$JAVA_HOME/bin:$PATH
+
+if [ -x "$JAVA_HOME/bin/java" ]; then
+        JAVA="~/spark/apps/jdk1.8.0_144/bin/java"
+else
+        JAVA=`which java`
+fi
+```
+完整配置如下
+```
+# 配置自己的jdk1.8
+export JAVA_HOME=~/spark/apps/jdk1.8.0_144/
+export PATH=$JAVA_HOME/bin:$PATH
+
+source "`dirname "$0"`"/elasticsearch-env
+
+ES_JVM_OPTIONS="$ES_PATH_CONF"/jvm.options
+JVM_OPTIONS=`"$JAVA" -cp "$ES_CLASSPATH" org.elasticsearch.tools.launchers.JvmOptionsParser "$ES_JVM_OPTIONS"`
+ES_JAVA_OPTS="${JVM_OPTIONS//\$\{ES_TMPDIR\}/$ES_TMPDIR} $ES_JAVA_OPTS"
+
+# 自己添加的jdk判断
+if [ -x "$JAVA_HOME/bin/java" ]; then
+        JAVA="~/spark/apps/jdk1.8.0_144/bin/java"
+else
+        JAVA=`which java`
+fi
+
+cd "$ES_HOME"
+# manual parsing to find out, if process should be detached
+if ! echo $* | grep -E '(^-d |-d$| -d |--daemonize$|--daemonize )' > /dev/null; then
+  exec \
+    "$JAVA" \
+    $ES_JAVA_OPTS \
+    -Des.path.home="$ES_HOME" \
+    -Des.path.conf="$ES_PATH_CONF" \
+    -Des.distribution.flavor="$ES_DISTRIBUTION_FLAVOR" \
+    -Des.distribution.type="$ES_DISTRIBUTION_TYPE" \
+    -cp "$ES_CLASSPATH" \
+    org.elasticsearch.bootstrap.Elasticsearch \
+    "$@"
+else
+  exec \
+    "$JAVA" \
+    $ES_JAVA_OPTS \
+    -Des.path.home="$ES_HOME" \
+    -Des.path.conf="$ES_PATH_CONF" \
+    -Des.distribution.flavor="$ES_DISTRIBUTION_FLAVOR" \
+    -Des.distribution.type="$ES_DISTRIBUTION_TYPE" \
+    -cp "$ES_CLASSPATH" \
+    org.elasticsearch.bootstrap.Elasticsearch \
+    "$@" \
+    <&- &
+  retval=$?
+  pid=$!
+  [ $retval -eq 0 ] || exit $retval
+  if [ ! -z "$ES_STARTUP_SLEEP_TIME" ]; then
+    sleep $ES_STARTUP_SLEEP_TIME
+  fi
+  if ! ps -p $pid > /dev/null ; then
+    exit 1
+  fi
+  exit 0
+fi
+
+exit $?
+
+```
+
 
 
 java.lang.UnsupportedOperationException: seccomp unavailable: CONFIG_SECCOMP not compiled into kernel, CONFIG_SECCOMP and CONFIG_SECCOMP_FILTER are needed
