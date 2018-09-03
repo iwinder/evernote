@@ -120,7 +120,15 @@ exit $?
 ```
 nohup ./bin/kibana &
 ```
+
 [长期运行Kibana](https://blog.csdn.net/ASIA_kobe/article/details/53304447)
+
+## 
+[长期运行Kibana](https://blog.csdn.net/ASIA_kobe/article/details/53304447)
+
+[linux logstash配置java环境](https://blog.csdn.net/singleee/article/details/50979768)
+
+
 
 java.lang.UnsupportedOperationException: seccomp unavailable: CONFIG_SECCOMP not compiled into kernel, CONFIG_SECCOMP and CONFIG_SECCOMP_FILTER are needed
 
