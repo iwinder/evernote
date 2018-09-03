@@ -110,8 +110,12 @@ exit $?
 ```
 [新版elasticsearch 启动时指定jdk1.8版本](https://blog.csdn.net/u010820857/article/details/81977186)
 
+### 后端运行
+```
+./bin/elasticsearch
+```
 
-## 
+## kibana
 后端运行
 ```
 nohup ./bin/kibana &
