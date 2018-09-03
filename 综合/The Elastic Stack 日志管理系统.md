@@ -40,11 +40,11 @@ tar -zxvf elasticsearch-6.4.0.tar.gz
 ### 指定JDK(可选)
 修改elasticsearch启动脚本 
 ```
-export JAVA_HOME=~/spark/apps/jdk1.8.0_144/     （此处配置的为刚下的1.8的配置目录）
+export JAVA_HOME=/home/parim/spark/apps/jdk1.8.0_144/    （此处配置的为刚下的1.8的配置目录）
 export PATH=$JAVA_HOME/bin:$PATH
 
 if [ -x "$JAVA_HOME/bin/java" ]; then
-        JAVA="~/spark/apps/jdk1.8.0_144/bin/java"
+        JAVA="/home/parim/spark/apps/jdk1.8.0_144//bin/java"
 else
         JAVA=`which java`
 fi
@@ -52,7 +52,7 @@ fi
 完整配置如下
 ```
 # 配置自己的jdk1.8
-export JAVA_HOME=~/spark/apps/jdk1.8.0_144/
+export JAVA_HOME=/home/parim/spark/apps/jdk1.8.0_144/
 export PATH=$JAVA_HOME/bin:$PATH
 
 source "`dirname "$0"`"/elasticsearch-env
@@ -63,7 +63,7 @@ ES_JAVA_OPTS="${JVM_OPTIONS//\$\{ES_TMPDIR\}/$ES_TMPDIR} $ES_JAVA_OPTS"
 
 # 自己添加的jdk判断
 if [ -x "$JAVA_HOME/bin/java" ]; then
-        JAVA="~/spark/apps/jdk1.8.0_144/bin/java"
+        JAVA="/home/parim/spark/apps/jdk1.8.0_144//bin/java"
 else
         JAVA=`which java`
 fi
