@@ -120,6 +120,7 @@ exit $?
 ```
 nohup ./bin/kibana &
 ```
+[长期运行Kibana](https://blog.csdn.net/ASIA_kobe/article/details/53304447)
 
 java.lang.UnsupportedOperationException: seccomp unavailable: CONFIG_SECCOMP not compiled into kernel, CONFIG_SECCOMP and CONFIG_SECCOMP_FILTER are needed
 
