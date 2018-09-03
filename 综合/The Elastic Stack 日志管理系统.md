@@ -111,6 +111,12 @@ exit $?
 [新版elasticsearch 启动时指定jdk1.8版本](https://blog.csdn.net/u010820857/article/details/81977186)
 
 
+## 
+后端运行
+```
+nohup ./bin/kibana &
+```
+
 java.lang.UnsupportedOperationException: seccomp unavailable: CONFIG_SECCOMP not compiled into kernel, CONFIG_SECCOMP and CONFIG_SECCOMP_FILTER are needed
 
 内核版本过低。[ElasticSearch 5.0.0 安装部署常见错误或问题](https://blog.csdn.net/u012246178/article/details/63253531)
