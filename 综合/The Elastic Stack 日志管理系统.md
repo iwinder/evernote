@@ -12,3 +12,8 @@ wget https://artifacts.elastic.co/downloads/logstash/logstash-6.4.0.tar.gz
 wget https://artifacts.elastic.co/downloads/kibana/kibana-6.4.0-linux-x86_64.tar.gz
 wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.4.0-linux-x86_64.tar.gz
 ```
+
+
+
+
+[错误：无法找到或加载主类org.elasticsearch.tools.JavaVersionChecker](https://discuss.elastic.co/t/error-could-not-find-or-load-main-class-org-elasticsearch-tools-javaversionchecker/82213)
