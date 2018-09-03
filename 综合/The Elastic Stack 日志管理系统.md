@@ -19,3 +19,5 @@ wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.4.0-linux-
 [错误：无法找到或加载主类org.elasticsearch.tools.JavaVersionChecker](https://discuss.elastic.co/t/error-could-not-find-or-load-main-class-org-elasticsearch-tools-javaversionchecker/82213)
 
 yum -y install sudo
+
+[linux下elasticsearch 安装、配置及示例](https://blog.csdn.net/sinat_28224453/article/details/51134978)
