@@ -15,6 +15,13 @@ wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.4.0-linux-
  5.0级以上版本至少需要JDK1.8.
  2.4的版本可在1.7
 
+|ES  | JDK|
+|----| --- |
+| 0.90 | 1.6 |
+| 1.3-2.4 | 1.7|
+| 5.0+ | 1.8 |
+
+
 
 
 [错误：无法找到或加载主类org.elasticsearch.tools.JavaVersionChecker](https://discuss.elastic.co/t/error-could-not-find-or-load-main-class-org-elasticsearch-tools-javaversionchecker/82213)
