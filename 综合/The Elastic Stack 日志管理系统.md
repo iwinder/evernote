@@ -114,7 +114,10 @@ exit $?
 ```
 ./bin/elasticsearch
 ```
-
+### 关闭
+```
+kill `cat pid`
+```
 ## kibana
 后端运行
 ```
@@ -123,11 +126,14 @@ nohup ./bin/kibana &
 
 [长期运行Kibana](https://blog.csdn.net/ASIA_kobe/article/details/53304447)
 
-## 
+## logstash
 [长期运行Kibana](https://blog.csdn.net/ASIA_kobe/article/details/53304447)
 
 [linux logstash配置java环境](https://blog.csdn.net/singleee/article/details/50979768)
 
+```
+nohup ./bin/logstash  -t -f /home/parim/elk/logstash-6.4.0/config/01-logstash-initial.conf &
+```
 
 
 java.lang.UnsupportedOperationException: seccomp unavailable: CONFIG_SECCOMP not compiled into kernel, CONFIG_SECCOMP and CONFIG_SECCOMP_FILTER are needed
