@@ -181,3 +181,5 @@ sysctl -w vm.max_map_count=262144
 // 永久-需重启
 /etc/sysctl.conf中设置vm.max_map_count=262144
 ```
+
+[elasticsearch在CentOS环境下开机启动](https://www.cnblogs.com/zhi-leaf/p/8487404.html)
