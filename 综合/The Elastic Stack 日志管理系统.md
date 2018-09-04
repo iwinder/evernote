@@ -116,6 +116,9 @@ exit $?
 ```
 ### 关闭
 ```
+# 获取pid
+netstat -nltp | grep java
+
 kill `cat pid`
 ```
 ## kibana
