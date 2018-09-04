@@ -151,3 +151,33 @@ yum -y install sudo
 ---  No factory method found for class org.apache.logging.log4j.core.appender.RollingFileAppender ----
 [elasticsearch](https://blog.csdn.net/qq_26712449/article/details/73346474)
 
+
+
+
+
+[1]: max file descriptors [40960] for elasticsearch process is too low, increase to at least [65536]
+[2]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+
+
+```
+// https://www.elastic.co/guide/en/elasticsearch/reference/master/setting-system-settings.html#sysconfig
+
+# ulimit  临时修改
+sudo su  ---进入root
+ulimit -n 65536 --修改打开文件数的最大值
+su elasticsearch --切回elasticsearch用户
+
+# /etc/security/limits.conf 永久修改
+
+elasticsearch  -  nofile  65536
+
+```
+```
+// https://www.elastic.co/guide/en/elasticsearch/reference/master/vm-max-map-count.html#vm-max-map-count
+
+// 临时
+sysctl -w vm.max_map_count=262144
+
+// 永久-需重启
+/etc/sysctl.conf中设置vm.max_map_count=262144
+```
