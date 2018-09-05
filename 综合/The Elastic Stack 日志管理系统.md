@@ -209,3 +209,5 @@ ps -ef |grep filebeat
 
 kill -9  进程号
 ```
+
+![enter description here](./images/1536145910650.png)
