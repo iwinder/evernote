@@ -128,7 +128,7 @@ nohup ./bin/kibana &
 ```
 ### 关闭
 ```
-nohup ./bin/kibana &
+netstat -nltp
 ```
 [长期运行Kibana](https://blog.csdn.net/ASIA_kobe/article/details/53304447)
 
