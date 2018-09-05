@@ -199,6 +199,8 @@ sysctl -w vm.max_map_count=262144
 
 nohup ./filebeat -e -c filebeat.yml >/dev/null 2>&1 &  将所有标准输出及标准错误输出到/dev/null空设备，即没有任何输出
 
+nohup ./filebeat -e -c filebeat.yml -d "publish" &
+
 nohup ./filebeat -e -c filebeat.yml > filebeat.log &
 ```
 
