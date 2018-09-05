@@ -126,7 +126,10 @@ kill `cat pid`
 ```
 nohup ./bin/kibana &
 ```
-
+### 关闭
+```
+nohup ./bin/kibana &
+```
 [长期运行Kibana](https://blog.csdn.net/ASIA_kobe/article/details/53304447)
 
 ## logstash
@@ -135,7 +138,11 @@ nohup ./bin/kibana &
 [linux logstash配置java环境](https://blog.csdn.net/singleee/article/details/50979768)
 
 ```
-nohup ./bin/logstash  -t -f /home/parim/elk/logstash-6.4.0/config/01-logstash-initial.conf &
+ps -ef |grep logstash
+
+
+
+nohup ./bin/logstash   -f /home/parim/elk/logstash-6.4.0/config/01-logstash-initial.conf &
 ```
 
 
@@ -186,3 +193,17 @@ sysctl -w vm.max_map_count=262144
 ```
 
 [elasticsearch在CentOS环境下开机启动](https://www.cnblogs.com/zhi-leaf/p/8487404.html)
+
+```
+
+
+nohup ./filebeat -e -c filebeat.yml >/dev/null 2>&1 &  将所有标准输出及标准错误输出到/dev/null空设备，即没有任何输出
+
+nohup ./filebeat -e -c filebeat.yml > filebeat.log &
+```
+
+```
+ps -ef |grep filebeat
+
+kill -9  进程号
+```
