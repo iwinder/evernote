@@ -594,7 +594,7 @@ exclude_lines：正则表达式列表，用于匹配您希望Filebeat排除的�
 
 详情可见[ Stdin input](https://www.elastic.co/guide/en/beats/filebeat/6.4/filebeat-input-stdin.html#filebeat-input-stdin-exclude-lines)
 
-### Elasticsearch启动脚本
+### 9.3Elasticsearch启动脚本
 ```
 #!/bin/bash
 #
