@@ -492,8 +492,7 @@ No factory method found for class org.apache.logging.log4j.core.appender.Rolling
 Elasticsearch unable to start - Permission issue
 
 ```
-原因：
-启动Elasticsearch的用户权限不够或未能正确配置授权
+原因：启动Elasticsearch的用户权限不够或未能正确配置授权
 
 解决方案：
 对用户授权或正确配置权限，用户正常情况下不会出现这类错误。
@@ -507,8 +506,7 @@ Elasticsearch unable to start - Permission issue
 max file descriptors [40960] for elasticsearch process is too low, increase to at least [65536]
 ```
 
-原因：
-软硬限制问题,用户最大可打开文件数太小
+原因：软硬限制问题,用户最大可打开文件数太小
 
 解决方案：
 
