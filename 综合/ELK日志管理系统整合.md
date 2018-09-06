@@ -268,7 +268,10 @@ output {
 ```
 [parim@dev logstash-6.4.0]# ./bin/logstash  -t -f /home/parim/elk/logstash-6.4.0/config/01-logstash-initial.conf
 ```
-#### 5.4.2 后台启动
+
+默认情况下，logstash在前台运行，并可以通过按Ctrl-C来停止。
+
+#### 5.4.2 后台运行
 
 ```
 nohup ./bin/logstash   -f /home/parim/elk/logstash-6.4.0/config/01-logstash-initial.conf &
@@ -323,7 +326,7 @@ filebeat.inputs:
 #============================= Filebeat modules ===============================
 filebeat.config.modules:
   path: ${path.config}/modules.d/*.yml
-  reload.enabled: false
+  reload.enabled: true
 #================================ Outputs =====================================
 #-------------------------- Elasticsearch output ------------------------------
 这里面的全注释即可。
@@ -333,3 +336,53 @@ output.logstash:
    ssl.certificate_authorities: ["/etc/pki/tls/certs/logstash-forwarder.crt"]
 ```
 logstash中hosts的地址必须与上面生成证书里面的地址相同，不然证书的相关错误。
+
+#### 6.2.2 Nginx module
+该文件在filebeat-6.4.0-linux-x86_64/modules.d中nginx.yml.disabled
+
+```
+[parim@dev filebeat-6.4.0-linux-x86_64]# cd modules.d/
+[parim@dev modules.d]# cp d中nginx.yml.disabled d中nginx.yml
+[parim@dev modules.d]# vi nginx.yml
+```
+此处复制了一份新的并重命名为nginx.yml，filebeat便可读取到该文件。
+NGINX本身在/home/parim/apps/nginx-1.10，故此处配置如下：
+```
+- module: nginx
+  # Access logs
+  access:
+    enabled: true
+
+    # Set custom paths for the log files. If left empty,
+    # Filebeat will choose the paths depending on your OS.
+    var.paths: [/home/parim/apps/nginx-1.10/logs/access.log*]
+
+  # Error logs
+  error:
+    enabled: true
+
+    # Set custom paths for the log files. If left empty,
+    # Filebeat will choose the paths depending on your OS.
+    var.paths: [/home/parim/apps/nginx-1.10/logs/error.log*]
+```
+之后退回filebeat-6.4.0-linux-x86_64,执行如下操作可开启nginx
+```
+[parim@dev filebeat-6.4.0-linux-x86_64]# filebeat modules enable nginx
+```
+### 6.3启动
+#### 6.3.1 命令行
+```
+[parim@dev filebeat-6.4.0-linux-x86_64]# ./filebeat -e -c filebeat.yml -d "publish"
+```
+默认情况下，filebeat在前台运行，并可以通过按Ctrl-C来停止。
+
+#### 6.3.2 后台运行
+```
+[parim@dev filebeat-6.4.0-linux-x86_64]# [parim@dev filebeat-6.4.0-linux-x86_64]#
+```
+若想结束，通过获取Pid，然后Kill的方式即可。
+```
+ps -ef |grep filebeat
+
+kill -9 PID
+```
