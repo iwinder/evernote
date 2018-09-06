@@ -456,3 +456,4 @@ else
 export JAVA_CMD=/home/parim/spark/apps/jdk1.8.0_144
 export JAVA_HOME=/home/parim/spark/apps/jdk1.8.0_144
 ```
+## 8.附录2-报错与解决
