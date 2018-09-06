@@ -175,7 +175,7 @@ Proto Recv-Q Send-Q Local Address               Foreign Address             Stat
 tcp        0      0 0.0.0.0:5601                0.0.0.0:*                   LISTEN      17821/./bin/../node 
 ```
 
-当需要结束时,可执行下面语句：
+当需要结束时,需执行下面语句：
 ```
 kill -9 PID
 
