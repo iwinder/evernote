@@ -594,3 +594,55 @@ exclude_lines：正则表达式列表，用于匹配您希望Filebeat排除的�
 
 详情可见[ Stdin input](https://www.elastic.co/guide/en/beats/filebeat/6.4/filebeat-input-stdin.html#filebeat-input-stdin-exclude-lines)
 
+### Elasticsearch启动脚本
+```
+#!/bin/bash
+#
+#chkconfig: 345 63 37
+#description: elasticsearch
+#processname: elasticsearch-6.2.2
+
+export ES_HOME=/home/parim/elk/elasticsearch-6.4.0
+
+case $1 in
+        start)
+                su es<<!
+                cd $ES_HOME
+                ./bin/elasticsearch -d -p pid
+                exit
+!
+                echo "elasticsearch is started"
+                ;;
+        stop)
+                pid=`cat $ES_HOME/pid`
+                kill -9 $pid
+                echo "elasticsearch is stopped"
+                ;;
+        restart)
+                pid=`cat $ES_HOME/pid`
+                kill -9 $pid
+                echo "elasticsearch is stopped"
+                sleep 1
+                su es<<!
+                cd $ES_HOME
+                ./bin/elasticsearch -d -p pid
+                exit
+!
+                echo "elasticsearch is started"
+        ;;
+    *)
+        echo "start|stop|restart"
+        ;;  
+esac
+exit 0
+```
+也可以考虑在该脚本中指定JDK版本
+```
+
+export JAVA_HOME=/usr/java/jdk1.8.0_112
+export JAVA_BIN=/usr/java/jdk1.8.0_112/bin
+export PATH=$PATH:$JAVA_HOME/bin
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export JAVA_HOME JAVA_BIN PATH CLASSPATH
+
+```
