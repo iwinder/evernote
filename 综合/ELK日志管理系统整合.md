@@ -386,3 +386,6 @@ ps -ef |grep filebeat
 
 kill -9 PID
 ```
+
+以上4个软件配置好并启动后，可在浏览器中看到效果：
+![enter description here](./images/1536223737905.png)
