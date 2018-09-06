@@ -391,4 +391,53 @@ kill -9 PID
 ![enter description here](./images/1536223737905.png)
 
 ## 7.附录1-指定JDK
+服务器上默认为非1.8的JDK时，使用5.x的ELK需要指定单独的1.8的JDK才可。
+### Elasticsearch
+需要修改elasticsearch启动脚本。
+打开 elasticsearchHOME/bin/elasticsearch 编辑：
+```
+[root]# vim bin/elasticsearch
+export JAVA_HOME=/home/parim/spark/apps/jdk1.8.0_144/    （此处配置的为刚下的1.8的配置目录）
+export PATH=$JAVA_HOME/bin:$PATH
 
+if [ -x "$JAVA_HOME/bin/java" ]; then
+        JAVA="/home/parim/spark/apps/jdk1.8.0_144//bin/java"
+else
+        JAVA=`which java`
+fi
+```
+完整配置文件（部分）
+```
+# 配置自己的jdk1.8
+export JAVA_HOME=/home/parim/spark/apps/jdk1.8.0_144/
+export PATH=$JAVA_HOME/bin:$PATH
+
+source "`dirname "$0"`"/elasticsearch-env
+
+ES_JVM_OPTIONS="$ES_PATH_CONF"/jvm.options
+JVM_OPTIONS=`"$JAVA" -cp "$ES_CLASSPATH" org.elasticsearch.tools.launchers.JvmOptionsParser "$ES_JVM_OPTIONS"`
+ES_JAVA_OPTS="${JVM_OPTIONS//\$\{ES_TMPDIR\}/$ES_TMPDIR} $ES_JAVA_OPTS"
+
+# 自己添加的jdk判断
+if [ -x "$JAVA_HOME/bin/java" ]; then
+        JAVA="/home/parim/spark/apps/jdk1.8.0_144//bin/java"
+else
+        JAVA=`which java`
+fi
+
+cd "$ES_HOME"
+# manual parsing to find out, if process should be detached
+if ! echo $* | grep -E '(^-d |-d$| -d |--daemonize$|--daemonize )' > /dev/null; then
+  exec \
+    "$JAVA" \
+    $ES_JAVA_OPTS \
+    -Des.path.home="$ES_HOME" \
+    -Des.path.conf="$ES_PATH_CONF" \
+    -Des.distribution.flavor="$ES_DISTRIBUTION_FLAVOR" \
+    -Des.distribution.type="$ES_DISTRIBUTION_TYPE" \
+    -cp "$ES_CLASSPATH" \
+    org.elasticsearch.bootstrap.Elasticsearch \
+    "$@"
+else
+……
+```
