@@ -662,4 +662,4 @@ export JAVA_HOME JAVA_BIN PATH CLASSPATH
  5.0级以上版本需要至少JDK1.8.
  2.4的版本是可在1.7中的最高版本。
  
- 这是elasticsearch版本与JDK的对比，其余几个也是类似，5.x及以上的均需要至少为JDK1.8。
+ 这是elasticsearch版本与JDK的对比，其余几个也是类似，5.x及以上的版本均需要至少为JDK1.8。
