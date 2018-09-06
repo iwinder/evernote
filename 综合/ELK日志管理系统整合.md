@@ -380,7 +380,7 @@ NGINX本身在/home/parim/apps/nginx-1.10，故此处配置如下：
 
 #### 6.3.2 后台运行
 ```
-[parim@dev filebeat-6.4.0-linux-x86_64]# https://my.oschina.net/liuyuantao/blog/1798724
+[parim@dev filebeat-6.4.0-linux-x86_64]# nohup ./filebeat -e -c filebeat.yml > filebeat.log &
 ```
 若想结束，通过获取Pid，然后Kill的方式即可。
 ```
