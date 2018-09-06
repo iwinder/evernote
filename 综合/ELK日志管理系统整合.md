@@ -564,7 +564,7 @@ grok为Logstash 的Filter的一个插件，又因为存在表达式要配置，�
                       '$status $body_bytes_sent ref:"$http_referer" '
                       '"$http_user_agent" "$http_x_forwarded_for"';
 ```
-打印出来为:
+打印日志为:
 ```
 192.168.0.221 - - [1488865947.648] [2017-03-07T13:52:27+08:00] sid:"1cbf1328-d6f4-4fa8-bb7a-768012c89419" "GET /learner/js/styles.bundle.js HTTP/1.0" 304 0  ref:"http://dev.qc.net/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393" "121.0.0.234"
 ```
