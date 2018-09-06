@@ -77,7 +77,7 @@ Elasticsearch有三个配置文件：
 [parim@dev elasticsearch-6.4.0]# vi config/elasticsearch.yml
 
 ```
-配置Elasticsearch节点的host、name、port，具体参数请根据实际情况自行修改。Elasticsearch默认端口号为9200
+配置Elasticsearch节点的host、name、port，具体参数请根据实际情况自行修改。Elasticsearch默认端口号为9200。
 ```
 
 node.name: sk.qc.net
@@ -133,7 +133,7 @@ kill -9 PID
 
 ```
 
-这里主要配置kibana的访问端口、host和Elasticsearch访问url。kibana默认端口号为5601.
+这里主要配置kibana的访问端口、host和Elasticsearch访问url。kibana默认端口号为5601。
 
 ```
 server.host: "0.0.0.0"
@@ -147,3 +147,26 @@ elasticsearch.password: "pass"
 ```
 
 ### 启动
+
+#### 命令行启动
+```
+[parim@dev kibana-6.4.0-linux-x86_64]# ./bin/kibana
+
+```
+默认情况下，Kibana在前台运行，将其日志打印到标准输出（stdout），并可以通过按Ctrl-C来停止。
+
+#### 后台运行
+常常我们更希望这些在后台运行，通过以下代码即可：
+```
+[parim@dev kibana-6.4.0-linux-x86_64] nohup ./bin/kibana &
+
+```
+
+使用命令shell时，使用nohup为命令添加前缀可防止在注销或退出shell时自动中止命令。其意为"no hangup."。命令末尾的“＆”符号指示bash在后台运行
+
+#### 检查服务运行
+Kibana默认 进程名：node ，端口5601
+```
+[parim@dev kibana-6.4.0-linux-x86_64] netstat -nltp
+
+```
