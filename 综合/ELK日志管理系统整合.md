@@ -276,7 +276,6 @@ output {
 
 ```
 nohup ./bin/logstash   -f /home/parim/elk/logstash-6.4.0/config/01-logstash-initial.conf &
-
 ```
 
 当需要结束时,需执行下面语句：
