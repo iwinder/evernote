@@ -335,7 +335,7 @@ output.logstash:
    hosts: ["sk.qc.net:5000"]
    ssl.certificate_authorities: ["/etc/pki/tls/certs/logstash-forwarder.crt"]
 ```
-logstash中hosts的地址必须与上面生成证书里面的地址相同，不然证书的相关错误。
+logstash中hosts的地址必须与上面生成证书里面的地址相同，不然会报证书的相关错误。
 
 #### 6.2.2 Nginx module
 该文件在filebeat-6.4.0-linux-x86_64/modules.d中nginx.yml.disabled
