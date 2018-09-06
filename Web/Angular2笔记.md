@@ -269,3 +269,6 @@ this.router.navigate(['../../'], { relativeTo: this.route });
           <a href="javascript:;" class="text-secondary">删除</a>
         </ng-container>
 ```
+
+
+[Angular 6集成Spring Boot 2,Spring Security,JWT和CORS](http://blog.51cto.com/7308310/2072364)
