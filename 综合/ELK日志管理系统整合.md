@@ -492,8 +492,7 @@ No factory method found for class org.apache.logging.log4j.core.appender.Rolling
 Elasticsearch unable to start - Permission issue
 
 ```
-原因:
-
+原因：
 启动Elasticsearch的用户权限不够或未能正确配置授权
 
 解决方案：
@@ -501,5 +500,13 @@ Elasticsearch unable to start - Permission issue
 
 原因参考：[Error: Could not find or load main class org.elasticsearch.tools.JavaVersionChecker](https://discuss.elastic.co/t/error-could-not-find-or-load-main-class-org-elasticsearch-tools-javaversionchecker/82213)
 
-#### 8.1.3 
+#### 8.1.3 max file descriptors [40960] for elasticsearch process is too low, increase to at least [65536]
+
+错误提示：
+```
+max file descriptors [40960] for elasticsearch process is too low, increase to at least [65536]
+```
+
+原因：
+无法创建本地文件问题,用户最大可创建文件数太小
 
