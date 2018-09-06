@@ -221,7 +221,7 @@ certs/logstash-forwarder.crt
 [parim@dev logstash-6.4.0]# vi config/01-logstash-initial.conf
 
 ```
-配置文件如下：
+配置文件具体如下：
 ```
 input {
   beats {
@@ -274,3 +274,15 @@ output {
 nohup ./bin/logstash   -f /home/parim/elk/logstash-6.4.0/config/01-logstash-initial.conf &
 
 ```
+
+当需要结束时,需执行下面语句：
+```
+# 获取logstash的Pid
+ps -ef |grep logstash
+
+# 结束进程
+kill -9 PID
+```
+
+### 6.部署filebeat
+filebeat需要部署到客户端，这里由于都在一台服务器上，所以依旧在这里操作。
