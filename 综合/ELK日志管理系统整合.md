@@ -573,5 +573,6 @@ grok为Logstash 的Filter的一个插件，又因为存在表达式要配置，�
 %{IPORHOST:[nginx][access][client_ip]} - %{DATA:[nginx][access][user_name]} %{DATA:[nginx][access][msec]} \[%{DATA:[nginx][access][time_iso8601]}\] sid:\"%{DATA:[nginx][access][cookie_sid]}\" \"%{WORD:[nginx][access][method]} %{DATA:[nginx][access][url]} HTTP/%{NUMBER:[nginx][access][http_version]}\" %{NUMBER:[nginx][access][response_code]} %{NUMBER:[nginx][access][body_sent][bytes]} ref:\"%{DATA:[nginx][access][referer]}\" \"%{DATA:[nginx][access][user_agent]}\" \"%{DATA:[nginx][access][x_forwarded]}\"
 ```
 一个小表达式的格式为```%{IPORHOST:[nginx][access][client_ip]}```，以：分界，其中IPORHOST为grok内置表达式的匹配规则，[nginx][access][client_ip]为自定义名称，可以为任意值。
-可以在 http://grokdebug.herokuapp.com/ 上在线调试所需要等 grok 正则表达式，具体操作如下图：
+
+可以在 http://grokdebug.herokuapp.com/ 在线调试所需要等 grok 正则表达式，具体操作如下图：
 ![enter description here](./images/1536229122427.png)
