@@ -90,6 +90,8 @@ http.port: 9200
 
 [Starting Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/starting-elasticsearch.html#start-targz) 
 
+Elasticsearch以默认禁用了root用户直接启动程序，故需要一个其他的用户执行启动命令，不然会报“不能用root"的类似错误。
+
 #### 3.3.1 命令行启动
 
 ```
@@ -459,4 +461,20 @@ export JAVA_CMD=/home/parim/spark/apps/jdk1.8.0_144
 export JAVA_HOME=/home/parim/spark/apps/jdk1.8.0_144
 ```
 ## 8.附录2-报错与解决
-### Elasticsearch
+### 8.1 Elasticsearch
+
+#### 8.1.1 CONFIG_SECCOMP and CONFIG_SECCOMP_FILTER are needed
+
+错误提示：
+
+```
+java.lang.UnsupportedOperationException: seccomp unavailable: CONFIG_SECCOMP not compiled into kernel, CONFIG_SECCOMP and CONFIG_SECCOMP_FILTER are needed
+```
+原因:
+
+只是一个警告，主要是因为你Linux版本过低造成的。
+
+解决方案：
+1. 重新安装新版本的Linux系统
+2. 警告不影响使用，可以忽略
+
