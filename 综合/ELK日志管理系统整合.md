@@ -554,3 +554,17 @@ sysctl -w vm.max_map_count=262144
 永久修改方案：
 
 更新/etc/sysctl.conf下的```vm.max_map_count```值。该方案需要重启服务器。更新后可使用```sysctl vm.max_map_count```命令验证。
+
+## 9附录-grok表达式
+grok为Logstash 的Filter的一个插件，又因为存在表达式要配置，最开始当成过滤条件的配置了。随着深入了解，发现这个只是一个数据结构化转换工具，主要作用就是把String类型的字符串转为key-value形式。
+
+比如这里的ngix logs的格式为：
+```
+ '$remote_addr - $remote_user [$msec] [$time_iso8601] sid:"$cookie_sid" "$request" '
+                      '$status $body_bytes_sent ref:"$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+```
+打印出来为:
+```
+192.168.0.221 - - [1488865947.648] [2017-03-07T13:52:27+08:00] sid:"1cbf1328-d6f4-4fa8-bb7a-768012c89419" "GET /learner/js/styles.bundle.js HTTP/1.0" 304 0  ref:"http://dev.qc.net/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393" "121.0.0.234"
+```
