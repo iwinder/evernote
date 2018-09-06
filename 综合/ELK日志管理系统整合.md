@@ -342,7 +342,7 @@ logstash中hosts的地址必须与上面生成证书里面的地址相同，不�
 
 ```
 [parim@dev filebeat-6.4.0-linux-x86_64]# cd modules.d/
-[parim@dev modules.d]# cp d中nginx.yml.disabled d中nginx.yml
+[parim@dev modules.d]# cp nginx.yml.disabled nginx.yml
 [parim@dev modules.d]# vi nginx.yml
 ```
 此处复制了一份新的并重命名为nginx.yml，filebeat便可读取到该文件。
