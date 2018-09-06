@@ -97,7 +97,8 @@ http.port: 9200
 [parim@dev elasticsearch-6.4.0]# ./bin/elasticsearch
 
 ```
-此时是在窗口中启动的，可以通过Ctrl+C停止。
+默认情况下，elasticsearch在前台运行，并可以通过按Ctrl+C来停止。
+
 
 #### 3.3.2 作为守护进程启动
 
@@ -157,7 +158,7 @@ elasticsearch.password: "pass"
 [parim@dev kibana-6.4.0-linux-x86_64]# ./bin/kibana
 
 ```
-默认情况下，Kibana在前台运行，将其日志打印到标准输出（stdout），并可以通过按Ctrl-C来停止。
+默认情况下，Kibana在前台运行，将其日志打印到标准输出（stdout），并可以通过按Ctr+C来停止。
 
 #### 4.3.2 后台运行
 常常我们更希望这些在后台运行，通过以下代码即可：
@@ -269,7 +270,7 @@ output {
 [parim@dev logstash-6.4.0]# ./bin/logstash  -t -f /home/parim/elk/logstash-6.4.0/config/01-logstash-initial.conf
 ```
 
-默认情况下，logstash在前台运行，并可以通过按Ctrl-C来停止。
+默认情况下，logstash在前台运行，并可以通过按Ctrl+C来停止。
 
 #### 5.4.2 后台运行
 
@@ -374,7 +375,7 @@ NGINX本身在/home/parim/apps/nginx-1.10，故此处配置如下：
 ```
 [parim@dev filebeat-6.4.0-linux-x86_64]# ./filebeat -e -c filebeat.yml -d "publish"
 ```
-默认情况下，filebeat在前台运行，并可以通过按Ctrl-C来停止。
+默认情况下，filebeat在前台运行，并可以通过按Ctrl+C来停止。
 
 #### 6.3.2 后台运行
 ```
