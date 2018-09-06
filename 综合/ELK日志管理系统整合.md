@@ -167,7 +167,7 @@ elasticsearch.password: "pass"
 
 ```
 
-使用命令shell时，使用nohup为命令添加前缀可防止在注销或退出shell时自动中止命令。其意为"no hangup."。命令末尾的“＆”符号指示bash在后台运行
+使用命令shell时，使用nohup为命令添加前缀可防止在注销或退出shell时自动中止命令。其意为"no hangup."。命令末尾的“＆”符号指示bash在后台运行.---------[Linux nohup command](https://www.computerhope.com/unix/unohup.htm)
 
 #### 4.3.3 检查服务运行
 Kibana默认 进程名：node ，端口5601
@@ -389,3 +389,6 @@ kill -9 PID
 
 以上4个软件配置好并启动后，可在浏览器中看到效果：
 ![enter description here](./images/1536223737905.png)
+
+## 7.附录1-指定JDK
+
