@@ -137,6 +137,7 @@ netstat -nltp
 
 [linux logstash配置java环境](https://blog.csdn.net/singleee/article/details/50979768)
 
+[logstash启动制定jdk1.8版本](https://blog.csdn.net/u010820857/article/details/81987922)
 ```
 ps -ef |grep logstash
 
