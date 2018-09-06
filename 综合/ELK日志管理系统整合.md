@@ -90,7 +90,7 @@ http.port: 9200
 
 [Starting Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/starting-elasticsearch.html#start-targz) 
 
-Elasticsearch以默认禁用了root用户直接启动程序，故需要一个其他的用户执行启动命令，不然会报“不能用root用户的"的类似错误。
+Elasticsearch以默认禁用了root用户直接启动程序，故需要一个其他的用户执行启动命令，不然会报“不能用root用户"的类似错误。
 
 #### 3.3.1 命令行启动
 
@@ -477,4 +477,29 @@ java.lang.UnsupportedOperationException: seccomp unavailable: CONFIG_SECCOMP not
 解决方案：
 1. 重新安装新版本的Linux系统
 2. 警告不影响使用，可以忽略
+#### 8.1.2 用户授权问题
+
+错误提示 1：
+```
+Error: Could not find or load main class org.elasticsearch.tools.JavaVersionChecker
+```
+错误提示 2：
+```
+No factory method found for class org.apache.logging.log4j.core.appender.RollingFileAppender 
+```
+错误提示 3：
+```
+Elasticsearch unable to start - Permission issue
+
+```
+原因:
+
+启动Elasticsearch的用户权限不够或未能正确配置授权
+
+解决方案：
+对用户授权或正确配置权限，用户正常情况下不会出现这类错误。
+
+原因参考：[Error: Could not find or load main class org.elasticsearch.tools.JavaVersionChecker](https://discuss.elastic.co/t/error-could-not-find-or-load-main-class-org-elasticsearch-tools-javaversionchecker/82213)
+
+#### 8.1.3 
 
