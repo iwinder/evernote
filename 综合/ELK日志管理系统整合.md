@@ -508,5 +508,27 @@ max file descriptors [40960] for elasticsearch process is too low, increase to a
 ```
 
 原因：
-无法创建本地文件问题,用户最大可创建文件数太小
+软硬限制问题,用户最大可打开文件数太小
 
+解决方案：
+
+参考：[Configuring system settings](https://www.elastic.co/guide/en/elasticsearch/reference/master/setting-system-settings.html#sysconfig)。假设启动Elasticsearch 用户为elasticsearch：
+
+临时修改方案：
+```
+// https://www.elastic.co/guide/en/elasticsearch/reference/master/setting-system-settings.html#sysconfig
+
+# ulimit  临时修改
+sudo su  ---进入root
+ulimit -n 65536 --修改打开文件数的最大值
+su elasticsearch --切回elasticsearch用户
+
+
+```
+永久修改方案：
+在/etc/security/limits.conf中添加如下配置，增加用户elasticsearch打开文件数最大为65536：
+```
+# /etc/security/limits.conf 永久修改
+
+elasticsearch  -  nofile  65536
+```
