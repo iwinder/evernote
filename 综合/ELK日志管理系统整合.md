@@ -119,3 +119,29 @@ kill -9 PID
 > [RPM](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.4.0.deb)和[Debian](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.4.0.deb) 的包中提供了启动脚本，你可以用它来启动和停止Elasticsearch 进程，其余几个同此。
 
 ## Kibana
+### 解压
+```
+
+[parim@dev elk]# tar -zxvf kibana-6.4.0-linux-x86_64.tar.gz
+[parim@dev elk]# cd kibana-6.4.0-linux-x86_64
+
+```
+
+### 配置
+```
+[parim@dev kibana-6.4.0-linux-x86_64]# vi config/kibana.yml
+
+```
+
+这里主要配置kibana的访问端口和Elasticsearch访问url
+
+```
+server.host: "0.0.0.0"
+elasticsearch.url: "http://192.168.0.79:9200"
+
+```
+若elasticsearch有用户名和密码，也需在这里配置：
+```
+elasticsearch.username: "user"
+elasticsearch.password: "pass"
+```
