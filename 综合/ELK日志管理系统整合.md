@@ -90,7 +90,7 @@ http.port: 9200
 
 [Starting Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/starting-elasticsearch.html#start-targz) 
 
-Elasticsearch以默认禁用了root用户直接启动程序，故需要一个其他的用户执行启动命令，不然会报“不能用root"的类似错误。
+Elasticsearch以默认禁用了root用户直接启动程序，故需要一个其他的用户执行启动命令，不然会报“不能用root用户的"的类似错误。
 
 #### 3.3.1 命令行启动
 
