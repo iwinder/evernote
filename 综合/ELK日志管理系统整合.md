@@ -518,7 +518,6 @@ max file descriptors [40960] for elasticsearch process is too low, increase to a
 ```
 // https://www.elastic.co/guide/en/elasticsearch/reference/master/setting-system-settings.html#sysconfig
 
-# ulimit  临时修改
 sudo su  ---进入root
 ulimit -n 65536 --修改打开文件数的最大值
 su elasticsearch --切回elasticsearch用户
@@ -544,3 +543,16 @@ max virtual memory areas vm.max_map_count [65530] is too low, increase to at lea
 一个进程可以拥有的VMA(虚拟内存区域)的数量限制不满足elasticsearch的需求。
 
 解决方案：
+参考：[Virtual memory](https://www.elastic.co/guide/en/elasticsearch/reference/master/vm-max-map-count.html#vm-max-map-count)
+
+临时修改方案：
+```
+// https://www.elastic.co/guide/en/elasticsearch/reference/master/setting-system-settings.html#sysconfig
+
+sysctl -w vm.max_map_count=262144
+
+```
+
+永久修改方案：
+
+更新/etc/sysctl.conf下的```vm.max_map_count```值。该方案需要重启服务器。更新后可使用```sysctl vm.max_map_count```命令验证。
