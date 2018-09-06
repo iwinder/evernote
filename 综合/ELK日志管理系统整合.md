@@ -646,3 +646,4 @@ export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 export JAVA_HOME JAVA_BIN PATH CLASSPATH
 
 ```
+最开始的参考找不到了， 也可考虑参考[elasticsearch设置执行脚本并添加开机启动](https://my.oschina.net/liuyuantao/blog/1798724)
