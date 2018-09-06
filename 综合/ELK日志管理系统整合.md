@@ -146,7 +146,7 @@ elasticsearch.username: "user"
 elasticsearch.password: "pass"
 ```
 
-### 启动
+### 启动与关闭
 
 #### 命令行启动
 ```
@@ -168,5 +168,16 @@ elasticsearch.password: "pass"
 Kibana默认 进程名：node ，端口5601
 ```
 [parim@dev kibana-6.4.0-linux-x86_64] netstat -nltp
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address               Foreign Address             State       PID/Program name   
+tcp        0      0 0.0.0.0:5601                0.0.0.0:*                   LISTEN      17821/./bin/../node 
+```
+
+当需要结束时,可执行下面语句：
+```
+kill -9 PID
 
 ```
+如上面```kill -9 17821```
