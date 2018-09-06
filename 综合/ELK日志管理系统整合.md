@@ -650,3 +650,14 @@ export JAVA_HOME JAVA_BIN PATH CLASSPATH
 
 ```
 最开始的参考找不到了， 也可考虑参考[elasticsearch设置执行脚本并添加开机启动](https://my.oschina.net/liuyuantao/blog/1798724)
+
+### 9.4 JDK版本与软件版本
+
+|ES  | JDK|
+|----| --- |
+| 0.90 | 1.6 |
+| 1.3-2.4 | 1.7|
+| 5.0+ | 1.8 |
+
+ 5.0级以上版本至少需要JDK1.8.
+ 2.4的版本是可在1.7中的最高版本。
