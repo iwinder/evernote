@@ -77,7 +77,7 @@ Elasticsearch有三个配置文件：
 [parim@dev elasticsearch-6.4.0]# vi config/elasticsearch.yml
 
 ```
-配置Elasticsearch节点的host、name、port，具体参数请根据实际情况自行修改。
+配置Elasticsearch节点的host、name、port，具体参数请根据实际情况自行修改。Elasticsearch默认端口号为9200
 ```
 
 node.name: sk.qc.net
@@ -133,7 +133,7 @@ kill -9 PID
 
 ```
 
-这里主要配置kibana的访问端口和Elasticsearch访问url
+这里主要配置kibana的访问端口、host和Elasticsearch访问url。kibana默认端口号为5601.
 
 ```
 server.host: "0.0.0.0"
@@ -145,3 +145,5 @@ elasticsearch.url: "http://192.168.0.79:9200"
 elasticsearch.username: "user"
 elasticsearch.password: "pass"
 ```
+
+### 启动
