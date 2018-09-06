@@ -574,5 +574,5 @@ grok为Logstash 的Filter的一个插件，又因为存在表达式要配置，�
 ```
 一个小表达式的格式为```%{IPORHOST:[nginx][access][client_ip]}```，以：分界，其中IPORHOST为grok内置表达式的匹配规则，[nginx][access][client_ip]为自定义名称，可以为任意值。
 
-可以在 http://grokdebug.herokuapp.com/ 在线调试所需要等 grok 正则表达式，具体操作如下图：
+可以在 http://grokdebug.herokuapp.com/ 上面在线调试所需要等 grok 正则表达式，具体操作如下图：
 ![enter description here](./images/1536229122427.png)
