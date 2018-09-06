@@ -30,7 +30,7 @@ Filebeat轻量级的日志传输工具，可以读取系统、nignx、apache等l
 
 ```
 ### 软件包
-wget获取所需软件包，这里默认nignx以安装配置。最新的软件包可从[官网](https://www.elastic.co/cn/downloads) 下载。这里使用的tar.gz解压是
+wget获取所需软件包，这里默认nignx以安装配置。最新的软件包可从[官网](https://www.elastic.co/cn/downloads) 下载。这里使用的tar.gz压缩格式的安装包。
 
 ```
 
@@ -66,6 +66,12 @@ elasticsearch、Logstash均需要jdk支持，故若服务器上没有，需要�
 ```
 ### 配置
 
+Elasticsearch有三个配置文件：
+- elasticsearch.yml 用于配置Elasticsearch
+- jvm.options 用于配置Elasticsearch JVM设置
+- log4j2.properties 用于配置Elasticsearch日志记录
+
+这些文件位于config目录中，此处只配置 elasticsearch.yml
 ```
 
 [parim@dev elasticsearch-6.4.0]# vi config/elasticsearch.yml
@@ -80,7 +86,9 @@ http.port: 9200
 
 ```
 ### 启动
-[Starting Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/starting-elasticsearch.html#start-targz)
+
+[Starting Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/starting-elasticsearch.html#start-targz) 
+
 #### 命令行启动
 
 ```
@@ -107,3 +115,7 @@ netstat -nltp | grep java
 kill -9 PID
 
 ```
+
+> [RPM](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.4.0.deb)和[Debian](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.4.0.deb) 的包中提供了启动脚本，你可以用它来启动和停止Elasticsearch 进程，其余几个同此。
+
+## Kibana
