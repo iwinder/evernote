@@ -393,7 +393,7 @@ kill -9 PID
 ![enter description here](./images/1536223737905.png)
 
 ## 7.附录1-指定JDK
-服务器上默认为非1.8的JDK时，使用5.x的ELK需要指定单独的1.8的JDK才可。
+服务器上默认为非1.8的JDK时，使用5.x的ELK需要指定单独的1.8的JDK才可。后期若能写成脚本，能在脚本中指定的话就不必现在这样麻烦地做入侵式修改了。
 ### 7.1 Elasticsearch
 需要修改elasticsearch启动脚本。
 打开 elasticsearchHOME/bin/elasticsearch 编辑：
