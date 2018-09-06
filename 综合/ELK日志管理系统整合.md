@@ -532,3 +532,15 @@ su elasticsearch --切回elasticsearch用户
 
 elasticsearch  -  nofile  65536
 ```
+
+#### 8.1.4 max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+
+错误提示：
+```
+max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+```
+
+原因：
+一个进程可以拥有的VMA(虚拟内存区域)的数量限制不满足elasticsearch的需求。
+
+解决方案：
