@@ -284,5 +284,52 @@ ps -ef |grep logstash
 kill -9 PID
 ```
 
-### 6.部署filebeat
-filebeat需要部署到客户端，这里由于都在一台服务器上，所以依旧在这里操作。
+## 6.部署filebeat
+
+filebeat只需部署到客户端，这里客户端服务器为同一个。
+
+### 6.1 解压
+```
+
+[parim@dev elk]# tar -zxvf filebeat-6.4.0-linux-x86_64.tar.gz
+[parim@dev elk]# cd filebeat-6.4.0-linux-x86_64
+
+```
+
+### 6.2 配置
+
+首先要配置的是filebeat.yml，此次首要任务是监控处理Nginx Logs，filebeat提供了[Nginx module](https://www.elastic.co/guide/en/beats/filebeat/6.4/filebeat-module-nginx.html)可以帮我们便捷完成此项，故需要配置Nginx module。
+
+#### 6.2.1 filebeat.yml
+
+```
+[parim@dev filebeat-6.4.0-linux-x86_64]# vi  filebeat.yml
+```
+这里主要配置的有：
+- Filebeat inputs 可以配置日志类型的，也可以配置日志过滤。这次只配置过滤条件。
+- Filebeat modules 默认应该不需要配置，具体配置有单独文件。
+- Elasticsearch output 由于这里有一层Logstash，需要注释这里的配置。
+- Logstash output 这里需要放开注释，配置我们之前的Logstash相关内容。
+
+下面放出关键配置：
+```
+#=========================== Filebeat inputs =============================
+
+filebeat.inputs:
+- type: log
+    enabled: false
+- type: stdin
+    include_lines: [(\/learner)+]
+#============================= Filebeat modules ===============================
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
+#================================ Outputs =====================================
+#-------------------------- Elasticsearch output ------------------------------
+这里面的全注释即可。
+#----------------------------- Logstash output --------------------------------
+output.logstash:
+   hosts: ["sk.qc.net:5000"]
+   ssl.certificate_authorities: ["/etc/pki/tls/certs/logstash-forwarder.crt"]
+```
+logstash中hosts的地址必须与上面生成证书里面的地址相同，不然证书的相关错误。
