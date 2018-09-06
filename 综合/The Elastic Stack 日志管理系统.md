@@ -196,7 +196,7 @@ sysctl -w vm.max_map_count=262144
 [elasticsearch在CentOS环境下开机启动](https://www.cnblogs.com/zhi-leaf/p/8487404.html)
 
 ```
-
+[JVM最大Thread数量----包含max_map_count含义](http://mapserver000-gmail-com.iteye.com/blog/1888284)
 
 nohup ./filebeat -e -c filebeat.yml >/dev/null 2>&1 &  将所有标准输出及标准错误输出到/dev/null空设备，即没有任何输出
 
