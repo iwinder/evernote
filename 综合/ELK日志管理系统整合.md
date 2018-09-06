@@ -392,7 +392,7 @@ kill -9 PID
 
 ## 7.附录1-指定JDK
 服务器上默认为非1.8的JDK时，使用5.x的ELK需要指定单独的1.8的JDK才可。
-### 7.1Elasticsearch
+### 7.1 Elasticsearch
 需要修改elasticsearch启动脚本。
 打开 elasticsearchHOME/bin/elasticsearch 编辑：
 ```
@@ -448,7 +448,7 @@ else
 
 ```
 
-### 7.2Logstash
+### 7.2 Logstash
 
 
 查看logstash启动脚本,没有关于java_home之类的相关配置，但logstash启动过程会引入lib文件bin/logstash.lib.sh ，经查看logstash.lib.sh中定义了一个setup_java的函数，setup_java被setup函数调用，最终被bin/logstash启动脚本调用，因此，我们只需要在logstash或logstash.lib.sh的行首位置添加两个环境变量即可：
@@ -457,3 +457,4 @@ export JAVA_CMD=/home/parim/spark/apps/jdk1.8.0_144
 export JAVA_HOME=/home/parim/spark/apps/jdk1.8.0_144
 ```
 ## 8.附录2-报错与解决
+### Elasticsearch
