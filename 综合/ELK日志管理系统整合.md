@@ -238,8 +238,6 @@ input {
 }
 
  filter {
-  if [fileset][module] == "nginx" {
-    if [fileset][name] == "access" {
       grok {
 	match => { "message" =>  ["%{IPORHOST:[nginx][access][client_ip]} - %{DATA:[nginx][access][user_name]} %{DATA:[nginx][access][msec]} \[%{DATA:[nginx][access][time_iso8601]}\] sid:\"%{DATA:[nginx][access][cookie_sid]}\" \"%{WORD:[nginx][access][method]} %{DATA:[nginx][access][url]} HTTP/%{NUMBER:[nginx][access][http_version]}\" %{NUMBER:[nginx][access][response_code]} %{NUMBER:[nginx][access][body_sent][bytes]} ref:\"%{DATA:[nginx][access][referer]}\" \"%{DATA:[nginx][access][user_agent]}\" \"%{DATA:[nginx][access][x_forwarded]}\""]}
     remove_field => "message"     
@@ -251,10 +249,6 @@ input {
         match => [ "[nginx][access][time]", "dd/MMM/YYYY:H:m:s Z" ]
         remove_field => "[nginx][access][time]"
       }
-
-
-    }
-  }
 }
 
 output {
@@ -303,7 +297,7 @@ filebeat只需部署到客户端，这里客户端服务器为同一个。
 
 ### 6.2 配置
 
-首先要配置的是filebeat.yml，此次首要任务是监控处理Nginx Logs，filebeat提供了[Nginx module](https://www.elastic.co/guide/en/beats/filebeat/6.4/filebeat-module-nginx.html)可以帮我们便捷完成此项，故需要配置Nginx module。
+首先要配置的是filebeat.yml
 
 #### 6.2.1 filebeat.yml
 
@@ -311,8 +305,8 @@ filebeat只需部署到客户端，这里客户端服务器为同一个。
 [parim@dev filebeat-6.4.0-linux-x86_64]# vi  filebeat.yml
 ```
 这里主要配置的有：
-- Filebeat inputs 可以配置日志类型的，也可以配置日志过滤。这次只配置过滤条件。
-- Filebeat modules 默认应该不需要配置，具体配置有单独文件。
+- Filebeat inputs 可以配置input类型，也可以配置日志过滤规则。
+- Filebeat modules 默认应该不需要配置，具体配置有单独文件（位于modules.d中）。
 - Elasticsearch output 由于这里有一层Logstash，需要注释这里的配置。
 - Logstash output 这里需要放开注释，配置我们之前的Logstash相关内容。
 
@@ -322,13 +316,15 @@ filebeat只需部署到客户端，这里客户端服务器为同一个。
 
 filebeat.inputs:
 - type: log
-    enabled: false
-- type: stdin
-    include_lines: [(\/learner)+]
+    paths:
+    - /home/parim/apps/nginx-1.10/logs/access.log* 
+    enabled: true
+    include_lines: ['(\/learner)+']
+    exclude_lines: ['\/(content|assets|static|images|fonts)\/','\.(css|js|png|jpg|xml)','\/null'] 
 #============================= Filebeat modules ===============================
 filebeat.config.modules:
   path: ${path.config}/modules.d/*.yml
-  reload.enabled: true
+  reload.enabled: false
 #================================ Outputs =====================================
 #-------------------------- Elasticsearch output ------------------------------
 这里面的全注释即可。
@@ -339,38 +335,7 @@ output.logstash:
 ```
 logstash中hosts的地址必须与上面生成证书里面的地址相同，不然会报证书的相关错误。
 
-#### 6.2.2 Nginx module
-该文件在filebeat-6.4.0-linux-x86_64/modules.d中nginx.yml.disabled
 
-```
-[parim@dev filebeat-6.4.0-linux-x86_64]# cd modules.d/
-[parim@dev modules.d]# cp nginx.yml.disabled nginx.yml
-[parim@dev modules.d]# vi nginx.yml
-```
-此处复制了一份新的并重命名为nginx.yml，filebeat便可读取到该文件。
-NGINX本身在/home/parim/apps/nginx-1.10，故此处配置如下：
-```
-- module: nginx
-  # Access logs
-  access:
-    enabled: true
-
-    # Set custom paths for the log files. If left empty,
-    # Filebeat will choose the paths depending on your OS.
-    var.paths: [/home/parim/apps/nginx-1.10/logs/access.log*]
-
-  # Error logs
-  error:
-    enabled: true
-
-    # Set custom paths for the log files. If left empty,
-    # Filebeat will choose the paths depending on your OS.
-    var.paths: [/home/parim/apps/nginx-1.10/logs/error.log*]
-```
-之后退回filebeat-6.4.0-linux-x86_64,执行如下操作可开启nginx
-```
-[parim@dev filebeat-6.4.0-linux-x86_64]# filebeat modules enable nginx
-```
 ### 6.3启动
 #### 6.3.1 命令行
 ```
@@ -663,3 +628,39 @@ export JAVA_HOME JAVA_BIN PATH CLASSPATH
  2.4的版本是可在1.7中的最高版本。
  
  这是elasticsearch版本与JDK的对比，其余几个也是类似，5.x及以上的版本均需要至少为JDK1.8。
+ 
+ ### 9.5 filebeat配置Nginx module
+ 
+ 此次首要任务是监控处理Nginx Logs，filebeat提供了[Nginx module](https://www.elastic.co/guide/en/beats/filebeat/6.4/filebeat-module-nginx.html)可以帮我们便捷完成此项，故最开始使用的配置Nginx module，后期发现过滤方面存在问题，故暂时放弃了该方式，将其挪到此处提供一种思路。
+#### 9.5.1 Nginx module
+该文件在filebeat-6.4.0-linux-x86_64/modules.d中nginx.yml.disabled
+
+```
+[parim@dev filebeat-6.4.0-linux-x86_64]# cd modules.d/
+[parim@dev modules.d]# cp nginx.yml.disabled nginx.yml
+[parim@dev modules.d]# vi nginx.yml
+```
+此处复制了一份新的并重命名为nginx.yml，filebeat便可读取到该文件。
+NGINX本身在/home/parim/apps/nginx-1.10，故此处配置如下：
+```
+- module: nginx
+  # Access logs
+  access:
+    enabled: true
+
+    # Set custom paths for the log files. If left empty,
+    # Filebeat will choose the paths depending on your OS.
+    var.paths: [/home/parim/apps/nginx-1.10/logs/access.log*]
+
+  # Error logs
+  error:
+    enabled: true
+
+    # Set custom paths for the log files. If left empty,
+    # Filebeat will choose the paths depending on your OS.
+    var.paths: [/home/parim/apps/nginx-1.10/logs/error.log*]
+```
+之后退回filebeat-6.4.0-linux-x86_64,执行如下操作可开启nginx
+```
+[parim@dev filebeat-6.4.0-linux-x86_64]# filebeat modules enable nginx
+```
