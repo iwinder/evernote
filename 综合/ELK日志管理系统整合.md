@@ -547,7 +547,7 @@ grok为Logstash 的Filter的一个插件，又因为存在表达式要配置，�
 日志的过滤工作可以在Filebeat中进行，在配置 filebeat.yml中的input时，配置好stdin类型下的include_lines或者exclude_lines即可。例：
 ```
 filebeat.inputs:
-- type: stdin
+- type: log
   ...
   include_lines: ['^ERR', '^WARN']
 ```
