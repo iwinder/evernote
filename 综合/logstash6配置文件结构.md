@@ -56,3 +56,5 @@ input {
 
  ### 参考资料
  [Structure of a Config File](https://www.elastic.co/guide/en/logstash/6.x/configuration-file-structure.html)
+ 
+ [配置语法](https://doc.yonyoucloud.com/doc/logstash-best-practice-cn/get_start/full_config.html)
