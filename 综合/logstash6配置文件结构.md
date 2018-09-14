@@ -1,6 +1,6 @@
 ---
 title: logstash6配置文件结构
-tags: 新建,模板,小书匠
+tags: Logstash
 grammar_cjkRuby: true
 ---
 ## 配置文件的结构
