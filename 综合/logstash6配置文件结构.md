@@ -44,3 +44,15 @@ input {
 您可以配置的设置因插件类型而异。
 详情可见 [Input Plugins](https://www.elastic.co/guide/en/logstash/6.x/input-plugins.html), [Output Plugins](https://www.elastic.co/guide/en/logstash/6.x/output-plugins.html)，[Filter Plugins]()， 以及 [Codec Plugins](https://www.elastic.co/guide/en/logstash/6.x/codec-plugins.html)。
 
+| 插件 | 用途 |
+| --- | --- |
+| Input Plugins |输入插件，使Logstash能够读取特定的事件源。 |
+| Output Plugins| 输出插件 ，输出插件将事件数据发送到特定目标。输出是事件管道的最后阶段。本身支持多输出配置。 |
+| Filter Plugins | 过滤器插件对事件执行中间处理。过滤器通常根据事件的特征有条件地应用。|
+| Codec Plugins |过滤器插件对事件执行中间处理。过滤器通常根据事件的特征有条件地应用。 |
+
+## 数据类型
+插件可以要求设置的值为特定类型，例如布尔值（boolean），列表（list）或散列（hash）。支持的值类型如下：
+
+ ### 参考资料
+ [Structure of a Config File](https://www.elastic.co/guide/en/logstash/6.x/configuration-file-structure.html#array)
