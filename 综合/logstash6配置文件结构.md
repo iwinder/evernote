@@ -55,4 +55,4 @@ input {
 插件可以要求设置的值为特定类型，例如布尔值（boolean），列表（list）或散列（hash）。支持的值类型如下：
 
  ### 参考资料
- [Structure of a Config File](https://www.elastic.co/guide/en/logstash/6.x/configuration-file-structure.html#array)
+ [Structure of a Config File](https://www.elastic.co/guide/en/logstash/6.x/configuration-file-structure.html)
