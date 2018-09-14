@@ -46,7 +46,7 @@ filter {
 }
 ```
 
-若是正则匹配，成功后添加字段：
+若是正则匹配，成功后添加自定义字段：
 ```
 filter {
 	if [message] =~ /\w+\s+\/\w+(\/learner\/course\/)/ {
