@@ -163,3 +163,35 @@ asdf
 只有rubydebug codec允许显示@metadata字段的内容。
 
 只要您需要临时字段但不希望它在最终输出中，就可以使用@metadata字段。
+
+
+最常见的情景是filter的时间字段，需要一临时的时间戳。如：
+
+```
+input { stdin { } }
+
+filter {
+  grok { match => [ "message", "%{HTTPDATE:[@metadata][timestamp]}" ] }
+  date { match => [ "[@metadata][timestamp]", "dd/MMM/yyyy:HH:mm:ss Z" ] }
+}
+
+output {
+  stdout { codec => rubydebug }
+}
+```
+
+输出结果
+```
+$ bin/logstash -f ../test.conf
+Pipeline main started
+02/Mar/2014:15:36:43 +0100
+{
+    "@timestamp" => 2014-03-02T14:36:43.000Z,
+      "@version" => "1",
+          "host" => "windcoder.com",
+       "message" => "02/Mar/2014:15:36:43 +0100"
+}
+```
+
+### 参考资料
+[ELK logstash 配置语法(24th)](http://www.ttlsa.com/elk/elk-logstash-configuration-syntax/)
