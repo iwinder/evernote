@@ -159,3 +159,7 @@ asdf
 ```
 
 现在就可以见到@metadata字段及其子字段内容。
+
+只有rubydebug codec允许显示@metadata字段的内容。
+
+只要您需要临时字段但不希望它在最终输出中，就可以使用@metadata字段。
