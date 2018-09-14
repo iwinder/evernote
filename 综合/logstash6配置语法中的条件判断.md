@@ -3,6 +3,7 @@ title: logstash6配置语法中的条件判断
 tags: 新建,模板,小书匠
 grammar_cjkRuby: true
 ---
+详情可见[官方文档-conditionals](https://www.elastic.co/guide/en/logstash/6.x/event-dependent-configuration.html#conditionals)。
 
 有时您只想在特定条件下过滤或输出事件。为此，您可以使用条件（conditional）。
 
