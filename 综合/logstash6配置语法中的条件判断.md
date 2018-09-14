@@ -119,3 +119,43 @@ output {
   }
 }
 ```
+输出结果
+```
+$ bin/logstash -f ../test.conf
+Pipeline main started
+asdf
+{
+    "@timestamp" => 2016-06-30T02:42:51.496Z,
+      "@version" => "1",
+          "host" => "windcoder.com",
+          "show" => "This data will be in the output",
+       "message" => "asdf"
+}
+```
+
+"asdf"变成message字段内容。条件与@metadata内嵌的test字段内容判断成功，但是输出并没有展示@metadata字段和其内容。
+
+不过，如果指定了metadata => true，rubydebug codec允许显示@metadata字段的内容。
+
+```
+   stdout { codec => rubydebug { metadata => true } }
+```
+输出结果
+```
+$ bin/logstash -f ../test.conf
+Pipeline main started
+asdf
+{
+    "@timestamp" => 2016-06-30T02:46:48.565Z,
+     "@metadata字段及其子字段内容。" => {
+           "test" => "Hello",
+        "no_show" => "This data will not be in the output"
+    },
+      "@version" => "1",
+          "host" => "windcoder.com",
+          "show" => "This data will be in the output",
+       "message" => "asdf"
+}
+```
+
+现在就可以见到@metadata字段及其子字段内容。
