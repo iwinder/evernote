@@ -1,6 +1,6 @@
 ---
 title: ELK日志管理系统整合
-tags: 新建,模板,小书匠
+tags: ELK,Elasticsearch,Kibana,Logstash,Filebeat
 grammar_cjkRuby: true
 ---
 
