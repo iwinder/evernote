@@ -56,3 +56,66 @@ filter {
 	}
 }
 ```
+
+在一个条件里指定多个表达式：
+```
+output {
+  # Send production errors to pagerduty
+  if [loglevel] == "ERROR" and [deployment] == "production" {
+    pagerduty {
+    ...
+    }
+  }
+}
+```
+
+在in条件，可以比较字段值：
+```
+filter {
+  if [foo] in [foobar] {
+    mutate { add_tag => "field in field" }
+  }
+  if [foo] in "foo" {
+    mutate { add_tag => "field in string" }
+  }
+  if "hello" in [greeting] {
+    mutate { add_tag => "string in field" }
+  }
+  if [foo] in ["hello", "world", "foo"] {
+    mutate { add_tag => "field in list" }
+  }
+  if [missing] in [alsomissing] {
+    mutate { add_tag => "shouldnotexist" }
+  }
+  if !("foo" in ["hello", "world"]) {
+    mutate { add_tag => "shouldexist" }
+  }
+}
+```
+not in示例：
+```
+output {
+  if "_grokparsefailure" not in [tags] {
+    elasticsearch { ... }
+  }
+}
+```
+
+### @metadata field 
+
+在logstash1.5版本开始，有一个特殊的字段，叫做@metadata。@metadata包含的内容不会作为事件的一部分输出。
+```
+input { stdin { } }
+
+filter {
+  mutate { add_field => { "show" => "This data will be in the output" } }
+  mutate { add_field => { "[@metadata][test]" => "Hello" } }
+  mutate { add_field => { "[@metadata][no_show]" => "This data will not be in the output" } }
+}
+
+output {
+  if [@metadata][test] == "Hello" {
+    stdout { codec => rubydebug }
+  }
+}
+```
