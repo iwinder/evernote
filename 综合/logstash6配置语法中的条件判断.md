@@ -1,6 +1,6 @@
 ---
 title: logstash6配置语法中的条件判断
-tags: 新建,模板,小书匠
+tags: Logstash
 grammar_cjkRuby: true
 ---
 详情可见[官方文档-conditionals](https://www.elastic.co/guide/en/logstash/6.x/event-dependent-configuration.html#conditionals)。
