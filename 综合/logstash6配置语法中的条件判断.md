@@ -194,4 +194,6 @@ Pipeline main started
 ```
 
 ### 参考资料
+[官方文档-conditionals](https://www.elastic.co/guide/en/logstash/6.x/event-dependent-configuration.html#conditionals)
+
 [ELK logstash 配置语法(24th)](http://www.ttlsa.com/elk/elk-logstash-configuration-syntax/)
