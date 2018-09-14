@@ -58,3 +58,5 @@ input {
  [Structure of a Config File](https://www.elastic.co/guide/en/logstash/6.x/configuration-file-structure.html)
  
  [配置语法](https://doc.yonyoucloud.com/doc/logstash-best-practice-cn/get_start/full_config.html)
+ 
+ [关于Logstash中grok插件的正则表达式例子](https://www.cnblogs.com/stozen/p/5638369.html)
