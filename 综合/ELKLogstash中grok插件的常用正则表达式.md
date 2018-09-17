@@ -65,8 +65,14 @@ Logstash 内置了120种默认表达式，可以查看[patterns](https://github.
 POSTFIX_QUEUEID [0-9A-F]{10,11}
 ```
 
-然后使用此插件中的patterns_dir设置告诉logstash您的自定义模式目录所在的位置。
+然后使用此插件中的patterns_dir 字段设置告诉logstash您的自定义模式目录所在的位置。
 这是一个包含示例日志的完整示例：
+
+```
+Jan  1 06:25:43 mailserver14 postfix/cleanup[21403]: BEF25A72965: message-id=<20130101142543.5828399CCAF@mailserver14.example.com>
+
+```
+配置：
 ```
 filter {
   grok {
@@ -74,4 +80,13 @@ filter {
     match => { "message" => "%{SYSLOGBASE} %{POSTFIX_QUEUEID:queue_id}: %{GREEDYDATA:syslog_message}" }
   }
 }
+```
+结果：
+```
+timestamp: Jan 1 06:25:43
+logsource: mailserver14
+program: postfix/cleanup
+pid: 21403
+queue_id: BEF25A72965
+syslog_message: message-id=<20130101142543.5828399CCAF@mailserver14.example.com>
 ```
