@@ -126,6 +126,7 @@ host => "hostname"
 ```
 
 - Escape sequences
+默认情况下，不启用转义序列。如果您希望在带引号的字符串中使用转义序列，则需要在logstash.yml中设置```config.support_escapes：true```。如果为true，则引用的字符串（double和single）将具有此转换：
 
 | Text | Result |
 | --- | --- |
