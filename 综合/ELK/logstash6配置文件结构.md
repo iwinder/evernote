@@ -54,9 +54,99 @@ input {
 ## 数据类型
 插件可以要求设置的值为特定类型，例如布尔值（boolean），列表（list）或散列（hash）。支持的值类型如下：
 
+- Array  
+
+```
+users => [ {id => 1, name => bob}, {id => 2, name => jane} ]
+```
+
+- Lists 
+
+``` 
+path => [ "/var/log/messages", "/var/log/*.log" ]
+uris => [ "http://elastic.co", "http://example.net" ]
+``` 
+
+- Boolean
+
+```
+ssl_enable => true
+```
+
+ - Bytes
+
+``` 
+  my_bytes => "1113"   # 1113 bytes
+  my_bytes => "10MiB"  # 10485760 bytes
+  my_bytes => "100kib" # 102400 bytes
+  my_bytes => "180 mb" # 180000000 bytes
+``` 
+- Codec
+
+```
+ codec => "json"
+```
+- Hash
+
+```
+match => {
+  "field1" => "value1"
+  "field2" => "value2"
+  ...
+}
+```
+- Numbers 
+
+ ```
+port => 33
+ ```
+
+- Password
+
+```
+my_password => "password"
+```
+
+- URI 
+
+```
+my_uri => "http://foo:bar@example.net" 
+```
+
+- Path
+
+```
+my_path => "/tmp/logstash"
+```
+
+- string
+- Escape sequences
+
+| Text | Result |
+| --- | --- |
+| \r |  carriage return (ASCII 13) |
+| \n | new line (ASCII 10) |
+| \t |  tab (ASCII 9) |
+| \\ | backslash (ASCII 92) |
+| \" | double quote (ASCII 34) |
+| \' | single quote (ASCII 39) |
+```
+  name => "Hello world"
+  name => 'It\'s a beautiful day'
+```
+- Comments 
+注释
+```
+# this is a comment
+
+input { # comments can appear at the end of a line, too
+  # ...
+}  
+```
+
  ### 参考资料
  [Structure of a Config File](https://www.elastic.co/guide/en/logstash/6.x/configuration-file-structure.html)
  
  [配置语法](https://doc.yonyoucloud.com/doc/logstash-best-practice-cn/get_start/full_config.html)
  
- [关于Logstash中grok插件的正则表达式例子](https://www.cnblogs.com/stozen/p/5638369.html)
+
