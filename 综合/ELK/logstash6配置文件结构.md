@@ -120,6 +120,11 @@ my_path => "/tmp/logstash"
 ```
 
 - string
+
+```
+host => "hostname"
+```
+
 - Escape sequences
 
 | Text | Result |
