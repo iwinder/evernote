@@ -3,6 +3,9 @@ title: Logstash中grok插件的常用正则表达式
 tags: Logstash
 grammar_cjkRuby: true
 ---
+## grok默认表达式
+Logstash 内置了120种默认表达式，可以查看[patterns](https://github.com/logstash-plugins/logstash-patterns-core/tree/master/patterns)，里面对表达式做了分组，每个文件为一组，文件内部有对应的表达式模式。下面只是部分常用的。
+
 ### 常用表达式
 | 表达式标识|名称|详情|匹配例子|
 | --- | --- | --- | --- |
@@ -49,3 +52,9 @@ grammar_cjkRuby: true
 | DATE | 日期 | 美国日期%{DATE_US}或者欧洲日期%{DATE_EU} | |
 | DATESTAMP | 完整日期+时间| ```07-03-2016 00:34:06``` |
 | HTTPDATE | http默认日期格式 | ```03/Jul/2016:00:36:53 +0800``` |
+
+## 自定义grok表达式
+上面列举的只是一部分，更多的可以自己搜索查找，如果需要自定义，需要按以下步骤进行：
+
+-  创建一个名为patterns的目录，其中包含一个名为extra的文件（文件名无关紧要，但为自己命名有意义）
+-  在该文件中，将您需要的模式写为模式名称，空格，然后是该模式的正则表达式。
