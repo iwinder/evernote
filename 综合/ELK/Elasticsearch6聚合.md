@@ -21,3 +21,7 @@ grammar_cjkRuby: true
 - Pipeline（管道聚合）
 这一类聚合的数据源是其他聚合的输出，然后进行相关指标的计算。
 
+
+[ElasticSearch6（五） restful风格 聚合查询-管道聚合](https://blog.csdn.net/weixin_41651116/article/details/81750480)
+
+[elasticsearch系列六：聚合分析（聚合分析简介、指标聚合、桶聚合）]()
