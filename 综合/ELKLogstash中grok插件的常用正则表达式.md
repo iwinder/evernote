@@ -90,6 +90,6 @@ pid: 21403
 queue_id: BEF25A72965
 syslog_message: message-id=<20130101142543.5828399CCAF@mailserver14.example.com>
 ```
-另一种选择是使用pattern_definitions在过滤器中定义内联模式。
+另一种选择是使用[pattern_definitions](https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html#plugins-filters-grok-pattern_definitions)在过滤器中定义内联模式。
 这主要是为了方便起见，并允许用户定义一个可以在该过滤器中使用的模式。
 pattern_definitions中新定义的模式在特定的grok过滤器之外将不可用。
