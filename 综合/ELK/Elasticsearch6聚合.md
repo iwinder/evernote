@@ -24,4 +24,4 @@ grammar_cjkRuby: true
 
 [ElasticSearch6（五） restful风格 聚合查询-管道聚合](https://blog.csdn.net/weixin_41651116/article/details/81750480)
 
-[elasticsearch系列六：聚合分析（聚合分析简介、指标聚合、桶聚合）]()
+[elasticsearch系列六：聚合分析（聚合分析简介、指标聚合、桶聚合）](https://blog.csdn.net/qq_26676207/article/details/81019521)
