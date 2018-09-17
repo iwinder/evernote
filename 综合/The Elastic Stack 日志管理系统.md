@@ -1,5 +1,5 @@
 ---
-title: The Elastic Stack 日志管理系统
+title: The Elastic Stack 日志管理系统（草稿）
 tags: 新建,模板,小书匠
 grammar_cjkRuby: true
 ---
