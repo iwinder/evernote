@@ -1,5 +1,5 @@
 ---
-title: Logstash中grok插件的常用正则表达式
+title: Logstash6中grok插件的常用正则表达式
 tags: Logstash
 grammar_cjkRuby: true
 ---
@@ -10,8 +10,8 @@ Logstash 内置了120种默认表达式，可以查看[patterns](https://github.
 | 表达式标识|名称|详情|匹配例子|
 | --- | --- | --- | --- |
 | USERNAME 或 USER | 用户名 | 由数字、大小写及特殊字符(.\_\-)组成的字符串 | ```1234```、```Bob```、```Alex.Wong``` |
-| EMAILLOCALPART | 用户名 | 首位由大小写字母组成，其他位由数字、大小写及特殊字符(\_.+-=:)组成的字符串。注意，国内的QQ纯数字邮箱账号是无法匹配的，需要修改正则 | ```stone```、```Gary_Lu```、```abc-123``` |
-| EMAILADDRESS | 电子邮件 | | ```stone@abc.com```、```Gary_Lu@gmail.com```、```abc-123@163.com```|
+| EMAILLOCALPART | 用户名 | 首位由大小写字母组成，其他位由数字、大小写及特殊字符(\_.+-=:)组成的字符串。注意，国内的QQ纯数字邮箱账号是无法匹配的，需要修改正则 | ```windcoder```、```windcoder_com```、```abc-123``` |
+| EMAILADDRESS | 电子邮件 | | ```windcoder@abc.com```、```windcoder_com@gmail.com```、```abc-123@163.com```|
 | HTTPDUSER | Apache服务器的用户 | 可以是```EMAILADDRESS```或```USERNAME```| |
 | INT | 整数 | 包括0和正负整数 | ```0```、```-123```、```43987```|
 | BASE10NUM 或 NUMBER | 十进制数字 | 包括整数和小数 | ```0```、```18```、```5.23``` |
@@ -24,14 +24,14 @@ Logstash 内置了120种默认表达式，可以查看[patterns](https://github.
 | MAC | MAC地址 | 可以是Cisco设备里的MAC地址，也可以是通用或者Windows系统的MAC地址| |
 | IP | IP地址 | IPv4或IPv6地址 | ```127.0.0.1```、```FE80:0000:0000:0000:AAAA:0000:00C2:0002``` |
 | HOSTNAME | IP或者主机名称 | | |
-| HOSTPORT | 主机名(IP)+端口 | | ```127.0.0.1:3306```、```api.stozen.net:8000```|
+| HOSTPORT | 主机名(IP)+端口 | | ```127.0.0.1:3306```、```api.windcoder.com:8000```|
 |PATH | 路径 | Unix系统或者Windows系统里的路径格式 | ```/usr/local/nginx/sbin/nginx```、```c:\windows\system32\clr.exe``` |
 | URIPROTO | URI协议 | |```http```、```ftp```|
-| URIHOST | URI主机 | | ```www.stozen.net```、```10.0.0.1:22``` |
-| URIPATH | URI路径 | | ```//www.stozen.net/abc/```、```/api.php``` |
+| URIHOST | URI主机 | | ```windcoder.com```、```10.0.0.1:22``` |
+| URIPATH | URI路径 | | ```//windcoder.com/abc/```、```/api.php``` |
 |  URIPARAM |  URI里的GET参数 | | ```?a=1&b=2&c=3``` |
-| URIPATHPARAM | URI路径+GET参数 | ```//www.stozen.net/abc/api.php?a=1&b=2&c=3```|
-| URI | 完整的URI | | ```http://www.stozen.net/abc/api.php?a=1&b=2&c=3```|
+| URIPATHPARAM | URI路径+GET参数 | ```/windcoder.com/abc/api.php?a=1&b=2&c=3```|
+| URI | 完整的URI | | ```https://windcoder.com/abc/api.php?a=1&b=2&c=3```|
 |LOGLEVEL| Log表达式 | Log表达式 | ```Alert```、```alert```、```ALERT```、```Error``` |
 ### 日期时间表达式
 | 表达式标识|名称|匹配例子|
@@ -93,3 +93,7 @@ syslog_message: message-id=<20130101142543.5828399CCAF@mailserver14.example.com>
 另一种选择是使用[pattern_definitions](https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html#plugins-filters-grok-pattern_definitions)在过滤器中定义内联模式。
 这主要是为了方便起见，并允许用户定义一个可以在该过滤器中使用的模式。
 pattern_definitions中新定义的模式在特定的grok过滤器之外将不可用。
+
+### 参考资料
+[Grok filter plugin](https://www.elastic.co/guide/en/logstash/6.x/plugins-filters-grok.html)
+[关于Logstash中grok插件的正则表达式例子](https://www.cnblogs.com/stozen/p/5638369.html)
