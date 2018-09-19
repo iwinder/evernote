@@ -27,8 +27,8 @@ grammar_cjkRuby: true
 
 ### 构建聚合
 
-聚合的基本结构：
 
+在查询请求体中以```aggregations```(也可命名为```aggs```)节点按如下语法构建聚合的基本结构：
 ```
 "aggregations" : {
     "<aggregation_name>" : {
