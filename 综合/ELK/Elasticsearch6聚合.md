@@ -23,6 +23,25 @@ grammar_cjkRuby: true
 
 聚合的真正强大所在：**聚合可以嵌套**。
 
+聚合操作数据的双重表示。因此，当在绝对值大于2 ^ 53的long上运行时，结果可能是近似的。
+
+### 构建聚合
+
+聚合的基本结构：
+
+```
+"aggregations" : {
+    "<aggregation_name>" : {
+        "<aggregation_type>" : {
+            <aggregation_body>
+        }
+        [,"meta" : {  [<meta_data_body>] } ]?
+        [,"aggregations" : { [<sub_aggregation>]+ } ]?
+    }
+    [,"<aggregation_name_2>" : { ... } ]*
+}
+```
+
 [ElasticSearch6（五） restful风格 聚合查询-管道聚合](https://blog.csdn.net/weixin_41651116/article/details/81750480)
 
 [elasticsearch系列六：聚合分析（聚合分析简介、指标聚合、桶聚合）](https://blog.csdn.net/qq_26676207/article/details/81019521)
