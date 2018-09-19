@@ -31,14 +31,14 @@ grammar_cjkRuby: true
 在查询请求体中以```aggregations```(也可命名为```aggs```)节点按如下语法构建聚合的基本结构：
 ```
 "aggregations" : {
-    "<aggregation_name>" : {
-        "<aggregation_type>" : {
-            <aggregation_body>
+    "<aggregation_name>" : { <!--聚合的名字 -->
+        "<aggregation_type>" : { <!--聚合的类型 -->
+            <aggregation_body>   <!--聚合体：对哪些字段进行聚合 -->
         }
-        [,"meta" : {  [<meta_data_body>] } ]?
-        [,"aggregations" : { [<sub_aggregation>]+ } ]?
+        [,"meta" : {  [<meta_data_body>] } ]?  <!--元 -->
+        [,"aggregations" : { [<sub_aggregation>]+ } ]? <!--在聚合里面在定义子聚合 -->
     }
-    [,"<aggregation_name_2>" : { ... } ]*
+    [,"<aggregation_name_2>" : { ... } ]*   <!--聚合的名字 -->
 }
 ```
 
