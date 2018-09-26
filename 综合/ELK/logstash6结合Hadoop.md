@@ -122,3 +122,6 @@ Pipeline aborted due to error {:pipeline_id=>"main", :exception=>#<WebHDFS::Serv
 
 ```
 ![enter description here](./images/1537928473504.png)
+
+
+[bash: hdfs: command not found](https://blog.csdn.net/a295277302/article/details/72861845)
