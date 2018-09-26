@@ -3,20 +3,20 @@ title: logstash6结合Hadoop
 tags: 新建,模板,小书匠
 grammar_cjkRuby: true
 ---
-### 下载并解压
+## 下载并解压
 ```
 wget http://mirrors.hust.edu.cn/apache/hadoop/common/hadoop-2.8.5/hadoop-2.8.5.tar.gz
 tar -zxvf hadoop-2.8.5.tar.gz
 ```
 
-### 指定Java版本
+## 指定Java版本
 
 在解压的Hadoop目录下， 编辑etc/hadoop/hadoop-env.sh文件
 
 ```
 export JAVA_HOME=/home/parim/spark/apps/jdk1.8.0_144/
 ```
-
+## 执行
 ### core-site.xml
 在 $HADOOP_HOME/etc/hadoop/core-site.xml 文件中还有两个参数需要设置：
 
@@ -71,11 +71,9 @@ etc/hadoop/hdfs-site.xml:
 
 
 ### 启动 Hadoop 的单节点集群
- 
+ 启动NameNode守护程序和DataNode守护程序
 ```
 $HADOOP_HOME/sbin/start-dfs.sh
-
-$HADOOP_HOME/sbin/start-yarn.sh
 ```
 
 
@@ -92,6 +90,15 @@ $HADOOP_HOME/sbin/start-yarn.sh
 ```
  $HADOOP_HOME/sbin/stop-dfs.sh
 ```
+## 
+
+```
+$HADOOP_HOME/sbin/start-yarn.sh
+```
+
+
+
+
 
 
 配置logstash
