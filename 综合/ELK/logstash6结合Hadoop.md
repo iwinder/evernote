@@ -97,8 +97,10 @@ $HADOOP_HOME/sbin/start-yarn.sh
 ```
 
 
-
-
+创建文件夹
+```
+hadoop fs -mkdir /home/parim/apps/hadoop-2.8.5/logstash-data
+```
 
 
 配置logstash
