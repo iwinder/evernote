@@ -90,7 +90,7 @@ hadoop.tmp.dir的目录默认指向的是：/tmp/hadoop-${USERNAME}
 ### etc/hadoop/hdfs-site.xml
 这里有两个参数需要配置：
 1. dfs.replication - 默认备份（块复制,block replication）。创建文件时可以指定实际的备份数。如果未在创建时指定备份，则使用默认值。[hdfs-default.xml#dfs.replication](https://hadoop.apache.org/docs/r2.8.5/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml#dfs.replication)
-2. dfs.datanode.hostname - datanode默认的hostname，这个不是必须的，因为这里是两台服务器之间传递信息，所以需要配置。
+2. dfs.datanode.hostname - datanode默认的hostname，这个不是必须的，因为这里是两台服务器之间传递信息，所以需要配置，否则会导致后面的读写操作异常。
 
 打开hdfs-site.xml文件：
 ```
