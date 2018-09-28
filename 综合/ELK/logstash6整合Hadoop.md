@@ -109,7 +109,11 @@ vi etc/hadoop/hdfs-site.xml
     </property>
 
 ```
-
+### 格式化HDFS 
+在第一使用 Hadoop 之前，需要先格式化 HDFS，使用下面的命令
+```
+bin/hdfs namenode -format
+```
 
 ## Hadoop与Java版本
 | Hadoop | Java |
