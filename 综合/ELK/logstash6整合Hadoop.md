@@ -114,6 +114,22 @@ vi etc/hadoop/hdfs-site.xml
 ```
 bin/hdfs namenode -format
 ```
+若有需要选择的，输入按提示Y即可。
+
+### 启动单节点集群
+使用以下命令启动cHadoop 的单节点集群(使用对应的用户来启动)，如下：
+```
+sbin/start-dfs.sh
+```
+若该用户之前设置了免密登录，此处可免去多次输入密码的操作，反之则需要根据提示多次输入登录密码。
+
+### 检测运行
+
+使用 'jps' 工具/命令, 验证是否所有 Hadoop 相关的进程正在运行。
+```
+/home/parim//apps/jdk1.8.0_181/bin/jps
+```
+如果 Hadoop 成功启动，那么 jps 输出应显示： NameNode, SecondaryNameNode, DataNode.
 
 ## Hadoop与Java版本
 | Hadoop | Java |
