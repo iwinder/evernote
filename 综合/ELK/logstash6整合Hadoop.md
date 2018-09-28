@@ -84,8 +84,32 @@ hadoop.tmp.dir的目录默认指向的是：/tmp/hadoop-${USERNAME}
 操作都被删除了，需要重新再来，比如你想hdfs导入的文件会都被删除。
 
 参考：
-[Hadoop安装](https://www.yiibai.com/hadoop/how_to_install_hadoop.html)
-[hadoop修改hadoop.tmp.dir](https://blog.csdn.net/sunrising_hill/article/details/50526858)
+1. [Hadoop安装](https://www.yiibai.com/hadoop/how_to_install_hadoop.html)
+2. [hadoop修改hadoop.tmp.dir](https://blog.csdn.net/sunrising_hill/article/details/50526858)
+
+### etc/hadoop/hdfs-site.xml
+这里有两个参数需要配置：
+1. dfs.replication - 默认备份（块复制,block replication）。创建文件时可以指定实际的备份数。如果未在创建时指定备份，则使用默认值。[hdfs-default.xml#dfs.replication](https://hadoop.apache.org/docs/r2.8.5/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml#dfs.replication)
+2. dfs.datanode.hostname - datanode默认的hostname，这个不是必须的，因为这里是两台服务器之间传递信息，所以需要配置。
+
+打开hdfs-site.xml文件：
+```
+vi etc/hadoop/hdfs-site.xml
+```
+拷贝以下所有行的内容放入到标签 ```<configuration></configuration>``` 中间。
+```
+    <property>
+        <name>dfs.replication</name>
+        <value>1</value>
+    </property>
+
+    <property>
+        <name> dfs.datanode.hostname</name>
+        <value>192.168.0.80</value>
+    </property>
+
+```
+
 
 ## Hadoop与Java版本
 | Hadoop | Java |
