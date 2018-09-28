@@ -69,7 +69,11 @@ vi etc/hadoop/core-site.xml
   <description>Parent directory for other temporary directories.</description>
 </property>
 ```
-
+#### fs.defaultFS
+默认文件系统的名称，本身是一个URL，其方案和权限决定了FileSystem的实现。
+此URL的方案（scheme ）确定命名FileSystem 实现类的配置属性（fs.SCHEME.impl）。
+此URL的权限（authority ）用于确定文件系统的主机，端口等。
+参考[core-default.xml#fs.defaultFS](https://hadoop.apache.org/docs/r2.8.5/hadoop-project-dist/hadoop-common/core-default.xml#fs.defaultFS)
 
 
 ## Hadoop与Java版本
