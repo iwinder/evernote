@@ -131,6 +131,12 @@ sbin/start-dfs.sh
 ```
 如果 Hadoop 成功启动，那么 jps 输出应显示： NameNode, SecondaryNameNode, DataNode.
 
+### 停止/关闭 Hadoop
+
+```
+sbin/stop-dfs.sh
+```
+
 ## Hadoop与Java版本
 | Hadoop | Java |
 | --- | --- |
