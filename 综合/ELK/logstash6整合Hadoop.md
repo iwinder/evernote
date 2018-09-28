@@ -75,6 +75,17 @@ vi etc/hadoop/core-site.xml
 此URL的权限（authority ）用于确定文件系统的主机，端口等。
 参考[core-default.xml#fs.defaultFS](https://hadoop.apache.org/docs/r2.8.5/hadoop-project-dist/hadoop-common/core-default.xml#fs.defaultFS)
 
+#### hadoop.tmp.dir
+
+hadoop.tmp.dir的目录默认指向的是：/tmp/hadoop-${USERNAME}
+
+这样会有个问题，系统重启时会自动删除/tmp目录下的文件，导致你之前对hadoop做的很多
+
+操作都被删除了，需要重新再来，比如你想hdfs导入的文件会都被删除。
+
+参考：
+[Hadoop安装](https://www.yiibai.com/hadoop/how_to_install_hadoop.html)
+[hadoop修改hadoop.tmp.dir](https://blog.csdn.net/sunrising_hill/article/details/50526858)
 
 ## Hadoop与Java版本
 | Hadoop | Java |
