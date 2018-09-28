@@ -43,8 +43,36 @@ export JAVA_HOME=/home/parim/apps/jdk1.8.0_181
 ```
 ![enter description here](./images/1538128064461.png)
 
+若是需要搭建Local (Standalone) Mode，通过如下命令启动即可：
+```
+bin/hadoop
+```
+本文需要搭建Pseudo-Distributed Operation，故需要继续配置其他文件。
+### etc/hadoop/core-site.xml
+该文件中有两个参数需要设置：
+1. fs.defaultFS - 默认文件系统的名称
+2. hadoop.tmp.dir - 其他临时目录的根目录
+打开core-site.xml文件：
+```
+vi etc/hadoop/core-site.xml
+```
+拷贝以下所有行的内容放入到标签 ```<configuration></configuration>``` 中间。
+```
+<property>
+	<name>fs.defaultFS</name>
+	<value>hdfs://192.168.0.80:54310</value>
+</property>
 
-### Hadoop与Java版本
+<property>
+  <name>hadoop.tmp.dir</name>
+  <value>/home/parim/apps/hadoop-2.8.5/tmp-data</value>
+  <description>Parent directory for other temporary directories.</description>
+</property>
+```
+
+
+
+## Hadoop与Java版本
 | Hadoop | Java |
 | --- | --- |
 | 2.7及以后版本 | Java 7 + |
