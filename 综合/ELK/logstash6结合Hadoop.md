@@ -1,5 +1,5 @@
 ---
-title: logstash6结合Hadoop 
+title: logstash6结合Hadoop(草稿)
 tags: 新建,模板,小书匠
 grammar_cjkRuby: true
 ---
@@ -80,6 +80,8 @@ $HADOOP_HOME/sbin/start-dfs.sh
 ### 检测是否正则运行
 ```
 /home/parim/spark/apps/jdk1.8.0_144/bin/jps
+
+/home/parim//apps/jdk1.8.0_181/bin/jps
 ```
 ![enter description here](./images/1537866218599.png)
 
