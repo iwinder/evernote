@@ -276,9 +276,13 @@ HDFS的读写模式为 "write-once-read-many"，为了实现write-once，需要�
 - 降低idle_flush_time的值，因为提高了flush_size，所以可以适当的减少数据发送到webhdfs的时间间隔
 - 提高retry_interval的值，来减少高频重试带来的额外负载
 
-参考:[Logstash学习（七）Logstash的webhdfs插件](https://birdben.github.io/2017/02/07/Logstash/Logstash%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%83%EF%BC%89Logstash%E7%9A%84webhdfs%E6%8F%92%E4%BB%B6/)
+参考:
+
+[Logstash学习（七）Logstash的webhdfs插件](https://birdben.github.io/2017/02/07/Logstash/Logstash%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%83%EF%BC%89Logstash%E7%9A%84webhdfs%E6%8F%92%E4%BB%B6/)
 
 [ Webhdfs output plugin](https://www.elastic.co/guide/en/logstash/6.4/plugins-outputs-webhdfs.html#plugins-outputs-webhdfs-options)
+
+
 ## Hadoop与Java版本
 | Hadoop | Java |
 | --- | --- |
