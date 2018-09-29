@@ -285,6 +285,7 @@ HDFS的读写模式为 "write-once-read-many"，为了实现write-once，需要�
 [HDFS租约实践](https://www.cnblogs.com/ucarinc/p/8064447.html)
 
 [HDFS租约机制](https://blog.csdn.net/androidlushangderen/article/details/52850349)
+
 ### 
 
 ## Hadoop与Java版本
