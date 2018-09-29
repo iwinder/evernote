@@ -190,10 +190,8 @@ webhdfs {
 	user => "parim"
 	# 按年月日建log文件
 	path => "/user/parim/logstash-data/logstash-%{+YYYY}-%{+MM}-%{+dd}.log"
-	# 两次重试之间等待多长时间
-	retry_times => 300
-	flush_size => 5000
 	codec => "json"
+	flush_size => 5000
 	idle_flush_time => 5
 	retry_interval => 3
 }
@@ -240,10 +238,27 @@ codec => plain {
 ```
 codec => "json"
 ```
-得到了所需要的。
+得到了所需要的上面所示的格式。
 
-原因就是Logstash 的Filter插件部分已将非结构化的数据进行了结构化操作，在输出时需要通过codec解码成相应的格式，这里就是json.
+原因就是Logstash 的Filter插件部分已将非结构化的数据进行了结构化操作，在输出时需要通过codec解码成相应的格式，对于这里就是json.
 
+### Maybe you should increase retry_interval or reduce number of workers
+
+#### 问题
+```
+[2018-09-28T15:57:43,341][WARN ][logstash.outputs.webhdfs ] webhdfs write caused an exception: {"RemoteException":{"exception":"RecoveryInProgressException","javaClassName":"org.apache.hadoop.hdfs.protocol.RecoveryInProgressException","message":"Failed to APPEND_FILE /user/parim/logstash-data/logstash-2018-09-28.log for DFSClient_NONMAPREDUCE_965601342_27 on 192.168.0.80 because lease recovery is in progress. Try again later.\n\tat org.apache.hadoop.hdfs.server.namenode.FSNamesystem.recoverLeaseInternal(FSNamesystem.java:2443)\n\tat org.apache.hadoop.hdfs.server.namenode.FSDirAppendOp.appendFile(FSDirAppendOp.java:117)\n\tat org.apache.hadoop.hdfs.server.namenode.FSNamesystem.appendFile(FSNamesystem.java:2498)\n\tat org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.append(NameNodeRpcServer.java:759)\n\tat org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.append(ClientNamenodeProtocolServerSideTranslatorPB.java:437)\n\tat org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)\n\tat org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:447)\n\tat org.apache.hadoop.ipc.RPC$Server.call(RPC.java:989)\n\tat org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:850)\n\tat org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:793)\n\tat java.security.AccessController.doPrivileged(Native Method)\n\tat javax.security.auth.Subject.doAs(Subject.java:422)\n\tat org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1844)\n\tat org.apache.hadoop.ipc.Server$Handler.run(Server.java:2489)\n"}}. Maybe you should increase retry_interval or reduce number of workers. Retrying...
+```
+
+#### 原因
+
+HDFS的读写模式为 "write-once-read-many"，为了实现write-once，需要设计一种互斥机制，租约(Lease)应运而生
+
+租约本质上是一个有时间约束的锁，即：在一定时间内对租约持有者（也就是客户端）赋予一定的权限。
+
+这里的警告说Lease正在被另一个进程释放中，需要等会再试。这样就说明可能是我们Logstash写入HDFS的频率过快，导致HDFS来不及释放Lease。
+```
+retry_times => 100
+```
 
 ## Hadoop与Java版本
 | Hadoop | Java |
