@@ -111,6 +111,9 @@ vi etc/hadoop/hdfs-site.xml
     </property>
 
 ```
+![enter description here](./images/1538186915541.png)
+## 启动单节点伪分布式集群
+以下为在本地运行一个MapReduce job的实现，由于不是必须运行在YARN上，故暂且没配置与启动YARN。
 ### 格式化HDFS 
 在第一使用 Hadoop 之前，需要先格式化 HDFS，使用下面的命令
 ```
@@ -125,19 +128,44 @@ sbin/start-dfs.sh
 ```
 若该用户之前设置了免密登录，此处可免去多次输入密码的操作，反之则需要根据提示多次输入登录密码。
 
-### 检测运行
+**检测运行**
 
-使用 'jps' 工具/命令, 验证是否所有 Hadoop 相关的进程正在运行。
+可以使用 'jps' 工具/命令, 验证是否所有 Hadoop 相关的进程正在运行。
 ```
 /home/parim//apps/jdk1.8.0_181/bin/jps
 ```
 如果 Hadoop 成功启动，那么 jps 输出应显示： NameNode, SecondaryNameNode, DataNode.
 
-### 停止/关闭 Hadoop
-当需要停止时可执行如下命令，如果用户不是ssh免密码登录，此时需要再多次输入登录密码
+### 访问
+可通过web访问NameNode，默认链接如下：
+```
+ http://localhost:50070/
+```
+### 创建HDFS目录
+创建执行 MapReduce jobs所需要的HDFS目录：
+```
+ bin/hdfs dfs -mkdir /user
+ # bin/hdfs dfs -mkdir /user/<username>,username即启动Hadoop的用户名，这里假设为parim
+ bin/hdfs dfs -mkdir /user/parim
+```
+### 测试
+1. 将输入文件复制到分布式文件系统中：
+```
+bin/hdfs dfs -put etc/hadoop input
+```
+默认会在/user/parim下创建input文件夹，若未执行上面创建目录操作，会报无法找到/user/parim的错误。
+
+2. 查看分布式文件系统上的文件：
+```
+ bin/hdfs dfs -cat input/*
+```
+
+## 停止/关闭 Hadoop
+当需要停止时可执行如下命令
 ```
 sbin/stop-dfs.sh
 ```
+如果用户不是ssh免密码登录，此时需要再多次输入登录密码
 
 ## Hadoop与Java版本
 | Hadoop | Java |
