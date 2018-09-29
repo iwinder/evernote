@@ -50,7 +50,7 @@ bin/hadoop
 本文需要搭建Pseudo-Distributed Operation，故需要继续配置其他文件。
 ### etc/hadoop/core-site.xml
 该文件中有两个参数需要设置：
-1. fs.defaultFS - 默认文件系统的名称
+1. fs.defaultFS - 默认文件系统的名称，端口号可自定义
 2. hadoop.tmp.dir - 其他临时目录的根目录
 打开core-site.xml文件：
 ```
@@ -69,10 +69,12 @@ vi etc/hadoop/core-site.xml
   <description>Parent directory for other temporary directories.</description>
 </property>
 ```
+![enter description here](./images/1538186591816.png)
 #### fs.defaultFS
 默认文件系统的名称，本身是一个URL，其方案和权限决定了FileSystem的实现。
-此URL的方案（scheme ）确定命名FileSystem 实现类的配置属性（fs.SCHEME.impl）。
-此URL的权限（authority ）用于确定文件系统的主机，端口等。
+- 此URL的方案（scheme ）确定命名FileSystem 实现类的配置属性（fs.SCHEME.impl）。
+- 此URL的权限（authority ）用于确定文件系统的主机，端口等。
+- ```fs.defaultFS```是旧版本fs.default.name的代替，在新版中```fs.default.name```已被弃用。
 参考[core-default.xml#fs.defaultFS](https://hadoop.apache.org/docs/r2.8.5/hadoop-project-dist/hadoop-common/core-default.xml#fs.defaultFS)
 
 #### hadoop.tmp.dir
@@ -132,7 +134,7 @@ sbin/start-dfs.sh
 如果 Hadoop 成功启动，那么 jps 输出应显示： NameNode, SecondaryNameNode, DataNode.
 
 ### 停止/关闭 Hadoop
-
+当需要停止时可执行如下命令，如果用户不是ssh免密码登录，此时需要再多次输入登录密码
 ```
 sbin/stop-dfs.sh
 ```
