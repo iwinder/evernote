@@ -149,15 +149,15 @@ sbin/start-dfs.sh
  bin/hdfs dfs -mkdir /user/parim
 ```
 ### 测试
-1. 将输入文件复制到分布式文件系统中：
+1. 将Hadoop的logs文件夹中的文件复制到分布式文件系统中：
 ```
-bin/hdfs dfs -put etc/hadoop input
+bin/hdfs dfs -put logs logstash
 ```
-默认会在/user/parim下创建input文件夹，若未执行上面创建目录操作，会报无法找到/user/parim的错误。
+默认会在HDFS中的/user/parim下创建logstash文件夹并向其写入logs中的文件，若未执行上面创建目录操作，会报无法找到/user/parim的错误。
 
-2. 查看分布式文件系统上的文件：
+2. 查看分布式文件系统上logstash中的文件：
 ```
- bin/hdfs dfs -cat input/*
+ bin/hdfs dfs -cat logstash/*
 ```
 
 ## 停止/关闭 Hadoop
@@ -166,6 +166,48 @@ bin/hdfs dfs -put etc/hadoop input
 sbin/stop-dfs.sh
 ```
 如果用户不是ssh免密码登录，此时需要再多次输入登录密码
+
+## Logstash输出到Hadoop
+上面是Hadoop安装到操作的基本流程，接下来转到192.168.0.79配置Logstash到Hadoop的输出。
+
+Logstash6的Output plugins有webhdfs，其作用是使用webhdfs REST API将Logstash事件发送到HDFS。
+
+默认Logstash启动配置文件为01-logstash-initial.conf，进入Logstash安装目录并打开文件：
+```
+vi config/01-logstash-initial.conf
+```
+在output部分追加如下内容：
+```
+webhdfs {
+	# hdfs的namenode地址
+	host => "192.168.0.80"  
+	# Hadoop的webhdfs使用的端口
+	port => 50070     
+    # hadoop运行的用户，以这个用户的权限去写入hdfs    
+	user => "parim"
+	# 按年月日建log文件
+	path => "/user/parim/logstash-data/logstash-%{+YYYY}-%{+MM}-%{+dd}.log"
+	# 两次重试之间等待多长时间
+	retry_times => 300
+	flush_size => 5000
+	codec => "json"
+	idle_flush_time => 5
+	retry_interval => 3
+}
+```
+保存后，重启Logstash即可。
+
+#### 放行端口
+192.168.0.80上，Hadoop默认配置下，需要放行端口50070和50075，此处是基于firewall防火墙下的命令：
+```
+sudo firewall-cmd --zone=public --add-port=50070/tcp --permanent
+sudo firewall-cmd --zone=public --add-port=50075/tcp --permanent
+sudo firewall-cmd --reload
+```
+
+
+访问```http://192.168.0.80:50070```可见如下：
+![enter description here](./images/1538191045968.png)
 
 ## Hadoop与Java版本
 | Hadoop | Java |
