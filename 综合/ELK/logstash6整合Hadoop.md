@@ -219,9 +219,36 @@ sudo firewall-cmd --reload
 {"source":"/home/parim/apps/nginx-1.10/logs/access.log","@version":"1","learner_type":"exam","tags":["beats_input_codec_plain_applied"],"type":"logs","offset":1656526468,"beat":{"version":"6.4.0","hostname":"dev.windcoder.com","name":"dev.windcoder.com"},"@timestamp":"2018-09-29T01:45:53.093Z","input":{"type":"log"},"prospector":{"type":"log"},"read_timestamp":"2018-09-29T01:45:53.093Z","nginx":{"access":{"client_ip":"192.168.0.221","method":"GET","body_sent":{"bytes":"0"},"referer":"http://sd.windcoder.com/learner/course/detail/1423705","x_forwarded":"121.69.9.234","msec":"[1538185552.664]","user_name":"-","cookie_sid":"-","time_iso8601":"2018-09-29T09:45:52+08:00","url":"/api/learner/exam/myExam/examList","user_agent":"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.62 Safari/537.36","http_version":"1.0","response_code":"302"}},"host":{"name":"dev.windcoder.com"}}
 ```
 
+
+## 报错与解决方案
+###  Hadoop获得的日志记录与预期不符
+最开始Logstash中没设置```codec```，获得的记录是这样的：
+```
+2018-09-28T08:39:22.294Z {name=dev.windcoder.com} %{message}
+```
+之后设置
+```
+codec => plain {
+                  format => "%{message}"
+ }
+```
+又变成了
+```
+%{message}
+```
+最后设置
+```
+codec => "json"
+```
+得到了所需要的。
+
+原因就是Logstash 的Filter插件部分已将非结构化的数据进行了结构化操作，在输出时需要通过codec解码成相应的格式，这里就是json.
+
+
 ## Hadoop与Java版本
 | Hadoop | Java |
 | --- | --- |
 | 2.7及以后版本 | Java 7 + |
 | 2.6及以前版本 | Java 6 +|
 [HadoopJavaVersions](https://wiki.apache.org/hadoop/HadoopJavaVersions)
+
