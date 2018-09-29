@@ -365,9 +365,21 @@ curl: (7) couldn't connect to host
 1. HDFS访问账户问题；
 2. HDFS的主机解析问题；
 
-Logstash的输出插件中的webhdfs部分的user，Logstash解释是webhdfs的用户名。一般默认是启动Hadoop的Username。
+**HDFS访问账户问题**
 
+Logstash的输出插件中的webhdfs部分的user，Logstash解释是webhdfs的用户名。一般默认使用启动Hadoop的Username。
 
+原则上只要该user对path中的根文件夹有读写，对其子文件夹和文件有创建、读写等必需权限即可，可设置user为path中的根文件夹的所有者（owner ）。
+
+**HDFS的主机解析问题**
+
+直接将所有Hadoop的节点/IP映射放入/etc/hosts中。
+
+参考：
+[HDFS Permissions Guide](https://hadoop.apache.org/docs/r2.8.5/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
+
+[logstash的webhdfs使用问题](https://www.jianshu.com/p/384d5e8295ab)
+[Logstash使用webhdfs插件遇到写入HDFS权限问题](https://blog.csdn.net/weixin_40163498/article/details/80413216)
 
 
 ## Hadoop与Java版本
