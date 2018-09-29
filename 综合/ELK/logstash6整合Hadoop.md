@@ -196,17 +196,17 @@ webhdfs {
 }
 ```
 保存后，重启Logstash即可。
+![enter description here](./images/1538191739981.png)
 
 #### 放行端口
-192.168.0.80上，Hadoop默认配置下，需要放行端口50070和50075，此处是基于firewall防火墙下的命令：
+为了Logstash与Hadoop通信， 192.168.0.80的Hadoop默认配置下，需要放行端口50070和50075，此处是基于firewall防火墙下的命令：
 ```
 sudo firewall-cmd --zone=public --add-port=50070/tcp --permanent
 sudo firewall-cmd --zone=public --add-port=50075/tcp --permanent
 sudo firewall-cmd --reload
 ```
 
-
-访问```http://192.168.0.80:50070```可见如下：
+访问```http://192.168.0.80:50070```可见如下，当看到logstash-data文件夹时，说明整合成功：
 ![enter description here](./images/1538191045968.png)
 
 ## Hadoop与Java版本
