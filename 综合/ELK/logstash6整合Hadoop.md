@@ -31,6 +31,7 @@ tar -zxvf hadoop-2.8.5.tar.gz
 cd hadoop-2.8.5
 ```
 ### etc/hadoop/hadoop-env.sh
+
 编辑etc/hadoop/hadoop-env.sh配置一些默认项，这里主要是设置 JAVA_HOME，即填写完整的 Java 安装路径。
 ```
 vi etc/hadoop/hadoop-env.sh
