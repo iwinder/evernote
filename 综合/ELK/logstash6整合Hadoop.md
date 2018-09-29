@@ -219,6 +219,27 @@ sudo firewall-cmd --reload
 
 
 ## 报错与解决方案
+
+### WebHDFS::ServerError: Failed to connect to host 192.168.0.80:50070,No route to host
+
+#### 问题
+```
+ Pipeline aborted due to error {:pipeline_id=>"main", :exception=>#<WebHDFS::ServerError: Failed to connect to host 192.168.0.80:50070, No route to host - Failed to open TCP connection to 192.168.0.80:50070 (No route to host - SocketChannel.connect)>, :backtrace=>["/home/parim/elk/logstash-6.4.0/vendor/bundle/jruby/2.3.0/gems/webhdfs-0.8.0/lib/webhdfs/client_v1.rb:351:in `request'", "/home/parim/elk/logstash-6.4.0/vendor/bundle/jruby/2.3.0/gems/webhdfs-0.8.0/lib/webhdfs/client_v1.rb:275:in `operate_requests'", "/home/parim/elk/logstash-6.4.0/vendor/bundle/jruby/2.3.0/gems/webhdfs-0.8.0/lib/webhdfs/client_v1.rb:138:in `list'", "/home/parim/elk/logstash-6.4.0/vendor/bundle/jruby/2.3.0/gems/logstash-output-webhdfs-3.0.6/lib/logstash/outputs/webhdfs_helper.rb:49:in `test_client'", "/home/parim/elk/logstash-6.4.0/vendor/bundle/jruby/2.3.0/gems/logstash-output-webhdfs-3.0.6/lib/logstash/outputs/webhdfs.rb:155:in `register'", "org/logstash/config/ir/compiler/OutputStrategyExt.java:102:in `register'", "org/logstash/config/ir/compiler/AbstractOutputDelegatorExt.java:46:in `register'", "/home/parim/elk/logstash-6.4.0/logstash-core/lib/logstash/pipeline.rb:241:in `register_plugin'", "/home/parim/elk/logstash-6.4.0/logstash-core/lib/logstash/pipeline.rb:252:in `block in register_plugins'", "org/jruby/RubyArray.java:1734:in `each'", "/home/parim/elk/logstash-6.4.0/logstash-core/lib/logstash/pipeline.rb:252:in `register_plugins'", "/home/parim/elk/logstash-6.4.0/logstash-core/lib/logstash/pipeline.rb:593:in `maybe_setup_out_plugins'", "/home/parim/elk/logstash-6.4.0/logstash-core/lib/logstash/pipeline.rb:262:in `start_workers'", "/home/parim/elk/logstash-6.4.0/logstash-core/lib/logstash/pipeline.rb:199:in `run'", "/home/parim/elk/logstash-6.4.0/logstash-core/lib/logstash/pipeline.rb:159:in `block in start'"], :thread=>"#<Thread:0x77eb0a57 run>"}[2018-09-27T10:03:36,647][ERROR][logstash.agent           ] Failed to execute action {:id=>:main, :action_type=>LogStash::ConvergeResult::FailedAction, :message=>"Could not execute action: PipelineAction::Create<main>, action_result: false", :backtrace=>nil}
+```
+#### 原因
+196.168.0.79上未在/etc/hosts中配置192.168.0.80的记录
+
+#### 解决方案
+
+编辑/etc/hosts
+```
+sudo vi /etc/hosts
+```
+添加以下记录即可：
+```
+192.168.0.80    hadoop
+```
+
 ###  Hadoop获得的日志记录与预期不符
 最开始Logstash中没设置```codec```，获得的记录是这样的：
 ```
@@ -241,6 +262,7 @@ codec => "json"
 得到了所需要的上面所示的格式。
 
 原因就是Logstash 的Filter插件部分已将非结构化的数据进行了结构化操作，在输出时需要通过codec解码成相应的格式，对于这里就是json.
+
 
 ### Maybe you should increase retry_interval or reduce number of workers
 
@@ -338,11 +360,14 @@ curl: (7) couldn't connect to host
 
 最开始在官方的[hdfs-default.xml](https://hadoop.apache.org/docs/r2.8.5/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml)下并未找到该配置属性，后来通过搜索在[webhdfs两个步骤上载文件](https://stackoverrun.com/cn/q/9106688)中才得知这个属性。
 
-另外，这个问题在搜索过程中发现大面积的都是说在说“没有写入权限的问题”，特此也记录一下：
+另外，这个问题在搜索过程中发现大部分都是在说“没有写入权限的问题”，特此也记录一下：
+
 1. HDFS访问账户问题；
 2. HDFS的主机解析问题；
 
 Logstash的输出插件中的webhdfs部分的user，Logstash解释是webhdfs的用户名。一般默认是启动Hadoop的Username。
+
+
 
 
 ## Hadoop与Java版本
