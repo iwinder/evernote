@@ -210,6 +210,7 @@ sudo firewall-cmd --reload
 ```
 
 访问```http://192.168.0.80:50070```可见如下，当看到logstash-data文件夹时，说明整合成功：
+
 ![enter description here](./images/1538191045968.png)
 
 进入logstash-data下载里面的log文件，打开可见类似记录：
