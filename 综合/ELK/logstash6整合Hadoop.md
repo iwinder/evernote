@@ -198,6 +198,7 @@ webhdfs {
 }
 ```
 保存后，重启Logstash即可。
+
 ![enter description here](./images/1538191739981.png)
 
 #### 放行端口
