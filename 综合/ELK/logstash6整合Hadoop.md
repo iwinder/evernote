@@ -278,6 +278,7 @@ HDFS的读写模式为 "write-once-read-many"，为了实现write-once，需要�
 
 参考:[Logstash学习（七）Logstash的webhdfs插件](https://birdben.github.io/2017/02/07/Logstash/Logstash%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%83%EF%BC%89Logstash%E7%9A%84webhdfs%E6%8F%92%E4%BB%B6/)
 
+[ Webhdfs output plugin](https://www.elastic.co/guide/en/logstash/6.4/plugins-outputs-webhdfs.html#plugins-outputs-webhdfs-options)
 ## Hadoop与Java版本
 | Hadoop | Java |
 | --- | --- |
