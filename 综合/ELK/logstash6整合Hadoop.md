@@ -209,6 +209,11 @@ sudo firewall-cmd --reload
 访问```http://192.168.0.80:50070```可见如下，当看到logstash-data文件夹时，说明整合成功：
 ![enter description here](./images/1538191045968.png)
 
+下载里面的log文件，打开可见类似条目：
+```
+{"source":"/home/parim/apps/nginx-1.10/logs/access.log","@version":"1","learner_type":"exam","tags":["beats_input_codec_plain_applied"],"type":"logs","offset":1656526468,"beat":{"version":"6.4.0","hostname":"dev.qimooc.net","name":"dev.qimooc.net"},"@timestamp":"2018-09-29T01:45:53.093Z","input":{"type":"log"},"prospector":{"type":"log"},"read_timestamp":"2018-09-29T01:45:53.093Z","nginx":{"access":{"client_ip":"192.168.0.221","method":"GET","body_sent":{"bytes":"0"},"referer":"http://sparkdev.qimooc.net/learner/course/detail/1423705","x_forwarded":"121.69.9.234","msec":"[1538185552.664]","user_name":"-","cookie_sid":"-","time_iso8601":"2018-09-29T09:45:52+08:00","url":"/api/learner/exam/myExam/examList?examWh=COURSE&offeringId=1423704&epType=PC","user_agent":"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.62 Safari/537.36","http_version":"1.0","response_code":"302"}},"host":{"name":"dev.qimooc.net"}}
+```
+
 ## Hadoop与Java版本
 | Hadoop | Java |
 | --- | --- |
