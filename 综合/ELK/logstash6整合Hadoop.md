@@ -336,7 +336,7 @@ curl: (7) couldn't connect to host
     </property>
 ```
 
-最开始在官方的[hdfs-default.xml](https://hadoop.apache.org/docs/r2.8.5/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml)下并未找到该配置属性，后来通过搜索在[webhdfs两个步骤上载文件](https://stackoverrun.com/cn/q/9106688)中才得知有这个属性。
+最开始在官方的[hdfs-default.xml](https://hadoop.apache.org/docs/r2.8.5/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml)下并未找到该配置属性，后来通过搜索在[webhdfs两个步骤上载文件](https://stackoverrun.com/cn/q/9106688)中才得知这个属性。
 
 ## Hadoop与Java版本
 | Hadoop | Java |
