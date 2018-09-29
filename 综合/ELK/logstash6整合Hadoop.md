@@ -286,7 +286,57 @@ HDFS的读写模式为 "write-once-read-many"，为了实现write-once，需要�
 
 [HDFS租约机制](https://blog.csdn.net/androidlushangderen/article/details/52850349)
 
-### 
+### Failed to flush outgoing items...WebHDFS::ServerError
+
+#### 问题
+```
+Failed to flush outgoing items {:outgoing_count=>1, :exception=>"WebHDFS::ServerError", :backtrace=>["/home/parim/elk/logstash-6.4.0/vendor/bundle/jruby/2.3.0/gems/webhdfs-0.8.0/lib/webhdfs/client_v1.rb:351:in `request'", "/home/parim/elk/logstash-6.4.0/vendor/bundle/jruby/2.3.0/gems/webhdfs-0.8.0/lib/webhdfs/client_v1.rb:270:in `operate_requests'", "/home/parim/elk/logstash-6.4.0/vendor/bundle/jruby/2.3.0/gems/webhdfs-0.8.0/lib/webhdfs/client_v1.rb:73:in `create'", "/home/parim/elk/logstash-6.4.0/vendor/bundle/jruby/2.3.0/gems/logstash-output-webhdfs-3.0.6/lib/logstash/outputs/webhdfs.rb:228:in `write_data'", "/home/parim/elk/logstash-6.4.0/vendor/bundle/jruby/2.3.0/gems/logstash-output-webhdfs-3.0.6/lib/logstash/outputs/webhdfs.rb:211 :in `block in flush'", "org/jruby/RubyHash.java:1343:in `each'", "/home/parim/elk/logstash-6.4.0/vendor/bundle/jruby/2.3.0/gems/logstash-output-webhdfs-3.0.6/lib/logstash/outputs/webhdfs.rb:199 :in `flush'", "/home/parim/elk/logstash-6.4.0/vendor/bundle/jruby/2.3.0/gems/stud-0.0.23/lib/stud/buffer.rb:219:in `block in buffer_flush'", "org/jruby/RubyHash.java:1343:in `each'", "/home/parim/elk/logstash-6.4.0/vendor/bundle/jruby/2.3.0/gems/stud-0.0.23/lib/stud/buffer.rb:216: in `buffer_flush'", "/home/parim/elk/logstash-6.4.0/vendor/bundle/jruby/2.3.0/gems/stud-0.0.23/lib/stud/buffer.rb:159:in `buffer_receive'", "/home/parim/elk/logstash-6.4.0/vendor/bundle/jruby/2.3.0/gems/logstash-output-webhdfs-3.0.6/lib/logstash/outputs/webhdfs.rb:182:in `receive'", "/home/parim/elk/logstash-6.4.0/logstash-core/lib/logstash/outputs/base.rb:89:in `block in multi_receive'", "org/jruby/RubyArray.java:1734:in `each'","/home/parim/elk/logstash-6.4.0/logstash-core/lib/logstash/outputs/base.rb:89:in `multi_receive'", "org/logstash/config/ir/compiler/OutputStrategyExt.java:114:in `multi_receive'", "org/logstash/config/ir/compiler/AbstractOutputDelegatorExt.java:97:in `multi_receive'", "/home/parim/elk/logstash-6.4.0/logstash-core/lib/logstash/pipeline.rb:372:in `block in output_batch'","org/jruby/RubyHash.java:1343:in `each'", "/home/parim/elk/logstash-6.4.0/logstash-core/lib/logstash/pipeline.rb:371:in `output_batch'", "/home/parim/elk/logstash-6.4.0/logstash-core/lib/logstash/pipeline.rb:323:in `worker_loop'","/home/parim/elk/logstash-6.4.0/logstash-core/lib/logstash/pipeline.rb:285:in `block in start_workers'"]}
+```
+#### 原因
+最开始Hadoop的hdfs-site.xml没有配置
+```
+    <property>
+        <name> dfs.datanode.hostname</name>
+        <value>192.168.0.80</value>
+    </property>
+```
+当在通过Hadoop的WebHDFS api测试读取文件：
+```
+curl -i -L http://192.168.0.80:50070/webhdfs/v1//user/parim/logstash/logs/hadoop-parim-namenode-localhost.localdomain.log?op=OPEN
+```
+发现192.168.0.79结果如下：
+```
+HTTP/1.1 307 TEMPORARY_REDIRECT
+Cache-Control: no-cache
+Expires: Fri, 28 Sep 2018 04:35:55 GMT
+Date: Fri, 28 Sep 2018 04:35:55 GMT
+Pragma: no-cache
+Expires: Fri, 28 Sep 2018 04:35:55 GMT
+Date: Fri, 28 Sep 2018 04:35:55 GMT
+Pragma: no-cache
+Content-Type: application/octet-stream
+X-FRAME-OPTIONS: SAMEORIGIN
+Location: http://localhost:50075/webhdfs/v1//user/parim/logstash/hadoop-parim-datanode-localhost.localdomain.log?op=OPEN&namenoderpcaddress=192.168.0.80:54310&offset=0
+Content-Length: 0
+
+curl: (7) couldn't connect to host
+```
+192.168.0.80虽然也会重定向，但会正常返回数据。查询[Open and Read a File](https://hadoop.apache.org/docs/r2.8.5/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Open_and_Read_a_File)得知其处理流程：
+
+提交get请求,其自动跟踪重定向->请求被重定向到可以读取文件数据的datanode->客户端遵循重定向到datanode并接收文件数据
+
+此处的DATANODE成了Hadoop默认的localhost，自然无法请求到192.168.0.80的datanode。
+
+#### 解决方案
+在hdfs-site.xml中添加如下配置即可：
+```
+    <property>
+        <name> dfs.datanode.hostname</name>
+        <value>192.168.0.80</value>
+    </property>
+```
+
+最开始在官方的[hdfs-default.xml](https://hadoop.apache.org/docs/r2.8.5/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml)下并未找到该配置属性，后来通过搜索在[webhdfs两个步骤上载文件](https://stackoverrun.com/cn/q/9106688)中才知道有这个属性。
 
 ## Hadoop与Java版本
 | Hadoop | Java |
