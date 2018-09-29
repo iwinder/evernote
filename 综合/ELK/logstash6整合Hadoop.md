@@ -338,6 +338,13 @@ curl: (7) couldn't connect to host
 
 最开始在官方的[hdfs-default.xml](https://hadoop.apache.org/docs/r2.8.5/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml)下并未找到该配置属性，后来通过搜索在[webhdfs两个步骤上载文件](https://stackoverrun.com/cn/q/9106688)中才得知这个属性。
 
+另外，这个问题在搜索过程中发现大面积的都是说在说“没有写入权限的问题”，特此也记录一下：
+1. HDFS访问账户问题；
+2. HDFS的主机解析问题；
+
+Logstash的输出插件中的webhdfs部分的user，Logstash解释是webhdfs的用户名。一般默认是启动Hadoop的Username。
+
+
 ## Hadoop与Java版本
 | Hadoop | Java |
 | --- | --- |
