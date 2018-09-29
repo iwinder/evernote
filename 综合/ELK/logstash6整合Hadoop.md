@@ -94,7 +94,7 @@ hadoop.tmp.dir的目录默认指向的是：/tmp/hadoop-${USERNAME}
 
 ### etc/hadoop/hdfs-site.xml
 这里有两个参数需要配置：
-1. dfs.replication - 默认备份（块复制,block replication）。创建文件时可以指定实际的备份数。如果未在创建时指定备份，则使用默认值。[hdfs-default.xml#dfs.replication](https://hadoop.apache.org/docs/r2.8.5/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml#dfs.replication)
+1. dfs.replication - 默认备份（块复制,block replication）。创建文件时可以指定实际的备份数。如果未在创建时指定备份，则使用默认值。[hdfs-default.xml#dfs.replication](https://hadoop.apache.org/docs/r2.8.5/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml#dfs.replication)，每个datanode上只能存放一个副本。
 2. dfs.datanode.hostname - datanode默认的hostname，这个不是必须的，因为这里是两台服务器之间传递信息，所以需要配置，否则会导致后面的读写操作异常。
 
 打开hdfs-site.xml文件：
@@ -360,7 +360,7 @@ curl: (7) couldn't connect to host
 
 最开始在官方的[hdfs-default.xml](https://hadoop.apache.org/docs/r2.8.5/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml)下并未找到该配置属性，后来通过搜索在[webhdfs两个步骤上载文件](https://stackoverrun.com/cn/q/9106688)中才得知这个属性。
 
-另外，这个问题在搜索过程中发现大部分都是在说“没有写入权限的问题”，特此也记录一下：
+另外，这个问题在搜索过程中发现涉及“WebHDFS::ServerError”的大部分都是在说“没有写入权限的问题”，特此也记录一下：
 
 1. HDFS访问账户问题；
 2. HDFS的主机解析问题；
@@ -376,9 +376,11 @@ Logstash的输出插件中的webhdfs部分的user，Logstash解释是webhdfs的�
 直接将所有Hadoop的节点/IP映射放入/etc/hosts中。
 
 参考：
+
 [HDFS Permissions Guide](https://hadoop.apache.org/docs/r2.8.5/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
 
 [logstash的webhdfs使用问题](https://www.jianshu.com/p/384d5e8295ab)
+
 [Logstash使用webhdfs插件遇到写入HDFS权限问题](https://blog.csdn.net/weixin_40163498/article/details/80413216)
 
 
