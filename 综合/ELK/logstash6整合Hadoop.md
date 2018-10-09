@@ -389,5 +389,6 @@ Logstash的输出插件中的webhdfs部分的user，Logstash解释是webhdfs的�
 | --- | --- |
 | 2.7及以后版本 | Java 7 + |
 | 2.6及以前版本 | Java 6 +|
+
 [HadoopJavaVersions](https://wiki.apache.org/hadoop/HadoopJavaVersions)
 
