@@ -4,7 +4,7 @@ tags: Hadoop
 grammar_cjkRuby: true
 ---
 
-Apache Hadoop是一款可靠，可扩展的分布式计算的开源软件。
+Apache Hadoop是一款用于可靠，可扩展的分布式计算的开源软件。
 
 Apache Hadoop软件库是一个允许使用简单的编程模型跨计算机集群分布式处理大型数据集的框架。它旨在从单个服务器扩展到数千台计算机，每台计算机都提供本地计算和存储。
 
