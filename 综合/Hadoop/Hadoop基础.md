@@ -19,3 +19,17 @@ Hadoop框架包括以下四个模块：
 
 最近在官方首页出现了一个新的模块[Hadoop Ozone](https://hadoop.apache.org/ozone/)，其功能是提供Hadoop的对象存储。目前处于alpha版本，docs文档中暂未提及。
 
+## Hadoop HDFS
+
+HDFS是一种设计用于在通用硬件(commodity hardware)上运行的分布式文件系统。最初是作为Apache Nutch网络搜索引擎项目的基础设施而构建的。
+
+- HDFS具有高度容错能力，旨在部署在低成本硬件上。
+
+- HDFS提供对应用程序数据的高吞吐量访问，适用于具有大型数据集的应用程序。
+
+- HDFS放宽了一些POSIX要求，以实现对文件系统数据的流式访问。
+
+### HDFS架构
+
+![图1-HDFS架构](./images/1539076382731.png)
+
