@@ -33,3 +33,13 @@ HDFS是一种设计用于在通用硬件(commodity hardware)上运行的分布�
 
 ![图1-HDFS架构](./images/1539076382731.png)
 
+HDFS采用master/slave架构，并具有以下元素：
+
+#### Namenode
+Namenode是一个中心服务器，负责：
+
+- 管理文件系统的名字空间(namespace)
+
+- 客户端对文件的访问
+
+Namenode执行文件系统的名字空间操作，比如打开、关闭、重命名文件或目录。它也负责确定数据块到具体Datanode节点的映射。
