@@ -128,3 +128,5 @@ Shuffle和Sort阶段同时发生;
 [Apache Hadoop 2.8.5](http://hadoop.apache.org/docs/r2.8.5/index.html)
 
 [Hadoop 系列（一）基本概念](https://www.cnblogs.com/binarylei/p/8903601.html)
+
+[Hadoop MapReduce](https://www.w3cschool.cn/hadoop/flxy1hdd.html)
