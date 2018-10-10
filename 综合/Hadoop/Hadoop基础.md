@@ -141,3 +141,5 @@ Shuffle和Sort阶段同时发生;
 [Hadoop 系列（一）基本概念](https://www.cnblogs.com/binarylei/p/8903601.html)
 
 [Hadoop MapReduce](https://www.w3cschool.cn/hadoop/flxy1hdd.html)
+
+[Hadoop官方文档翻译——YARN Architecture（2.7.3）](https://www.linuxidc.com/Linux/2016-12/138028.htm)
