@@ -84,4 +84,4 @@ MapReduce作业（job）通常将输入数据集拆分为独立的块，这些�
 MapReduce框架由一个单独的主（master）ResourceManager，每个集群节点（cluster-node）一个从(slave ) NodeManager和每个应用程序(application)的MRAppMaster组成（参见YARN体系结构指南）。
 
 
-最低限度，应用程序指明输入/输出位置，并通过实现适当的接口和/或抽象类来提供map和reduce方法。再加上其他作业的参数，就构成了作业配置（job configuration）。然后,Hadoop的 job client 提交作业（jar包/可执行程序等）和配置信息给ResourceManager，后者负责将软件/配置分发给slave，调度任务并监控它们，向作业客户端（它负责将软件/配置分发给从站，调度任务并监视它们，向作业客户端提供状态和诊断信息。）提供状态和诊断信息。
+最低限度，应用程序指明输入/输出位置，并通过实现适当的接口和/或抽象类来提供map和reduce方法。再加上其他作业的参数，就构成了作业配置（job configuration）。然后,Hadoop的 job client 提交作业（jar包/可执行程序等）和配置信息给ResourceManager，后者负责将软件/配置分发给slave，调度任务并监控它们，向作业客户端（ job-client）提供状态和诊断信息。
