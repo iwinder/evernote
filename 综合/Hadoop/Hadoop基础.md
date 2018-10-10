@@ -79,7 +79,7 @@ YARN 的基本思想是将资源管理和作业调度/监控的功能分解为�
 
 
 - **ResourceManager（RM）**：全局资源管理器，负责整个系统的资源管理和分配。它主要由两个组件构成：调度器（Scheduler）和应用程序管理器（ApplicationManager，AM）。
-- **ApplicationMaster（AM）**：一个特定于框架的库，其任务是协调来自ResourceManager的资源，并与NodeManager一起执行和监视任务。
+- **ApplicationMaster（AM）**：实际上是一个特定于框架的库，其任务是协调来自ResourceManager的资源，并与NodeManager一起执行和监视任务。
 - **NodeManager**:
 - **Scheduler**:
 
