@@ -19,6 +19,13 @@ Hadoop框架包括以下四个模块：
 
 最近在官方首页出现了一个新的模块[Hadoop Ozone](https://hadoop.apache.org/ozone/)，其功能是提供Hadoop的对象存储。目前处于alpha版本，docs文档中暂未提及。
 
+### 优点
+- 高可靠性：Hadoop 按位存储和处理数据的能力值得人们信赖。
+- 高可扩展性： Hadoop 是在可用的计算机集簇间分配数据并完成计算任务的，这些集簇可以方便地扩展到数以干计的节点中。
+- 高效性： Hadoop能够在节点之间动态地移动数据，并保证各个节点的动态平衡，因此处理速度非常快。
+- 高容错性： Hadoop能够自动保存数据的多个副本，并且能够自动将失败的任务重新分。
+- 低成本：与一体机、商用数据仓库以及 QlikView、 Yonghong Z- Suites 等数据集市相比，Hadoop 是开源的，项目的软件成本因此会大大降低。
+
 ## Hadoop HDFS
 
 HDFS是一种设计用于在通用硬件(commodity hardware)上运行的分布式文件系统。最初是作为Apache Nutch网络搜索引擎项目的基础设施而构建的。
@@ -35,11 +42,30 @@ HDFS是一种设计用于在通用硬件(commodity hardware)上运行的分布�
 
 HDFS采用master/slave架构，并具有以下元素：
 
-#### Namenode
-Namenode是一个中心服务器，负责：
+#### NameNode
+
+NameNode是一个中心服务器，负责：
 
 - 管理文件系统的名字空间(namespace)
 
 - 客户端对文件的访问
 
 Namenode执行文件系统的名字空间操作，比如打开、关闭、重命名文件或目录。它也负责确定数据块到具体Datanode节点的映射。
+
+#### DataNode
+
+集群中的Datanode一般是一个节点一个，负责管理它所在节点上的存储:
+
+- Datanode负责处理文件系统客户端的读写请求。
+
+- 在Namenode的统一调度下进行数据块的创建、删除和复制。
+
+#### Block
+
+用户的数据以文件的形式存储在HDFS的文件系统中。  	从内部看，一个文件其实被分成一个或多个数据块，这些块存储在一组DataNode上，每个块尽可能地存储于不同的DataNode中。之前1.x默认大小为64M，2.8.5的默认大小已经是128M。
+
+## Hadoop YARN
+
+## Hadoop MapReduce
+
+
