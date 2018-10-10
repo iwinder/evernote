@@ -77,6 +77,7 @@ NameNode它定期从群集中的每个DataNode接收Heartbeat和Blockreport。�
 
 ## Hadoop MapReduce
 
+### 概述
 MapReduce作业（job）通常将输入数据集拆分为独立的块，这些块由map任务（map tasks）以完全并行的方式处理。框架对maps的输出（outputs）排序，然后输入到reduce 任务（reduce tasks）。通常，作业的输入和输出都存储在文件系统中。该框架负责调度任务，监控它们并重新执行失败的任务。
 
 通常，计算节点和存储节点是相同的，即MapReduce框架和Hadoop分布式文件系统（请参阅HDFS体系结构指南）在同一组节点上运行。此配置允许框架有效地在已存在数据的节点上调度任务，从而在集群中产生非常高的聚合带宽。
@@ -85,3 +86,12 @@ MapReduce框架由一个单独的主（master）ResourceManager，每个集群�
 
 
 最低限度，应用程序指明输入/输出位置，并通过实现适当的接口和/或抽象类来提供map和reduce方法。再加上其他作业的参数，就构成了作业配置（job configuration）。然后,Hadoop的 job client 提交作业（jar包/可执行程序等）和配置信息给ResourceManager，后者负责将软件/配置分发给slave，调度任务并监控它们，向作业客户端（ job-client）提供状态和诊断信息。
+
+### 输入与输出
+Map/Reduce框架运转在<key, value> 键值对上，也就是说， 框架把作业的输入看为是一组<key, value> 键值对，同样也产出一组 <key, value> 键值对做为作业的输出，这两组键值对的类型可能不同。
+
+框架需要对key和value的类(classes)进行序列化操作， 因此，这些类需要实现 Writable接口。 另外，为了方便框架执行排序操作，key类必须实现 WritableComparable接口。
+
+一个Map/Reduce 作业的输入和输出类型如下所示：
+
+(input) <k1, v1> -> map -> <k2, v2> -> combine -> <k2, v2> -> reduce -> <k3, v3> (output)
