@@ -95,3 +95,36 @@ Map/Reduce框架运转在<key, value> 键值对上，也就是说， 框架把�
 一个Map/Reduce 作业的输入和输出类型如下所示：
 
 (input) <k1, v1> -> map -> <k2, v2> -> combine -> <k2, v2> -> reduce -> <k3, v3> (output)
+
+### Mapper 
+将输入键值对(key/value pair)映射到一组中间格式的键值对集合。即将键值对通过函数映射成一组新的键值对。
+
+### Reducer
+
+Reducer将与一个key关联的一组中间数值集归约（reduce）为一个更小的数值集。即将键值对动key相同的值整合，通过函数映射成新的键值对。
+
+Reducer有3个主要阶段：shuffle、sort和reduce。
+
+##### Shuffle
+
+Reducer的输入就是Mapper已经排好序的输出。在这个阶段，框架通过HTTP为每个Reducer获得所有Mapper输出中与之相关的分块。
+#### Sort
+
+框架在此阶段按keys（因为不同的映射器可能输出相同的键）对Reducer输入进行分组。
+
+Shuffle和Sort阶段同时发生;
+
+在获取map-outputs时，它们被合并。
+
+#### Secondary Sort
+如果需要中间过程对key的分组规则和reduce前对key的分组规则不同，那么可以通过 JobConf.setOutputValueGroupingComparator(Class)来指定一个Comparator。再加上 JobConf.setOutputKeyComparatorClass(Class)可用于控制中间过程的key如何被分组，所以结合两者可以实现按值的二次排序。
+
+#### Reduce
+
+如果需要中间过程对key的分组规则和reduce前对key的分组规则不同，那么可以通过 JobConf.setOutputValueGroupingComparator(Class)来指定一个Comparator。再加上 JobConf.setOutputKeyComparatorClass(Class)可用于控制中间过程的key如何被分组，所以结合两者可以实现按值的二次排序。
+
+[Hadoop文档-0.18](http://hadoop.apache.org/docs/r1.0.4/cn/index.html)
+
+[Apache Hadoop 2.8.5](http://hadoop.apache.org/docs/r2.8.5/index.html)
+
+[Hadoop 系列（一）基本概念](https://www.cnblogs.com/binarylei/p/8903601.html)
