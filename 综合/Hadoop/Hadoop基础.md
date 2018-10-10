@@ -63,12 +63,18 @@ Namenode执行文件系统的名字空间操作，比如打开、关闭、重命
 #### Block
 
 用户的数据以文件的形式存储在HDFS的文件系统中。  	从内部看，一个文件其实被分成一个或多个数据块，这些块存储在一组DataNode上，每个块尽可能地存储于不同的DataNode中。之前1.x默认大小为64M，2.8.5的默认大小已经是128M。
+
 #### Rack
 可简单理解为存放服务器的支架。
 
 HDFS采用一种称为机架感知(rack-aware)的策略来改进数据的可靠性、可用性和网络带宽的利用率。
+
+HDFS中的文件是一次写入的（除了追加和截断），并且在任何时候都有一个写入器，亦即一次写入多次读取。
+
+NameNode它定期从群集中的每个DataNode接收Heartbeat和Blockreport。收到Heartbeat意味着DataNode正常运行。Blockreport包含DataNode上所有块的列表。
+
 ## Hadoop YARN
 
 ## Hadoop MapReduce
 
-
+MapReduce作业（job ）通常将输入数据集拆分为独立的块，这些块由map任务（map tasks）以完全并行的方式处理。框架对maps的输出（outputs ）排序，然后输入到reduce 任务（reduce tasks）。通常，作业的输入和输出都存储在文件系统中。该框架负责调度任务，监控它们并重新执行失败的任务。
