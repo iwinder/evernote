@@ -84,6 +84,8 @@ YARN 的基本思想是将资源管理和作业调度/监控的功能分解为�
 - **Scheduler**：
 - **Containers**：执行AppMaster指定的任务。
 
+ResourceManager和NodeManager构成了数据计算框架（ data-computation framework）。
+
 ## Hadoop MapReduce
 
 ### 概述
