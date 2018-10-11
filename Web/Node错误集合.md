@@ -18,3 +18,7 @@ npm WARN deprecated coffee-script@1.7.1: CoffeeScript on NPM has moved to "coffe
 在git控制台安装nrm时一直报这个，等好久一直卡着。然后去cmd(以管理员模式运行)中执行了同样的语句，40多秒就安装成功了。
 
 ## node-gyp错误之旅
+
+## npm install的时候出现unexpected end of file错误提示时的解决办法
+
+运行npm cache clean --force 清空npm缓存即可决这个问题 
