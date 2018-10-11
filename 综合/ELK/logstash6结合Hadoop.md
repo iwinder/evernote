@@ -134,3 +134,5 @@ Pipeline aborted due to error {:pipeline_id=>"main", :exception=>#<WebHDFS::Serv
 
 
 [HDFS租约解析](http://bigdatadecode.club/HDFS%E7%A7%9F%E7%BA%A6%E8%A7%A3%E6%9E%90.html)
+
+[2017年大数据生态圈三强榜单](http://www.sohu.com/a/133828001_464033)
