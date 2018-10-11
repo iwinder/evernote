@@ -131,3 +131,6 @@ Pipeline aborted due to error {:pipeline_id=>"main", :exception=>#<WebHDFS::Serv
 [bash: hdfs: command not found](https://blog.csdn.net/a295277302/article/details/72861845)
 
 [Logstash使用webhdfs插件遇到写入HDFS权限问题](https://blog.csdn.net/weixin_40163498/article/details/80413216)
+
+
+[HDFS租约解析](http://bigdatadecode.club/HDFS%E7%A7%9F%E7%BA%A6%E8%A7%A3%E6%9E%90.html)
