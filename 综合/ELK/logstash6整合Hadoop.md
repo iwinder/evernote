@@ -392,3 +392,9 @@ Logstash的输出插件中的webhdfs部分的user，Logstash解释是webhdfs的�
 
 [HadoopJavaVersions](https://wiki.apache.org/hadoop/HadoopJavaVersions)
 
+
+
+
+### /usr/app/hadoop/bin/hadoop: line 20: which: command not found
+
+[基于docker搭建hadoop集群环境中遇到的一些问题](https://blog.csdn.net/rznice/article/details/52219909)
