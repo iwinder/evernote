@@ -24,3 +24,17 @@ docker attach <CONTAINER_ID> 连接到启动的容器
 docker logs <CONTAINER_ID>  : 输出容器日志
 
 [Docker container常用的命令](https://blog.csdn.net/chajinglong/article/details/51536096)
+
+
+## 保存镜像修改
+
+获取容器id
+```
+docker ps -a
+```
+得到l类似：
+```
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS               NAMES
+498117d3b620        centos              "/bin/bash"         16 minutes ago      Exited (0) 7 minutes ago                       nifty_hermann
+cc5b631df8b0        centos              "/bin/bash"         5 weeks ago         Exited (127) 5 weeks ago
+```
