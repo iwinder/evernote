@@ -52,4 +52,4 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 wind/hadoop         latest              783f7509a46d        About a minute ago   200MB
 centos              update3             e2c2530f5c3c        5 weeks ago          1.76GB
 ```
-
+命令中，指定了要提交的修改过的容器的ID、目标镜像仓库、镜像名。commit提交的只是创建容器的镜像与容器的当前状态之间的差异部分，很轻量。
