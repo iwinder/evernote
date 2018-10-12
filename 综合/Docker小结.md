@@ -53,3 +53,14 @@ wind/hadoop         latest              783f7509a46d        About a minute ago  
 centos              update3             e2c2530f5c3c        5 weeks ago          1.76GB
 ```
 命令中，指定了要提交的修改过的容器的ID、目标镜像仓库、镜像名。commit提交的只是创建容器的镜像与容器的当前状态之间的差异部分，很轻量。
+
+```
+docker run -t -i --privileged wind/hadoop /usr/sbin/init
+
+docker run -d -e "container=docker" --privileged=true -v /sys/fs/cgroup:/sys/fs/cgroup --name centos7 wind/hadoop /usr/sbin/init 
+
+
+docker run --privileged  -ti -e "container=docker"  -v /sys/fs/cgroup:/sys/fs/cgroup  wind/hadoop  /usr/sbin/init
+```
+
+[配置centos7解决 docker Failed to get D-Bus connection 报错](https://blog.csdn.net/xiaochonghao/article/details/64438246)
