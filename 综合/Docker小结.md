@@ -38,3 +38,18 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 498117d3b620        centos              "/bin/bash"         16 minutes ago      Exited (0) 7 minutes ago                       nifty_hermann
 cc5b631df8b0        centos              "/bin/bash"         5 weeks ago         Exited (127) 5 weeks ago
 ```
+提交保存修改
+```
+docker commit 498117d3b620 wind/hadoop
+```
+查看状态
+```
+docker images
+```
+得到：
+```
+REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE
+wind/hadoop         latest              783f7509a46d        About a minute ago   200MB
+centos              update3             e2c2530f5c3c        5 weeks ago          1.76GB
+```
+
