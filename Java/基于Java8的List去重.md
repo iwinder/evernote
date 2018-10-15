@@ -78,8 +78,11 @@ List<User> newUsers = new ArrayList<User>(userSet);
 List<User> newUsers =  userLiset1.stream().collect(
 	Collectors.collectingAndThen(Collectors.toCollection(
 		() -> new TreeSet<>(
-			Comparator.comparing( user->User::getId))), ArrayList::new)
+			Comparator.comparing(User::getId))), ArrayList::new)
 );
 ```
-
+若根据User下的Windcoder的id做比较，可以将上面中的Comparator.comparing比较条件改为：
+```
+Comparator.comparing( user->user.getCom().getId()))), ArrayList::new)
+```
 
