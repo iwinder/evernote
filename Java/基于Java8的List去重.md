@@ -86,3 +86,13 @@ List<User> newUsers =  userLiset1.stream().collect(
 Comparator.comparing( user->user.getCom().getId()))), ArrayList::new)
 ```
 
+### 两个List合并及去重
+可以使用thenComparing对判重条件进行追加，程序会自动依次对比。
+```
+Comparator<User> c=Comparator.comparing(user->user.getCom().getId())
+						.thenComparing(User::getName);
+List<User> result = Stream.concat(userLiset1.stream(), userLiset2.stream())
+    			                .filter(new ConcurrentSkipListSet<>(c)::add)
+    			                .collect(Collectors.toList());
+```
+
