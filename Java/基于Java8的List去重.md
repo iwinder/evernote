@@ -8,7 +8,7 @@ grammar_cjkRuby: true
 public class User {
 	private Long id;
 	private String name;
-	private String windcoder;
+	private Windcoder com;
 	......
 }
 ```
@@ -73,6 +73,13 @@ Set<User> userSet = new TreeSet<User>(new Comparator<User>(){
 userSet.addAll(userLiset1);
 List<User> newUsers = new ArrayList<User>(userSet);
 ```
-
+### stream形式
+```
+List<User> newUsers =  userLiset1.stream().collect(
+	Collectors.collectingAndThen(Collectors.toCollection(
+		() -> new TreeSet<>(
+			Comparator.comparing( user->User::getId))), ArrayList::new)
+);
+```
 
 
