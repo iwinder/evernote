@@ -96,3 +96,10 @@ List<User> result = Stream.concat(userLiset1.stream(), userLiset2.stream())
     			                .collect(Collectors.toList());
 ```
 
+## 参考资料
+
+1. [Java 8 根据属性值对列表去重](https://blog.csdn.net/wang704987562/article/details/79300393)
+
+2. [合并java 8中的两个对象列表？](https://cloud.tencent.com/developer/ask/51866)
+
+3. [Java List\<Object\>去掉重复对象](https://blog.csdn.net/bestxiaok/article/details/75087649)
