@@ -47,7 +47,7 @@ us.addAll(userLiset1);
 List<User> newUsers = new ArrayList<User>(us);
 ```
 ### stream去重
-此为Java8始有的方式
+此为Java8始有的方式stream+lambdas：
 ```
 List<user> newUsers = new ArrayList<User>();
 userLiset1.stream().forEach(
@@ -57,6 +57,21 @@ userLiset1.stream().forEach(
 			}
 		}
 );
+```
+## 不重写equals()
+
+实际上很多时候项目中不能或不允许重写对象的equals()，此时去重的核心就是通过TreeSet或ConcurrentSkipListSet去重，两者主要区别是后者为线程安全的。
+
+### 非stream形式
+```
+Set<User> userSet = new TreeSet<User>(new Comparator<User>(){
+	 @Override
+	 public int compare(User o1, User o2) {
+		  return o1.getId().compareTo(o2.getId()); 
+	 }
+}) ;
+userSet.addAll(userLiset1);
+List<User> newUsers = new ArrayList<User>(userSet);
 ```
 
 
