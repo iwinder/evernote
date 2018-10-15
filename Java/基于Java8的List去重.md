@@ -85,6 +85,7 @@ List<User> newUsers =  userLiset1.stream().collect(
 ```
 Comparator.comparing( user->user.getCom().getId()))), ArrayList::new)
 ```
+collect() 操作会把其接收的元素聚集（aggregate）到一起（这里是 List）。
 
 ### 两个List合并及去重
 可以使用thenComparing对判重条件进行追加，程序会自动依次对比。
@@ -95,6 +96,11 @@ List<User> result = Stream.concat(userLiset1.stream(), userLiset2.stream())
     			                .filter(new ConcurrentSkipListSet<>(c)::add)
     			                .collect(Collectors.toList());
 ```
+- concat用于合并，这里是合并两个```List\<User\>```流。
+
+- Collectors 类实现了很多归约操作，例如将流转换成集合和聚合元素。Collectors 可用于返回列表或字符串，这里返回的是List;
+
+- filter 方法用于通过设置的条件过滤出元素,这里相当于过滤掉重复的User，重复的后者将被舍弃。
 
 ## 参考资料
 
