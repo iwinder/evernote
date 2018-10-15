@@ -96,7 +96,7 @@ List<User> result = Stream.concat(userLiset1.stream(), userLiset2.stream())
     			                .filter(new ConcurrentSkipListSet<>(c)::add)
     			                .collect(Collectors.toList());
 ```
-- concat用于合并，这里是合并两个```List\<User\>```流。
+- concat用于合并，这里是合并两个```List<User>```流。
 
 - Collectors 类实现了很多归约操作，例如将流转换成集合和聚合元素。Collectors 可用于返回列表或字符串，这里返回的是List;
 
