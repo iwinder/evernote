@@ -22,11 +22,19 @@ grammar_cjkRuby: true
 ![enter description here](./images/1539764758166.png)
 条目，也叫记录项，是LDAP中最基本的颗粒，每一个条目都有一个唯一的标识名（Distinguished Name, DN）。如上图中的 'cn=baby,ou=marketing,ou=people,dc=mydomain,dc=org'。
 
-DN
 
-RN
+DN 中有三个组成：
 
-Base Dn
+- 相对标识（Relational DN, RDN）：一般是 DN 中最左边的部分，上例中的 cn=baby。
+- 组织机构（Organization Unit, OU）：标记条目所属的组织，上例中的 ou=marketing,ou=people。
+- 基准 DN（Base DN）：LDAP 目录树的根，上例中的 dc=mydomain,dc=org。
+
+Base DN 有三种命名方式，可以按需选择：
+
+- X.500 格式：形如 dc="Foobar, Inc",dc=US。
+- 以 internet 地址表示：形如 dc=foobar.com。
+- 以 DNS 域名的不同部分来表示（推荐）：形如 dc=foobar,dc=com。
+
 
 ### 属性（Attribute）
 
