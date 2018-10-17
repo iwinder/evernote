@@ -34,7 +34,7 @@ Base Dn
 
 
 [LDAP 笔记](https://blog.laisky.com/p/ldap/)
-
+[LDAP服务器的概念和原理简单介绍](https://segmentfault.com/a/1190000002607140#articleHeader7)
 
 
 
