@@ -20,9 +20,21 @@ grammar_cjkRuby: true
  
 ### 条目(Entry)
 ![enter description here](./images/1539764758166.png)
-条目，也叫记录项，是LDAP中最基本的颗粒
+条目，也叫记录项，是LDAP中最基本的颗粒，每一个条目都有一个唯一的标识名（Distinguished Name, DN）。如上图中的 'cn=baby,ou=marketing,ou=people,dc=mydomain,dc=org'。
 
-属性（Attribute）
+DN
+
+RN
+
+Base Dn
+
+### 属性（Attribute）
+
+### 对象类（ObjectClass）
+
+
+[LDAP 笔记](https://blog.laisky.com/p/ldap/)
+
 
 
 
