@@ -39,6 +39,25 @@ Base DN 有三种命名方式，可以按需选择：
 ### 属性（Attribute）
 
 ### 对象类（ObjectClass）
+对象类是属性的集合，项目可以通过选择对象类来获得属性。如果两个对象类中有相同的属性，条目只会保存其中一个。
+
+一共有三种对象类：
+
+结构类型（STRUCTURAL）
+结构类是是最基本的类型
+每个条目属于且仅属于一个结构型对象类
+抽象类型（ABSTRACT）
+抽象类可以被继承，是其他类型的模板
+条目不能直接继承抽象类
+top 对象类是所有抽象类的根类
+辅助类型（AUXILIARY）
+辅助类型类规定了对象实体的扩展属性
+每个条目至少有一个结构性对象类
+![enter description here](./images/1539767564354.png)
+
+### 模式（Schema）
+模式是对象类的集合。
+![enter description here](./images/1539767544339.png)
 
 
 [LDAP 笔记](https://blog.laisky.com/p/ldap/)
