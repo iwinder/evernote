@@ -34,7 +34,10 @@ Base Dn
 
 
 [LDAP 笔记](https://blog.laisky.com/p/ldap/)
+
 [LDAP服务器的概念和原理简单介绍](https://segmentfault.com/a/1190000002607140#articleHeader7)
+
+[OpenLDAP2.4管理员指南](	http://wiki.jabbercn.org/index.php/OpenLDAP2.4%E7%AE%A1%E7%90%86%E5%91%98%E6%8C%87%E5%8D%97#.E4.BB.80.E4.B9.88.E6.98.AFLDAP.3F)
 
 
 
