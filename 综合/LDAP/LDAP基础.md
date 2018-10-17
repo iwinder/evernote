@@ -61,6 +61,8 @@ Base DN 有三种命名方式，可以按需选择：
 
 ### 模式（Schema）
 模式是对象类的集合。
+
+对象类（ObjectClass）、属性类型（AttributeType）、语法（Syntax）分别约定了条目、属性、值，他们之间的关系如下图所示。所以这些构成了模式(Schema)——对象类的集合。条目数据在导入时通常需要接受模式检查，它确保了目录中所有的条目数据结构都是一致的。
 ![enter description here](./images/1539767544339.png)
 
 
