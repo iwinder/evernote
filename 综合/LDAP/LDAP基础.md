@@ -79,7 +79,11 @@ Base DN 有三种命名方式，可以按需选择：
 ```
 /usr/local/etc/openldap/
 
-sudo /usr/local/libexec/slapd -h
+sudo /usr/local/libexec/slapd
+
+
+ ps -ef |grep slapd
+
 ```
 
 
