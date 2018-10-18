@@ -12,7 +12,7 @@ grammar_cjkRuby: true
 |简称|描述|
 |---|---|
 |o| organization（组织-公司）|
-|ou| – organization unit（组织单-部门）|
+|ou|organization unit（组织单-部门）|
 |c | countryName（国家）|
 |dc | domainComponent（域名）|
 |sn | suer name（真实名称）|
@@ -71,6 +71,15 @@ Base DN 有三种命名方式，可以按需选择：
 [LDAP服务器的概念和原理简单介绍](https://segmentfault.com/a/1190000002607140#articleHeader7)
 
 [OpenLDAP2.4管理员指南](	http://wiki.jabbercn.org/index.php/OpenLDAP2.4%E7%AE%A1%E7%90%86%E5%91%98%E6%8C%87%E5%8D%97#.E4.BB.80.E4.B9.88.E6.98.AFLDAP.3F)
+
+
+
+
+### 
+```
+/usr/local/etc/openldap/
+```
+
 
 
 
