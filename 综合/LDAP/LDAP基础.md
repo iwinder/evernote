@@ -92,6 +92,51 @@ ldapsearch -x -b 'dc=windcoder,dc=com' '(objectClass=*)'
 
 ```
 
+
+
+```
+dn: dc=windcoder,dc=com
+objectClass: top
+objectClass: dcObject
+objectClass: organization
+dc: windcoder
+o: windcoder com
+
+dn: ou=Orgs,dc=windcoder,dc=com
+objectClass: top
+objectClass: organizationalUnit
+ou: Orgs
+
+
+dn: cn=Some Person,ou=Orgs,dc=windcoder,dc=com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+userPassword: password
+cn: Some Person
+sn: Person
+description: Orgs  Some Person
+telephoneNumber: 555-123456
+
+
+```
+
+最开始
+
+```
+dn: cn=Some Person,ou=Orgs,dc=windcoder,dc=com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+uid: some-person
+userPassword: password
+cn: Some Person
+sn: Person
+description: Orgs  Some Person
+telephoneNumber: 555-123456
+```
+
 [LDAP安装配置(原创)](http://czmmiao.iteye.com/blog/1561703)
 
 
