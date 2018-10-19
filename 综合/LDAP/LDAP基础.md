@@ -84,8 +84,20 @@ sudo /usr/local/libexec/slapd
 
  ps -ef |grep slapd
 
+ldapadd -x -D "cn=admin,dc=windcoderc,dc=com" -W -f test1.ldif
+
+ldapsearch -x -b 'dc=windcoder,dc=com' '(objectClass=*)'
+
+
+
 ```
 
+[LDAP安装配置(原创)](http://czmmiao.iteye.com/blog/1561703)
 
 
+语法错误：
+```
+additional info: objectClass: value #1 invalid per syntax
+```
+未识别的objectClass。
 
