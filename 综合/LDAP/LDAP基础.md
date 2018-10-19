@@ -224,3 +224,6 @@ index   objectClass     eq
 
 
 [2. A Quick-Start Guide](http://www.openldap.org/doc/admin24/quickstart.html)
+
+
+[Spring LDAP官方文档翻译(1-5章)](https://www.jianshu.com/p/77517e26a357)
