@@ -221,3 +221,6 @@ directory       /usr/local/etc/openldap/datas/openldap-dataa
 # Indices to maintain
 index   objectClass     eq
 ```
+
+
+[2. A Quick-Start Guide](http://www.openldap.org/doc/admin24/quickstart.html)
