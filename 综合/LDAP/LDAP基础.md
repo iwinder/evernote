@@ -227,3 +227,18 @@ index   objectClass     eq
 
 
 [Spring LDAP官方文档翻译(1-5章)](https://www.jianshu.com/p/77517e26a357)
+
+
+
+### SSL
+```
+sudo openssl genrsa -out cakey.pem 2048
+```
+
+问题：
+```
+cakey.pem: Permission denied
+140340072933264:error:0200100D:system library:fopen:Permission denied:bss_file.c:402:fopen('cakey.pem','w')
+140340072933264:error:20074002:BIO routines:FILE_CTRL:system lib:bss_file.c:404:
+```
+权限导致。
