@@ -24,6 +24,10 @@ make depend
 
 // 再编译软件
 make
+
+// 检测构建--这一步等待时间略长
+make test
+
 ```
-	
+![enter description here](./images/1541152333988.png)
 	
