@@ -242,3 +242,6 @@ cakey.pem: Permission denied
 140340072933264:error:20074002:BIO routines:FILE_CTRL:system lib:bss_file.c:404:
 ```
 权限导致。
+
+
+[OpenLDAP配置TLS加密传输](https://www.cnblogs.com/netonline/p/7517685.html)
