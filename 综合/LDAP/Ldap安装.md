@@ -67,8 +67,11 @@ include        /usr/local/etc/openldap/schema/inetorgperson.schema
 修改suffix、rootdn、rootpw、directory
 ```
 suffix		"dc=windcoder,dc=com"
+# 账号
 rootdn     "cn=admin,dc=windcoder,dc=com"
+# 密码，即上面生成的
 rootpw     {SSHA}LFvNxLuy20L00BudQ8MYgv8ZdxRSXNxd
+# 可以看做数据存储位置，自定义即可。
 directory	/usr/local/etc/openldap/datas/openldap-data
 ```
 此处的directory目录，不会自动创建，需手动创建，不然会造成无法启动。
