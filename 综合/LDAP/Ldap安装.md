@@ -127,3 +127,31 @@ adding new entry "ou=User,dc=windcoder,dc=com"
 ```
 ldapsearch -x -b 'dc=windcoder,dc=com' '(objectClass=*)'
 ```
+输出：
+```
+# extended LDIF
+#
+# LDAPv3
+# base <dc=windcoder,dc=com> with scope subtree
+# filter: (objectClass=*)
+# requesting: ALL
+#
+
+# windcoder.com
+dn: dc=windcoder,dc=com
+objectClass: top
+objectClass: dcObject
+objectClass: organization
+dc: windcoder
+o: windcoder-com
+
+# User,  windcoder.com
+dn: ou=User,dc=windcoder,dc=com
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+sn: Person
+cn: Some-Person
+ou: User
+
+```
