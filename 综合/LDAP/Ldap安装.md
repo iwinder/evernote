@@ -64,7 +64,7 @@ sudo vi slapd.conf
 include        /usr/local/etc/openldap/schema/cosine.schema
 include        /usr/local/etc/openldap/schema/inetorgperson.schema
 ```
-修改suffix、rootdn、rootpw、directory
+修改suffix、rootdn、rootpw、directory，这些均可改成自己的：
 ```
 suffix		"dc=windcoder,dc=com"
 # 账号
@@ -75,6 +75,7 @@ rootpw     {SSHA}LFvNxLuy20L00BudQ8MYgv8ZdxRSXNxd
 directory	/usr/local/etc/openldap/datas/openldap-data
 ```
 此处的directory目录，不会自动创建，需手动创建，不然会造成无法启动，暂时不知其他目录下是否会自动创建。
+
 ## 启动
 ```
 sudo /usr/local/libexec/slapd
@@ -84,11 +85,13 @@ sudo /usr/local/libexec/slapd
 ps -ef |grep slapd
 ```
 
+## 导入数据
 
-创建
+### 创建文件
 ```
 sudo vi test1.ldif
 ```
+添加：
 
 ```
 dn: dc=windcoder,dc=com
@@ -106,5 +109,17 @@ objectclass: organizationalPerson
 sn:Person
 cn:Some-Person
 ```
+添加entry时，如果父级目录不存在，也通常会返回“ldap_add: No such object (32)”的错误。故这里在第一次导入时（类似初始化），优先创建根目录。
 
+### 导入
 
+```
+ldapadd -x -D "cn=admin,dc=windcoder,dc=com" -W -f test1.ldif
+```
+输入Ldap登录密码（即rootpw被加密之前的密码）后出现类似如下提示而不报错即可：
+
+```
+adding new entry "dc=windcoder,dc=com"
+
+adding new entry "ou=User,dc=windcoder,dc=com"
+```
