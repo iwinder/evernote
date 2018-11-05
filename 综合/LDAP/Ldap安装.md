@@ -166,7 +166,7 @@ ldap默认389，ldaps默认636 。此处以开放389为例。
  
         service iptables restart    // 重启防火墙，修改生效
 ```
-### 
+### firewall篇
 
 ```
 sudo firewall-cmd --zone=public --add-port=50070/tcp --permanent
