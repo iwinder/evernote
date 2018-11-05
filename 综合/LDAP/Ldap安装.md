@@ -154,3 +154,21 @@ sn: Person
 cn: Some-Person
 ou: User
 ```
+
+## 放行端口
+ldap默认389，ldaps默认636 。此处以开放389为例。
+### iptables篇
+
+```
+         /sbin/iptables -I INPUT -p tcp --dport 389 -j ACCEPT   // 写入修改
+ 
+         /etc/init.d/iptables save   // 保存修改
+ 
+        service iptables restart    // 重启防火墙，修改生效
+```
+### 
+
+```
+sudo firewall-cmd --zone=public --add-port=50070/tcp --permanent
+sudo firewall-cmd --reload
+```
