@@ -4,7 +4,7 @@ tags: Ldap
 grammar_cjkRuby: true
 ---
 
-### 准备
+## 准备
 ```
 # 下载
 wget http://gpl.savoirfairelinux.net/pub/mirrors/openldap/openldap-release/openldap-2.4.46.tgz
@@ -18,7 +18,7 @@ gunzip -c openldap-2.4.46.tgz | tar xvfB -
 ```
 ![enter description here](./images/1541148699442.png)
 	
-### 构建软件
+## 构建软件
 ```
 # 先构建依赖关系
 make depend
@@ -32,18 +32,25 @@ make test
 ```
 ![enter description here](./images/1541152333988.png)
 
-### 安装
+## 安装
 ```
 // 安装软件
 su root -c 'make install'
 ```
-	
+## 配置
+
+### 设置加密的密码
+
 ```
-## 设置加密的密码
 slappasswd
 ```
+根据提示输入两遍密码，即可获得加密后端密码，如：
+```
+{SSHA}LFvNxLuy20L00BudQ8MYgv8ZdxRSXNxd
+```
 
-修改 slapd.conf
+
+### 修改 slapd.conf
 
 ```
 // 进入
@@ -52,7 +59,7 @@ cd /usr/local/etc/openldap/
 sudo vi slapd.conf
 ```
 
-导入schema
+根据需求导入schema，此处需要inetorgperson，故添加如下：
 ```
 include        /usr/local/etc/openldap/schema/cosine.schema
 include        /usr/local/etc/openldap/schema/inetorgperson.schema
@@ -64,6 +71,16 @@ rootdn     "cn=admin,dc=windcoder,dc=com"
 rootpw     {SSHA}LFvNxLuy20L00BudQ8MYgv8ZdxRSXNxd
 directory	/usr/local/etc/openldap/datas/openldap-data
 ```
+此处的directory目录，不会自动创建，需手动创建，不然会造成无法启动。
+## 启动
+```
+sudo /usr/local/libexec/slapd
+```
+查看启动状态：
+```
+ps -ef |grep slapd
+```
+
 
 创建
 ```
