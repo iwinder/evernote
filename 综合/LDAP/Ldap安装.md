@@ -4,28 +4,29 @@ tags: Ldap
 grammar_cjkRuby: true
 ---
 
+### 准备
 ```
-// 下载
+# 下载
 wget http://gpl.savoirfairelinux.net/pub/mirrors/openldap/openldap-release/openldap-2.4.46.tgz
 
-// 解压
+# 解压
 gunzip -c openldap-2.4.46.tgz | tar xvfB -
 
-// 检测系统环境
+# 检测系统环境
 ./configure
 
 ```
 ![enter description here](./images/1541148699442.png)
 	
-之后构建软件
+### 构建软件
 ```
-// 先构建依赖关系
+# 先构建依赖关系
 make depend
 
-// 再编译软件
+# 再编译软件
 make
 
-// 检测构建--这一步等待时间略长
+# 检测构建--这一步等待时间略长
 make test
 
 ```
@@ -36,3 +37,53 @@ make test
 su root -c 'make install'
 ```
 	
+```
+## 设置加密的密码
+slappasswd
+```
+
+修改 slapd.conf
+
+```
+// 进入
+cd /usr/local/etc/openldap/
+
+sudo vi slapd.conf
+```
+
+导入schema
+```
+include        /usr/local/etc/openldap/schema/cosine.schema
+include        /usr/local/etc/openldap/schema/inetorgperson.schema
+```
+修改suffix、rootdn、rootpw、directory
+```
+suffix		"dc=windcoder,dc=com"
+rootdn     "cn=admin,dc=windcoder,dc=com"
+rootpw     {SSHA}LFvNxLuy20L00BudQ8MYgv8ZdxRSXNxd
+directory	/usr/local/etc/openldap/datas/openldap-data
+```
+
+创建
+```
+sudo vi test1.ldif
+```
+
+```
+dn: dc=windcoder,dc=com
+objectClass: top
+objectClass: dcObject
+objectClass: organization
+dc: windcoder
+o: windcoder-com
+
+
+dn: ou=User,dc=windcoder,dc=com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+sn:Person
+cn:Some-Person
+```
+
+
