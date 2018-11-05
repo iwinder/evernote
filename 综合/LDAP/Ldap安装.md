@@ -153,5 +153,4 @@ objectClass: organizationalPerson
 sn: Person
 cn: Some-Person
 ou: User
-
 ```
