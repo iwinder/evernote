@@ -32,6 +32,7 @@ make test
 ```
 ![enter description here](./images/1541152333988.png)
 
+### 安装
 ```
 // 安装软件
 su root -c 'make install'
