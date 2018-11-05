@@ -169,6 +169,6 @@ ldap默认389，ldaps默认636 。此处以开放389为例。
 ### firewall篇
 
 ```
-sudo firewall-cmd --zone=public --add-port=50070/tcp --permanent
+sudo firewall-cmd --zone=public --add-port=389/tcp --permanent
 sudo firewall-cmd --reload
 ```
