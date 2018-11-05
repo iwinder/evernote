@@ -116,10 +116,14 @@ cn:Some-Person
 ```
 ldapadd -x -D "cn=admin,dc=windcoder,dc=com" -W -f test1.ldif
 ```
-输入Ldap登录密码（即rootpw被加密之前的密码）后出现类似如下提示而不报错即可：
+输入Ldap登录密码（即rootpw被加密之前的原始密码）后出现类似如下提示而不报错即可：
 
 ```
 adding new entry "dc=windcoder,dc=com"
 
 adding new entry "ou=User,dc=windcoder,dc=com"
+```
+### 查看
+```
+ldapsearch -x -b 'dc=windcoder,dc=com' '(objectClass=*)'
 ```
