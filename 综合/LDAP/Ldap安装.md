@@ -74,7 +74,7 @@ rootpw     {SSHA}LFvNxLuy20L00BudQ8MYgv8ZdxRSXNxd
 # 可以看做数据存储位置，自定义即可。
 directory	/usr/local/etc/openldap/datas/openldap-data
 ```
-此处的directory目录，不会自动创建，需手动创建，不然会造成无法启动。
+此处的directory目录，不会自动创建，需手动创建，不然会造成无法启动，暂时不知其他目录下是否会自动创建。
 ## 启动
 ```
 sudo /usr/local/libexec/slapd
