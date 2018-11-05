@@ -204,7 +204,6 @@ webhdfs {
 为了Logstash与Hadoop通信， 192.168.0.80的Hadoop默认配置下，需要放行端口50070和50075，此处是基于firewall防火墙下的命令：
 ```
 sudo firewall-cmd --zone=public --add-port=50070/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=50075/tcp --permanent
 sudo firewall-cmd --reload
 ```
 
