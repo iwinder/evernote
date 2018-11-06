@@ -79,3 +79,10 @@ keytool -import  -alias ldapserver -file G:\Work\certs\ldapserver.crt -keystore 
 [OpenLDAP配置TLS加密传输](https://www.cnblogs.com/netonline/p/7517685.html)
 
 [基于OpenSSL自建CA和颁发SSL证书](http://seanlook.com/2015/01/18/openssl-self-sign-ca/)
+
+
+
+[](http://forum.spring.io/forum/spring-projects/security/86987-spring-security-ldap-truststore-keystore)
+```
+LDAPS connections are just SSL so any connection issues are handled at the JRE level. There's nothing LDAP-specific required to enable support for SSL.
+```
