@@ -68,4 +68,4 @@ keytool -import  -alias ldapserver -file G:\Work\certs\ldapserver.crt -keystore 
 
 [OpenLDAP配置TLS加密传输](https://www.cnblogs.com/netonline/p/7517685.html)
 
-[http://seanlook.com/2015/01/18/openssl-self-sign-ca/](http://seanlook.com/2015/01/18/openssl-self-sign-ca/)
+[基于OpenSSL自建CA和颁发SSL证书](http://seanlook.com/2015/01/18/openssl-self-sign-ca/)
