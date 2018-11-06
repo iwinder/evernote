@@ -64,3 +64,8 @@ libtool-ltdl-devel
 ```
 keytool -import  -alias ldapserver -file G:\Work\certs\ldapserver.crt -keystore cacerts.jks -keypass 123456 -storepass 123456
 ```
+
+
+[OpenLDAP配置TLS加密传输](https://www.cnblogs.com/netonline/p/7517685.html)
+
+[http://seanlook.com/2015/01/18/openssl-self-sign-ca/](http://seanlook.com/2015/01/18/openssl-self-sign-ca/)
