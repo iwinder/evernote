@@ -46,3 +46,15 @@ A challenge password []:0932
 An optional company name []:
 
 ```
+
+
+
+问题
+```
+plugin.c:33:18: 致命错误：ltdl.h：没有那个文件或目录
+```
+依次检测是否安装了：
+```
+libtool-ltdl
+libtool-ltdl-devel
+```
