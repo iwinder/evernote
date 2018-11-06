@@ -63,10 +63,10 @@ yum install *openssl* -y
 ```
 plugin.c:33:18: 致命错误：ltdl.h：没有那个文件或目录
 ```
-依次检测是否安装了：
+依次检测是否安装了libtool-ltdl和libtool-ltdl-devel：
 ```
-libtool-ltdl
-libtool-ltdl-devel
+sudo yum install libtool-ltdl -y
+sudo yum install libtool-ltdl-devel -y
 ```
 
 
