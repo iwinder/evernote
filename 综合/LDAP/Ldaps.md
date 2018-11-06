@@ -58,3 +58,9 @@ plugin.c:33:18: 致命错误：ltdl.h：没有那个文件或目录
 libtool-ltdl
 libtool-ltdl-devel
 ```
+
+
+
+```
+keytool -import  -alias ldapserver -file G:\Work\certs\ldapserver.crt -keystore cacerts.jks -keypass 123456 -storepass 123456
+```
