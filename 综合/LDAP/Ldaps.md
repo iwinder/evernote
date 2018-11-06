@@ -47,7 +47,17 @@ An optional company name []:
 
 ```
 
-
+问题：
+```
+5be101b1 daemon: TLS not supported (ldaps:///)
+5be101b1 slapd stopped.
+5be101b1 connections_destroy: nothing to destroy.
+```
+解决
+```
+#理论上只需要openssl与openssl-devel
+yum install *openssl* -y
+```
 
 问题
 ```
