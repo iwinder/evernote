@@ -42,7 +42,7 @@ Email Address []:windcoderz@foxmail.com
 
 Please enter the following 'extra' attributes
 to be sent with your certificate request
-A challenge password []:0932
+A challenge password []:123456
 An optional company name []:
 
 ```
