@@ -1,0 +1,46 @@
+---
+title: spring中注册bean(通过代码动态注册)
+tags: springBoot
+grammar_cjkRuby: true
+---
+
+```
+//将applicationContext转换为ConfigurableApplicationContext
+		ConfigurableApplicationContext configurableApplicationContext = (ConfigurableApplicationContext) applicationContext;
+		
+		// 获取bean工厂并转换为DefaultListableBeanFactory
+		DefaultListableBeanFactory defaultListableBeanFactory = (DefaultListableBeanFactory) configurableApplicationContext
+				.getBeanFactory();
+		
+		// 通过BeanDefinitionBuilder创建bean定义
+		BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder
+				.genericBeanDefinition(UserService.class);
+		// 设置属性userAcctDAO,此属性引用已经定义的bean:userAcctDAO
+		beanDefinitionBuilder
+				.addPropertyReference("userAcctDAO", "UserAcctDAO");
+		
+		// 注册bean
+		defaultListableBeanFactory.registerBeanDefinition("sdfds",
+				beanDefinitionBuilder.getRawBeanDefinition());
+--------------------- 
+作者：cf 
+来源：CSDN 
+原文：https://blog.csdn.net/buyaore_wo/article/details/8119577 
+版权声明：本文为博主原创文章，转载请附上博文链接！
+```
+
+
+例子：
+
+```
+	private static ApplicationContext applicationContext = SpringUtil.getApplicationContext();
+	private static DefaultListableBeanFactory defaultListableBeanFactory = (DefaultListableBeanFactory)applicationContext.getAutowireCapableBeanFactory();
+	
+    public static LdapTemplate setLdapBeen(LdapSetting ldap) {
+    	String bennName = "ldapTemplate"+ldap.getSite().getId();
+    	BeanDefinitionBuilder beanDefinitionBuilder =BeanDefinitionBuilder.genericBeanDefinition(LdapTemplate.class);
+    	beanDefinitionBuilder.addPropertyValue("contextSource",getLdapContextSource(ldap));
+    	defaultListableBeanFactory.registerBeanDefinition(bennName,beanDefinitionBuilder.getBeanDefinition());
+    	return (LdapTemplate) applicationContext.getBean(bennName);
+    }
+```
