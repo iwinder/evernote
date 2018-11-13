@@ -52,3 +52,7 @@ grammar_cjkRuby: true
 [https://coderanch.com/c/java](https://coderanch.com/c/java)
 
 [Curious case of ConcurrentHashMap](https://medium.com/@itsromiljain/curious-case-of-concurrenthashmap-90249632d335)
+
+[How to Create a thread-safe ConcurrentHashSet in Java 8? Example
+
+Read more: https://javarevisited.blogspot.com/2017/08/how-to-create-thread-safe-concurrent-hashset-in-java-8.html#ixzz5Wj2FbUQM]
