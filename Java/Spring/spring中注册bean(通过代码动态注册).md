@@ -44,3 +44,6 @@ grammar_cjkRuby: true
     	return (LdapTemplate) applicationContext.getBean(bennName);
     }
 ```
+
+
+[IDEA打包war部署到tomcat 404错误（tomcat配置正确）](https://blog.csdn.net/jyfjyt/article/details/78617112)
