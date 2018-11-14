@@ -22,12 +22,7 @@ grammar_cjkRuby: true
 		// 注册bean
 		defaultListableBeanFactory.registerBeanDefinition("sdfds",
 				beanDefinitionBuilder.getRawBeanDefinition());
---------------------- 
-作者：cf 
-来源：CSDN 
-原文：https://blog.csdn.net/buyaore_wo/article/details/8119577 
-版权声明：本文为博主原创文章，转载请附上博文链接！
-```
+
 
 
 例子：
