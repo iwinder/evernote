@@ -12,6 +12,12 @@ grammar_cjkRuby: true
 ## 等价转换
 
 ### compute
+
+```
+default V compute(K key,
+                  BiFunction<? super K,? super V,? extends V> remappingFunction)
+```
+等价于
 ```
  V oldValue = map.get(key);
  V newValue = remappingFunction.apply(key, oldValue);
