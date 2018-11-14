@@ -42,6 +42,18 @@ grammar_cjkRuby: true
 
 ### computeIfPresent
 
+```
+ if (map.get(key) != null) {
+     V oldValue = map.get(key);
+     V newValue = remappingFunction.apply(key, oldValue);
+     if (newValue != null)
+         map.replace(key, oldValue, newValue);
+     else
+         map.remove(key, oldValue);
+ }
+ 
+```
+
 ### putIfAbsent
 
 ```
