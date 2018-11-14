@@ -64,3 +64,5 @@ grammar_cjkRuby: true
  else
    return map.get(key);
 ```
+
+[Interface ConcurrentMap<K,V>](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ConcurrentMap.html#compute-K-java.util.function.BiFunction-)
