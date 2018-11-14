@@ -9,7 +9,7 @@ grammar_cjkRuby: true
 |---|---|---|---|
 | ```compute``` |  ```default V compute(K key, BiFunction<? super K,? super V,? extends V> remappingFunction)``` |尝试计算指定键及其当前映射值的映射(如果没有当前映射，则为null)。 |旧映射value为null，保存并返回新值（若新值为空，直接返回null）；旧值非null，则替换并返回新值（若新值为空，则移除该key对应的键值对）。 |
 | ```computeIfAbsent``` | ```default V computeIfAbsent(K key, Function<? super K,? extends V> mappingFunction)``` | 如果指定的键尚未与值相关联(或映射到null)，则尝试使用给定的映射函数计算其值，并将其输入到此映射中，除非为null。|旧映射value为null，则存储并返回新映射的非null的值，反之返回null|
-| ```computeIfPresent``` | ```default V computeIfPresent(K key,BiFunction<? super K,? super V,? extends V> remappingFunction)``` | | |
+| ```computeIfPresent``` | ```default V computeIfPresent(K key,BiFunction<? super K,? super V,? extends V> remappingFunction)``` |如果指定键的值存在且非空，则尝试计算给定键及其当前映射值的新映射。 | |
 ## 等价转换
 
 ### compute
