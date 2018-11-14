@@ -7,7 +7,7 @@ grammar_cjkRuby: true
 
 | Method | 是|
 |---|---|
-| compute(K key, BiFunction<? super K,? super V,? extends V> remappingFunction) |  |
+| default V compute(K key, BiFunction<? super K,? super V,? extends V> remappingFunction) |  |
 
 ## 等价转换
 
