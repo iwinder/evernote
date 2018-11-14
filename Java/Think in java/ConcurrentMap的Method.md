@@ -5,9 +5,9 @@ grammar_cjkRuby: true
 ---
 
 
-| Method | 是|
-|---|---|
-| default V compute(K key, BiFunction<? super K,? super V,? extends V> remappingFunction) | 旧value为空，返回空，否则返回新值	（若新值为空，则移除该key对应的键值对） |
+| Method | 形式|是|
+|---|---|---|
+| compute | default V compute(K key, BiFunction<? super K,? super V,? extends V> remappingFunction) | 旧value为空，返回空，否则返回新值	（若新值为空，则移除该key对应的键值对） |
 
 ## 等价转换
 
