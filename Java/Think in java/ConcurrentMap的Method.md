@@ -1,6 +1,6 @@
 ---
-title: ConcurrentMap的Method 
-tags: JAva
+title: ConcurrentMap的Method
+tags: Java
 grammar_cjkRuby: true
 ---
 
