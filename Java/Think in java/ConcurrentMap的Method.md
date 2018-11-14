@@ -32,6 +32,14 @@ grammar_cjkRuby: true
 
 ### computeIfAbsent
 
+```
+ if (map.get(key) == null) {
+     V newValue = mappingFunction.apply(key);
+     if (newValue != null)
+         return map.putIfAbsent(key, newValue);
+ }
+```
+
 ### computeIfPresent
 
 ### putIfAbsent
