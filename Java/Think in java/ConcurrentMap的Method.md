@@ -3,7 +3,9 @@ title: ConcurrentMap的Method
 tags: Java
 grammar_cjkRuby: true
 ---
+暂且仅记录方法:
 
+## 基础
 
 | Method | 形式|描述| 实例|功能特性 |
 |---|---|---|---| --- |
