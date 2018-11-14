@@ -3,7 +3,7 @@ title: ConcurrentMap的Method
 tags: Java
 grammar_cjkRuby: true
 ---
-暂且仅记录方法:
+暂且仅记录方法:```compute```， ```computeIfAbsent```，```computeIfPresent```，```putIfAbsent```
 
 ## 基础
 
