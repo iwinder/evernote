@@ -35,3 +35,9 @@ default V compute(K key,
        return null;
  }
 ```
+
+### computeIfAbsent
+
+### computeIfPresent
+
+### putIfAbsent
