@@ -86,3 +86,6 @@ keytool -import  -alias ldapserver -file G:\Work\certs\ldapserver.crt -keystore 
 ```
 LDAPS connections are just SSL so any connection issues are handled at the JRE level. There's nothing LDAP-specific required to enable support for SSL.
 ```
+
+
+![enter description here](./images/1542277219451.png)
