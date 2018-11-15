@@ -55,3 +55,6 @@ grammar_cjkRuby: true
 Read more: https://javarevisited.blogspot.com/2017/08/how-to-create-thread-safe-concurrent-hashset-in-java-8.html#ixzz5Wj2FbUQM]
 
 [在Java 8中锁定备选方案](http://qaware.blogspot.com/2016/06/locking-alternatives-in-java-8.html)
+
+
+[配置springboot在访问404时自定义返回结果以及统一异常处理](http://www.cnblogs.com/xujingyang/p/9103554.html)
