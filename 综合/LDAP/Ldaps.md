@@ -92,3 +92,7 @@ LDAPS connections are just SSL so any connection issues are handled at the JRE l
 
 
 [LDAP概念和原理](http://www.ldap.org.cn/142.html)
+
+
+### OpenLdap 开启memberof
+[Group-based-LDAP-login](http://www.redmine.org/projects/redmine/wiki/redmineldap#Group-based-LDAP-login)
