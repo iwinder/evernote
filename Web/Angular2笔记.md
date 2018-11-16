@@ -289,3 +289,5 @@ Uncaught ReferenceError: global is not defined
 
 
 [angular6 中使用socket.io报global is not defined 错误如何解决](http://www.ionic.wang/article-index-id-132.html)
+
+[ReferenceError: global is not defined - Intl polyfill](https://github.com/angular/angular-cli/issues/9920)
