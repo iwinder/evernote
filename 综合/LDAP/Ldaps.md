@@ -99,3 +99,5 @@ LDAPS connections are just SSL so any connection issues are handled at the JRE l
 [Group-based-LDAP-login](http://www.redmine.org/projects/redmine/wiki/redmineldap#Group-based-LDAP-login)
 
 [How to enable MemberOf using OpenLDAP](http://www.adimian.com/blog/2014/10/how-to-enable-memberof-using-openldap/)
+
+[AD/LDAP同步](http://support.huawei.com/hedex/pages/EDOC1000179559NZG1122M/04/EDOC1000179559NZG1122M/04/resources/hlp/user_management/c_hlp_user_management_004_exa.html)
