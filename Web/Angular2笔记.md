@@ -272,3 +272,18 @@ this.router.navigate(['../../'], { relativeTo: this.route });
 
 
 [Angular 6集成Spring Boot 2,Spring Security,JWT和CORS](http://blog.51cto.com/7308310/2072364)
+
+
+```
+Uncaught ReferenceError: global is not defined
+    at Object.FoZm (polyfills.87d931f7165dfb753cd0.js:1)
+    at i (runtime.bd9d8194a8767d8a9a65.js:1)
+    at Object.hN/g (polyfills.87d931f7165dfb753cd0.js:1)
+    at i (runtime.bd9d8194a8767d8a9a65.js:1)
+    at Object.2 (polyfills.87d931f7165dfb753cd0.js:1)
+    at i (runtime.bd9d8194a8767d8a9a65.js:1)
+    at t (runtime.bd9d8194a8767d8a9a65.js:1)
+    at Array.r [as push] (runtime.bd9d8194a8767d8a9a65.js:1)
+    at polyfills.87d931f7165dfb753cd0.js:1
+```
+[angular6 中使用socket.io报global is not defined 错误如何解决](http://www.ionic.wang/article-index-id-132.html)
