@@ -89,3 +89,6 @@ LDAPS connections are just SSL so any connection issues are handled at the JRE l
 
 
 ![enter description here](./images/1542277219451.png)
+
+
+[LDAP概念和原理](http://www.ldap.org.cn/142.html)
