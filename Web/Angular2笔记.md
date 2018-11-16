@@ -286,4 +286,6 @@ Uncaught ReferenceError: global is not defined
     at Array.r [as push] (runtime.bd9d8194a8767d8a9a65.js:1)
     at polyfills.87d931f7165dfb753cd0.js:1
 ```
+
+
 [angular6 中使用socket.io报global is not defined 错误如何解决](http://www.ionic.wang/article-index-id-132.html)
