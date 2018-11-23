@@ -41,9 +41,9 @@ sudo add-apt-repository \
    stable"
 ```
 
-18.10的暂时 没有，故用的18.04的
+发现18.10的稳定版暂时没有，故改用的18.04的：
 ```
-sudo add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/ubuntu  bionic  stable"
+sudo add-apt-repository  "deb [arch=amd64] https://download.docker.com/linux/ubuntu  bionic  stable"
 ```
 
 ```
