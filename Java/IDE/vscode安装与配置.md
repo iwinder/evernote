@@ -1,5 +1,5 @@
 ##  安装
-###　下载
+### 下载
 
 地址 ：https://code.visualstudio.com/Download
 
@@ -83,3 +83,6 @@ sudo apt-get install xclip
 ###  Chinese (Simplified) Language Pack for Visual Studio Code
 
 汉化编辑器的插件。
+
+### GitLens — Git supercharged
+可以查看修改者及其修改时间
