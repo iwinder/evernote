@@ -85,4 +85,4 @@ sudo apt-get install xclip
 汉化编辑器的插件。
 
 ### GitLens — Git supercharged
-可以查看修改者及其修改时间
+可以在代码中查看修改者及其修改时间
