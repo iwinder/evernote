@@ -1,0 +1,1 @@
+一般来说，区块链是一个不可变的交易账本,维护在一组对等节点（peer nodes）组成的分布式网络（distributed network）中。
