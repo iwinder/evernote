@@ -37,3 +37,6 @@ npm install -g nrm
 
 
 
+```
+npm install console-ui-ng@0.1.83
+```
