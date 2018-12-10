@@ -110,6 +110,14 @@ git checkout -b feature/training origin/feature/training
  git merge release/v0.6.0.alpha
 ```
 
+### 撤销合并
+```
+git merge --abort
+```
+该命令仅仅在合并后导致冲突时才使用。git merge --abort将会抛弃合并过程并且尝试重建合并前的状态。但是，当合并开始时如果存在未commit的文件，git merge --abort在某些情况下将无法重现合并前的状态。（特别是这些未commit的文件在合并的过程中将会被修改时）
+
+[git-merge完全解析](https://blog.csdn.net/t3/article/details/77069523)
+
 ### 重命名分支
 #### 重命名本地分支
 ```
