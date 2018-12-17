@@ -196,7 +196,7 @@ public class JpaEntityDdlExport {
 
 
     /**
-     * DB类型生成DDL
+     * 定义DB的DDL
      * org.hibernate.dialect.* 包参考*
      *
      * - Oracle  Oracle10gDialect.class
