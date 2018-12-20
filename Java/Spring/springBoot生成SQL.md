@@ -1,7 +1,7 @@
 上一篇我们说了使用jpa配置属性直接生成SQL全量脚本文件的方式，想重新了解可以看：[springBoot+jpa根据实体类注解生成SQL文件](https://windcoder.com/springbootjpagenjushitileizhujieshengchengsqlwenjian)。
 这一篇是根据Hibernate的SchemaExport实现程序建表，具体的方案可以是写在main函数中直接执行，也可以注入在springBoot中，在项目启动时自动完成。这里首先介绍第一种。
 
-本系列环境基于 springBoot1.5.8.RELEASE+jpa+Hibernate5.0+java8
+本系列环境基于 springBoot1.5.8.RELEASE+jpa+Hibernate5.0+java8+gradle
 ## 初步
 最开始就在想既然可以通过配置```spring.jpa.hibernate.ddl-auto=update```实现自动创建和更新数据库的表结构，就应该有办法通过程序创建全量SQL和增量SQL吧，通过搜索，找到了蛛丝马迹:
 
@@ -15,7 +15,7 @@ se.create(true,true);
 
 ```java
 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure().build();
- MetadataImplementor metadata = (MetadataImplementor) new MetadataSources( serviceRegistry ).buildMetadata();
+MetadataImplementor metadata = (MetadataImplementor) new MetadataSources( serviceRegistry ).buildMetadata();
 SchemaExport schemaExport =  new SchemaExport(metadata);
 schemaExport.create(true, true);
 ```
