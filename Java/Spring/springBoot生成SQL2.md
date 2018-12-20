@@ -88,5 +88,4 @@ public class HibernateJavaConfig {
         return persistenceUnitInfo;
     }
 }
-
 ```
