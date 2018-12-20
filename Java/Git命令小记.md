@@ -289,3 +289,10 @@ git filter-branch -f --env-filter "GIT_AUTHOR_NAME='Newname'; GIT_AUTHOR_EMAIL='
 
 [Git 今天终于用了一下 git filter-branch ，爽死了](https://ruby-china.org/topics/7820)
 [Git 修改 commit 的作者信息](https://segmentfault.com/a/1190000008828569)
+
+
+## Git提交记住用户名和密码
+```
+git config --global credential.helper store
+```
+[Git提交记住用户名和密码](https://blog.csdn.net/youanyyou/article/details/78992990)
