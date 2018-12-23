@@ -1,4 +1,6 @@
 [Introduction](https://hyperledger-fabric.readthedocs.io/en/latest/whatis.html)
+[Hyperledger Fabric 1.3 官方文档翻译 目录](https://blog.csdn.net/hugowang/article/details/82863415)
+[Hyperledger Fabric（目录）](https://segmentfault.com/a/1190000015952232)
 
 一般来说，区块链是一个不可变的交易账本,维护在一组对等节点（peer nodes）组成的分布式网络（distributed network）中。每个节点都维护着一份交易账本的副本， 其交易记录都已通过共识协议验证并分组到块中，每个块都包含链接的前一个块的哈希值。
 
@@ -14,6 +16,9 @@
 - 低延迟的交易确认
 - 与商业交易相关的交易和数据的隐私和机密性
 
-虽然许多早期的区块链平台正在适应企业用途，Hyperledger Fabirc一开始就被设计适应于企业用途。
+虽然许多早期的区块链平台正在适应企业用途，Hyperledger Fabirc从一开始就被设计适应于企业用途。以下部分描述了Hyperledger Fabirc(Fabirc)如何将自己与其他区块链平台区分开来，并描述了其架决策的一些动机。
+
+
+
 
 
