@@ -62,9 +62,9 @@ sudo apt-get install docker-ce
 
 ```
 
-[获取Ubuntu的Docker CE](https://docs.docker.com/install/linux/docker-ce/ubunt//#prerequisites)
+[获取Ubuntu的Docker CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/#prerequisites)
 
 
-
+[Get Docker CE for CentOS](https://docs.docker.com/install/linux/docker-ce/centos/)
 
 https://hyperledger-fabric.readthedocs.io/en/latest/install.html
