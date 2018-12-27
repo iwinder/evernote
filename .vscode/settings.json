@@ -1,3 +1,7 @@
 {
-    "files.eol": "\n"
+    "files.eol": "\n",
+    "pasteImage.path": "${currentFileDir}/images",
+    "pasteImage.basePath": "${currentFileDir}/",
+    "pasteImage.forceUnixStyleSeparator": true,
+    "pasteImage.prefix": ""
 }
