@@ -16,3 +16,6 @@ settings -> Editor -> File Encodings
 
 ## 设置换行符
 setting -> Editor ->code style ->line separator(for new files)
+
+
+![](images/2019-01-03-12-56-33.png)

@@ -50,6 +50,42 @@ git push -u origin master
 git remote add origin https://github.com/iwinder/qy-console.git
 git push -u origin master
 ```
+
+## 修复 工程远端库地址
+```
+# 方案一
+git remote set-url origin \
+https://github.com/iwinder/nightbook2.0.git \
+https://gitee.com/windcoderqy/nightbook2.0.git
+
+# 方案二
+git remote set-url origin git@gitee.com:windcoderqy/nightbook2.0.git
+
+
+// 更新分支等
+git fetch -ap
+
+// 查看更新结果
+git remote -v
+
+```
+
+## 篡改 name and email
+```
+git filter-branch -f --env-filter "GIT_AUTHOR_NAME='Newname'; GIT_AUTHOR_EMAIL='newemail'; GIT_COMMITTER_NAME='Newname'; GIT_COMMITTER_EMAIL='newemail';" HEAD
+```
+
+[Git 今天终于用了一下 git filter-branch ，爽死了](https://ruby-china.org/topics/7820)
+[Git 修改 commit 的作者信息](https://segmentfault.com/a/1190000008828569)
+
+
+## Git提交记住用户名和密码
+```
+git config --global credential.helper store
+```
+[Git提交记住用户名和密码](https://blog.csdn.net/youanyyou/article/details/78992990)
+
+
 ## 分支
 
 ### 查看分支
@@ -136,9 +172,8 @@ git push origin new_local_branch_name
 ```
 [git分支重命名 & 删除tag & 删除远程分支后本地依然存在的解决办法](http://blog.csdn.net/sunny05296/article/details/65449791)
 
-
-
 ### 删除分支
+
 #### 本地
 ```
 git branch -d branch-name
@@ -155,10 +190,20 @@ If you are sure you want to delete it, run 'git branch -D newTesting'.
 git branch -D branch-name
 ```
 [Git之（四）分支管理](https://blog.csdn.net/w372426096/article/details/78518259)
+
 #### 远程
+
+1. 方案一：
+
 ```
 git branch -r -d origin/branch-name  
 git push origin :branch-name  
+```
+
+2. 方案二：
+
+```
+ git push origin --delete bug_xzx
 ```
 [git命令行删除远程分支](http://blog.csdn.net/furzoom/article/details/53002699)
 
@@ -211,6 +256,13 @@ git push -f -u origin master
 
 [git add -A 和 git add . 的区别](https://www.cnblogs.com/skura23/p/5859243.html)
 
+
+
+
+## Git提交分支
+```
+ git push --set-upstream origin feature/v0.1.1
+```
 
 ## 问题及解决
 ### git签出远程分支问题解决
@@ -282,23 +334,29 @@ git pull origin master --allow-unrelated-histories
 
 [如何去解决fatal: refusing to merge unrelated histories](https://blog.csdn.net/m0_37402140/article/details/72801372)
 
-## 篡改 name and email
+### dst refspec xxx matches more than one.
+
+#### 问题
+
 ```
-git filter-branch -f --env-filter "GIT_AUTHOR_NAME='Newname'; GIT_AUTHOR_EMAIL='newemail'; GIT_COMMITTER_NAME='Newname'; GIT_COMMITTER_EMAIL='newemail';" HEAD
+ dst refspec xxx matches more than one.
 ```
 
-[Git 今天终于用了一下 git filter-branch ，爽死了](https://ruby-china.org/topics/7820)
-[Git 修改 commit 的作者信息](https://segmentfault.com/a/1190000008828569)
+#### 解决方案
 
 
-## Git提交记住用户名和密码
-```
-git config --global credential.helper store
-```
-[Git提交记住用户名和密码](https://blog.csdn.net/youanyyou/article/details/78992990)
+1.删除分支
 
+```
+git push origin :heads/xxx
 
-## Git提交分支
 ```
- git push --set-upstream origin feature/v0.1.1
+2.删除tag
+
+```git
+git push origin :tags/xxx
 ```
+
+#### 原因：
+
+这是Git提交时，远端出现了 xxx 同名的branch 或者 tag。删除即可解决~
