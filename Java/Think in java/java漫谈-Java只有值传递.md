@@ -187,6 +187,8 @@ public class ListDemo {
 }
 ```
 
+![](images/2019-02-27-15-54-31.png)
+
 [Java 中的参数传递和引用类型](https://segmentfault.com/a/1190000016360636#articleHeader6)
 
 [C++ 函数](http://www.runoob.com/cplusplus/cpp-functions.html#%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0)
