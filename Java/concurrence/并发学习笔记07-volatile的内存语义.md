@@ -117,4 +117,25 @@ volatile的内存语义如下：
 
 ### volatile内存语义的实现
 
-[前文](https://windcoder.com/bingfaxuexibiji05-zhongpaixu)提到重排序分为编译器重排序和处理器重排序。
+[前文](https://windcoder.com/bingfaxuexibiji05-zhongpaixu)提到重排序分为编译器重排序和处理器重排序。为了实现volatile内存语义，JMM会分别限制这两种类型的重排序类型。以下是JMM针对编译器制定的的volatile重排序规则表：
+
+|是否能重排序|第二个操作|||
+|---|---|---|---|
+|第一个操作|普通读/写|volatile读|volatile写|
+
+- 当第二个操作是volatile写时，不管第一个操作是什么，都不能重排序。这个规则确保volatile写之前的操作不会被编辑器重排序到volatile写之后。
+- 当第一个操作是volatile读时，不管第二个操作是什么，都不能重排序。这个规则确保volatile读之后的操作不会被编辑器重排序到volatile读之前。
+- 当第一个操作是volatile写，第二个操作是volatile读时，不能重排序。
+
+为了实现volatile的内存语义，编辑器在生成字节码时，会在指令序列中**插入内存屏障**来禁止特定类型的处理器重排序。
+
+JMM采用保守策略。以下是基于保守策略的JMM内存屏障插入策略：
+
+- 在每个volatile写操作的前面插入一个StoreStore屏障。
+- 在每个volatile写操作的后面插入一个StoreLoad屏障。
+- 在每个volatile读操作的后面插入一个LoadLoad屏障。
+- 在每个volatile读操作的后面插入一个LoadStore屏障。
+
+该策略可以保证在任意处理器平台，任意的程序中都能得到正确的volatile内存语义。
+
+StoreStore屏障将保证上面所有的普通写在volatile写之前刷新到主内存。
