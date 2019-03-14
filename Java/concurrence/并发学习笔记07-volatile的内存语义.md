@@ -117,4 +117,90 @@ volatile的内存语义如下：
 
 ### volatile内存语义的实现
 
-[前文](https://windcoder.com/bingfaxuexibiji05-zhongpaixu)提到重排序分为编译器重排序和处理器重排序。
+[前文](https://windcoder.com/bingfaxuexibiji05-zhongpaixu)提到重排序分为编译器重排序和处理器重排序。为了实现volatile内存语义，JMM会分别限制这两种类型的重排序类型。以下是JMM针对编译器制定的的volatile重排序规则表：
+
+
+![](2019-03-13-22-54-39.png)
+
+- 当第二个操作是volatile写时，不管第一个操作是什么，都不能重排序。这个规则确保volatile写之前的操作不会被编辑器重排序到volatile写之后。
+- 当第一个操作是volatile读时，不管第二个操作是什么，都不能重排序。这个规则确保volatile读之后的操作不会被编辑器重排序到volatile读之前。
+- 当第一个操作是volatile写，第二个操作是volatile读时，不能重排序。
+
+为了实现volatile的内存语义，编辑器在生成字节码时，会在指令序列中**插入内存屏障**来禁止特定类型的处理器重排序。
+
+JMM采用保守策略。以下是基于保守策略的JMM内存屏障插入策略：
+
+- 在每个volatile写操作的前面插入一个StoreStore屏障。
+- 在每个volatile写操作的后面插入一个StoreLoad屏障。
+- 在每个volatile读操作的后面插入一个LoadLoad屏障。
+- 在每个volatile读操作的后面插入一个LoadStore屏障。
+
+该策略可以保证在任意处理器平台，任意的程序中都能得到正确的volatile内存语义。
+
+- **StoreStore屏障**将**保证上面所有的普通写在volatile写之前刷新到主内存**。
+
+- **StoreLoad屏障**的作用是**避免volatile写与后面可能有的volatile读/写操作重排序**。
+
+- **LoadLoad屏障**用来**禁止处理器把上面的volatile读与下面的普通读重排序**。
+
+- **LoadStore屏障**用来**禁止处理器把上面的volatile读与下面的普通写重排序**。
+
+volatile写插入内存屏障后生成的指令序列示意图如下：
+
+![](2019-03-13-23-13-38.png)
+
+volatile读插入内存屏障后生成的指令序列图：
+
+![](2019-03-13-23-22-28.png)
+
+
+从整体执行效率的角度考虑，JMM最终选择了在每个volatile写之后插入一个StoreLoad屏障，而不是volatile读之前。因为volatile写-读内存语义的常见使用模式是：一个写线程写volatile变量，多个读线程读同一个volatile变量。当读线程大大超过写线程时，选择在volatile写之后插入StoreLoad屏障将带来可观的执行效率的提升。从这里可见JMM在实现上的一个特点：**首先确保正确性，然后再去追求执行效率**。
+
+实际执行时，只要不改变volatile的内存语义，**编译器**可以根据具体情况省略不必要的屏障。如实例：
+```java
+class VolatileTest {
+    int a;
+    volatile int v1 = 1;
+    volatile int v2 = 2;
+
+    void readAndWrite() {
+        int i = v1;   // 第一个volatile读
+        int j = v2;  // 第二个volatile读
+        a = i+j;    // 普通写
+        v1 = i+2;  // 第一个volatile写
+        v2 = j*2;  // 第二个volatile写
+    }
+    ...... // 其他方法
+}
+```
+中的readAndWrite()方法，编译器生成字节码时可以做如下优化：
+
+
+![](2019-03-14-00-11-37.png)
+
+
+
+由于不同的处理器有不同的“松紧度”的处理器内存模型，**内存屏障的插入还可以根据具体的处理器内存模型继续优化**。如：
+
+X86处理器仅会对写-读操作做重排序，不会对读-读，读-写和写-写操作做重排序。因此会省略这3中操作类型对应的内存屏障，JMM仅需在volatile写后面插入一个StoreLoad屏障即可正确实现volatile写-读的内存语义。
+
+这意味着X86处理器中，volatile写的开销比volatile读的开销大很多，因为执行StoreLoad屏障的开销会比较大。
+
+
+
+### JSR-133增强volatile的内存语义
+
+在JSR-133之前的旧Java内存模型中，虽然不运允许volatile变量之间重排序，但旧的Java内存模型允许volatile变量和普通变量重排序。
+因此，在旧的内存模型中，volatile写-读没有锁的释放-获取所具有的内存语义。
+
+为了提供一种比锁更轻量级的线程之间通信的机制，133专家组决定增强其内存语义：严格限制编译器和处理器对volatile变量与普通变量的重排序，确保volatile写-读和锁的释放-获取具有相同的内存语义。
+
+从编译器重排序规则和处理器内存屏障插入策略来看，只要volatile变量与普通变量之间的重排序可能会破坏volatile的内存语义，这种重排序就会被编译器重排序规则和处理器内存屏障插入策略禁止。
+
+由于volatile仅仅保证对单个volatile变量的读/写具有原子性，而锁的互斥执行的特性可以确保对整个临界区代码的执行具有原子性。
+
+- 功能上，锁比volatile更强大；
+- 在可伸缩性和执行性能上，volatile更胜一筹；
+
+想在在程序中使用volatile代替锁时请一定要慎重。
+
