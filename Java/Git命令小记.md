@@ -360,3 +360,14 @@ git push origin :tags/xxx
 #### 原因：
 
 这是Git提交时，远端出现了 xxx 同名的branch 或者 tag。删除即可解决~
+
+### 
+
+```shell
+Auto packing the repository in background for optimum performance.
+See "git help gc" for manual housekeeping.
+Counting objects: 132138
+
+```
+
+[git操作提示 Auto packing the repository for optimum performance. You may also run "git gc" manually. See](https://blog.csdn.net/ronnyjiang/article/details/54893190)
