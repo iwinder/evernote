@@ -6,12 +6,17 @@ String对象是不可变的。每次修改都是创建了一个全新的String�
 
 - String类是final的，不可被继承。
 - String类的本质是字符数组char[], 并且其值不可改变。即：```private final char value[];```
-- Java运行时
+- JVM存在一个String Pool（String池/字符串常量池/全局字符串池,也有叫做string literal pool）,1.7之前处于方法区中，之后被分离出来放在了堆中。
+- 两个有用的
 ## 重载“+”
 
 内部并不是创建n个String对象，而是创建了一个StringBuilder对象，通过其append()方法连接，最后调用toStrong()方法返回。
 
-该操作适用于单行“+”操作，不适用于循环（如for等）。因为在循环中，每次循环会生成一个新的个StringBuilder对象
+当为类似```String s = "a" + "b" + "c";```的单行操作时，编译器会执行优化，在编译时直接合成一个“abc”。
+
+该操作适用于单行“+”操作，不适用于循环（如for等）。因为在循环中，每次循环会生成一个新的个StringBuilder对象。
+
+循环时的手动优化：在外创建StringBuilder对象，在循环内部执行append()方法拼接字符串。
 
 javap反编译：
 ```Java
@@ -36,4 +41,8 @@ https://blog.csdn.net/axela30w/article/details/79167361
 
 https://blog.csdn.net/Xlyxcar/article/details/78704768
 
+
+**对象+引用**
 https://tech.meituan.com/2014/03/06/in-depth-understanding-string-intern.html
+**引用**
+https://javaranch.com/journal/200409/ScjpTipLine-StringsLiterally.html
