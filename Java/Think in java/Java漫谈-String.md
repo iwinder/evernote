@@ -102,6 +102,12 @@ public class StringDemo1 {
 >
 >在上面的字节码例子中，**压参数的指令包括dup和ldc两条**，分别把隐藏参数（新创建的实例的引用，对于实例构造器来说就是“this”）与显式声明的第一个实际参数（"123"常量的引用）压到操作数栈上
 
+最终如图：
+
+![](images/2019-04-09-23-34-17.png)
+
+黑线表示String对象的内容指向。
+
 #### 示例2
 
 ```java
@@ -120,8 +126,53 @@ public class StringDemo2 {
 12: astore_2
 ```
 
-由此可见s2直接引用的时字符串常量池中的对象。故该实例中依旧共生成了2个对象。
+由此可见s2直接引用的是字符串常量池中的对象。故该实例中依旧是生成了2个实例对象。如图：
 
+![](images/2019-04-09-23-43-18.png)
+
+黑线同实例1中的，红线为s2引用的指向，因为常量池中已经存在"123"，所以不会再创建。s2会通过查询常量池获取池中"123"的地址并指向。
+
+若再加一个```String s3 = new String("123");```呢？此时只会再创建一个实例对象，从而一共是3个。从而有了如下：
+
+```java
+public class StringDemo2 {
+    public static void main(String[] args) {
+        String s1 = new String("123");
+        String s2 = "123";
+        String s3 = new String("123");
+        PrintUtill.println(s1==s2);
+        PrintUtill.println(s2==s3);
+        PrintUtill.println(s1==s3)
+    }
+}
+```
+
+结果为：
+
+```shell
+false
+false
+false
+```
+
+#### 示例3
+
+现在再来看另一种方式创建String的例子：
+
+```java
+public class StringDemo3 {
+    public static void main(String[] args) {
+        String s1 = new String("1") + new String("a");
+        s1.intern();
+        String s2 = "1a";
+        System.out.println(s1 == s2);
+        System.out.println(s1.intern() == s2);
+        String s3 = "1"+"a";
+        System.out.println(s3 == s2);
+    }
+}
+```
+当一个String实例str调用intern()方法时，java查找常量池中是否有相同unicode的字符串常量，如果有，则返回其引用，如果没有，则在常量池中增加一个unicode等于str的字符串并返回它的引用。可参考JDK中的解释或[The Java Virtual Machine Specification, Java SE 8 Edition §5.1)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-5.html#jvms-5.1)，简单来说就是手动检测并存入字符串常量池。
 
 
 ### 反编译指令
@@ -179,7 +230,6 @@ String.join()内部实现则用了StringJoiner，其源码如下：
         return joiner.toString();
     }
 ```
-
 
 ## 参考资料
 
