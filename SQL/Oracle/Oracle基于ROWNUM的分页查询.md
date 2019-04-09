@@ -1,8 +1,8 @@
----
+<!-- ---
 title: Oracle基于ROWNUM的分页查询 
 tags: 数据库,Oracle
 grammar_cjkRuby: true
----
+--- -->
 
 ## 基础
 Oracle中，ROWNUM（行号）属于伪列（Pseudocolumn），其只在数据库内部使用，通过DESCRIBE命令查看表结构也是无法看到其描述的。

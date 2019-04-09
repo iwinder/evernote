@@ -1,8 +1,8 @@
----
+<!-- ---
 title: FileUtil
 tags: 新建,模板,小书匠
 grammar_cjkRuby: true
----
+--- -->
 
 ## 获取文件扩展名
 ```

@@ -1,8 +1,8 @@
----
+<!-- ---
 title: Angular2笔记
 tags: Angular2
 grammar_cjkRuby: true
----
+--- -->
 
 alexa 后添加一个问号(?)表示可选字段。
 
@@ -221,6 +221,7 @@ ng serve --port 4201
 
 [表单校验的值valid、invalid、pristine和dirty](http://blog.csdn.net/lvjianyu2007/article/details/48246155)
 
+
 ### 自定义校验
 ```
   sendTimeValidator = (control: FormControl): { [s: string]: boolean } => {
@@ -255,6 +256,10 @@ this.router.navigate(['../../'], { relativeTo: this.route });
 ```
 // tslint:disable-next-line:max-line-length
 ```
+
+## [Angular2中constructor & ngOnInit](Web/Angular2中constructor%20%26%20ngOnInit.md)
+## [Angular日期处理](Web/Angular日期处理.md)
+## [Angular6自定义表单控件方式集成Editor](Web/Angular6自定义表单控件方式集成Editor.md)
 ## 错误
 
 ### Expression has changed after it was checked.
@@ -287,6 +292,7 @@ Uncaught ReferenceError: global is not defined
     at polyfills.87d931f7165dfb753cd0.js:1
 ```
 
+ 
 
 [angular6 中使用socket.io报global is not defined 错误如何解决](http://www.ionic.wang/article-index-id-132.html)
 

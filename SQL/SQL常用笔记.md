@@ -1,8 +1,8 @@
----
+<!-- ---
 title: SQL常用笔记
 tags: MySQL,Oracle
 grammar_cjkRuby: true
----
+--- -->
 ## where in 查询
 Oracle：当前所用版本中，限制in中的参数不能超过 1000个。当超出时会被报错"ORA-01795异常(where in超过1000)的解决"。
 

@@ -1,8 +1,8 @@
----
+<!-- ---
 title: node-gyp错误之旅 
 tags: Nodejs, node-gyp
 grammar_cjkRuby: true
----
+--- -->
 
 Node.js 在安装模块的时候一直报错，提示安装node-gyp时报python不可用的情况
 ```

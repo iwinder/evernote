@@ -113,6 +113,17 @@ public class StringDemo2 {
 }
 ```
 
+这里我们看下```String s2 = "123";```的字节码：
+
+```java
+10: ldc           #3                  // String 123
+12: astore_2
+```
+
+由此可见s2直接引用的时字符串常量池中的对象。故该实例中依旧共生成了2个对象。
+
+
+
 ### 反编译指令
 
 javap反编译指令可查看编译后的.class文件的字节码信息，这里是做简单的使用记录，不做过多讨论：
@@ -130,6 +141,12 @@ javap -c -verbose Concatenation
 ```-c``` 输出类中各方法的未解析的代码，即构成 Java 字节码的指令。
 
 ```-verbose``` 输出堆栈大小、各方法的 locals 及 args 数,以及class文件的编译版本。
+
+如当想反编译上面的StringDemo1.class文件，执行如下命令即可：
+
+```shell
+javap -c  StringDemo1.class
+```
 
 ## StringJoiner用法简介
 
@@ -169,10 +186,12 @@ String.join()内部实现则用了StringJoiner，其源码如下：
 1. [请别再拿“String s = new String("xyz");创建了多少个String实例”来面试了吧](https://rednaxelafx.iteye.com/blog/774673)
 2. [The SCJP Tip Line Strings, Literally](https://javaranch.com/journal/200409/ScjpTipLine-StringsLiterally.html)
 3. [JEP 122：删除永久世代](http://openjdk.java.net/jeps/122)
-4. [JDK 8  里程碑](http://openjdk.java.net/projects/jdk8/milestones)
+4. [JDK 8  Milestones](http://openjdk.java.net/projects/jdk8/milestones#M5)
 5. [JVM指令详解（上）](https://blog.csdn.net/hudashi/article/details/7062675)
 6. [jvm 几个invoke 指令](https://www.cnblogs.com/selfchange/p/7489821.html)
 
+7. [JDK 8 Features](http://openjdk.java.net/projects/jdk8/features#122)
+7. [JDK 7 Features](http://openjdk.java.net/projects/jdk7/features)
 ## 其他
 
 

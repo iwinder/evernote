@@ -1,8 +1,9 @@
----
+<!-- ---
 title:  Angular2中constructor & ngOnInit
 tags: Angular2
 grammar_cjkRuby: true
----
+--- -->
+
 这两天学Angular2，本想写个带参数的路由，结果运行时一直报```Error: No provider for String```的错误。对了好久没找到错误在哪，直到将```uname: string;```从构造函数```constructor```拿出来。身为java出身的程序员，竟然忽然无视 “构造函数”的含义，也不知道当时怎么想的。出于好奇，开始了详细搜索之旅。
 ## constructor
 

@@ -1,8 +1,8 @@
---- 
+<!-- --- 
 title: Java中的域与变量
 tags: Java,基础
 grammar_cjkRuby: true
----
+--- -->
 Java中的Field译为“字段”，也译为“域”，Field和成员变量（Member Variable）是相同的。所以域是变量中的一种。
 
 关于Java中的变量，官方文档中如是说：

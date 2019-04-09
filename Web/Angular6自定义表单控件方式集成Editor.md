@@ -1,8 +1,8 @@
----
+<!-- ---
 title: Angular6自定义表单控件方式集成Editormd
 tags: Angular
 grammar_cjkRuby: true
----
+--- -->
 
 曾经找到过“Editor.md”，看之心喜，一直想在Angular中集成下这款markdownpad编辑器玩，在网上也只找到一篇[通过指令集成](Angular集成Editor.md的Markdown编辑器，支持NgModel双向绑定)的，虽然可以实现，但还是希望能做成组件形式的，之后看到一篇自定义组件的文章，了解到ControlValueAccessor才真正完成这个心愿，现在记录分享与诸公。
 

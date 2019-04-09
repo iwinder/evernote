@@ -66,7 +66,8 @@ Shared Nothing VS Shared Anyhing
  目前一般只有InnoDB引擎支持才支持XA 
  
  执行xa事务实例：
- ```
+
+ ```sql
  # 开启xa事务‘dba’
  xa start 'dba';
  # 执行语句
@@ -83,7 +84,8 @@ Shared Nothing VS Shared Anyhing
  
  
  若回滚xa事务
- ```
+
+ ```sql
  xa start '123';
  insert into dba_test values(200,200);
  xa end '123';
@@ -97,7 +99,8 @@ Shared Nothing VS Shared Anyhing
  ### MySQL XA 事务的局限性
  - 客户端退出，prepare状态的事务被回滚。
  根据分布式事务的原理，所有prepare成功的事务都应该被提交，有下面一个客户端操作:
- ```
+
+ ```sql
  xa start '111'
  insert into t values(1);
  xa end '111';
