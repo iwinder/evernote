@@ -72,7 +72,7 @@ public class StringDemo1 {
 
 至于*原因*，要从StringDemo1类的编译说起：
 
-当编译完成，会生成StringDemo1.class文件，该文件中，"123"会被提取并放置在class常量池中，当**JVM加载类时会通过读取该class常量池创建并驻留一个String实例**作为常量来对应"123"字面量（其引用存储在String Pool中，以下均称“字符串池”），这是一个**全局共享**的，**只有当字符串池中没有相同内容的字符串时才需要创建**。
+当编译完成，会生成StringDemo1.class文件，该文件中，"123"会被提取并放置在class常量池中，当**JVM加载类时会通过读取该class常量池创建并驻留一个String实例**作为常量来对应"123"字面量（其引用存储在String Pool中，未注明时以下均称“字符串池”或“常量池”），这是一个**全局共享**的，**只有当字符串池中没有相同内容的字符串时才需要创建**。
 
 当执行main方法中的new语句时，JVM会执行的字节码类似：
 
@@ -92,6 +92,23 @@ public class StringDemo1 {
 
 ```invokespecial``` 调用实例构造器```<init>```方法， 私有方法和父类方法
 
+官方对```dup```的解释[(6.5.dup)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-6.html#jvms-6.5.dup)如下：
+>Duplicate the top value on the operand stack and push the duplicated value onto the operand stack.
+>
+>The dup instruction must not be used unless value is a value of a category 1 computational type [(§2.11.1)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.11.1).
+
+官方对```ldc```推送String的描述如下，由此也可看出字符串常量池中的存储的String属于引用，当ldc推送时，其实推送的也是引用：
+
+>The index is an unsigned byte that must be a valid index into the run-time constant pool of the current class [(§2.6)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.6). The run-time constant pool entry at index either must be a run-time constant of type int or float, or a reference to a string literal, or a symbolic reference to a class, method type, or method handle [(§5.1)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-5.html#jvms-5.1).
+>
+>.....
+>
+> if the run-time constant pool entry is a reference to an instance of class String representing a string literal (§5.1), then a reference to that instance, value, is pushed onto the operand stack.[(6.5.ldc)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-6.html#jvms-6.5.ldc)
+>
+>.....
+>
+
+下面是的描述：
 >在JVM里，“new”字节码指令只负责把实例创建出来（包括分配空间、设定类型、所有字段设置默认值等工作），并且把指向新创建对象的引用压到操作数栈顶。此时该引用还不能直接使用，处于未初始化状态（uninitialized）；
 >
 >如果某方法a含有代码试图通过未初始化状态的引用来调用任何实例方法，那么方法a会通不过JVM的字节码校验，从而被JVM拒绝执行。
@@ -163,17 +180,82 @@ false
 public class StringDemo3 {
     public static void main(String[] args) {
         String s1 = new String("1") + new String("a");
-        s1.intern();
-        String s2 = "1a";
-        System.out.println(s1 == s2);
-        System.out.println(s1.intern() == s2);
+        s1.intern();          // 1
+        String s2 = "1a";    // 2
+        System.out.println(s1 == s2);     // 3
+        System.out.println(s1.intern() == s2); // 4
         String s3 = "1"+"a";
-        System.out.println(s3 == s2);
+        System.out.println(s3 == s2); // 5
     }
 }
-```
-当一个String实例str调用intern()方法时，java查找常量池中是否有相同unicode的字符串常量，如果有，则返回其引用，如果没有，则在常量池中增加一个unicode等于str的字符串并返回它的引用。可参考JDK中的解释或[The Java Virtual Machine Specification, Java SE 8 Edition §5.1)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-5.html#jvms-5.1)，简单来说就是手动检测并存入字符串常量池。
 
+```
+
+**运行结果**
+
+```shell
+true
+true
+true
+```
+
+**关于intern()方法**
+
+当一个String实例str调用**intern()方法**时，java查找常量池中是否有相同unicode的字符串常量，如果有，则返回其引用，如果没有，则在常量池中增加一个unicode等于str的字符串并返回它的引用。可参考JDK中的解释或[The Java Virtual Machine Specification, Java SE 8 Edition (§5.1)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-5.html#jvms-5.1)，简单来说就是一个可以手动将字符串存入常量池的方法。
+
+**解析**
+
+语句5肯定是true，因为编译器会对"1"+"a"进行优化，使其在编译完成后成为"1a",即```String s3 = "1a";```，从而导致s3和s2均为字符串常量池中的字符串的引用，通过字节码也能看到类似情形：
+
+```java
+// ... 省略
+
+// s2
+40: ldc           #11                 // String 1a
+42: astore_2
+
+// ...省略
+
+// s3
+78: ldc           #11                 // String 1a
+80: astore_3
+
+// ...省略
+```
+
+现在我们看下```String s1 = new String("1") + new String("a");```的字节码：
+
+```java
+0: new           #2                  // class java/lang/StringBuilder
+3: dup
+4: invokespecial #3                  // Method java/lang/StringBuilder."<init>":()V
+7: new           #4                  // class java/lang/String
+10: dup
+11: ldc           #5                  // String 1
+13: invokespecial #6                  // Method java/lang/String."<init>":(Ljava/lang/String;)V
+16: invokevirtual #7                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+19: new           #4                  // class java/lang/String
+22: dup
+23: ldc           #8                  // String a
+25: invokespecial #6                  // Method java/lang/String."<init>":(Ljava/lang/String;)V
+28: invokevirtual #7                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+31: invokevirtual #9                  // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+34: astore_1
+```
+
+通过字节码可知，常量池中存在"1","a"两个常量，字符串s1的内部实现是通过StringBuilder执行append方法拼接后执行toString()获得的。这一段代码不算常量池中的一共创建了3个对象，一个```StringBuilder```,一个```String 1```,一个```String a```,最后在仅堆中生成引用s1所指向的字符串“1a”，此时常量池中并无“1a”。
+
+当执行``` s1.intern();```时，发现常量池中不存在“1a”，故在常量池中复制一份与s1相同的引用，即直接将s1锁指向的字符串“1a”的地址复制一份到常量池中。
+
+此时再执行```String s2 = "1a";```，拿到的就和s1相同了，从而有了语句3和4的true。
+
+如果将语句1和2对调，则会出现结果：
+
+```
+false
+true
+true
+```
 
 ### 反编译指令
 
