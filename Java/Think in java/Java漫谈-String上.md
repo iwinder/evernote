@@ -86,29 +86,9 @@ public class StringDemo1 {
 
 这之中出现过多少次new java/lang/String就是创建了多少个String对象，即代码```String s1 = new String("123");```每**执行一次只会创建一个实例对象**。
 
-```dup``` 复制栈顶数值(数值不能是long或double类型的)并将复制值压入栈顶
 
-```ldc``` 将int, float或String型常量值从常量池中推送至栈顶。
+下面是RednaxelaFX对于这段字节码含义的描述：
 
-```invokespecial``` 调用实例构造器```<init>```方法， 私有方法和父类方法
-
-官方对```dup```的解释[(6.5.dup)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-6.html#jvms-6.5.dup)如下：
->Duplicate the top value on the operand stack and push the duplicated value onto the operand stack.
->
->The dup instruction must not be used unless value is a value of a category 1 computational type [(§2.11.1)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.11.1).
-
-官方对```ldc```推送String的描述如下，由此也可看出字符串常量池中的存储的String属于引用，当ldc推送时，其实推送的也是引用：
-
->The index is an unsigned byte that must be a valid index into the run-time constant pool of the current class [(§2.6)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.6). The run-time constant pool entry at index either must be a run-time constant of type int or float, or a reference to a string literal, or a symbolic reference to a class, method type, or method handle [(§5.1)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-5.html#jvms-5.1).
->
->.....
->
-> if the run-time constant pool entry is a reference to an instance of class String representing a string literal (§5.1), then a reference to that instance, value, is pushed onto the operand stack.[(6.5.ldc)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-6.html#jvms-6.5.ldc)
->
->.....
->
-
-下面是的描述：
 >在JVM里，“new”字节码指令只负责把实例创建出来（包括分配空间、设定类型、所有字段设置默认值等工作），并且把指向新创建对象的引用压到操作数栈顶。此时该引用还不能直接使用，处于未初始化状态（uninitialized）；
 >
 >如果某方法a含有代码试图通过未初始化状态的引用来调用任何实例方法，那么方法a会通不过JVM的字节码校验，从而被JVM拒绝执行。
@@ -172,115 +152,6 @@ false
 false
 ```
 
-#### 示例3
-
-现在再来看另一种方式创建String的例子：
-
-```java
-public class StringDemo3 {
-    public static void main(String[] args) {
-        String s1 = new String("1") + new String("a");
-        s1.intern();          // 1
-        String s2 = "1a";    // 2
-        System.out.println(s1 == s2);     // 3
-        System.out.println(s1.intern() == s2); // 4
-        String s3 = "1"+"a";
-        System.out.println(s3 == s2); // 5
-    }
-}
-
-```
-
-**运行结果**
-
-```shell
-true
-true
-true
-```
-
-**关于intern()方法**
-
-当一个String实例str调用**intern()方法**时，java查找常量池中是否有相同unicode的字符串常量，如果有，则返回其引用，如果没有，则在常量池中增加一个unicode等于str的字符串并返回它的引用。可参考JDK中的解释或[The Java Virtual Machine Specification, Java SE 8 Edition (§5.1)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-5.html#jvms-5.1)，简单来说就是一个可以手动将字符串存入常量池的方法。
-
-**解析**
-
-语句5肯定是true，因为编译器会对"1"+"a"进行优化，使其在编译完成后成为"1a",即```String s3 = "1a";```，从而导致s3和s2均为字符串常量池中的字符串的引用，通过字节码也能看到类似情形：
-
-```java
-// ... 省略
-
-// s2
-40: ldc           #11                 // String 1a
-42: astore_2
-
-// ...省略
-
-// s3
-78: ldc           #11                 // String 1a
-80: astore_3
-
-// ...省略
-```
-
-现在我们看下```String s1 = new String("1") + new String("a");```的字节码：
-
-```java
-0: new           #2                  // class java/lang/StringBuilder
-3: dup
-4: invokespecial #3                  // Method java/lang/StringBuilder."<init>":()V
-7: new           #4                  // class java/lang/String
-10: dup
-11: ldc           #5                  // String 1
-13: invokespecial #6                  // Method java/lang/String."<init>":(Ljava/lang/String;)V
-16: invokevirtual #7                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
-19: new           #4                  // class java/lang/String
-22: dup
-23: ldc           #8                  // String a
-25: invokespecial #6                  // Method java/lang/String."<init>":(Ljava/lang/String;)V
-28: invokevirtual #7                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
-31: invokevirtual #9                  // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
-34: astore_1
-```
-
-通过字节码可知，常量池中存在"1","a"两个常量，字符串s1的内部实现是通过StringBuilder执行append方法拼接后执行toString()获得的。这一段代码不算常量池中的一共创建了3个对象，一个```StringBuilder```,一个```String 1```,一个```String a```,最后在仅堆中生成引用s1所指向的字符串“1a”，此时常量池中并无“1a”。
-
-当执行``` s1.intern();```时，发现常量池中不存在“1a”，故在常量池中复制一份与s1相同的引用，即直接将s1锁指向的字符串“1a”的地址复制一份到常量池中。
-
-此时再执行```String s2 = "1a";```，拿到的就和s1相同了，从而有了语句3和4的true。
-
-如果将语句1和2对调，则会出现结果：
-
-```
-false
-true
-true
-```
-
-### 反编译指令
-
-javap反编译指令可查看编译后的.class文件的字节码信息，这里是做简单的使用记录，不做过多讨论：
-
-```shell
-javap -c Concatenation
-```
-
-若想查看更详细的常量池等信息，可添加```-verbose```选项，即：
-
-```shell
-javap -c -verbose Concatenation
-```
-
-```-c``` 输出类中各方法的未解析的代码，即构成 Java 字节码的指令。
-
-```-verbose``` 输出堆栈大小、各方法的 locals 及 args 数,以及class文件的编译版本。
-
-如当想反编译上面的StringDemo1.class文件，执行如下命令即可：
-
-```shell
-javap -c  StringDemo1.class
-```
-
 ## StringJoiner用法简介
 
 StringJoiner类是Java8的一个新类（还有一个新类Optional可用来解决空指针的问题），可以通过指定分隔符拼接字符串，功能与```String.join```方法类似，同时可选择性地从提供的前缀开始和以提供的后缀结尾。这里简单展示用法，不做过多讨论。
@@ -312,6 +183,58 @@ String.join()内部实现则用了StringJoiner，其源码如下：
         return joiner.toString();
     }
 ```
+
+## 反编译指令
+
+### 基础命令
+
+javap反编译指令可查看编译后的.class文件的字节码信息，这里是做简单的使用记录，不做过多讨论：
+
+```shell
+javap -c Concatenation
+```
+
+若想查看更详细的常量池等信息，可添加```-verbose```选项，即：
+
+```shell
+javap -c -verbose Concatenation
+```
+
+```-c``` 输出类中各方法的未解析的代码，即构成 Java 字节码的指令。
+
+```-verbose``` 输出堆栈大小、各方法的 locals 及 args 数,以及class文件的编译版本。
+
+如当想反编译上面的StringDemo1.class文件，执行如下命令即可：
+
+```shell
+javap -c  StringDemo1.class
+```
+
+### 指令简说
+
+```dup``` 复制栈顶数值(数值不能是long或double类型的)并将复制值压入栈顶
+
+```ldc``` 将int, float或String型常量值从常量池中推送至栈顶。
+
+```invokespecial``` 调用实例构造器```<init>```方法， 私有方法和父类方法
+
+官方对```dup```的解释[(6.5.dup)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-6.html#jvms-6.5.dup)如下：
+>Duplicate the top value on the operand stack and push the duplicated value onto the operand stack.
+>
+>The dup instruction must not be used unless value is a value of a category 1 computational type [(§2.11.1)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.11.1).
+
+官方对```ldc```推送String的描述如下，由此也可看出字符串常量池中的存储的String属于引用，当ldc推送时，其实推送的也是引用：
+
+>The index is an unsigned byte that must be a valid index into the run-time constant pool of the current class [(§2.6)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.6). The run-time constant pool entry at index either must be a run-time constant of type int or float, or a reference to a string literal, or a symbolic reference to a class, method type, or method handle [(§5.1)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-5.html#jvms-5.1).
+>
+>.....
+>
+> if the run-time constant pool entry is a reference to an instance of class String representing a string literal (§5.1), then a reference to that instance, value, is pushed onto the operand stack.[(6.5.ldc)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-6.html#jvms-6.5.ldc)
+>
+>.....
+>
+
+
 
 ## 参考资料
 
