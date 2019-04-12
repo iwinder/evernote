@@ -1,1 +1,6 @@
 Mysql相关的笔记，目前主要是网易微专业的DBA课程笔记
+
+
+-- 复制表
+   [MySQL用命令行复制表的方法](https://www.cnblogs.com/zhangjpn/p/6231662.html)
+-- 视图，什么是？作用？使用场景？
