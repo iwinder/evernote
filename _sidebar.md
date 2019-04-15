@@ -1,5 +1,6 @@
 - Java
     - [Java常用语句](Java/Java常用语句.md)
+    - [Git命令小记](Java/Git命令小记.md)
     - 多线程
         - [并发学习笔记14-Lock接口](Java/concurrence/并发学习笔记14-Lock接口.md)
         - [并发学习笔记15-队列同步器](Java/concurrence/并发学习笔记15-队列同步器.md)

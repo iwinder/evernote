@@ -116,7 +116,7 @@ Class文件中的除了有类的版本、字段、方法、接口等描述信息
 - 字段的名称和描述（Descriptor）
 - 方法的名称和描述
 
-可以通过上一节中的```javap```命令查看，以上面的程序反编译为例，格式类似如下：
+可以通过上一节中的```javap```命令查看，以将上面的StringDemo3反编译为例，格式类似如下：
 
 ```java
 Constant pool:
@@ -185,9 +185,33 @@ Constant pool:
   #63 = Utf8               println
   #64 = Utf8               (Z)V
 ```
+
+由上可以看到涉及到String的有两个类型，```CONSTANT_Utf8``` 与 ```CONSTANT_String```。
+
+**CONSTANT_Utf8**，即 CONSTANT_Utf8_info Structure，是一个用于表示常量字符串值的，这里真正持有字符串内容。[(§4.4.7)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html#jvms-4.4.7)
+
+```java
+CONSTANT_Utf8_info {
+    u1 tag;
+    u2 length;
+    u1 bytes[length];
+}
+```
+
+**CONSTANT_String**， 即CONSTANT_String_info Structure，该类型用于表示该类型的常量对象String。其不直接持有字符串内容，而是持有一个```string_index```，```string_index```该必须是constant_pool表中的有效索引，该constant_pool索引处的条目必须是一个CONSTANT_Utf8_info结构，即为一个CONSTANT_Utf8类型的常量，从而持有字符串内容。[(§4.4.3)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html#jvms-4.4.3)
+
+```java
+CONSTANT_String_info { 
+    u1 tag; 
+    u2 string_index; 
+}
+```
+
 #### 1.2 运行时常量池
 
 方法区的一部分。Class文件的常量池（上面的1.1）中的内容将在类加载后进入方法区的运行时常量池中存放。
+
+每个运行时常量池都是从Java虚拟机的方法区域（§2.5.4）中分配的。当Java虚拟机创建类或接口（§5.3）时，将构造类或接口的运行时常量池[(§2.5.5)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.5.5)。这意味着每个类/接口都会有一个运行时常量池。
 
 #### 1.3 字符串常量池
 HotSpot VM里，记录interned string的一个全局表叫做StringTable，它本质上就是个HashSet<String>。这是个纯运行时的结构，而且**是惰性（lazy）维护的**。注意它只存储对java.lang.String实例的引用，而不存储String对象的内容。
