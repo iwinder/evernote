@@ -1,4 +1,4 @@
-上篇介绍了一些String的基础与简单的创建方式，本篇引入它的intern()方法。
+[上篇](https://windcoder.com/javamantan-stringshang)介绍了一些String的基础与简单的创建方式，本篇引入它的intern()方法。
 
 ## 关于intern()方法
 
@@ -6,7 +6,7 @@
 当一个String实例str调用**intern()方法**时，如果常量池中已经有了这个字符串，那么直接返回常量池中它的引用，如果没有，那就将它的引用保存一份到字符串常量池，然后直接返回这个引用。可参考JDK中的解释或[The Java Virtual Machine Specification, Java SE 8 Edition (§5.1)](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-5.html#jvms-5.1)，简单来说就是一个可以手动将未存在常量池的字符串存入常量池并返回其引用的方法。
 
 
-#### 示例3
+### 示例3
 
 现在再来看另一种方式创建String的例子：
 
@@ -82,7 +82,7 @@ true
 
 如果将语句1和2对调，则会出现结果：
 
-```
+```java
 false
 true
 true
@@ -101,6 +101,47 @@ true
 在StringDemo3中，执行```s1.intern(); ```时，第一次执行了```ldc```，此时查找字符串常量池，发现没有对应内容的String的引用，故直接使用了s1的引用。
 
 若是将语句2和3互换，此时属于第一次执行针对```1a```的```ldc```指令，此时查找字符串常量池，发现没有对应内容的String的引用，故创建新的String实例，将引用存入字符串常量池中一份并返回给s2，如此```s1 == s2```的结果将为```false```。
+
+
+### 实例4
+
+现在我们看下《深入理解Java虚拟机》中的一个例子：
+
+```java
+public class StringDemo4 {
+    public static void main(String[] args) {
+        String str1 = new StringBuilder("计算机").append("软件").toString();
+        System.out.println(str1.intern() == str1);
+
+        String str2 = new StringBuilder("ja").append("va").toString();
+        System.out.println(str2.intern() == str2);
+    }
+}
+
+```
+
+**结果**
+```java
+true
+false
+```
+
+**原文解析**
+原文中如是说：
+
+>这段代码在JDK1.6中运行，会得到两个false，而在JDK1.7中运行，会得到一个true和一个false。产生差异的原因是：
+>
+>在JDK1.6中，intern()方法会把首次遇到的字符串实例复制到永久代中，返回的也是永久代中这个字符串实例的引用，而由StringBuilder创建的字符串实例在Java堆上，所以必然是两个不同的引用，将返回false。
+>
+>而JDK1.7（以及其他部分虚拟机，例如JRockit）的intern()实现不会再复制实例，只是在常量池中记录首次出现的实例引用。因此intern()返回的引用和由StringBuilder创建的那个字符串实例是同一个。
+>
+>对于str2比较返回false是因为“java”字符串在执行StringBuilder.toString()之前已经出现过，字符串常量池中已经有它的引用了，不符合“首次出现”的原则，而“计算机软件”这个字符串则是首次出现的，因此返回true.
+
+**解析**
+原文说“java”这个字符串之前已经出现过，却没说在哪出现过。
+
+RednaxelaFX在基于OpenJDK 7u45的实验中发现其来自```sun.misc.Version```类，在Oracle JDK7u / OpenJDK7u里的HotSpot VM会通过该类获取JDk的名称和具体版本信息。
+
 
 ## 扩展
 
@@ -240,7 +281,7 @@ HotSpot VM里，记录interned string的一个全局表叫做StringTable，它�
 
 ###  字面量进入字符串常量池的时机
 
-通过上篇文章，我们可以得到如下两个结论：
+通过[上篇文章](https://windcoder.com/javamantan-stringshang)，我们可以得到如下两个结论：
 
 > 1.StringDemo3.class 的 class文件常量池 中 是含有 "1" ,"a","1a"的。
 >
@@ -271,7 +312,7 @@ CONSTANT_Utf8会在类加载的过程中就全部创建出来，而**CONSTANT_St
 
 ### 再谈ldc指令
 
-根据上篇文章我们已知```ldc``` 将int, float或String型常量值从常量池中推送至栈顶。但，根据本文上面说的，在类加载阶段，这个 resolve 阶段（ constant pool resolution ）是lazy的。即在resolve阶段之前并没有真正的对象，字符串常量池里自然也没有对应的引用。那么ldc指令还怎么把人推送至栈顶？或者换一个角度想，既然resolve 阶段是lazy的，那总有一个时候它要真正的执行吧，是什么时候？
+根据[上篇文章](https://windcoder.com/javamantan-stringshang)我们已知```ldc``` 将int, float或String型常量值从常量池中推送至栈顶。但，根据本文上面说的，在类加载阶段，这个 resolve 阶段（ constant pool resolution ）是lazy的。即在resolve阶段之前并没有真正的对象，字符串常量池里自然也没有对应的引用。那么ldc指令还怎么把人推送至栈顶？或者换一个角度想，既然resolve 阶段是lazy的，那总有一个时候它要真正的执行吧，是什么时候？
 
 **执行ldc指令就是触发这个lazy resolution动作的条件**。
 
@@ -284,6 +325,11 @@ ldc字节码在这里的执行语义是：
 
 可见，ldc指令是否需要创建新的String实例，全看在第一次执行这一条ldc指令时，StringTable是否已经记录了一个对应内容的String的引用。
 
-[Java 中new String("字面量") 中 "字面量" 是何时进入字符串常量池的?](https://www.zhihu.com/question/55994121)
 
-[The Java® Virtual Machine Specification Java SE 8 Edition](https://docs.oracle.com/javase/specs/jvms/se8/html/index.html)
+## 参考资料
+
+1. [Java 中new String("字面量") 中 "字面量" 是何时进入字符串常量池的?](https://www.zhihu.com/question/55994121)
+2. [The Java® Virtual Machine Specification Java SE 8 Edition](https://docs.oracle.com/javase/specs/jvms/se8/html/index.html)
+3. 《深入理解 Java 虚拟机》第二版
+4. [如何理解《深入理解java虚拟机》第二版中对String.intern()方法的讲解中所举的例子？](https://www.zhihu.com/question/51102308/answer/124441115)
+
