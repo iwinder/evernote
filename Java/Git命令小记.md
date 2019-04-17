@@ -264,6 +264,16 @@ git push -f -u origin master
  git push --set-upstream origin feature/v0.1.1
 ```
 
+## git分支提交错误
+```
+// 获取错误提交分支上的id
+git log -3
+// 切换到正确分支，检出
+git cherry-pick e9ccc7a84e9b9c74f740dcb438a82d08b0d5fbfa
+// 检测
+git log -2
+```
+
 ## 问题及解决
 ### git签出远程分支问题解决
 
