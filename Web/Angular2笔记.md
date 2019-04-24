@@ -186,6 +186,15 @@ Angular 通过查看构造函数的参数类型得知组件需要哪些服务。
 - 提供商是一个用于创建服务的配方。
 - 把提供商注册到注入器。
 
+## 创建模块
+
+```
+// 新建模块
+ng g m
+// 新建组件
+ng g c base-report/views/user-learn-report
+```
+
 ##  angular-cli修改端口号【angular2】
 ### 方案一
 
