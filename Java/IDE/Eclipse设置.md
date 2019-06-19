@@ -68,7 +68,7 @@ Window -> Preferences -> General -> Appearance -> Colors and Fonts -> Basic -> T
  	
 以下为两种方案：
 
-1. 关闭校验
+1. 关闭校验(xml同此)
 	菜单Window - > Preferences
 	然后搜索 validation 
 	关闭对应的校验。
