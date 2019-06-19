@@ -26,4 +26,12 @@
         - [03-典型交易流程](Blockchain/Hyperledger-Fabric-biji/学习笔记03-典型交易流程.md)
 
 - Linux
-    - [常用命令.md](Linux/常用命令.md)
+    - [常用命令](Linux/常用命令.md)
+- 软件配置
+    - [Eclipse快捷键](Java/IDE/Eclipse快捷键.md)
+    - [Eclipse设置](Java/IDE/Eclipse设置.md)
+    - [IDEA设置](Java/IDE/IDEA设置.md)
+    - [vscode安装与配置](Java/IDE/vscode安装与配置.md)
+    - [Redis配置](Java/IDE/Redis配置.md)
+    - [常用软件配置](Java/IDE/常用软件配置.md)
+    

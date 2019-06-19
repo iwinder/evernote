@@ -83,3 +83,13 @@ Window -> Preferences -> General -> Appearance -> Colors and Fonts -> Basic -> T
 ![enter description here](./images/1530848219061.png)
 ## xml 文件格式化（非必要）
 ![enter description here](./images/1530857444590.png)
+
+
+## 安装插件
+
+###  gradle-ide-pack
+
+https://marketplace.eclipse.org/content/gradle-ide-pack#group-metrics-tab
+
+
+https://nodeclipse.github.io/updates/gradle-ide-pack/
