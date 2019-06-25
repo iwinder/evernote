@@ -34,6 +34,13 @@ git config [--global] --edit
 [Git配置同时推送到GitHub和码云](https://blog.csdn.net/qq_28975017/article/details/78976827)
 
 ## 仓库初始化
+
+#### Git 全局设置
+```
+git config --global user.name "zhangrucong"
+git config --global user.email "zhangrucong@parim.net"   
+```
+
 ###  创建新的本地仓库并提交
 ```
 //create a new repository on the command line
@@ -50,6 +57,29 @@ git push -u origin master
 git remote add origin https://github.com/iwinder/qy-console.git
 git push -u origin master
 ```
+
+### 方案二
+
+#### 创建新版本库
+
+```
+git clone git@git.parim.net:zhangrucong/console-ugc.git
+cd console-ugc
+touch README.md
+git add README.md
+git commit -m "add README"
+git push -u origin master
+```
+
+#### 已存在的文件夹或 Git 仓库
+
+```
+cd existing_folder
+git init
+git remote add origin git@git.parim.net:zhangrucong/console-ugc.git
+git add .
+git commit
+git push -u origin master
 
 ## 修复 工程远端库地址
 ```
