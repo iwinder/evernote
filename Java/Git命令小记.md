@@ -95,16 +95,20 @@ git push -u origin master
 
 # 方案一
 
-```
-git remote set-url origin \
-https://github.com/iwinder/nightbook2.0.git \
-https://gitee.com/windcoderqy/nightbook2.0.git
+```shell
+
+    git remote set-url origin \
+    https://github.com/iwinder/nightbook2.0.git \
+    https://gitee.com/windcoderqy/nightbook2.0.git
+
 ```
 
 # 方案二
 
-```
+```shell
+
 git remote set-url origin git@gitee.com:windcoderqy/nightbook2.0.git
+
 ```
 
 
