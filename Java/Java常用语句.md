@@ -138,3 +138,8 @@ lower(name) like  '%'||lower(#{course.name})||'%'
 Type type = new TypeToken<List<PointsGoodsDto>>() {}.getType();
 return ModelMapperUtils.map(goods, type, pageable);
 ```
+
+
+```
+java -jar parim-ugc.war > ugc.log
+```
